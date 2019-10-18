@@ -23,12 +23,31 @@ p {
 
 h3 {
 	text-align: left;
-	border-bottom: .2rem solid teal;
+	padding-bottom: 0;
+	padding-top:1rem;
+	margin-bottom: 0;
+	border-top: .2rem solid teal;
+}
+
+h3 + p {
+	/*border-bottom: .2rem solid teal;*/
+	padding-top: 0;
+	padding-bottom: 1rem;
+	margin-top: 0;
+}
+
+h3 + p, h3 {
+	border-left: .2rem solid teal;
+	padding-left: 1rem;
 }
 
 span {
 	text-align: left;
 	font-style: italic;
+}
+
+div.resumeItem:hover {
+    background:#F5F5F5;
 }
 
 div.resume ul {
