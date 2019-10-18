@@ -1,0 +1,48 @@
+body {
+	position: relative;
+	max-width: 60rem;
+	min-width: 30rem;
+	margin: auto;
+	text-align: center;
+}
+
+h1 {
+	position: absolute;
+	top: 12rem;
+	right: 4rem;
+
+	background: rgba(60,60,60,.7);
+	color: whitesmoke;
+	padding: .5rem 1rem .9rem 1rem; /* top right bottom left */
+	border-radius: .5rem;
+}
+
+p {
+	text-align: left;
+}
+
+h3 {
+	text-align: left;
+	border-bottom: .2rem solid teal;
+}
+
+span {
+	text-align: left;
+	font-style: italic;
+}
+
+div.resume ul {
+	text-align: left;
+    list-style-type: none;
+}
+
+div.resume li {
+	padding: 1rem;
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+	text-indent: -1.75rem;
+}
+
+div.resume li::before {
+	content: "\2014\a0";
+}

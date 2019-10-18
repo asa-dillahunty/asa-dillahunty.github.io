@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- Author: Asa Dillahunty -->
+
+<html lang='en'>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Dillahunty Developments</title>
+
+		<link rel="stylesheet" href="../stylesheets/template.css" type="text/css"/>
+		<link rel="stylesheet" href="../stylesheets/projectPage.css" type="text/css"/>
+	</head>
+
+	<body>
+		<header>
+		<nav>
+			<ul>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="../projects.html">Projects</a></li>
+					<li><a href="../AsaResume.pdf" target="_blank">Resume</a></li>
+					<li><a href="../contact.html">Contact Me</a></li>
+			</ul>
+		</nav>
+        <h1>Predator/Prey Simulation</h1>
+		</header>
+
+		<main>
+		<h2>Premise</h2>
+
+		<p>
+			Create a simple environment with predators and prey who eat and breed. 
+			Both predators and prey reproduce asexually, and it is assumed prey have an infinite food source.
+			However, predators can starve if they go too long without eating. Classic, nostalgic characters
+			were chosen to represent the predators and prey.
+		</p>
+
+		<ul class="exampleImages">
+			<li>
+				<figure>
+					<img src="../images/pacman.png" alt="PacMan"/>
+					<figcaption>Predator</figcaption>
+				</figure>
+			</li>
+			<li>
+				<figure>
+					<img src="../images/Ghost.png" alt="Blue Ghost"/>
+					<figcaption>Prey</figcaption>
+				</figure>
+			</li>
+		</ul>
+
+		<p>
+			To implement this enviornment, a turtle class was provided by the instructor. With the sprites changed
+			and giving each character a very basic AI, the simulation tends to run fairly smooth. The beginning
+			does rely on random placement and amount, so being unlucky can cause early termination of the program.
+			In the back of the canvas, the population of predators and prey are graphed.
+		</p>
+
+		<iframe src="https://www.youtube.com/embed/XTaMS7FTO78" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<!--
+		<video width="50%" controls>
+			<source src="../videos/pacSim.mov" type="video/mp4">
+			This browser doesn't support video tag :(
+		</video>
+		-->
+        <!-- youtube default width:560 height:315 -->
+        <!-- Teacher required width="920" height="250" -->
+
+		<br/><br/>
+        </main>
+
+		<footer>
+            <a href="https://www.linkedin.com/in/asa-dillahunty-247b2a14a" target="_blank">
+                <img src="../icons/linkedin.png" alt="LinkedIn"/></a>
+
+            <a href="https://github.com/asa-dillahunty" target="_blank">
+                <img src="../icons/github.png" alt="GitHub"/></a>
+
+            <a href="mailto:asdillahunty@crimson.ua.edu" target="_blank">
+                <img src="../icons/mail.png" alt="E-mail"/></a>
+
+            <br/>
+            &#169; 2019 Asa Dillahunty. All rights reserved <br/>
+        </footer>
+	</body>
+
+</html>

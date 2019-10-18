@@ -1,0 +1,88 @@
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align:left;
+}
+
+h3 {
+    text-shadow: 1px 1px 1px crimson;
+}
+
+p {
+    text-align: left;
+    /* text-indent: 5rem; */
+}
+
+header > p {
+    text-align: center;
+}
+
+iframe {
+    width:100%;
+    height: 20rem;
+    border: .5rem solid black;
+}
+
+video {
+    border: .5rem solid black;
+}
+
+figcaption {
+	display: block;
+}
+
+ul#BombGameRules {
+    text-align: left;
+    list-style-type: none;
+}
+
+ul#BombGameRules li {
+    text-indent: 3rem;
+    font-weight: bold;
+    color: crimson;
+    padding-top:2rem;
+}
+
+ul.exampleImages {
+	display:flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	list-style-type: none;
+}
+
+p.ASCII, span.ASCII {
+    font-size: 2pt;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: normal;
+    margin:0;
+    padding:0;
+    white-space: nowrap;
+
+    color:white;
+    background-color: black;
+}
+
+p > a {
+    text-decoration: none;
+    color:#667a94;
+}
+
+p > a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Box shadow with blurr */
+/* box-shadow: 10px 10px 5px teal */
+
+/* img {
+    box-shadow: 10px 10px teal;
+    -moz-box-shadow: 10px 10px teal;
+    -webkit-box-shadow: 10px 10px teal;
+    -khtml-box-shadow: 10px 10px teal;
+} */

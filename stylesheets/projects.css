@@ -1,0 +1,115 @@
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align:left;
+}
+
+/* lol no. I look like a lazer tag joint 
+.left h2 {
+    text-shadow: 1px 1px 2px crimson;
+}
+
+.right h2 {
+    text-shadow: 1px 1px 2px teal;
+}
+*/
+
+
+h2 > a {
+    color:black;
+    text-decoration: none;
+    padding:.5rem;
+}
+
+h2 > a:hover {
+    color:#757575;
+    /* text-decoration: underline; */
+}
+
+header > p {
+    text-align: center;
+}
+
+p {
+    text-align: left;
+    /* text-indent: 5rem; */
+}
+
+.left {
+    overflow: hidden;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width:100%;
+}
+
+.right {
+    overflow: hidden;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    flex-direction: row-reverse;
+    width:100%;
+}
+
+.left, .right {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.left:hover, .right:hover {
+    background:#F5F5F5;
+}
+
+.left > .words {
+    margin-right: 2rem;
+}
+
+.right > .words {
+    margin-left: 2rem;
+}
+
+.words {
+    width: 60%;
+}
+
+.title {
+    width: 100%;
+}
+
+.summary {
+    width: 100%;
+}
+
+.image {
+    width: 20rem;
+}
+
+.image > img {
+    width: 100%;
+    height: auto; /* ??? Why it no keep scale :( ??? */
+    overflow: hidden;
+    
+    border: solid black;
+    border-width:.3rem;
+}
+
+/* Box shadow with blurr */
+/* box-shadow: 10px 10px 5px teal */
+
+.left > .image > img {
+    box-shadow: 10px 10px teal;
+    -moz-box-shadow: 10px 10px teal;
+    -webkit-box-shadow: 10px 10px teal;
+    -khtml-box-shadow: 10px 10px teal;
+}
+
+.right > .image > img {
+    box-shadow: -10px 10px crimson;
+    -moz-box-shadow: -10px 10px crimson;
+    -webkit-box-shadow: -10px 10px crimson;
+    -khtml-box-shadow: -10px 10px crimson;
+}
