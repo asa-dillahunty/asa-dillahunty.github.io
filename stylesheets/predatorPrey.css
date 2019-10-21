@@ -1,7 +1,7 @@
 /* Animate the Predators/Prey?? */
 
 #Ghost {
-	animation: ghostCircle 5s linear 1s;
+	animation: ghostCircle 5s ease 1s;
 
 }
 
@@ -14,7 +14,7 @@
 }
 
 #PacMan {
-	animation: pacCircle 5s linear 1s;
+	animation: pacCircle 5s ease 1s;
 }
 
 @keyframes pacCircle {

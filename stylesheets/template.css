@@ -63,6 +63,16 @@ footer img {
     height: 5rem;
 }
 
+footer img:hover {
+	animation: bigger .5s ease;
+	transform: scale(1.2,1.2);
+}
+
+@keyframes bigger {
+	from {transform: scale(1,1);}
+	to {transform: scale(1.2,1.2)}
+}
+
 /* Warning */
 .warning::before, .warning::after {
     content: '\26A0';

@@ -38,7 +38,7 @@ p {
     /* text-indent: 5rem; */
 }
 
-.left {
+.proj:nth-child(odd) {
     overflow: hidden;
     display: flex;
     flex-flow: row wrap;
@@ -46,7 +46,7 @@ p {
     width:100%;
 }
 
-.right {
+.proj:nth-child(even) {
     overflow: hidden;
     display: flex;
     flex-flow: row wrap;
@@ -55,20 +55,20 @@ p {
     width:100%;
 }
 
-.left, .right {
+.proj:nth-child(odd), .proj:nth-child(even) {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-.left:hover, .right:hover {
+.proj:nth-child(odd):hover, .proj:nth-child(even):hover {
     background:#F5F5F5;
 }
 
-.left > .words {
+.proj:nth-child(odd) > .words {
     margin-right: 2rem;
 }
 
-.right > .words {
+.proj:nth-child(even) > .words {
     margin-left: 2rem;
 }
 
@@ -100,14 +100,14 @@ p {
 /* Box shadow with blurr */
 /* box-shadow: 10px 10px 5px teal */
 
-.left > .image > img {
+.proj:nth-child(odd) > .image > img {
     box-shadow: 10px 10px teal;
     -moz-box-shadow: 10px 10px teal;
     -webkit-box-shadow: 10px 10px teal;
     -khtml-box-shadow: 10px 10px teal;
 }
 
-.right > .image > img {
+.proj:nth-child(even) > .image > img {
     box-shadow: -10px 10px crimson;
     -moz-box-shadow: -10px 10px crimson;
     -webkit-box-shadow: -10px 10px crimson;
