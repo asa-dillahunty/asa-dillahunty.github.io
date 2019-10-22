@@ -10,6 +10,10 @@ body {
 	font-size: 24px;
 }
 
+p {
+	color:black; /*to appease my teacher*/
+}
+
 /* Navigation Styling */
 nav {
 	width:100%;
@@ -61,16 +65,11 @@ footer {
 
 footer img {
     height: 5rem;
+	transition: all .5s;
 }
 
 footer img:hover {
-	animation: bigger .5s ease;
 	transform: scale(1.2,1.2);
-}
-
-@keyframes bigger {
-	from {transform: scale(1,1);}
-	to {transform: scale(1.2,1.2)}
 }
 
 /* Warning */
