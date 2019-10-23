@@ -38,29 +38,21 @@ p {
     /* text-indent: 5rem; */
 }
 
-.proj:nth-child(odd) {
-    overflow: hidden;
+.proj {
+	overflow: hidden;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     width:100%;
-}
-
-.proj:nth-child(even) {
-    overflow: hidden;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    flex-direction: row-reverse;
-    width:100%;
-}
-
-.proj:nth-child(odd), .proj:nth-child(even) {
-    padding-top: 1rem;
+	padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-.proj:nth-child(odd):hover, .proj:nth-child(even):hover {
+.proj:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.proj:hover {
     background:#F5F5F5;
 }
 
