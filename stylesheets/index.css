@@ -8,15 +8,12 @@ main {
 	padding-top: .1rem;
 }
 
-footer {
-	
-	margin-top:0;
-	padding-top:0;
-}
-
 #wrapper {
 	background: white;
 	box-shadow: 0px -1px 10px rgba(60,60,60,.5);
+	
+	position: relative;
+	top: -6rem;
 }
 
 h1 {
@@ -37,7 +34,7 @@ p {
 h3 {
 	text-align: left;
 	padding-bottom: 0;
-	padding-top:1rem;
+	padding-top: 1rem;
 	margin-bottom: 0;
 	border-top: .2rem solid teal;
 }
