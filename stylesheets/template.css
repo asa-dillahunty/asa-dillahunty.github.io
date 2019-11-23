@@ -14,7 +14,9 @@ p {
 	color:black; /*to appease my teacher*/
 }
 
-/* Navigation Styling */
+/**************************************
+ * * * * * Navigation Styling * * * * *
+ **************************************/
 nav {
 	width:100%;
 	text-align: right;
@@ -58,7 +60,9 @@ nav a:hover {
 	text-decoration: underline;
 }
 
-/* Footer Styling */
+/**********************************
+ * * * * * Footer Styling * * * * *
+ **********************************/
 footer {
 	padding:3rem;
 }

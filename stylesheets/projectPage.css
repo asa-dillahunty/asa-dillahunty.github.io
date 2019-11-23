@@ -63,7 +63,7 @@ p.ASCII, span.ASCII {
     white-space: nowrap;
 
     color:white;
-    background-color: black;
+    background-color: #2A2A2A;
 }
 
 p > a {
