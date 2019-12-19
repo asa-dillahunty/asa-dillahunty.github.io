@@ -1,0 +1,78 @@
+/* Animate the Predators/Prey?? */
+
+iframe {
+	width: 100%;
+	margin: auto;
+}
+
+table {
+	margin: auto;
+	text-align: left;
+}
+
+th {
+	padding: 1rem;
+	padding-right: 5rem;
+	
+}
+
+tr:hover {
+	background-color: #F5F5F5;
+}
+
+td {
+	padding: .5rem;
+	padding-left: 1rem;
+	border-style: dashed;
+	border-color: black;
+	border-collapse: collapse;
+	border-left:none;
+	border-right: none;
+	border-bottom: none;
+}
+
+tr td:first-child::after {
+	content: 'th';
+}
+
+tr:nth-child(10n+2) td:first-child::after {
+	content: 'st';
+}
+
+tr:nth-child(10n+3) td:first-child::after {
+	content: 'nd';
+}
+
+tr:nth-child(10n+4) td:first-child::after {
+	content: 'rd';
+}
+
+/* 11th, 12th, and 13th so they aren't 11st, 12nd, and 13rd */
+tr:nth-child(12) td:first-child::after, 
+tr:nth-child(13) td:first-child::after, 
+tr:nth-child(14) td:first-child::after {
+	content: 'th';
+}
+
+#data {
+	text-align: center;
+}
+
+button {
+	margin: auto;
+	background-color: #82B541;
+	background-color: rgb(183,0,12);
+	border: none;
+	border-radius:6px;
+	font-weight: bold;
+	color: #ffffff;
+	text-align: center;
+	font-size: 1rem;
+	padding: 1rem 2rem 1rem 2rem;
+	cursor: pointer;
+}
+
+#RankTables {
+	display: flex;
+	flex-flow: row wrap;
+}

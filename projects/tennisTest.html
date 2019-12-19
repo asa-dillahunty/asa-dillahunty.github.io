@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- Author: Asa Dillahunty -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+<script type='text/javascript'>
+	var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1Trvvx_8lFaVHNWYulPRGw7MgfXynrDGq56Yjj2MpPQQ/edit?usp=sharing';
+
+	function displayRanks() {
+		Tabletop.init( { key: publicSpreadsheetUrl,
+		callback: showInfo,
+		simpleSheet: true } )
+	}
+
+	/*
+	function showInfo(data, tabletop) {
+		//alert('Successfully processed!')
+		//console.log(data);
+
+		var dataTable = "";
+
+		dataTable += "<table>"
+
+		dataTable += "<tr><th>Ranking</th><th>Male Travel Team</th><th>Female Travel Team</th></tr>";
+
+		for (var i=0;i<data.length;i++) {
+			dataTable += "<tr>";
+			
+			dataTable += "<td>"+data[i].Ranking+"</td>";
+			//console.log(data[i].Ranking);
+
+			dataTable += "<td>"+data[i]['Dude Travel Team']+"</td>";
+			//console.log(data[i]['Dude Travel Team']);
+
+			dataTable += "<td>"+data[i]['Chick Travel Team']+"</td>";
+			//console.log(data[i]['Chick Travel Team']);
+
+			dataTable += "</tr>";
+		}
+
+		dataTable += "</table>"
+
+		var da = document.getElementById("data");
+		da.innerHTML = dataTable;
+		da.style.color = 'green';
+	}
+	*/
+
+	function hideRanks() {
+		var retry = "<button type=\"button\" id=\"ViewRank\" onclick=\"displayRanks()\">View Travel Team Rankings</button>";
+		var da = document.getElementById("data");
+		da.innerHTML = retry;
+	}
+
+	function showInfo(data, tabletop) {
+		if (data == null) {
+			var retry = "Sorry, something went wrong.<br/>";
+			retry += "<button type=\"button\" id=\"ViewRank\" onclick=\"displayRanks()\">View Travel Team Rankings</button>";
+			var da = document.getElementById("data");
+			da.innerHTML = retry;
+			return;
+		}
+		//alert('Successfully processed!')
+		//console.log(data);
+		//<button type="button" id="ViewRank" onclick="displayRanks()">View Travel Team Rankings</button>
+
+		var maleTable = "";
+		var femaleTable = "";
+
+		maleTable += "<table>";
+		femaleTable += "<table>";
+
+		maleTable += "<tr><th></th><th>Name</th></tr>";
+		femaleTable += "<tr><th></th><th>Name</th></tr>";
+		// tables can have captions??? Yes??
+
+		for (var i=0;i<data.length;i++) {
+			maleTable += "<tr>";
+			femaleTable += "<tr>";
+			
+			maleTable += "<td>"+data[i].Ranking+"</td>";
+			femaleTable += "<td>"+data[i].Ranking+"</td>";
+			//console.log(data[i].Ranking);
+
+			maleTable += "<td>"+data[i]['Dude Travel Team']+"</td>";
+			//console.log(data[i]['Dude Travel Team']);
+
+			femaleTable += "<td>"+data[i]['Chick Travel Team']+"</td>";
+			//console.log(data[i]['Chick Travel Team']);
+
+			maleTable += "</tr>";
+			femaleTable += "</tr>";
+		}
+
+		maleTable += "</table>"
+		femaleTable += "</table>"
+
+		var da = document.getElementById("data");
+		var injection = "<div id=\"RankTables\">" + maleTable + femaleTable +"</div>";
+		injection += "<button type=\"button\" id=\"HideRank\" onclick=\"hideRanks()\">Hide Travel Team Rankings</button>"
+		da.innerHTML = injection;
+	}
+
+	window.addEventListener('DOMContentLoaded', init)
+		
+</script>
+
+<html lang='en'>
+
+	<head>
+		<meta charset="utf-8">
+		<title>UA Tennis</title>
+
+		<link rel="stylesheet" href="../stylesheets/template.css" type="text/css"/>
+		<link rel="stylesheet" href="../stylesheets/projectPage.css" type="text/css"/>
+		<link rel="stylesheet" href="../stylesheets/tennis.css" type="text/css"/>
+	</head>
+
+	<body>
+		<header>
+		<nav>
+			<ul>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="../projects.html">Projects</a></li>
+					<li><a href="../AsaDillahuntyResume.pdf" target="_blank">Resume</a></li>
+					<li><a href="../contact.html">Contact Me</a></li>
+			</ul>
+		</nav>
+        <h1>UA Tennis</h1>
+
+		</header>
+
+		<main>
+
+		<h2>Travel Team</h2>
+
+		<p>
+			The travel team does stuff and they travel places. They play good tennis and get extra
+			practices. They also force you to play challenge matches. Sounds fishy. It also costs $300
+			to join the travel team. Too much money for me.
+		</p>
+		<p>
+			This isn't actual data for the tennis team, and I am in now way associated with them. This 
+			is just a project I am working on to gain knowlegde of JavaScript.
+		</p>
+		<p id='data'><button type="button" id="ViewRank" onclick="displayRanks()">View Travel Team Rankings</button></p>
+		
+		<!-- <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ5LtUDxChRQV-1DFQyUxb4U74kJ0ZAANlexB9IW7sFnkKTzwS8Lq9P1A3Ryvma7Mfvi6zd9gf0Ioq/pubhtml?widget=true&amp;headers=false"></iframe> -->
+
+		</main>
+
+		<footer>
+            <a href="https://www.linkedin.com/in/asa-dillahunty-247b2a14a" target="_blank">
+                <img src="../icons/linkedin.png" alt="LinkedIn"/></a>
+
+            <a href="https://github.com/asa-dillahunty" target="_blank">
+                <img src="../icons/github.png" alt="GitHub"/></a>
+
+            <a href="mailto:asdillahunty@crimson.ua.edu" target="_blank">
+                <img src="../icons/mail.png" alt="E-mail"/></a>
+
+            <br/>
+            &#169; 2019 Asa Dillahunty. All rights reserved <br/>
+        </footer>
+	</body>
+
+</html>
