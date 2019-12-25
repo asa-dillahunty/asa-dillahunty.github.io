@@ -1,4 +1,20 @@
-/* Animate the Predators/Prey?? */
+nav a {
+	background: rgb(132,52,54);
+}
+
+#banner {
+	color: white;
+	background: rgb(132,52,54);
+	text-align: left;
+	padding: 2rem;
+	top: 0;
+	position: relative;
+	width: 100%;
+	margin: 0;
+	z-index: -1;
+	box-sizing: border-box;
+	border: 1rem double white;
+}
 
 iframe {
 	width: 100%;
@@ -7,28 +23,36 @@ iframe {
 
 table {
 	margin: auto;
+	margin-bottom: 1rem;
 	text-align: left;
+	border-collapse: collapse;
+	color: white;
 }
 
 th {
 	padding: 1rem;
 	padding-right: 5rem;
-	
+}
+
+tr {
+	background: rgb(19,54,86);
 }
 
 tr:hover {
-	background-color: #F5F5F5;
+	background-color: rgb(39,74,106);
+	
 }
 
 td {
 	padding: .5rem;
 	padding-left: 1rem;
-	border-style: dashed;
-	border-color: black;
-	border-collapse: collapse;
-	border-left:none;
-	border-right: none;
-	border-bottom: none;
+	border-width: .5rem;
+	border-style: double;
+	border-top-width: 1rem;
+	border-left-style: solid;
+	border-right-style: solid;
+	border-color: white;
+	/* 132, 52, 54  looks like clay */
 }
 
 tr td:first-child::after {
@@ -58,10 +82,11 @@ tr:nth-child(14) td:first-child::after {
 	text-align: center;
 }
 
+/* crimson -> rgb(183,0,12) */
 button {
 	margin: auto;
 	background-color: #82B541;
-	background-color: rgb(183,0,12);
+	background-color: rgb(132,52,54);
 	border: none;
 	border-radius:6px;
 	font-weight: bold;
@@ -75,4 +100,5 @@ button {
 #RankTables {
 	display: flex;
 	flex-flow: row wrap;
+	vertical-align: top;
 }

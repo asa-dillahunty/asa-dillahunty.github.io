@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- Author: Asa Dillahunty -->
+
+<script src="scripts/forum.js"></script>
+
+<html lang='en'>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Chocoholics Anonymous</title>
+
+		<link rel="stylesheet" href="stylesheets/template.css" type="text/css"/>
+		<link rel="stylesheet" href="stylesheets/forum.css" type="text/css"/>
+	</head>
+
+	<body>
+		<header>
+		<nav>
+			<ul>
+				<li><a href="chocoholicsAnon.html">Home</a></li>
+				<li><a href="login.html">Log In</a></li>
+				<li><a href="forum.html">Forum</a></li>
+			</ul>
+		</nav>
+		<h1>Chocoholics Anonymous Forum</h1>
+		</header>
+
+		<main>
+
+		<h2>Ask us a question</h2>
+
+		<div id="forumPosts">
+
+		</div>
+
+		<form action="scripts/forum.php" method="POST">
+			<fieldset>
+				<legend>Ask a Question</legend>
+
+				<label>Username</label></br>
+				<input type="text" name="username"/></br>
+
+				<label>Subject</label></br>
+				<input type="text" name="subjectLine"/></br>
+
+				label>Full Text</label></br>
+				<textarea name="qText" rows = "3" cols = "80"></textarea></br>
+				
+				<input type="submit">
+			</fieldset>
+		</form>
+
+		<button onclick="postQuestion()">Post</button>
+
+		</main>
+
+		<footer>
+			<a href="https://www.linkedin.com/in/asa-dillahunty-247b2a14a" target="_blank">
+				<img src="../../icons/linkedin.png" alt="LinkedIn"/></a>
+
+			<a href="https://github.com/asa-dillahunty" target="_blank">
+				<img src="../../icons/github.png" alt="GitHub"/></a>
+
+			<a href="mailto:asdillahunty@crimson.ua.edu" target="_blank">
+				<img src="../../icons/mail.png" alt="E-mail"/></a>
+
+			<br/>
+			&#169; 2019 Asa Dillahunty. All rights reserved <br/>
+		</footer>
+	</body>
+
+</html>

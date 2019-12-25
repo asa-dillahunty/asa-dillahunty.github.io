@@ -11,6 +11,19 @@ body {
 	padding: 0rem 1rem;
 }
 
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: left;
+}
+
+p {
+    text-align: left;
+}
+
 /**************************************
  * * * * * Navigation Styling * * * * *
  **************************************/
@@ -34,26 +47,19 @@ nav ul li {
 }
 
 nav a {
-	background: rgba(60, 60, 60, .7);
 	font-size: 1rem;
-	color: white;
+	font-weight: bold;
+	color: #654321;
 	text-decoration: none;
 	padding: .5rem;
 	padding-left: 1rem;
 	padding-right: 1rem;
-}
-
-#current {
-	background: rgba(0,0,0,.7);
-}
-
-#current:hover {
-	background: white;
+	border-radius: .2rem;
 }
 
 nav a:hover {
-	background: white;
-	color:black;
+	background: #654321;
+	color:white;
 	text-decoration: underline;
 }
 
