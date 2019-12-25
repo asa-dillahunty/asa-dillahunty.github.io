@@ -1,8 +1,8 @@
 <html>
 <body>
 
-Welcome <?php echo $_GET["username"]; ?><br>
-Subject Line was: <?php echo $_GET["subjectLine"]; ?>
+Welcome <?php echo $_POST["username"]; ?><br>
+Subject Line was: <?php echo $_POST["subjectLine"]; ?>
 And text was: <?php echo $_POST["qText"]; ?>
 
 </body>
