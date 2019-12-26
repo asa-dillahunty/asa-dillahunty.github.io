@@ -17,7 +17,7 @@ function postQuestion() {
 function post(username, subject_line, full_text) {
 
 	var data = document.getElementById('forumPosts');
-	var html = document.innerHTML;
+	var html = document.documentElement.innerHTML;
 
 	//perform the replacements to prevent html injections
 	username.replace('\\','\\\\');
@@ -33,10 +33,15 @@ function post(username, subject_line, full_text) {
 	full_text.replace('>','\\>');
 
 	var newData = data.innerHTML;
+	
 	newData += '<h3 class=\'username\'>'+username+'</h3>';
 	newData += '<h3 class=\'subjectLine\'>'+subject_line+'</h3>';
 	newData += '<p class=\'qText\'>'+full_text+'</p>';
+
+	console.log(newData);
+
 	html.replace(data.innerHTML, newData);
+	console.log(html);
 
 	document.open("text/html","replace");
 	document.write(html);

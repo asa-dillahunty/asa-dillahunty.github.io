@@ -30,10 +30,12 @@
 		<h2>Ask us a question</h2>
 
 		<div id="forumPosts">
-
+			<h3 class="username"> Name of person </h3>
+			<h3 class='subjectLine'> Subject Line of Questions</h3> 
+			<p class='qText'> The full text of the question being asked. Usually ends in a question mark, but you know how cs students are.</p>
 		</div>
 
-		<form action="scripts/forum.php" method="POST">
+		<form id="questionForm" action="scripts/forum.php" method="POST">
 			<fieldset>
 				<legend>Ask a Question</legend>
 
@@ -49,6 +51,7 @@
 				<input type="submit">
 			</fieldset>
 		</form>
+		
 
 		<button onclick="postQuestion()">Post</button>
 
