@@ -2,7 +2,10 @@ img#cover {
 	position: sticky;
 	z-index: -1;
 	top: 0;
-	width: 100%;
+	max-height: calc(100vh - 6rem);
+	max-width: 100%;
+	height: auto;
+	width: auto;
 }
 
 main {
