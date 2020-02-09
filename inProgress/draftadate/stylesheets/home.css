@@ -70,11 +70,12 @@ nav ul{
 	100% {transform: translate(125vw,0);opacity:0;}
 }
 
-#checking {
+.checking {
+    position: absolute;
+    top: 80%;
+    right: 2%;
 
-
-    float: right;
-    width: 68%;
+    width: 62%;
 
     box-sizing: border-box;
     border: 2px solid black;
@@ -82,12 +83,19 @@ nav ul{
     overflow: hidden;
 }
 
-#checking p {
+.checking.bottom {
+    z-index: 0;
+}
+.checking.top {
+    z-index: 0;
+}
+
+.checking p {
     margin: 0;
     padding: 0;
 }
 
-#checking img {
+.checking img {
     max-width: 100%;
     width: auto;
 
@@ -95,7 +103,7 @@ nav ul{
     border: 1px solid black;
 }
 
-#checking p {
+.checking p {
     margin: 0;
     padding: 0;
 }
