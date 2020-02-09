@@ -1,76 +1,76 @@
 /* Set my own defaults */
 body {
-	position: relative;
-	max-width: 60rem;
-	min-width: 30rem;
-	margin: auto;
-	text-align: center;
+    position: relative;
+    max-width: 60rem;
+    min-width: 30rem;
+    margin: auto;
+    text-align: center;
 
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	font-size: 24px;
-	padding: 0rem 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    padding: 0rem 1rem;
 }
 
 /**************************************
  * * * * * Navigation Styling * * * * *
  **************************************/
 nav {
-	width:100%;
-	text-align: right;
-	top: 0;
-	right: 0;
-	height: 5rem;
+    width:100%;
+    text-align: right;
+    top: 0;
+    right: 0;
+    height: 5rem;
 }
 
 nav ul {
-	position: absolute;
-	top: 1rem;
-	right: 3rem;
+    position: absolute;
+    top: 1rem;
+    right: 3rem;
 }
 
 nav ul li {
-	display: inline;
-	vertical-align: top;
+    display: inline;
+    vertical-align: top;
 }
 
 nav a {
-	background: rgba(60, 60, 60, .7);
-	font-size: 1rem;
-	color: white;
-	text-decoration: none;
-	padding: .5rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
+    background: rgba(60, 60, 60, .7);
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    padding: .5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 #current {
-	background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.7);
 }
 
 #current:hover {
-	background: white;
+    background: white;
 }
 
 nav a:hover {
-	background: white;
-	color:black;
-	text-decoration: underline;
+    background: white;
+    color:black;
+    text-decoration: underline;
 }
 
 /**********************************
  * * * * * Footer Styling * * * * *
  **********************************/
 footer {
-	padding: 3rem;
+    padding: 3rem;
 }
 
 footer img {
     height: 5rem;
-	transition: all .5s;
+    transition: all .5s;
 }
 
 footer img:hover {
-	transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
 }
 
 /* Warning */
