@@ -11,7 +11,7 @@ function init() {
     console.log(data);
   }
 
-  window.addEventListener('DOMContentLoaded', init)
+  //window.addEventListener('DOMContentLoaded', init)
 
 	/*function showInfo(data, tabletop) {
 		if (data == null) {

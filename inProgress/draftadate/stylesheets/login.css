@@ -63,6 +63,7 @@ form label {
 
 form input[type=submit] {
 	border: black;
+	text-align: center;
 }
 
 form input[type=text], form input[type=password] {
