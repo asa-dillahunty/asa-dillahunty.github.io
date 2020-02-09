@@ -1,5 +1,18 @@
+body {
+	background: #000 url(images/ua-pres-mansion.jpg) » 
+  center center fixed no-repeat;
+	-moz-background-size: cover;
+	background-size: cover;
+  }
+
 h1 {
-    font-size: 3rem;
+	font-size: 3rem;
+	color: black;
+	text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
 }
 
 h2 {
@@ -23,7 +36,8 @@ iframe {
 
 #container {
 	box-sizing: border-box;
-	border: .1rem solid rgb(175, 175, 175);
+	border: .1rem solid black;
+	background-color: rgba(255, 255, 255, .8);
 	border-radius: 2rem;
 	width: 30rem;
 	padding: 1rem;
@@ -79,4 +93,9 @@ form input[type=text]:focus, form input[type=password]:focus {
 	outline: none;
 	border-bottom: .1rem solid blue;
 	background-color: linear-gradient(to right, red, purple);
+}
+
+ul {
+	display: inline;
+	
 }
