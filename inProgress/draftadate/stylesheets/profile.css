@@ -1,0 +1,75 @@
+#wrapper {
+    text-align: left;
+    padding:25px;
+}
+
+#sidebar {
+    width: 29%;
+    background-color: blue;
+    float: left;
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#profile {
+    width: 100%;
+    background-color: grey;
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+i {
+    color: black;
+}
+
+.likebutton button {
+    float: left;
+    width: 50%;
+    height: 30vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+#checking {
+
+
+    float: right;
+    width: 68%;
+
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#checking img {
+    max-width: 100%;
+    width: auto;
+
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+#checking p {
+    margin: 0;
+    padding: 0;
+}
+
+#bio h3 {
+    border-bottom: 2px solid black;
+}
+
+#bio {
+    padding-left: 10px;
+}

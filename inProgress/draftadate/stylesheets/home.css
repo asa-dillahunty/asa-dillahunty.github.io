@@ -31,13 +31,20 @@
 .likebutton button {
     float: left;
     width: 50%;
-    height: 30vh;
+    height: 35vh;
     margin: 0;
     padding: 0;
     overflow: hidden;
 
     box-sizing: border-box;
     border: 1px solid black;
+}
+
+.likebutton button span {
+    font-size: 10rem;
+}
+#no {
+    font-size: 8.5rem;
 }
 
 #checking {
@@ -50,6 +57,11 @@
     border: 2px solid black;
     border-radius: 10px;
     overflow: hidden;
+}
+
+#checking p {
+    margin: 0;
+    padding: 0;
 }
 
 #checking img {
