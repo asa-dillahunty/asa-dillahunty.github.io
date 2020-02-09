@@ -4,6 +4,8 @@
 }
 
 #sidebar {
+    position: fixed;
+    top: 200px;
     width: 29%;
     background-color: blue;
     float: left;
@@ -11,8 +13,9 @@
     padding: 0;
 
     box-sizing: border-box;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 #profile {
@@ -23,38 +26,30 @@
 
     box-sizing: border-box;
     border: 1px solid black;
-    border-radius: 10px;
 }
 
 .likebutton button {
     float: left;
     width: 50%;
-    height: 100px;
+    height: 30vh;
     margin: 0;
     padding: 0;
     overflow: hidden;
 
     box-sizing: border-box;
     border: 1px solid black;
-    border-radius: 10px;
-}
-
-#age {
-    position: relative;
-    bottom: 10px;
-    right: 10px;
-    color: white;
-    background-color: rgba(0,0,0,.8);
-    padding: 5px 10px 5px 10px;
 }
 
 #checking {
+
+
     float: right;
     width: 68%;
 
     box-sizing: border-box;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 #checking img {
@@ -63,5 +58,12 @@
 
     box-sizing: border-box;
     border: 1px solid black;
-    border-radius: 10px;
+}
+
+#bio h3 {
+    border-bottom: 2px solid black;
+}
+
+#bio {
+    padding-left: 10px;
 }
