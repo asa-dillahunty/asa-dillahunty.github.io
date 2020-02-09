@@ -11,6 +11,14 @@ nav ul{
     font-size: 54px;
 }
 
+h1 {
+    text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
+}
+
 #sidebar {
     position: fixed;
     top: 200px;
@@ -33,6 +41,16 @@ nav ul{
 
     box-sizing: border-box;
     border: 1px solid black;
+}
+
+#profileName {
+    text-align: center;
+    color: white;
+    text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black;
 }
 
 .likebutton button {
