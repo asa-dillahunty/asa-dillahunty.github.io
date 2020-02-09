@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!-- Author: Asa Dillahunty -->
 
+<script type='text/javascript' src="js/home.js"></script>
+
 <html lang='en'>
 
 	<head>
@@ -24,19 +26,22 @@
             <div id="sidebar">
                 <div id="profile">
                     <!-- <img> profile icon picture -->
-                    <h2 id="profileName"><a href="home.html"><i class="glyphicon glyphicon-home"></i></a></h2>
+                    <h2 id="profileName">
+                        <a href="home.html"><i class="glyphicon glyphicon-home"></i></a>
+                        <button onclick="editable()">&#9998;</button>
+                    </h2>
                 </div>
                 <div class=messages>
                     <ul>
-                        <li class="messageblock"><a>
+                        <li class="messageblock"><a href="messages/john.html">
                             <div class=messageName>
-                                John Snow
+                                Jon Snow
                             </div>
                             <div class=messagePrev>
                                 Are you my honor? Because I will literally put you above everthing else.
                             </div>
                         </a></li>
-                        <li class="messageblock"><a>
+                        <li class="messageblock"><a href="messages/mike.html">
                             <div class=messageName>
                                 Mike Wazowski
                             </div>
@@ -44,7 +49,7 @@
                                 I don't like to brag, but I am a monster in bed
                             </div>
                         </a></li>
-                        <li class="messageblock"><a>
+                        <li class="messageblock"><a href="zen.html">
                             <div class=messageName>
                                 Zendaya
                             </div>
@@ -52,7 +57,7 @@
                                 Hey that's really cool! I like dance too :) We should definitely get together some time. You seem really nice..
                             </div>
                         </a></li>
-                        <li class="messageblock"><a>
+                        <li class="messageblock"><a href="jean.html">
                             <div class=messageName>
                                 Jean Luc
                             </div>
@@ -65,17 +70,17 @@
             </div>
 
             <div id=checking>
-                <img src="images/asa-p1.jpeg">
+                <img src="images/Coke.jpg">
 
                 <div id=bio>
-                    <h3>Maddie <a>&#9998;</a></h3>
-
-                    <p id=age>Age : 20</p>
-                    <p id=f-age></p>
-                    <p id=year>Year : Sophmore</p>
-                    <p id=height>Height : 4'3"</p>
-                    <p id=bio>@tennis_maddie</p>
+                    <h3><input type="text" name="name" id="name" value="Maddie" readonly></h3>
+                    <label for=age>Age</label><input class=labeled type="text" name="age" id="age" value="20" readonly><br>
+                    <label for=f-age>"Age"</label><input class=labeled type="text" name="f-age" id="f-age" value="22" readonly><br>
+                    <label for=year>Year</label><input class=labeled type="text" name="year" id="year" value="Sophmore" readonly><br>
+                    <label for=height>Height</label><input class=labeled type="text" name="height" id="height" value="4'3&quot;" readonly><br>
+                    <input type="text" name="biog" id="biog" value="@tennis_maddie" readonly><br>
                 </div>
+                <div id=saveButton></div>
             </div>
 
 			<!--

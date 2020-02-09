@@ -3,11 +3,14 @@
     padding:25px;
 }
 
+nav ul{
+    font-size: 54px;
+}
+
 #sidebar {
     position: fixed;
     top: 200px;
     width: 29%;
-    background-color: blue;
     float: left;
     margin: 0;
     padding: 0;
@@ -38,6 +41,10 @@
 
     box-sizing: border-box;
     border: 1px solid black;
+}
+
+.likebutton button:hover {
+    background-color:aliceblue;
 }
 
 .likebutton button img {
@@ -86,6 +93,33 @@
 
     box-sizing: border-box;
     border: 1px solid black;
+}
+
+#checking p {
+    margin: 0;
+    padding: 0;
+}
+
+label {
+    width: 100px;
+}
+
+input.labeled {
+    width: 180px;
+}
+
+input {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding-left: 0;
+}
+
+textarea {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 #bio h3 {
