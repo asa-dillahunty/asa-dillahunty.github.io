@@ -56,7 +56,7 @@ nav ul{
 }
 
 .leftswipe {
-    animation: goLeft 2s ease 1s;
+    animation: goLeft 2s ease 0s;
 }
 
 @keyframes goLeft {
@@ -65,7 +65,7 @@ nav ul{
 }
 
 .rightswipe {
-	animation: goRight 2s ease 1s;
+	animation: goRight 2s ease 0s;
 }
 
 @keyframes goRight {

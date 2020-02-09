@@ -8,7 +8,7 @@ function leftswipe(){
     //for now remove class
     setTimeout(() => {  top.className =''; 
                         bot.id = 'top';
-                        top.id = 'bottom';}, 2000);
+                        top.id = 'bottom';}, 1000);
 }
 
 function rightswipe(){
@@ -22,7 +22,7 @@ function rightswipe(){
     //for now remove class
     setTimeout(() => {  top.className =''; 
                         bot.id = 'top';
-                        top.id = 'bottom';}, 2000);
+                        top.id = 'bottom';}, 1000);
 }
 
 function editable() {
