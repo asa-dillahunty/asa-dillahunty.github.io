@@ -63,6 +63,6 @@ function uneditable() {
 
 function sendMessage() {
     var msg = document.getElementById('message').value;
-    document.getElementById("perm").innerHTML += "<div class=letter><p class='home'>" + msg + "</p><div>";
+    document.getElementById("perm").innerHTML += "<div class=letter type=home><p class='home'>" + msg + "</p><div>";
     document.getElementById('message').value = '';
 }
