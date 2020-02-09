@@ -24,6 +24,7 @@ h1 a {
 
     margin: 0;
     padding: 10px;
+    margin-bottom: 20px;
 }
 
 #perm {
@@ -86,13 +87,11 @@ h1 a {
     max-width: 70%;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: bisque;
+    background-color: pink;
     border-radius: 15px 0px 15px 15px;
 }
 
 #checking {
-
-
     float: left;
     width: 29%;
 
@@ -100,6 +99,7 @@ h1 a {
     border: 2px solid black;
     border-radius: 10px;
     overflow: hidden;
+    margin-bottom: 35px;
 }
 
 #checking p {
