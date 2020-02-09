@@ -1,15 +1,28 @@
 function leftswipe(){
-    document.getElementById('checking').className ='leftswipe';
+    var top = document.getElementById('top');
+    top.className ='leftswipe';
+
+    var bot = document.getElementById('bottom');
+
     //then just remove it afterwards
     //for now remove class
-    setTimeout(() => {  document.getElementById('checking').className =''; }, 2000);
+    setTimeout(() => {  top.className =''; 
+                        bot.id = 'top';
+                        top.id = 'bottom';}, 2000);
 }
 
 function rightswipe(){
-    document.getElementById('checking').className ='rightswipe';
+
+    var top = document.getElementById('top');
+    top.className ='rightswipe';
+
+    var bot = document.getElementById('bottom');
+
     //then just remove it afterwards
     //for now remove class
-    setTimeout(() => {  document.getElementById('checking').className =''; }, 2000);
+    setTimeout(() => {  top.className =''; 
+                        bot.id = 'top';
+                        top.id = 'bottom';}, 2000);
 }
 
 function editable() {
