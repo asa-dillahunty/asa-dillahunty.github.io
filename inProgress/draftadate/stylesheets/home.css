@@ -28,6 +28,7 @@ h1 {
     border: 2px solid black;
     border-radius: 10px;
     overflow: hidden;
+    background-color: white;
 }
 
 #profile {
@@ -63,7 +64,7 @@ h1 {
 }
 
 .likebutton button:hover {
-    background-color:aliceblue;
+    background-color:rgb(220,220,220);
 }
 
 .likebutton button img {

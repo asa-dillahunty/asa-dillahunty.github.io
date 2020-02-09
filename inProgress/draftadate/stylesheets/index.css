@@ -33,6 +33,7 @@ h1 {
     color: whitesmoke;
     padding: .5rem 1rem .9rem 1rem; /* top right bottom left */
     border-radius: .5rem;
+    font-family: Copperplate;
 }
 
 p {
