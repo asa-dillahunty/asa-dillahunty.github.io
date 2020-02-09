@@ -1,8 +1,6 @@
 /* Set my own defaults */
 body {
     position: relative;
-    max-width: 60rem;
-    min-width: 30rem;
     margin: auto;
     text-align: center;
 
@@ -34,7 +32,7 @@ nav ul li {
 }
 
 nav a {
-    background: rgba(60, 60, 60, .7);
+    background: rgba(60, 60, 60, .85);
     font-size: 1rem;
     color: white;
     text-decoration: none;

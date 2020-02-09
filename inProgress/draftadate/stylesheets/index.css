@@ -1,6 +1,9 @@
+#bodywrapper {
+	box-shadow: 0px -1px 10px rgba(60,60,60,.5);
+}
+
 div#imgwrapper {
-    overflow: hidden;
-    height: calc(100vh - 6rem);
+	overflow: hidden;
 }
 
 img#cover {
@@ -16,7 +19,6 @@ main {
 
 #wrapper {
     background: white;
-    box-shadow: 0px -1px 10px rgba(60,60,60,.5);
     
     position: relative;
     top: -6rem;
@@ -27,7 +29,7 @@ h1 {
     top: 12rem;
     right: 4rem;
 
-    background: rgba(60,60,60,.7);
+    background: rgba(60,60,60,.85);
     color: whitesmoke;
     padding: .5rem 1rem .9rem 1rem; /* top right bottom left */
     border-radius: .5rem;
@@ -39,12 +41,12 @@ p {
 }
 
 h3 {
-    font-family: Tahoma
+    font-family: Tahoma;
     text-align: left;
     padding-bottom: 0;
     padding-top: 1rem;
     margin-bottom: 0;
-    border-top: .2rem solid teal;
+    border-top: .2rem solid rgb(77,99,19);
 }
 
 h3 + p {
@@ -56,7 +58,7 @@ h3 + p {
 
 p, h3 {
     /*border-left: .2rem solid teal;*/
-    padding-left: 1rem;
+    text-align: center;
 }
 
 span {
@@ -82,4 +84,9 @@ div.resume li {
 
 div.resume li::before {
     content: "\2014\a0";
+}
+
+footer a {
+	color: #000;
+	text-decoration: none;
 }

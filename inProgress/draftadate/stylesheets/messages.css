@@ -1,0 +1,150 @@
+#wrapper {
+    text-align: left;
+    padding:25px;
+}
+
+h1 a {
+    float: left;
+    margin: 0;
+    margin-left: 30px;
+    background-color: aliceblue;
+    padding: 5px 10px 5px 10px;
+    box-sizing: border-box;
+}
+
+#messageWindow {
+    width: 68%;
+    float: right;
+
+    box-sizing: border-box;
+    border: 2px solid black;
+    overflow: hidden;
+
+    height: 70vh;
+
+    margin: 0;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#perm {
+    height: 90%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.letter {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.letter.away {
+    float: left;
+}
+.letter.home {
+    float: right;
+}
+
+#textfield {
+    width: 100%;
+}
+
+#textfield input {
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#textfield span {
+    background-color: antiquewhite;
+    border: 1px solid black;
+    box-sizing: border-box;
+    width: 10%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.away {
+    float: left;
+    max-width: 70%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: aliceblue;
+    border-radius: 0 15px 15px 15px;
+
+    position: relative;
+    
+}
+
+.away:hover {
+    background-color: rgb(240,240,240);
+}
+
+.home {
+    float: right;
+    max-width: 70%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: pink;
+    border-radius: 15px 0px 15px 15px;
+}
+
+#checking {
+    float: left;
+    width: 29%;
+
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 35px;
+}
+
+#checking p {
+    margin: 0;
+    padding: 0;
+}
+
+#checking img {
+    max-width: 100%;
+    width: 100%;
+
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+#checking p {
+    margin: 0;
+    padding: 0;
+}
+
+label {
+    width: 100px;
+}
+
+input.labeled {
+    width: 180px;
+}
+
+input {
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding-left: 0;
+}
+
+textarea {
+    border: none;
+    width: 100%;
+    height: auto;
+}
+
+#bio h3 {
+    border-bottom: 2px solid black;
+}
+
+#bio {
+    padding-left: 10px;
+}
