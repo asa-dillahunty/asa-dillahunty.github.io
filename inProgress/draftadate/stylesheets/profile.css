@@ -3,6 +3,12 @@
     padding:25px;
 }
 
+h1 {
+    text-align: center;
+    color: white;
+    background-color: rgb(230, 157, 153);
+}
+
 #sidebar {
     width: 29%;
     float: left;
