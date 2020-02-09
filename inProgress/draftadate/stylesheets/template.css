@@ -1,8 +1,6 @@
 /* Set my own defaults */
 body {
     position: relative;
-    max-width: 60rem;
-    min-width: 30rem;
     margin: auto;
     text-align: center;
 

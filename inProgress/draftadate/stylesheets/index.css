@@ -1,6 +1,9 @@
+#bodywrapper {
+	box-shadow: 0px -1px 10px rgba(60,60,60,.5);
+}
+
 div#imgwrapper {
-    overflow: hidden;
-    height: calc(100vh - 6rem);
+	overflow: hidden;
 }
 
 img#cover {
@@ -16,7 +19,6 @@ main {
 
 #wrapper {
     background: white;
-    box-shadow: 0px -1px 10px rgba(60,60,60,.5);
     
     position: relative;
     top: -6rem;
