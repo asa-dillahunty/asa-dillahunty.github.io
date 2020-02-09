@@ -40,11 +40,27 @@
     border: 1px solid black;
 }
 
-.likebutton button span {
-    font-size: 10rem;
+.likebutton button img {
+    width: 90%;
 }
-#no {
-    font-size: 8.5rem;
+
+.leftswipe {
+    animation: goLeft 2s ease 1s;
+    z-index: -1;
+}
+
+@keyframes goLeft {
+	0% {transform: translate(0,0);}
+	100% {transform: translate(-125vw,0);opacity:0;}
+}
+
+.rightswipe {
+	animation: goRight 2s ease 1s;
+}
+
+@keyframes goRight {
+	0% {transform: translate(0,0);}
+	100% {transform: translate(125vw,0);opacity:0;}
 }
 
 #checking {

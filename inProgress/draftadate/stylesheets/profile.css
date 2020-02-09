@@ -29,21 +29,38 @@ i {
     color: black;
 }
 
-.likebutton button {
-    float: left;
-    width: 50%;
-    height: 30vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+#sidebar ul {
+    list-style-type: none;
+}
 
+.messages {
+    padding: 0;
+    width: 100%;
+    background-color: white;
+}
+
+.messageblock {
     box-sizing: border-box;
-    border: 1px solid black;
+    width: 100%;
+    height: 20%;
+    border: 2px solid black;
+    overflow: hidden;
+    background-color: white;
+    padding: 5px;
+}
+
+.messageName {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.messagePrev {
+    width: 100%;
+    font-size: 1.25rem;
 }
 
 #checking {
-
-
     float: right;
     width: 68%;
 
