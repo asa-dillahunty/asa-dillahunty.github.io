@@ -115,3 +115,8 @@ ul a {
 	border: 1px solid black;
 	border-radius: 3px;
 }
+
+footer a {
+	color: #000;
+	text-decoration: none;
+}

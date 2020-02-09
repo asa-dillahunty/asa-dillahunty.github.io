@@ -84,3 +84,8 @@ div.resume li {
 div.resume li::before {
     content: "\2014\a0";
 }
+
+footer a {
+	color: #000;
+	text-decoration: none;
+}
