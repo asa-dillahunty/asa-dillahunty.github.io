@@ -76,8 +76,11 @@ form label {
 }
 
 form input[type=submit] {
-	border: black;
 	text-align: center;
+	padding: 5px 10px 5px 10px;
+	background-color: rgb(220, 220, 220);
+	border: 1px solid black;
+	border-radius: 3px;
 }
 
 form input[type=text], form input[type=password] {
@@ -95,7 +98,20 @@ form input[type=text]:focus, form input[type=password]:focus {
 	background-color: linear-gradient(to right, red, purple);
 }
 
+#somewrap {
+	line-height: 12px;
+}
+
 ul {
 	display: inline;
+	font-size: 1rem;
 	
+}
+ul a {
+	text-align: center;
+	text-decoration: none;
+	padding: 5px 10px 5px 10px;
+	background-color: rgb(220, 220, 220);
+	border: 1px solid black;
+	border-radius: 3px;
 }
