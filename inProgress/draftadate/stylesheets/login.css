@@ -110,10 +110,15 @@ ul {
 ul a {
 	text-align: center;
 	text-decoration: none;
+	color: black;
 	padding: 5px 10px 5px 10px;
 	background-color: rgb(220, 220, 220);
 	border: 1px solid black;
 	border-radius: 3px;
+}
+
+ul a:visited {
+	color: black;
 }
 
 footer a {
