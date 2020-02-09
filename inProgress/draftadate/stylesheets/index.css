@@ -27,7 +27,7 @@ h1 {
     top: 12rem;
     right: 4rem;
 
-    background: rgba(60,60,60,.7);
+    background: rgba(60,60,60,.85);
     color: whitesmoke;
     padding: .5rem 1rem .9rem 1rem; /* top right bottom left */
     border-radius: .5rem;
@@ -43,7 +43,7 @@ h3 {
     padding-bottom: 0;
     padding-top: 1rem;
     margin-bottom: 0;
-    border-top: .2rem solid teal;
+    border-top: .2rem solid rgb(77,99,19);
 }
 
 h3 + p {
