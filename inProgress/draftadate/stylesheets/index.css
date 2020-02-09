@@ -57,7 +57,7 @@ h3 + p {
 
 p, h3 {
     /*border-left: .2rem solid teal;*/
-    padding-left: 1rem;
+    text-align: center;
 }
 
 span {
