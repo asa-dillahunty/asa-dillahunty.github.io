@@ -55,7 +55,7 @@ h1 {
 .likebutton button {
     float: left;
     width: 50%;
-    height: auto;
+    height: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -69,6 +69,7 @@ h1 {
 
 .likebutton button img {
     width: 90%;
+    height: auto;
 }
 
 .leftswipe {
