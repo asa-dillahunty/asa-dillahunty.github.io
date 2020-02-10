@@ -3,6 +3,7 @@ body {
   center center fixed no-repeat;
 	-moz-background-size: cover;
 	background-size: cover;
+	background-repeat: no-repeat;
   }
 
 h1 {

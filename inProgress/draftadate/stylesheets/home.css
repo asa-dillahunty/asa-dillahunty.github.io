@@ -55,13 +55,12 @@ h1 {
 .likebutton button {
     float: left;
     width: 50%;
-    height: 35vh;
+    height: auto;
     margin: 0;
     padding: 0;
     overflow: hidden;
 
     box-sizing: border-box;
-    border: 1px solid black;
 }
 
 .likebutton button:hover {
