@@ -18,7 +18,8 @@ h1 {
 
 #sidebar {
     position: fixed;
-    top: 200px;
+    top: 50vh;
+    transform: translate(0,-50%);
     width: 29%;
     float: left;
     margin: 0;
