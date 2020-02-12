@@ -23,7 +23,7 @@ h1 a {
     height: 70vh;
 
     margin: 0;
-    padding: 10px;
+    padding: 1%;
     margin-bottom: 20px;
 }
 
@@ -32,6 +32,7 @@ h1 a {
     width: 100%;
     margin: 0;
     padding: 0;
+    overflow-y:auto
 }
 
 .letter {
@@ -53,18 +54,15 @@ h1 a {
 }
 
 #textfield input {
-    width: 90%;
+    width: 80%;
     border: 1px solid black;
+    box-sizing: border-box;
     border-radius: 10px;
 }
 
-#textfield span {
-    background-color: antiquewhite;
-    border: 1px solid black;
+#textfield button {
+    width: fit-content;
     box-sizing: border-box;
-    width: 10%;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 .away {
@@ -90,6 +88,10 @@ h1 a {
     padding-right: 10px;
     background-color: pink;
     border-radius: 15px 0px 15px 15px;
+}
+
+.home:hover {
+    background-color: rgb(240,240,240);
 }
 
 #checking {
@@ -148,4 +150,5 @@ textarea {
 
 #bio {
     padding-left: 10px;
+    overflow-y: auto;
 }

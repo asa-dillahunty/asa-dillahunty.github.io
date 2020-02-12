@@ -60,9 +60,3 @@ function uneditable() {
 
     document.getElementById('saveButton').innerHTML = "";
 }
-
-function sendMessage() {
-    var msg = document.getElementById('message').value;
-    document.getElementById("perm").innerHTML += "<div class=letter type=home><p class='home'>" + msg + "</p><div>";
-    document.getElementById('message').value = '';
-}
