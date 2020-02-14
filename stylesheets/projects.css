@@ -80,13 +80,17 @@ p {
     width: 20rem;
 }
 
-.image > img {
+.image > a >  img {
     width: 100%;
     height: auto; /* ??? Why it no keep scale :( ??? */
     overflow: hidden;
     
     border: solid black;
     border-width:.3rem;
+}
+
+.image > a >  img:hover {
+    filter: brightness(50%);
 }
 
 /* Box shadow with blurr */
