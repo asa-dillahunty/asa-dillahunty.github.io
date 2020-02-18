@@ -90,7 +90,7 @@ function static() {
 
 function normalize() {
     var img = document.getElementById("cover");
-    img.src = 'images/stantontree.jpg';
+    img.src = 'images/stantontree.JPG';
     img.style = '';
 
     var title = document.getElementById("titleName");
