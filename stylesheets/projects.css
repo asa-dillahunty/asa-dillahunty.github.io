@@ -80,7 +80,7 @@ p {
     width: 20rem;
 }
 
-.image > a >  img {
+.image > a > img {
     width: 100%;
     height: auto; /* ??? Why it no keep scale :( ??? */
     overflow: hidden;
@@ -89,21 +89,21 @@ p {
     border-width:.3rem;
 }
 
-.image > a >  img:hover {
+.image > a > img:hover {
     filter: brightness(50%);
 }
 
 /* Box shadow with blurr */
 /* box-shadow: 10px 10px 5px teal */
 
-.proj:nth-child(odd) > .image > img {
+.proj:nth-child(odd) > .image > a > img {
     box-shadow: 10px 10px teal;
     -moz-box-shadow: 10px 10px teal;
     -webkit-box-shadow: 10px 10px teal;
     -khtml-box-shadow: 10px 10px teal;
 }
 
-.proj:nth-child(even) > .image > img {
+.proj:nth-child(even) > .image > a > img {
     box-shadow: -10px 10px crimson;
     -moz-box-shadow: -10px 10px crimson;
     -webkit-box-shadow: -10px 10px crimson;

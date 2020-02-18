@@ -2,7 +2,6 @@
 
 #Ghost {
 	animation: ghostCircle 5s ease 1s;
-
 }
 
 @keyframes ghostCircle {
