@@ -26,7 +26,8 @@ h1 {
 	color: whitesmoke;
 	
 	padding: .5rem 1rem .9rem 1rem; /* top right bottom left */
-	border-radius: .5rem;	
+	border-radius: .5rem;
+	animation: comeIn 1.5s ease 0s;
 }
 
 .moveMe {
