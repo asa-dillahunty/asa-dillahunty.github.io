@@ -40,7 +40,8 @@ document.body.addEventListener('keyup', function(event) {
         if (konami == 10) {
             if (count == 1) static();
             else normalize();
-            count = (count+1)%2
+            
+            count = (count+1)%2;
         }
         konami = 0;
     }

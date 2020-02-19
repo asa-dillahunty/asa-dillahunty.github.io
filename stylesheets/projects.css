@@ -1,4 +1,4 @@
-body {
+#wrapper {
     background: white;
     box-shadow: 0px -1px 10px rgba(60,60,60,.5);
 }
@@ -10,6 +10,30 @@ h1 {
 h2 {
     font-size: 2rem;
     text-align:left;
+}
+
+.floatAway {
+    animation: flowy 5s linear 0s infinite;
+}
+
+/* I want it to float away on a hover :( */
+/* .floatAway:hover {
+    animation: flowy 5s linear 0s infinite;
+} */
+
+@keyframes flowy {
+    0% {
+        transform: translate(0,0);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-10rem,0) rotate(180deg) scale(.5);
+        opacity: .1;
+    }
+	100% {
+        transform: translate(0,0) rotate(360deg);
+        opacity: 1;
+    }
 }
 
 /* lol no. I look like a lazer tag joint 
@@ -44,7 +68,7 @@ p {
 }
 
 .proj {
-	overflow: hidden;
+    overflow: hidden;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
