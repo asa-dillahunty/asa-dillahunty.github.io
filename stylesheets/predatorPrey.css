@@ -17,9 +17,15 @@
 }
 
 @keyframes pacCircle {
-	0% {transform: translate(0,0);}
-	25% {transform: translate(10rem, 0);}
-	50% {transform: translate(10rem,-5rem);}
-	75% {transform: translate(0,-5rem);}
-	100% {transform: translate(0,0);}
+	0% {transform: translate(0,0);} /* going right */
+	24% {transform: translate(10rem, 0);} /* going up */
+	26% {transform: translate(10rem, 0) rotate(-90deg);}
+
+	49% {transform: translate(10rem,-5rem) rotate(-90deg);} /* going left */
+	51% {transform: translate(10rem,-5rem) rotate(-180deg);}
+
+	74% {transform: translate(0,-5rem) rotate(-180deg);} /* going down */
+	76% {transform: translate(0,-5rem) rotate(-270deg);}
+
+	100% {transform: translate(0,0) rotate(-270deg);} /* going right? */
 }
