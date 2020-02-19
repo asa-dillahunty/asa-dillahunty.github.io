@@ -1,3 +1,8 @@
+body {
+    background: white;
+    box-shadow: 0px -1px 10px rgba(60,60,60,.5);
+}
+
 h1 {
     font-size: 3rem;
 }
@@ -52,9 +57,9 @@ p {
     flex-direction: row-reverse;
 }
 
-.proj:hover {
+/* .proj:hover {
     background:#F5F5F5;
-}
+} */
 
 .proj:nth-child(odd) > .words {
     margin-right: 2rem;
@@ -78,6 +83,7 @@ p {
 
 .image {
     width: 20rem;
+    height: auto;
 }
 
 .image > a > img {
@@ -90,8 +96,21 @@ p {
 }
 
 .image > a > img:hover {
-    filter: brightness(50%);
+    /* filter: blur(2px); */
+    filter: invert(20%);
 }
+
+/* #mazeProject > .image {
+    background-image: url("../images/mazePreview.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#mazeProject > .image:hover {
+    background-image: url("../images/mazeSolvePreview2.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+} */
+
 
 /* Box shadow with blurr */
 /* box-shadow: 10px 10px 5px teal */
