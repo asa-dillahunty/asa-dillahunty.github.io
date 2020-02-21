@@ -53,7 +53,7 @@ And text was: <?php echo $_POST['qText']; ?><br/>
         $genIDstr = "<div id='{$genID}'";
     }
 
-    $looking = "<div id='insertNewPostsHere' style='display:hidden;'></div>";
+    $looking = "<div id='insertNewPostsHere' style='display:none;'></div>";
     $replayce = "<div id='' . $genID . '' class='postContainer'>\n";
     
     //Should I include the tabs?
@@ -61,7 +61,7 @@ And text was: <?php echo $_POST['qText']; ?><br/>
 	$replayce = $replayce . "<h3 class='subjectLine'>' . $subjectLine . '</h3>\n";
     $replayce = $replayce . "<p class='qText'>' . $qText . '</p>\n\n";
     $replayce = $replayce . "<form action='scripts/deleteForumPost.php' method='POST'>\n";
-    $replayce = $replayce . "<input type='number' value='' . $genID . '' name='forumQID' style='display:hidden;'/>\n";
+    $replayce = $replayce . "<input type='number' value='' . $genID . '' name='forumQID' style='display:none;'/>\n";
     $replayce = $replayce . "<input type='submit'/>\n";
     $replayce = $replayce . "</form>\n";
     $replayce = $replayce . "</div>\n\n";

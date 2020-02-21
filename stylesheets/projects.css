@@ -16,6 +16,13 @@ h2 {
     animation: flowy 5s linear 0s infinite;
 }
 
+div.static.words:hover ~ div.static.image {
+    z-index: 1;
+    /* animation-fill-mode: forwards; */
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: gone .75s ease 0s 1 normal forwards;
+}
+
 /* I want it to float away on a hover :( */
 /* .floatAway:hover {
     animation: flowy 5s linear 0s infinite;
@@ -34,6 +41,10 @@ h2 {
         transform: translate(0,0) rotate(360deg);
         opacity: 1;
     }
+}
+
+@keyframes gone {
+    100% {transform: translate(-10rem,10rem) rotate(70deg);opacity: 0;}
 }
 
 /* lol no. I look like a lazer tag joint 
@@ -117,11 +128,14 @@ p {
     
     border: solid black;
     border-width:.3rem;
+
+    transition: all .5s;
 }
 
 .image > a > img:hover {
     /* filter: blur(2px); */
     filter: invert(20%);
+    transform: scale(1.05);
 }
 
 /* #mazeProject > .image {
@@ -151,4 +165,13 @@ p {
     -moz-box-shadow: -10px 10px crimson;
     -webkit-box-shadow: -10px 10px crimson;
     -khtml-box-shadow: -10px 10px crimson;
+}
+
+.bar {
+    width: 100%;
+    height: auto;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 1rem;
 }

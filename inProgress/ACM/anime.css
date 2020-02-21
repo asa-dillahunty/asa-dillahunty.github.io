@@ -1,0 +1,98 @@
+.box {
+	height: 100px;
+	width: 100px;
+	margin: 10px;
+	box-sizing: border-box;
+	border: 1px solid black;
+
+	position: relative;
+	top: 50px;
+	transition: all .5s;
+
+	z-index: 1;
+}
+
+.bar {
+	height: 100px;
+	width: 500px;
+	margin: auto;
+	background-color: black;
+
+	position: relative;
+	z-index: 2;
+}
+
+.box:hover {
+	top: 0px;
+	margin-left: 60px;
+	margin-right: 60px;
+	
+	transform: scale(2);
+}
+
+.boxbox {
+	display: flex;
+	justify-content: center;
+}
+
+.green {
+	background-color: green;
+}
+
+.red {
+	background-color: red;
+}
+
+.blue {
+	background-color: blue;
+}
+
+.box > h3 {
+	font-size: 15px;
+	margin: 0 10px 0 0;
+}
+
+.box > p {
+	font-size: 10px;
+	margin: 0;
+}
+
+.box:hover > p {
+	animation: show .5s linear 0s 1 normal forwards;
+}
+
+.box.red:hover {
+	animation: rainbow 10s linear 0s infinite normal forwards;
+}
+
+.box.green:hover ~ .blue {
+	background-color: red;
+	transform: translate(100px);
+}
+
+.box.green:hover ~ .red {
+	background-color: green;
+}
+
+.box.blue:hover {
+	color: white;
+}
+
+.box > p {
+	opacity: 0;
+}
+
+@keyframes show {
+	100% {opacity: 1;}
+}
+
+@keyframes rainbow {
+	0% {background-color: red;}
+	14% {background-color: orange;}
+	29% {background-color: yellow;}
+	43% {background-color: green;}
+	57% {background-color: blue;}
+	71% {background-color: indigo;}
+	86% {background-color: violet;}
+	100% {background-color: red;}
+}

@@ -53,6 +53,17 @@ function static() {
     for (i=0;i<h2s.length;i++) {
         h2s[i].className = "floatAway";
     }
+
+    var divs = document.getElementsByTagName("div");
+    // h2s.classList.add("floatAway");
+    for (i=0;i<divs.length;i++) {
+        divs[i].classList.add("static");
+    }
+
+    var hide = document.getElementsByClassName("bar");
+    for (i=0;i<hide.length;i++) {
+        hide[i].removeAttribute("hidden");
+    }
 }
 
 function normalize() {
@@ -64,6 +75,17 @@ function normalize() {
     var i;
     for (i=0;i<h2s.length;i++) {
         h2s[i].className = "";
+    }
+
+    var divs = document.getElementsByTagName("div");
+    // h2s.classList.remove("floatAway");
+    for (i=0;i<divs.length;i++) {
+        divs[i].classList.remove("static");
+    }
+
+    var hide = document.getElementsByClassName("bar");
+    for (i=0;i<hide.length;i++) {
+        hide[i].setAttribute("hidden", "true");
     }
 }
 
