@@ -113,3 +113,20 @@ div.resume li {
 div.resume li::before {
 	content: "\2014\a0";
 }
+
+nav.static ul {
+	animation: roll 5s ease 1s infinite;
+}
+
+@keyframes roll {
+	0% {transform: rotate(0deg);}
+	/* 20% {transform: rotate(360deg);} */
+	25% {transform: rotate(375deg);}
+	30% {transform: rotate(360deg);}
+	50% {transform: rotate(360deg);}
+	55% {transform: rotate(345deg);}
+	/* 60% {transform: rotate(360deg);} */
+	85% {transform: rotate(735deg);}
+	90% {transform: rotate(720deg);}
+	100% {transform: rotate(720deg);}
+} 

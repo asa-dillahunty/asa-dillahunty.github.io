@@ -87,6 +87,12 @@ function static() {
     wrap.style = 'filter:invert(100%);';
 
     document.body.style = "background-color: black;background-image: url(images/static2.png);background: linear-gradient( rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66) ), url('images/static2.png');";
+
+    var navs = document.getElementsByTagName("nav");
+    // h2s.classList.add("floatAway");
+    for (i=0;i<navs.length;i++) {
+        navs[i].classList.add("static");
+    }
 }
 
 function normalize() {
@@ -101,4 +107,10 @@ function normalize() {
     wrap.style = '';
 
     document.body.style = "";
+
+    var navs = document.getElementsByTagName("nav");
+    // h2s.classList.add("floatAway");
+    for (i=0;i<navs.length;i++) {
+        navs[i].classList.remove("static");
+    }
 }
