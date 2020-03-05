@@ -60,3 +60,66 @@
 	backface-visibility: hidden;
 }
 */
+
+
+
+#wrapper {
+	background: white;
+	box-shadow: 0px -1px 10px rgba(60,60,60,.5);
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+main {
+	text-align: left;
+	background-color: white;
+}
+
+main > ul > li > a > img {
+	float: left;
+	height: 5rem;
+	transition: all .5s;
+}
+
+main > ul > li > a > img:hover {
+	transform: scale(1.2);
+}
+
+main > ul {
+	list-style: none;
+	display: block;
+	width: 75%;
+}
+
+main > ul > li {
+	position: relative;
+	display: block;
+	border: 1px solid white;
+	box-sizing: border-box;
+	display: flex;
+}
+
+.list-item {
+	height: 6rem;
+	vertical-align: middle;
+}
+
+.list-item img {
+	float: left;
+	height: 90%;
+	transition: all .5s;
+}
+
+.list-item p {
+	text-indent: 1rem;
+	line-height: 1rem;
+	float: left;
+	padding: 0;
+	margin: 0;
+	padding-top: 1rem;
+}
+
+/* main > ul > li > p {
+	display: flex;
+	flex-wrap: wrap;
+} */
