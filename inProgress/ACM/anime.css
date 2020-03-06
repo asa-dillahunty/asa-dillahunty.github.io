@@ -12,6 +12,16 @@
 	z-index: 1;
 }
 
+.nbox {
+	height: 100px;
+	width: 100px;
+	margin: 10px;
+	box-sizing: border-box;
+	border: 1px solid black;
+
+	position: relative;
+}
+
 .bar {
 	height: 100px;
 	width: 500px;
@@ -32,6 +42,7 @@
 
 .boxbox {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 }
 
@@ -45,6 +56,18 @@
 
 .blue {
 	background-color: blue;
+}
+
+.yellow {
+	background-color: yellow;
+}
+
+.orange {
+	background-color: orange;
+}
+
+.orangered {
+	background-color: orangered;
 }
 
 .box > h3 {
@@ -80,6 +103,20 @@
 
 .box > p {
 	opacity: 0;
+}
+
+.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+#stickplz {
+	width: 50%;
+	position: sticky;
+	top: 110px;
+	filter: invert(100%);
 }
 
 @keyframes show {

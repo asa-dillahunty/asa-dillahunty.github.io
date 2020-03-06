@@ -1,5 +1,14 @@
-var count = 1;
-var passage = 0;
+/**
+ * @author Asa Dillahunty
+ * 
+ * This script listens for someone to enter the 'konami code'
+ * (up up down down left right left right b a enter) and alters the
+ * HTML to make it look really gross.
+ * 
+ * It also exposes a link to my inProgress projects
+ */
+
+ var count = 1;
 var konami = 0;
 
 document.body.addEventListener('keyup', function(event) {

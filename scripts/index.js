@@ -1,20 +1,19 @@
-// var input = document.getElementById("message");
-// input.addEventListener("keyup", function(event) {
-//     // Number 13 is the "Enter" key on the keyboard
-//     if (event.keyCode === 13) {
-//       // Trigger the button element with a click
-//       document.getElementById("sendMessage").click();
-//     }
-//   });
+/**
+ * @author Asa Dillahunty
+ * 
+ * This script listens for someone to enter the 'konami code'
+ * (up up down down left right left right b a enter) and alters the
+ * HTML to make it look really gross.
+ */
 
 var count = 1;
-var passage = 0;
 var konami = 0;
 
 document.body.addEventListener('keyup', function(event) {
     if (event.keyCode === 38) { // up
         if (konami == 0 || konami == 1) konami++;
-        else konami = 0;
+        else if (konami == 2) konami = 2;
+        else konami = 1;
     }
     else if (event.keyCode === 40) { // down
         if (konami == 2 || konami == 3) konami++;
@@ -46,28 +45,6 @@ document.body.addEventListener('keyup', function(event) {
         konami = 0;
     }
     else konami = 0;
-
-    // if (event.keyCode === 68) { // d
-    //     if (passage == 0) passage++;
-    //     else passage = 0;
-    // }
-    // else if (event.keyCode === 83) { // s
-    //     if (passage == 1) passage++;
-    //     else passage = 0;
-    // }
-    // else if (event.keyCode === 65) { // a
-    //     if (passage == 2) passage++;
-    //     else passage = 0;
-    // }
-    // else if(event.keyCode === 13) { // enter
-    //     if (passage == 3) {
-    //         if (count == 1) static();
-    //         else normalize();
-    //         count = (count+1)%2
-    //     }
-    //     passage = 0;
-    // }
-    // else passage = 0;
 });
 
 function change() {
@@ -80,8 +57,10 @@ function static() {
     img.src = 'images/aceTreeW.png';
     img.style = 'filter:invert(100%);';
 
-    var title = document.getElementById("titleName");
-    title.className = 'moveMe';
+    var titls = document.getElementsByTagName("h1");
+    for (i=0;i<titls.length;i++) {
+        titls[i].classList.add("static");
+    }
 
     var wrap = document.getElementById("wrapper");
     wrap.style = 'filter:invert(100%);';
@@ -100,8 +79,10 @@ function normalize() {
     img.src = 'images/stantontree.JPG';
     img.style = '';
 
-    var title = document.getElementById("titleName");
-    title.className = '';
+    var titls = document.getElementsByTagName("h1");
+    for (i=0;i<titls.length;i++) {
+        titls[i].classList.remove("static");
+    }
 
     var wrap = document.getElementById("wrapper");
     wrap.style = '';
