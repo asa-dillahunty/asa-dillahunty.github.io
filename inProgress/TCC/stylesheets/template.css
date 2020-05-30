@@ -1,0 +1,39 @@
+nav {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
+
+.jumbotron {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+p {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+h2 {
+	text-align: center;
+}
+
+h3 {
+	text-indent: 7.5%;
+}
+
+@media only screen and (min-width: 600px) {
+	nav img {
+		display: none;
+	}
+
+	.navbar-text {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	nav img {
+		display: none;
+	}
+}
