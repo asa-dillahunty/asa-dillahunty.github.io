@@ -7,11 +7,36 @@ nav {
 .jumbotron {
 	margin-bottom: 0;
 	border-radius: 0;
+	/* background-image: url("../images/free-handprint-clipart-free-handprint-clip-art-images-191683.png");
+	background-size: 7%; */
 }
 
-main {
-	margin-left: 10%;
-	margin-right: 10%;
+body {
+	background-image: url("../images/free-handprint-clipart-free-handprint-clip-art-images-191683.png");
+	background-size: 9.1%;
+}
+
+main, footer {
+	background-color: white;
+	padding-left: 5%;
+	padding-right: 5%;
+	margin-left: 9%;
+	margin-right: 9%;
+}
+
+footer {
+	padding-bottom: 30px;
+}
+
+p {
+	margin-bottom: 0;
+}
+p {
+	padding-bottom: 20px;
+}
+
+.jumbotron h1 {
+	/* background-color: white; */
 }
 
 h2 {
@@ -19,12 +44,53 @@ h2 {
 }
 
 h3 {
-	padding-left: -2.5%;
+	margin-left: -2.5%;
 }
 
 main {
 	padding-top: 30px;
 }
+
+.resource-list {
+	margin-top: 10px;
+	display: flex;
+	flex-flow: row wrap;
+	margin: auto;
+	justify-content: center;
+	/* border: important!none; */
+}
+
+.resource-list a {
+	max-width: 300px;
+	color: rgb(33,37,41);
+	/* border: none; */
+}
+
+.resource-list a:hover {
+	text-decoration: none;
+}
+
+.resource-list-item {
+	/* border-radius: 0; */
+	padding: 10px 20px 10px 20px;
+	border: 5px;
+	border-radius: none;
+	border: rgb(33,37,41) solid 2px;
+
+	margin: 7px;
+	border-radius: 5%;
+}
+
+a.resource-list-item > li {
+	list-style-type: none;
+}
+
+a.resource-list-item h3 {
+	font-size: large;
+}
+
+
+
 
 @media only screen and (min-width: 600px) {
 	nav img {
