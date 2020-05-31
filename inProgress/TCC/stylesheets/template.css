@@ -9,9 +9,9 @@ nav {
 	border-radius: 0;
 }
 
-p {
-	padding-left: 10%;
-	padding-right: 10%;
+main {
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 h2 {
@@ -19,7 +19,11 @@ h2 {
 }
 
 h3 {
-	text-indent: 7.5%;
+	padding-left: -2.5%;
+}
+
+main {
+	padding-top: 30px;
 }
 
 @media only screen and (min-width: 600px) {
