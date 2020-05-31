@@ -40,6 +40,6 @@
 
 	/* Image for Parallax Section */ 
 	.paralsec {
-		background-image: url("../images/tcc-building-2020.jpg"),url("../images/tcc-building-2020.min.jpg");
+		background-image: url("../images/tcc-building-2020.min.jpg");
 	}
 }
