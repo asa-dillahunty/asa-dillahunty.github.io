@@ -119,6 +119,10 @@ a.resource-list-item h3 {
 	h2 > button > i {
 		margin-right: 20px;
 	}
+
+	.name-location {
+		overflow: hidden;
+	}
 }
 
 /* When screen go small */
@@ -146,10 +150,6 @@ a.resource-list-item h3 {
     width: 20%;
     height: auto;
     margin-right: 20px;
-}
-
-.name-location {
-    /* overflow: hidden; */
 }
 
 .name-location strong {
