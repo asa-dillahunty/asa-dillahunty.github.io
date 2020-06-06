@@ -120,7 +120,7 @@ a.resource-list-item h3 {
 		margin-right: 20px;
 	}
 
-	.name-location {
+	.bio-words {
 		overflow: hidden;
 	}
 }
@@ -134,40 +134,49 @@ a.resource-list-item h3 {
 	h2 > button {
 		font-size: 12px !important;
 	}
+
+	/* .bio-words span {
+		margin-top: 1000px;
+	} */
+
+	.staff-bio img {
+		margin-bottom: 10px;
+	}
 }
 
-.profile-blog {
-    padding: 20px;
-    background: #fff;
+@media only screen and (max-width: 350px) {
+	.staff-bio div.float-right {
+		font-size: 12px;
+	}
 }
 
-.blog-border {
-    border: 5px solid #f0f0f0;
+.staff-bio {
+	padding: 20px;
+	background: #fff;
 }
 
-.profile-blog img {
-    float: left;
-    width: 20%;
-    height: auto;
-    margin-right: 20px;
+.staff-bio {
+	border: 5px solid #f0f0f0;
 }
 
-.name-location strong {
-    color: #555;
-    display: block;
-    font-size: 16px;
+.staff-bio img {
+	float: left;
+	width: 20%;
+	height: auto;
+	margin-right: 20px;
 }
 
-/* .name-location strong > span {
+.bio-words strong {
 	color: #555;
-	white-space: nowrap;
-} */
+	display: block;
+	font-size: 16px;
+}
 
 span.nowrap {
 	white-space: nowrap;
 }
 
-.profile-blog p {
+.staff-bio p {
 	margin-top: 10px;
 	float: right;
 }
