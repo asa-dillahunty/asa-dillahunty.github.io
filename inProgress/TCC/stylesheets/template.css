@@ -49,7 +49,7 @@ h2 > button {
 }
 
 h2 > button > i {
-	margin-right: 20px;
+	margin-right: 5px;
 }
 
 h3 {
@@ -113,10 +113,18 @@ a.resource-list-item h3 {
 	.navbar-text {
 		display: none;
 	}
+
+	h2 > button > i {
+		margin-right: 20px;
+	}
 }
 
 @media only screen and (max-width: 600px) {
 	nav img {
 		display: none;
+	}
+
+	h2 > button {
+		font-size: 12px !important;
 	}
 }
