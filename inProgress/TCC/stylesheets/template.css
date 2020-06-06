@@ -102,9 +102,11 @@ a.resource-list-item h3 {
 	font-size: large;
 }
 
+/* #staff img {
+	width: 20%;
+} */
 
-
-
+/* When screen go big */
 @media only screen and (min-width: 600px) {
 	nav img {
 		display: none;
@@ -119,6 +121,7 @@ a.resource-list-item h3 {
 	}
 }
 
+/* When screen go small */
 @media only screen and (max-width: 600px) {
 	nav img {
 		display: none;
@@ -127,4 +130,39 @@ a.resource-list-item h3 {
 	h2 > button {
 		font-size: 12px !important;
 	}
+}
+
+.profile-blog {
+    padding: 20px;
+    background: #fff;
+}
+
+.blog-border {
+    border: 10px solid #f0f0f0;
+}
+
+.profile-blog img {
+    float: left;
+    width: 20%;
+    height: auto;
+    margin-right: 20px;
+}
+
+.name-location {
+    overflow: hidden;
+}
+
+.name-location strong {
+    color: #555;
+    display: block;
+    font-size: 16px;
+}
+
+.name-location span {
+    color: #555;
+}
+
+.profile-blog p {
+	margin-top: 10px;
+	float: right;
 }
