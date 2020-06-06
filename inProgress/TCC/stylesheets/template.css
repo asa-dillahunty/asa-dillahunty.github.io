@@ -1,6 +1,6 @@
 nav {
 	position: -webkit-sticky;
-	position: sticky;
+	position: sticky !important;
 	top: 0;
 }
 
@@ -25,6 +25,7 @@ main, footer {
 }
 
 footer {
+	padding-top: 30px;
 	padding-bottom: 30px;
 }
 
@@ -41,6 +42,14 @@ p {
 
 h2 {
 	text-align: center;
+}
+
+h2 > button {
+	/* color:black !important; */
+}
+
+h2 > button > i {
+	margin-right: 20px;
 }
 
 h3 {

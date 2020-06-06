@@ -20,6 +20,7 @@
 		
 		<!-- <link rel="stylesheet" href="stylesheets/template.css" type="text/css"/> -->
 		<link rel="stylesheet" href="stylesheets/template.css" type="text/css"/>
+		<link rel="stylesheet" href="fontawesome-free-5.13.0-web/css/all.min.css">
 	</head>
 
 	<body>
@@ -71,16 +72,17 @@
 
 		<div class="accordion" id="get-informed-accordion">
 
-			<div class="card">
-			  <div class="card-header" id="types-of-abuse">
+			<div class="card rounded-0 mt-3">
+			  <div class="card-header p-0" id="types-of-abuse">
 				<h2 class="mb-0">
-				  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				  <button class="btn btn-link collapsed float-left p-0 border-0 text-dark" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					<i class="fas fa-chart-pie fa-2x align-middle bg-dark p-2 text-light"></i>
 					Types of Child Abuse and Neglect
 				  </button>
 				</h2>
 			  </div>
 		  
-			  <div id="collapseOne" class="collapse show" aria-labelledby="types-of-abuse" data-parent="#get-informed-accordion">
+			  <div id="collapseOne" class="collapse" aria-labelledby="types-of-abuse" data-parent="#get-informed-accordion">
 				<div class="card-body">
 					<h3>Neglect is failure to provide for a child's basic needs. Neglect may be:</h3>
 					<ul>
@@ -103,10 +105,11 @@
 			</div>
 
 
-			<div class="card">
-			  <div class="card-header" id="signs-of-abuse">
+			<div class="card rounded-0 mt-3">
+			  <div class="card-header p-0" id="signs-of-abuse">
 				<h2 class="mb-0">
-				  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				  <button class="btn btn-link collapsed float-left p-0 border-0 text-dark" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					<i class="fas fa-eye fa-2x align-middle bg-dark p-2 text-light"></i>
 					Recognizing Signs of Abuse
 				  </button>
 				</h2>
@@ -149,37 +152,39 @@
 
 
 
-			<div class="card">
-			  <div class="card-header" id="reporting-abuse">
-				<h2 class="mb-0">
-				  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-					Reporting Child Abuse
-				  </button>
-				</h2>
-			  </div>
-			  <div id="collapseThree" class="collapse" aria-labelledby="reporting-abuse" data-parent="#get-informed-accordion">
-				<div class="card-body">
-					<p class="font-weight-bold">If you suspect that a child has been abused or neglected, you can contact any of the following:</p>
-
-					The Department of Human Resources
-					(205) 562-6100<br/>
-		
-					Tuscaloosa Police Department
-					(205) 349-0445<br/>
-		
-					The Tuscaloosa Children's Center, Inc.
-					(205) 752-7711<br/>
-		
-					ChildHelp&reg; National Abuse Hotline
-					1-800-4-A-CHILD (1-800-422-4453)<br/>
-				</div>
-			  </div>
-			</div>
-
-			<div class="card">
-				<div class="card-header" id="local-resources">
+			<div class="card rounded-0 mt-3">
+				<div class="card-header p-0" id="reporting-abuse">
 					<h2 class="mb-0">
-						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+						<button class="btn btn-link collapsed float-left p-0 border-0 text-dark" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							<i class="fas fa-phone fa-2x align-middle bg-dark p-2 text-light"></i>
+							Reporting Child Abuse
+						</button>
+					</h2>
+				</div>
+				<div id="collapseThree" class="collapse" aria-labelledby="reporting-abuse" data-parent="#get-informed-accordion">
+					<div class="card-body">
+						<p class="font-weight-bold">If you suspect that a child has been abused or neglected, you can contact any of the following:</p>
+						
+						The Department of Human Resources
+						(205) 562-6100<br/>
+						
+						Tuscaloosa Police Department
+						(205) 349-0445<br/>
+						
+						The Tuscaloosa Children's Center, Inc.
+						(205) 752-7711<br/>
+						
+						ChildHelp&reg; National Abuse Hotline
+						1-800-4-A-CHILD (1-800-422-4453)<br/>
+					</div>
+				</div>
+			</div>
+			
+			<div class="card rounded-0 mt-3">
+				<div class="card-header p-0" id="local-resources">
+					<h2 class="mb-0">
+						<button class="btn btn-link collapsed float-left p-0 border-0 text-dark" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+							<i class="fas fa-map-marker-alt fa-2x align-middle bg-dark p-2 text-light"></i>
 							Local Tuscaloosa Resources
 						</button>
 					</h2>
@@ -187,28 +192,64 @@
 
 				<div id="collapseFour" class="collapse" aria-labelledby="local-resources" data-parent="#get-informed-accordion">
 					<div class="card-body">
-						<p class="font-weight-bold">If you suspect that a child has been abused or neglected, you can contact any of the following:</p>
-
-						The Department of Human Resources
-						(205) 562-6100<br/>
+						<div class="resource">
+							<h3>Tuscaloosa County Department of Human Resources</h3>
+							<p class="address">3716 12th Avenue East Tuscaloosa, AL 35407-0100</p>
+							<p class="phone-number">Family and Child Services (205) 562-6100</p>
+							<p class="fax-number">Fax Number (205) 562-6155</p>
+						</div>
 			
-						Tuscaloosa Police Department
-						(205) 349-0445<br/>
+						<div class="resource">
+							<h3>Tuscaloosa County Sheriff's Office</h3>
+							<p class="address">714 &#189; Greensboro Avenue
+								Tuscaloosa, AL 35401</p>
+							<p class="phone-number">(205) 752-0616</p>
+							<p class="website">http://www.tuscaloosaso.com/</p>
+						</div>
 			
-						The Tuscaloosa Children's Center, Inc.
-						(205) 752-7711<br/>
+						<div class="resource">
+							<h3>Tuscaloosa Police Department</h3>
+							<p class="address">3801 Millcreek Avenue
+								Tuscaloosa, AL 35401</p>
+							<p class="phone-number">(205) 349-2121</p>
+							<p class="website">http://al-tuscaloosa.civicplus.com/Directory.asp?DID=2</p>
+						</div>
 			
-						ChildHelp&reg; National Abuse Hotline
-						1-800-4-A-CHILD (1-800-422-4453)<br/>
+						<div class="resource">
+							<h3>Northport Police Department</h3>
+							<p class="address">3721 26th  Avenue
+								Northport, AL 35473</p>
+							<p class="phone-number">(205) 339-6600</p>
+							<p class="website">http://www.cityofnorthport.org/</p>
+						</div>
+			
+						<div class="resource">
+							<h3>Tuscaloosa County District Attorney's Office</h3>
+							<p class="address">714  Greensboro Avenue
+								Suite 410
+								Tuscaloosa, AL 35401</p>
+							<p class="phone-number">(205) 349-1252</p>
+							<p class="website">http://www.tuscaloosada.com/</p>
+						</div>
+			
+						<div class="resource">
+							<h3>Child Abuse Prevention Services</h3>
+							<p class="address">618 14th Street
+								Tuscaloosa, AL 35401</p>
+							<p class="phone-number">758-1159</p>
+							<p class="fax-number">758-1182</p>
+							<p class="email">capstuscaloosa@earthlink.net</p>
+						</div>
 					</div>
 				</div>
 			</div>
 
 
-			<div class="card">
-				<div class="card-header" id="internet-resources">
+			<div class="card rounded-0 mt-3">
+				<div class="card-header p-0" id="internet-resources">
 					<h2 class="mb-0">
-						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFour">
+						<button class="btn btn-link collapsed float-left p-0 border-0 text-dark" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFour">
+							<i class="fas fa-globe fa-2x align-middle bg-dark p-2 text-light"></i>
 							Internet Tuscaloosa Resources
 						</button>
 					</h2>
