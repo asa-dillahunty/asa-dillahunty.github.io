@@ -149,7 +149,7 @@ a.resource-list-item h3 {
 }
 
 .name-location {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .name-location strong {
