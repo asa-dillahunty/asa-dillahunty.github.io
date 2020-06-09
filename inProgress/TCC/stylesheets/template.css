@@ -89,6 +89,15 @@ h2 > button > i {
 	margin-left: 0;
 }
 
+.card {
+	/* border: solid 5px #343A40; */
+	box-shadow: 3px 3px 5px #5F656B;
+}
+
+.card-header:hover {
+	background-color: #DBDFE2;
+}
+
 .resource-list {
 	margin-top: 10px;
 	display: flex;
@@ -123,6 +132,16 @@ a.resource-list-item > li {
 a.resource-list-item h3 {
 	font-size: large;
 }
+
+/* h2 {
+	background-color: #FFE5CC;
+	border: #F7DDC4 solid 5px;
+	padding: 10px;
+}
+
+.jumbotron {
+	background-color: #CCCCFF;
+} */
 
 /* When screen go big */
 @media only screen and (min-width: 600px) {
