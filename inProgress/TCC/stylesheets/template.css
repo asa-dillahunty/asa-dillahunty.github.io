@@ -80,6 +80,10 @@ span.nowrap {
 	float: right;
 }
 
+i {
+	color: rgb(33,37,41);
+}
+
 /* get informed */
 h2 > button > i {
 	margin-right: 5px;
@@ -133,7 +137,7 @@ a.resource-list-item h3 {
 	font-size: large;
 }
 
-/* h2 {
+h2 {
 	background-color: #FFE5CC;
 	border: #F7DDC4 solid 5px;
 	padding: 10px;
@@ -141,7 +145,7 @@ a.resource-list-item h3 {
 
 .jumbotron {
 	background-color: #CCCCFF;
-} */
+}
 
 /* When screen go big */
 @media only screen and (min-width: 600px) {
@@ -160,6 +164,10 @@ a.resource-list-item h3 {
 	.bio-words {
 		overflow: hidden;
 	}
+
+	.phone-number-linked {
+		display: none;
+	}
 }
 
 /* When screen go small */
@@ -174,6 +182,10 @@ a.resource-list-item h3 {
 
 	.staff-bio img {
 		margin-bottom: 10px;
+	}
+
+	.phone-number-not-linked {
+		display: none;
 	}
 }
 
