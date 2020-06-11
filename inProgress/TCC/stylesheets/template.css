@@ -87,7 +87,7 @@ i {
 
 /* header animations */
 :root {
-	--cat-size: 100px;
+	--cat-size: 120px;
 }
 
 .jumbotron {
@@ -98,7 +98,7 @@ i {
 
 #walking-cat {
 	position: absolute;
-	bottom: 0;
+	bottom: -15px;
 	right: 0;
 	width: 100%;
 	/* background-color: rgba(30,30,30,.5); */
