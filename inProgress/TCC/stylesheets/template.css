@@ -86,6 +86,10 @@ i {
 
 
 /* header animations */
+:root {
+	--cat-size: 100px;
+}
+
 .jumbotron {
 	position: relative;
 	transform-box: border-box;
@@ -106,15 +110,15 @@ i {
 	/* position: absolute;
 	bottom: 0;
 	right: 0; */
-	height: 75px;
+	height: var(--cat-size);
 }
 
 @keyframes walk-right2left {
 	0% {
-		transform: translate( calc(50% + 75px));
+		transform: translate( calc(50% + var(--cat-size)));
 	}
 	100% {
-		transform: translate( calc(-50% - 75px));
+		transform: translate( calc(-50% - var(--cat-size)));
 	}
 }
 
