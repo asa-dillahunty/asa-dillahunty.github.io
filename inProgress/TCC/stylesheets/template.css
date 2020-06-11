@@ -84,6 +84,42 @@ i {
 	color: rgb(33,37,41);
 }
 
+
+/* header animations */
+.jumbotron {
+	position: relative;
+	transform-box: border-box;
+	overflow: hidden;
+}
+
+#walking-cat {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	/* background-color: rgba(30,30,30,.5); */
+
+	animation: walk-right2left 35s linear 0s infinite;
+}
+
+#walking-cat img{
+	/* position: absolute;
+	bottom: 0;
+	right: 0; */
+	height: 75px;
+}
+
+@keyframes walk-right2left {
+	0% {
+		transform: translate( calc(50% + 75px));
+	}
+	100% {
+		transform: translate( calc(-50% - 75px));
+	}
+}
+
+
+
 /* get informed */
 h2 > button > i {
 	margin-right: 5px;
@@ -137,7 +173,7 @@ a.resource-list-item h3 {
 	font-size: large;
 }
 
-h2 {
+section > h2 {
 	background-color: #FFE5CC;
 	border: #F7DDC4 solid 5px;
 	padding: 10px;

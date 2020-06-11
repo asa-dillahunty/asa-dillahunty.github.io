@@ -42,4 +42,8 @@
 	.paralsec {
 		background-image: url("../images/tcc-building-2020.min.min.min.jpg");
 	}
+
+	#walking-cat {
+		display: none;
+	}
 }
