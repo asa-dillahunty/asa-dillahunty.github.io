@@ -179,8 +179,11 @@ a.resource-list-item h3 {
 
 section > h2 {
 	background-color: #FFE5CC;
-	border: #F7DDC4 solid 5px;
+	border: #F7DDC4 solid 2px;
+	border-radius: 10px;
 	padding: 10px;
+
+	box-shadow: #F7DDC4 3px 3px 2px;
 }
 
 .jumbotron {
