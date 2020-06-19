@@ -5,6 +5,8 @@
 
 body {
 	position: relative;
+	max-width: 1444px;
+	margin: auto;
 }
 
 body::before {
@@ -138,8 +140,14 @@ h2 > button > i {
 	box-shadow: 3px 3px 5px #5F656B;
 }
 
-.card-header:hover {
+a.buttony:hover {
 	background-color: #DBDFE2;
+}
+
+.card-header {
+	display: block;
+	background-color: #F7DDC4;
+	height: 100%;
 }
 
 .resource-list {
@@ -188,6 +196,13 @@ section > h2 {
 
 .jumbotron {
 	background-color: #CCCCFF;
+}
+
+a.buttony {
+	display: block;
+	/* background-color: #555; */
+	/* height: 100%; */
+	position: relative;
 }
 
 /* When screen go big */

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!-- Author: Asa Dillahunty -->
+
+<html lang='en'>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Asa Dillahunty</title>
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../stylesheets/template.css" type="text/css"/>
+		<link rel="stylesheet" href="../stylesheets/projectPage.css" type="text/css"/>
+	</head>
+
+	<body>
+		<header>
+		<nav>
+			<ul>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="../projects.html">Projects</a></li>
+					<li><a href="../AsaDillahuntyResume.pdf" target="_blank">Resume</a></li>
+					<li><a href="../contact.html">Contact Me</a></li>
+			</ul>
+		</nav>
+		<h1>Qubic Tic Tac Toe</h1>
+		</header>
+
+		<main>
+
+		<h2>How to Play</h2>
+		<p>
+			This is a standard game of tic tac toe, but you have to get four in a row, and it's in 3D. Connecting four in a row can be done horizontally on or through planes, vertically on or through planes, or diagonally on or through planes, or some combination. Visually it can be difficult to see, but writing out the coordinates can be helpful.
+		</p>
+		<ul class="exampleImages">
+			<li>
+				<figure>
+					<img src="../images/QubicExampleSlices.png" alt="sliced"/> <figcaption>Enter three numbers, coordinates to your next move. The first specifies what plane, or slice, you want your mark placed.</figcaption>
+				</figure>
+			</li>
+			<li>
+				<figure>
+					<img src="../images/QubicExampleColumn.png" alt="columns"/> <figcaption>The next number is what column you want your mark placed in.</figcaption>
+				</figure>
+			</li>
+			<li>
+				<figure>
+					<img src="../images/QubicExampleDiagonal.png" alt="diagonals"/> <figcaption>The next number is how deep you want your mark placed, or on what diagonal</figcaption>
+				</figure>
+			</li>
+		</ul>
+
+		<div class="board">
+		<table class="slice">
+			<colgroup> <col span="1" class="col1"> </colgroup>
+			<colgroup> <col span="1" class="col2"> </colgroup>
+			<colgroup> <col span="1" class="col3"> </colgroup>
+			<colgroup> <col span="1" class="col4"> </colgroup>
+
+			<tr class="row1">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row2">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row3">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row4">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+		</table>
+		<table class="slice">
+			<colgroup> <col span="1" class="col1"> </colgroup>
+			<colgroup> <col span="1" class="col2"> </colgroup>
+			<colgroup> <col span="1" class="col3"> </colgroup>
+			<colgroup> <col span="1" class="col4"> </colgroup>
+
+			<tr class="row1">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row2">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row3">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row4">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+		</table>
+		<table class="slice">
+			<colgroup> <col span="1" class="col1"> </colgroup>
+			<colgroup> <col span="1" class="col2"> </colgroup>
+			<colgroup> <col span="1" class="col3"> </colgroup>
+			<colgroup> <col span="1" class="col4"> </colgroup>
+
+			<tr class="row1">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row2">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row3">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row4">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+		</table>
+		<table class="slice">
+			<colgroup> <col span="1" class="col1"> </colgroup>
+			<colgroup> <col span="1" class="col2"> </colgroup>
+			<colgroup> <col span="1" class="col3"> </colgroup>
+			<colgroup> <col span="1" class="col4"> </colgroup>
+
+			<tr class="row1">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row2">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row3">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+			<tr class="row4">
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+			</tr>
+		</table>
+		</div>
+
+		<div id="interface">
+			<div id="perm">
+
+			</div>
+			<div id="textfield">
+				<input type="text" name="message" id="message" >
+				<button id="sendMessage" onclick="sendMessage()"><i class="fa fa-send-o"></i></button>
+			</div>
+		</div>
+
+		<br/><br/>
+		</main>
+
+		<footer>
+			<a href="https://www.linkedin.com/in/asa-dillahunty" target="_blank">
+				<img src="../icons/linkedin.png" alt="LinkedIn"/></a>
+
+			<a href="https://github.com/asa-dillahunty" target="_blank">
+				<img src="../icons/github.png" alt="GitHub"/></a>
+
+			<a href="mailto:asdillahunty@crimson.ua.edu" target="_blank">
+				<img src="../icons/mail.png" alt="E-mail"/></a>
+
+			<br/>
+			&#169; 2019 Asa Dillahunty. All rights reserved <br/>
+		</footer>
+	</body>
+	<script type='text/javascript' src="../scripts/interface.js"></script>
+
+</html>
