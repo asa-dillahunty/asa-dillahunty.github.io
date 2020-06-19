@@ -17,21 +17,30 @@ function sendMessage() {
     var list = msg.split(",");
     var slice = parseInt(list[0]) - 1;
     var col = parseInt(list[1]) - 1;
-    var row = parseInt(list[2]);
+    var row = parseInt(list[2]) - 1;
 
     // console.log(slice+" "+col+" "+row);
     
     //mark the place
     var slices = document.getElementsByClassName("slice");
-    console.log(slices);
-    console.log(slices[slice]);
-    console.log("row"+row);
 
     var new_list = slices[slice].getElementsByClassName("row"+row);
     var children = new_list[0].children;
 
     console.log(children.innerHTML);
 
-    children[col].innerHTML="X"
-    children[col].classList += "X"
+    //children[col].innerHTML="X";
+    //children[col].classList += "X";
+
+    markCell(slice,row,col,"X");
+
+}
+
+function markCell(i,j,k,mark) {
+//don't have a tab on mobile ¯\_(ツ)_/¯
+
+var cell = document.getElementsByClassName("slice")[i].children[j].children[k];
+cell.innerHTML = mark;
+cell.classList += mark;
+
 }
