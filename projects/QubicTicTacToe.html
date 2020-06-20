@@ -49,7 +49,7 @@
 			</li>
 		</ul>
 
-		<div class="board">
+		<div class="board" style="display: none;">
 		<table class="slice">
 			<colgroup> <col span="1" class="col1"> </colgroup>
 			<colgroup> <col span="1" class="col2"> </colgroup>
@@ -184,16 +184,12 @@
 		</table>
 		</div>
 
-		<div id="interface">
-			<div id="perm">
 
-			</div>
-			<div id="textfield">
-				<input type="text" name="message" id="message" >
-				<button id="sendMessage" onclick="sendMessage()"><i class="fa fa-send-o"></i></button>
-			</div>
-		</div>
-		<button type="button" id="playGame" onclick="startGame()">Single Player</button>
+		<br/>
+
+		
+		<button type="button" onclick="startGame('single')">Single Player</button>
+		<button type="button" onclick="startGame('two')">Two Player</button>
 
 		<br/><br/>
 		</main>

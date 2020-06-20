@@ -3,61 +3,42 @@ var gameBoard;
 var turn;
 var turnCount;
 var players;
+var bot = null;
 
+/** This function has been depricated */
+// var input = document.getElementById("message");
+// input.addEventListener("keyup", function(event) {
+// 	// Number 13 is the "Enter" key on the keyboard
+// 	if (event.keyCode === 13) {
+// 	  // Trigger the button element with a click
+// 	  document.getElementById("sendMessage").click();
+// 	}
+// });
 
-var input = document.getElementById("message");
-input.addEventListener("keyup", function(event) {
-	// Number 13 is the "Enter" key on the keyboard
-	if (event.keyCode === 13) {
-	  // Trigger the button element with a click
-	  document.getElementById("sendMessage").click();
-	}
-});
-
-function sendMessage() {
-	var msg = document.getElementById('message').value;
-	document.getElementById('message').value = '';
+/** This function has been depricated */
+// function sendMessage() {
+// 	var msg = document.getElementById('message').value;
+// 	document.getElementById('message').value = '';
 	
-	if (game_status == 'not started') {
-		return; // IDK
-	}
+// 	if (game_status == 'not started') {
+// 		return; // IDK
+// 	}
 
-	//parse the entered numbers
-	var list = msg.split(",");
-	var slice = parseInt(list[0]) - 1;
-	var col = parseInt(list[1]) - 1;
-	var row = parseInt(list[2]) - 1;
+// 	//parse the entered numbers
+// 	var list = msg.split(",");
+// 	var slice = parseInt(list[0]) - 1;
+// 	var col = parseInt(list[1]) - 1;
+// 	var row = parseInt(list[2]) - 1;
 
-	if (turnCount > 63) {
-		alert('Tie Game!');
-	}
-	if (validMove(slice,col,row) == false) {
-		return; // IDK
-	}
+// 	if (turnCount > 63) {
+// 		alert('Tie Game!');
+// 	}
+// 	if (validMove(slice,col,row) == false) {
+// 		return; // IDK
+// 	}
 
-
-	markCell(slice,row,col,players[turn]);
-	gameBoard[slice][row][col] = players[turn];
-
-
-	if (getWinner() != 0) {
-		console.log(players[turn] + ' wins!')
-		game_status = 'finshed';
-		alert(players[turn] + ' wins!')
-	}
-	turn = (turn+1)%2;
-	turnCount++;
-	
-	// getMove();
-
-	// if (getWinner() != 0) {
-	// 	console.log(players[turn] + ' wins!')
-	// 	game_status = 'finshed';
-	// 	alert(players[turn] + ' wins!')
-	// }
-	// turn = (turn+1)%2;
-	// turnCount++;
-}
+// 	sendMove(slice,col,row);
+// }
 
 function boardInit() {
 	// Clears the html board
@@ -82,6 +63,7 @@ function boardInit() {
 	return board;
 }
 
+// This does so much work for me, thank the lord :)
 function makeClickable() {
 	// object.addEventListener("click", myScript);
 	var slices = document.getElementsByClassName("slice");
@@ -89,15 +71,23 @@ function makeClickable() {
 		for (var j=0;j<4;j++)
 			for (var k=0;k<4;k++) {
 				var cell = document.getElementsByClassName("slice")[i].children[4].children[j].children[k];
-				cell.setAttribute("onClick","logMove("+i+','+j+','+k+");")
+				cell.setAttribute("onClick","clickedSquare("+i+','+j+','+k+");")
 			}
 }
 
-function logMove(i,j,k) {
-	sendMove(i,j,k);
+function clickedSquare(i,j,k) {
+	if (validMove(i,j,k))
+		sendMove(i,j,k);
+
+	if (bot != null) {
+		var move = bot.getBotMove();
+		if (move != 0) sendMove(move[0],move[1],move[2]);
+	}
 }
 
 function validMove(i,j,k) {
+	if (game_status != 'in progress') return false;
+
 	if (i>3 || j>3 || k>3) return false;
 	if (i<0 || j<0 || k<0) return false;
 
@@ -106,7 +96,6 @@ function validMove(i,j,k) {
 }
 
 function sendMove(i,j,k) {
-	console.log(turn);
 	markCell(i,j,k,players[turn]);
 	gameBoard[i][j][k] = players[turn];
 
@@ -156,16 +145,22 @@ function getWinner() {
 	return 0;
 }
 
-function startGame() {
+function startGame(type) {
 	game_status = 'in progress';
 	gameBoard = boardInit();
 	players = ['X','O'];
 	turn = 0;
 	makeClickable();
-}
+	document.getElementsByClassName("board")[0].style.display = "inline-flex";
 
-function getMoveR() {
-
+	if (type == 'single') {
+		//make a bot
+		console.log("single player")
+		bot = newBot('random');
+	}
+	if (type == 'two') {
+		bot = null;
+	}
 }
 
 
@@ -261,12 +256,13 @@ function getScore(x,y,z) {
 	return score;
 }
 
-
 function newBot(type) {
     if (type == 'random') {
 		// Make new random bot
-		var bot = {
+		var randoBot = {
+			type:'rando',
 			getBotMove : function() {
+				if (game_status != 'in progress') return 0;
 				var i = 0;
 				var j = 0;
 				var k = 0;
@@ -276,9 +272,10 @@ function newBot(type) {
 					j = Math.floor(Math.random()*4);
 					k = Math.floor(Math.random()*4);
 				}
-
-				return {i,j,k};
+				var move = [i,j,k];
+				return move;
 			}
-		}
+		};
+		return randoBot;
     }
 }

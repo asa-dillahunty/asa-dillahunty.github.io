@@ -44,6 +44,14 @@ table, td {
     font-family: 'Courier New', Courier, monospace;
 }
 
+td {
+    cursor:pointer;
+}
+
+td:hover {
+    background-color: grey;
+}
+
 .slice {
     margin-left: 30px;
 }
