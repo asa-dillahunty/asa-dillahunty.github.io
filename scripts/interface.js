@@ -76,12 +76,15 @@ function makeClickable() {
 }
 
 function clickedSquare(i,j,k) {
-	if (validMove(i,j,k))
-		sendMove(i,j,k);
+	if (validMove(i,j,k)) sendMove(i,j,k);
+	else return;
+
 
 	if (bot != null) {
 		var move = bot.getBotMove();
-		if (move != 0) sendMove(move[0],move[1],move[2]);
+
+		if (move != 0 && validMove(move[0],move[1],move[2])) 
+			sendMove(move[0],move[1],move[2]);
 	}
 }
 
@@ -101,6 +104,7 @@ function sendMove(i,j,k) {
 
 
 	if (getWinner() != 0) {
+		markWinner();
 		console.log(players[turn] + ' wins!')
 		game_status = 'finshed';
 		alert(players[turn] + ' wins!')
@@ -116,7 +120,7 @@ function markCell(i,j,k,mark) {
 	cell.classList += mark;
 }
 
-function getWinner() {
+function markWinner() {
 	for (var i=0;i<4;i++)
 		for (var j=0;j<4;j++)
 			for (var k=0;k<4;k++)
@@ -145,6 +149,30 @@ function getWinner() {
 	return 0;
 }
 
+function getWinner() {
+	for (var i=0;i<4;i++)
+		for (var j=0;j<4;j++)
+			for (var k=0;k<4;k++)
+				for(var dx=-1;dx<=1;dx++)
+					for(var dy=-1;dy<=1;dy++)
+						for(var dz=-1;dz<=1;dz++)
+						{
+							if (dx==0 && dy==0 && dz==0) continue;
+							if (i+dx*3 > 3 || i+dx*3 < 0) continue;
+							if (j+dy*3 > 3 || j+dy*3 < 0) continue;
+							if (k+dz*3 > 3 || k+dz*3 < 0) continue;
+								if(gameBoard[i][j][k]!=' ' && 
+									gameBoard[i][j][k]==gameBoard[i+dx][j+dy][k+dz] && 
+									gameBoard[i][j][k]==gameBoard[i+2*dx][j+2*dy][k+2*dz] && 
+									gameBoard[i][j][k]==gameBoard[i+3*dx][j+3*dy][k+3*dz]) {
+
+										return gameBoard[i][j][k];
+									}
+
+						}
+	return 0;
+}
+
 function startGame(type) {
 	game_status = 'in progress';
 	gameBoard = boardInit();
@@ -155,8 +183,7 @@ function startGame(type) {
 
 	if (type == 'single') {
 		//make a bot
-		console.log("single player")
-		bot = newBot('random');
+		bot = newBot('point');
 	}
 	if (type == 'two') {
 		bot = null;
@@ -168,9 +195,7 @@ function startGame(type) {
 
 function getMove() {
 	var result = canWin();
-	if (result != 0) markCell(result[0],result[1],result[2]);
-
-	console.log("making it to score")
+	if (result != 0) sendMove(result[0],result[1],result[2]);
 
 	var highScore = -1;
 	var bestMove = [0,0,0];
@@ -200,7 +225,7 @@ function canWin() {
 			for (var k=0;k<4;k++) {
 				if (validMove(i,j,k)) gameBoard[i][j][k] = players[turn];
 				else continue;
-
+				
 				if (getWinner() != 0) {
 					gameBoard[i][j][k] = ' ';
 					return [i,j,k];
@@ -209,6 +234,10 @@ function canWin() {
 			}
 	return 0;
 }
+
+// function getScore(x,y,z) {
+// 	return 10;
+// }
 
 function getScore(x,y,z) {
 	var OTHER_POINTS = 10;
@@ -252,12 +281,41 @@ function getScore(x,y,z) {
 			}
 			
 	if (x==0||y==0||z==0||x==3||y==3||z==3) score++;
-	console.log(score);
 	return score;
 }
 
 function newBot(type) {
-    if (type == 'random') {
+	if (type == 'point') {
+		var pointBot = {
+			type:'point',
+			getBotMove : function() {
+				var result = canWin();
+				if (result != 0) return result;
+
+				var highScore = -1;
+				var bestMove = [0,0,0];
+
+				for(var i=0;i<4;i++)
+					for(var j=0;j<4;j++)
+						for(var k=0;k<4;k++) {
+							if (!validMove(i,j,k)) continue;
+							
+							score = getScore(i,j,k);
+							if (score < highScore) continue;
+							if (score == highScore) 
+								if (Math.random() < .5) continue;
+
+							bestMove[0] = i;
+							bestMove[1] = j;
+							bestMove[2] = k;
+							highScore = score;
+						}
+				return bestMove;
+			}
+		};
+		return pointBot;
+	}
+    else if (type == 'random') {
 		// Make new random bot
 		var randoBot = {
 			type:'rando',
