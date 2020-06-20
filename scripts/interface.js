@@ -82,6 +82,21 @@ function boardInit() {
 	return board;
 }
 
+function makeClickable() {
+	// object.addEventListener("click", myScript);
+	var slices = document.getElementsByClassName("slice");
+	for (var i=0;i<4;i++)
+		for (var j=0;j<4;j++)
+			for (var k=0;k<4;k++) {
+				var cell = document.getElementsByClassName("slice")[i].children[4].children[j].children[k];
+				cell.setAttribute("onClick","logMove("+i+','+j+','+k+");")
+			}
+}
+
+function logMove(i,j,k) {
+	sendMove(i,j,k);
+}
+
 function validMove(i,j,k) {
 	if (i>3 || j>3 || k>3) return false;
 	if (i<0 || j<0 || k<0) return false;
@@ -90,8 +105,22 @@ function validMove(i,j,k) {
 	else return false;
 }
 
+function sendMove(i,j,k) {
+	console.log(turn);
+	markCell(i,j,k,players[turn]);
+	gameBoard[i][j][k] = players[turn];
+
+
+	if (getWinner() != 0) {
+		console.log(players[turn] + ' wins!')
+		game_status = 'finshed';
+		alert(players[turn] + ' wins!')
+	}
+	turn = (turn+1)%2;
+	turnCount++;
+}
+
 function markCell(i,j,k,mark) {
-	console.log("marking "+i+' '+j+' '+k);
 	var cell = document.getElementsByClassName("slice")[i].children[4].children[j].children[k];
 
 	cell.innerHTML = mark;
@@ -132,6 +161,7 @@ function startGame() {
 	gameBoard = boardInit();
 	players = ['X','O'];
 	turn = 0;
+	makeClickable();
 }
 
 function getMoveR() {
@@ -232,3 +262,23 @@ function getScore(x,y,z) {
 }
 
 
+function newBot(type) {
+    if (type == 'random') {
+		// Make new random bot
+		var bot = {
+			getBotMove : function() {
+				var i = 0;
+				var j = 0;
+				var k = 0;
+
+				while(!validMove(i,j,k)) {
+					i = Math.floor(Math.random()*4);
+					j = Math.floor(Math.random()*4);
+					k = Math.floor(Math.random()*4);
+				}
+
+				return {i,j,k};
+			}
+		}
+    }
+}
