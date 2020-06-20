@@ -41,6 +41,7 @@ figcaption {
 
 table, td {
     border: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .slice {
@@ -55,6 +56,14 @@ table, td {
 
 .X {
     background-color: chocolate;
+}
+
+.O {
+    background-color: burlywood;
+}
+
+.winning-move {
+    background-color: green;
 }
 
 /* .col1 td {
