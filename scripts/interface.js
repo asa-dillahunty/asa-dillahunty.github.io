@@ -237,6 +237,7 @@ function startGame(type) {
 	gameBoard = boardInit();
 	players = ['X','O'];
 	turn = 0;
+	turnCount = 0;
 	makeClickable();
 	document.getElementsByClassName("board")[0].style.display = "inline-flex";
 	document.getElementById('canned-goods').children[0].style.display='inherit';
