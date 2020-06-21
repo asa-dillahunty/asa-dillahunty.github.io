@@ -118,6 +118,11 @@ function markCell(i,j,k,mark) {
 
 	cell.innerHTML = mark;
 	cell.classList += mark;
+
+	if (players[turn] == 'X')
+		cubeBoard[i][j][k].material = THREE.MeshFaceMaterial(xcubeMaterials);
+	else if (players[turn] == 'O')
+		cubeBoard[i][j][k].material = THREE.MeshFaceMaterial(ocubeMaterials);
 }
 
 function markWinner() {
@@ -427,7 +432,7 @@ for (var i=0;i<4;i++) {
 
 
 
-cubeBoard[0][0][0].material = THREE.MeshFaceMaterial(xcubeMaterials);
+// cubeBoard[0][0][0].material = THREE.MeshFaceMaterial(xcubeMaterials);
 
 camera.position.z = 1000;
 
