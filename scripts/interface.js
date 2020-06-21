@@ -4,6 +4,7 @@ var turn;
 var turnCount;
 var players;
 var bot = null;
+var interval = null;
 
 /** This function has been depricated */
 // var input = document.getElementById("message");
@@ -116,6 +117,11 @@ function sendMove(i,j,k) {
 
 	if (getWinner() != 0) {
 		// handle winner
+		if (interval != null) {
+			clearInterval(interval);
+			interval = null;
+		}
+
 		markWinner();
 		console.log(players[turn] + ' wins!')
 		game_status = 'finshed';
@@ -134,6 +140,23 @@ function sendMove(i,j,k) {
 	}
 	turn = (turn+1)%2;
 	turnCount++;
+
+	if (turnCount > 63) {
+		console.log('draw')
+		game_status = 'finshed';
+		
+		setTimeout(() => { 
+			if (confirm('It\'s a draw!\nPlay again?')) {
+				// play again
+				if (bot == null) {
+					startGame('two');
+				}
+				else {
+					startGame('single');
+				}
+			}
+		}, 1000);
+	}
 }
 
 function markCell(i,j,k,mark) {
@@ -218,14 +241,25 @@ function startGame(type) {
 	document.getElementById('canned-goods').children[0].style.display='inherit';
 
 	if (type == 'single') {
-		//make a bot
 		bot = newBot('point');
 	}
-	if (type == 'two') {
+	else if (type == 'two') {
 		bot = null;
+	}
+	else if (type == 'watch') {
+		bot = newBot('point');
+		watchGame();
 	}
 }
 
+function watchGame() {
+	interval = setInterval( () => {
+		move = bot.getBotMove();
+
+		if (move != 0 && validMove(move[0],move[1],move[2])) 
+			sendMove(move[0],move[1],move[2]);
+	}, 1000);
+}
 
 // Bot Code //
 
@@ -440,6 +474,20 @@ document.getElementById('canned-goods').children[0].style.display='none';
 window.addEventListener('resize', function() {
 	renderer.setSize(window.innerWidth,window.innerHeight);
 	camera.aspect = window.innerWidth / window.innerHeight;
+	if (window.innerWidth > window.innerHeight) {
+		document.getElementById('canned-goods').children[0].style.width='100%';
+		// calculate height
+		var newHeight = ((window.innerHeight * 1)/window.innerWidth) * 100;
+		var newH = newHeight + '%';
+		document.getElementById('canned-goods').children[0].style.height=newH;
+	}
+	else {
+		document.getElementById('canned-goods').children[0].style.height='100%';
+		// calculate height
+		var newWidth = ((window.innerWidth * 1)/window.innerHeight) * 100;
+		var newW = newWidth + '%';
+		document.getElementById('canned-goods').children[0].style.width=newW;
+	}
 	camera.updateProjectionMatrix();
 });
 
@@ -482,6 +530,7 @@ for (var i=0;i<4;i++) {
 	}
 	cubeBoard.push(cubeSlice);
 }
+
 
 // var geometry = new THREE.BoxGeometry(100, 100, 100, 1, 1, 1);
 // var material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
