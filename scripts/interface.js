@@ -41,6 +41,10 @@ var bot = null;
 // 	sendMove(slice,col,row);
 // }
 
+function howToPlay() {
+	document.getElementsByClassName('how-to-play')[0].style.display='inherit';
+}
+
 function boardInit() {
 	// Clears the html board
 	for (var i=0;i<4;i++)
@@ -111,10 +115,22 @@ function sendMove(i,j,k) {
 
 
 	if (getWinner() != 0) {
+		// handle winner
 		markWinner();
 		console.log(players[turn] + ' wins!')
 		game_status = 'finshed';
-		alert(players[turn] + ' wins!')
+		
+		setTimeout(() => { 
+			if (confirm(players[turn] + ' wins!\nPlay again?')) {
+				// play again
+				if (bot != null) {
+					startGame('single');
+				}
+				else {
+					startGame('two');
+				}
+			}
+		}, 1000);
 	}
 	turn = (turn+1)%2;
 	turnCount++;
@@ -187,6 +203,12 @@ function getWinner() {
 }
 
 function startGame(type) {
+
+	// hide buttons
+	document.getElementsByClassName('cantine')[0].style.display='none';
+	document.getElementsByClassName('how-to-play')[0].style.display='none';
+	document.getElementsByClassName('game-menu')[0].style.display='inherit';
+
 	game_status = 'in progress';
 	gameBoard = boardInit();
 	players = ['X','O'];

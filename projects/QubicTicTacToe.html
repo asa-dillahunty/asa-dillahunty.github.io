@@ -33,27 +33,15 @@
 
 		<main>
 
-		<h2>How to Play</h2>
-		<p>
-			This is a standard game of tic tac toe, but you have to get four in a row, and it's in 3D. Connecting four in a row can be done horizontally on or through planes, vertically on or through planes, or diagonally on or through planes, or some combination. Visually it can be difficult to see, but writing out the coordinates can be helpful.
-		</p>
-		<ul class="exampleImages">
-			<li>
-				<figure>
-					<img src="../images/QubicExampleSlices.png" alt="sliced"/> <figcaption>Enter three numbers, coordinates to your next move. The first specifies what plane, or slice, you want your mark placed.</figcaption>
-				</figure>
-			</li>
-			<li>
-				<figure>
-					<img src="../images/QubicExampleColumn.png" alt="columns"/> <figcaption>The next number is what column you want your mark placed in.</figcaption>
-				</figure>
-			</li>
-			<li>
-				<figure>
-					<img src="../images/QubicExampleDiagonal.png" alt="diagonals"/> <figcaption>The next number is how deep you want your mark placed, or on what diagonal</figcaption>
-				</figure>
-			</li>
-		</ul>
+		<div class="cantine">
+			<ul>
+				<li><button type="button" onclick="startGame('single')">Single Player</button></li>
+				<li><button type="button" onclick="startGame('two')">Two Player</button></li>
+				<li><button type="button" onclick="howToPlay()">How to Play</button></li>
+			</ul>
+		</div>
+
+		
 		<div style="width: fit-content;height: fit-content; display: block;" id='canned-goods'></div>
 
 		<div class="board" style="display: none;">
@@ -191,14 +179,35 @@
 		</table>
 		</div>
 
+		<div class="game-menu">
+			<button type="button" onclick="startGame('single')">Single Player</button>
+			<button type="button" onclick="startGame('two')">Two Player</button>
+			<button type="button" onclick="howToPlay()">How to Play</button>
+		</div>
 
-		<br/>
-
-		
-		<button type="button" onclick="startGame('single')">Single Player</button>
-		<button type="button" onclick="startGame('two')">Two Player</button>
-
-		<br/><br/>
+		<section class="how-to-play">
+		<h2>How to Play</h2>
+		<p>
+			This is a standard game of tic tac toe, but you have to get four in a row, and it's in 3D. Connecting four in a row can be done horizontally on or through planes, vertically on or through planes, or diagonally on or through planes, or some combination. Visually it can be difficult to see, but writing out the coordinates can be helpful.
+		</p>
+		<ul class="exampleImages">
+			<li>
+				<figure>
+					<img src="../images/QubicExampleSlices.png" alt="sliced"/> <figcaption>Enter three numbers, coordinates to your next move. The first specifies what plane, or slice, you want your mark placed.</figcaption>
+				</figure>
+			</li>
+			<li>
+				<figure>
+					<img src="../images/QubicExampleColumn.png" alt="columns"/> <figcaption>The next number is what column you want your mark placed in.</figcaption>
+				</figure>
+			</li>
+			<li>
+				<figure>
+					<img src="../images/QubicExampleDiagonal.png" alt="diagonals"/> <figcaption>The next number is how deep you want your mark placed, or on what diagonal</figcaption>
+				</figure>
+			</li>
+		</ul>
+		</section>
 		</main>
 
 		<footer>

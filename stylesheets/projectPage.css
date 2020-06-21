@@ -74,6 +74,35 @@ td:hover {
     background-color: green;
 }
 
+.cantine {
+    width: max-content;
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+.cantine ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cantine ul li button {
+    width: 100%;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    margin: .5rem;
+}
+
+section.how-to-play {
+    display: none;
+}
+
+div.game-menu {
+    display: none;
+}
+
 /* .col1 td {
     padding: 40px;
     background-color: black;
