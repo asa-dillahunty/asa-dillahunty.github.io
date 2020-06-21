@@ -395,12 +395,22 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('canned-goods').appendChild(renderer.domElement);
 
-document.getElementById('canned-goods').children[0].style.width='100%';
-// calculate height
-var newHeight = ((window.innerHeight * 1)/window.innerWidth) * 100;
-var newH = newHeight + '%';
-document.getElementById('canned-goods').children[0].style.height=newH;
+if (window.innerWidth > window.innerHeight) {
+	document.getElementById('canned-goods').children[0].style.width='100%';
+	// calculate height
+	var newHeight = ((window.innerHeight * 1)/window.innerWidth) * 100;
+	var newH = newHeight + '%';
+	document.getElementById('canned-goods').children[0].style.height=newH;
+}
+else {
+	document.getElementById('canned-goods').children[0].style.height='100%';
+	// calculate height
+	var newWidth = ((window.innerWidth * 1)/window.innerHeight) * 100;
+	var newW = newWidth + '%';
+	document.getElementById('canned-goods').children[0].style.width=newW;
+}
 
+document.getElementById('canned-goods').children[0].style.margin = 'auto';
 document.getElementById('canned-goods').children[0].style.display='none';
 
 // document.body.appendChild(renderer.domElement);
