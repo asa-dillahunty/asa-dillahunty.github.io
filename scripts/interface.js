@@ -193,7 +193,7 @@ function startGame(type) {
 	turn = 0;
 	makeClickable();
 	document.getElementsByClassName("board")[0].style.display = "inline-flex";
-	document.getElementById('canned-goods').children[0].style.display='block';
+	document.getElementById('canned-goods').children[0].style.display='inherit';
 
 	if (type == 'single') {
 		//make a bot
