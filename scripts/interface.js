@@ -126,7 +126,7 @@ function sendMove(i,j,k) {
 		console.log(players[turn] + ' wins!')
 		game_status = 'finshed';
 		
-		setTimeout(() => { 
+		setTimeout(() => {
 			if (confirm(players[turn] + ' wins!\nPlay again?')) {
 				// play again
 				if (bot != null) {
@@ -137,6 +137,7 @@ function sendMove(i,j,k) {
 				}
 			}
 		}, 1000);
+		return;
 	}
 	turn = (turn+1)%2;
 	turnCount++;
