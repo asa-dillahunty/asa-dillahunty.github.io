@@ -55,7 +55,7 @@ function boardInit() {
 	for (var i=0;i<4;i++)
 		for (var j=0;j<4;j++)
 			for (var k=0;k<4;k++)
-				cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
+				cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: CUBE_COLOR, wireframe: true});
 
 	//creates an empty board array
 	var board = [];
@@ -193,6 +193,7 @@ function startGame(type) {
 	turn = 0;
 	makeClickable();
 	document.getElementsByClassName("board")[0].style.display = "inline-flex";
+	document.getElementById('canned-goods').children[0].style.display='block';
 
 	if (type == 'single') {
 		//make a bot
@@ -392,7 +393,15 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeigh
 var renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+document.getElementById('canned-goods').appendChild(renderer.domElement);
+document.getElementById('canned-goods').children[0].style.width='100%';
+// calculate height
+var newHeight = ((window.innerHeight * 1)/window.innerWidth) * 100;
+var newH = newHeight + '%';
+document.getElementById('canned-goods').children[0].style.height=newH;
+document.getElementById('canned-goods').children[0].style.display='none';
+
+// document.body.appendChild(renderer.domElement);
 
 window.addEventListener('resize', function() {
 	renderer.setSize(window.innerWidth,window.innerHeight);
@@ -403,6 +412,7 @@ window.addEventListener('resize', function() {
 controls = new THREE.OrbitControls(camera,renderer.domElement);
 
 const CUBE_SIZE = 200;
+const CUBE_COLOR = 0x888888;
 
 // make the cubes
 var cubeBoard = [];
@@ -413,7 +423,7 @@ for (var i=0;i<4;i++) {
 		for (var k=0;k<4;k++) {
 			// make a cube
 			var geometry = new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, 1, 1, 1);
-			var material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
+			var material = new THREE.MeshBasicMaterial({color: CUBE_COLOR, wireframe: true});
 
 			// material = THREE.MeshFaceMaterial(xcubeMaterials);
 			// material = xmaterial;
