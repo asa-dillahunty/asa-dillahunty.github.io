@@ -15,6 +15,7 @@ var bot = null;
 // 	}
 // });
 
+
 /** This function has been depricated */
 // function sendMessage() {
 // 	var msg = document.getElementById('message').value;
@@ -257,7 +258,7 @@ function getScore(x,y,z) {
 
 	var OTHER;
 	var THIS;
-	var rowLenth;
+	var rowLength;
 
 	var rowScore = 1;
 	var score = 0;
@@ -289,16 +290,12 @@ function getScore(x,y,z) {
 						// System.out.println("Them: "+(x+i*dx) +","+(y+i*dx) +","+(z+i*dx));
 						OTHER = true;
 					}
-
-					rowLength++;
+					rowLength+=1;
 				}
 				if (THIS && OTHER) continue; // if it has both, neither of us can win that row
-				// also skip if the row is unwinnable, or length < 4
-				// how to do that?
-				if (rowLenth < 4) {
-					console.log("Row Length short dick");
-					continue;
-				}
+				// 3 is used because my space is not counted
+				if (rowLength < 3) continue; // a row is also unwinnable if length < 4
+
 				score += rowScore;
 			}
 			
@@ -337,7 +334,7 @@ function newBot(type) {
 		};
 		return pointBot;
 	}
-    else if (type == 'random') {
+	else if (type == 'random') {
 		// Make new random bot
 		var randoBot = {
 			type:'rando',
@@ -357,7 +354,7 @@ function newBot(type) {
 			}
 		};
 		return randoBot;
-    }
+	}
 }
 
 /** THE CANVAS ** ALL HAIL THE CANVAS **/
@@ -373,67 +370,73 @@ function newBot(type) {
 // var xmaterial = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube } );
 
 var xcubeMaterials = [
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide}),
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide}),
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide}),
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide}),
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide}),
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide})
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/x.png'), side: THREE.DoubleSide})
 ];
 
 var ocubeMaterials = [
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide}),
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide}),
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide}),
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide}),
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide}),
-    new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide})
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('https://asa-dillahunty.github.io/images/o.png'), side: THREE.DoubleSide})
 ];
 
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 10000);
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 300, 10000);
 var renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// controls = new THREE.OrbitControls(camera,renderer.domElement);
+window.addEventListener('resize', function() {
+	renderer.setSize(window.innerWidth,window.innerHeight);
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+});
+
+controls = new THREE.OrbitControls(camera,renderer.domElement);
 
 const CUBE_SIZE = 200;
 
 // make the cubes
 var cubeBoard = [];
 for (var i=0;i<4;i++) {
-    var cubeSlice = [];
-    for (var j=0;j<4;j++) {
-        var cubeRow = [];
-        for (var k=0;k<4;k++) {
-            // make a cube
-            var geometry = new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, 1, 1, 1);
-            var material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
+	var cubeSlice = [];
+	for (var j=0;j<4;j++) {
+		var cubeRow = [];
+		for (var k=0;k<4;k++) {
+			// make a cube
+			var geometry = new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE, 1, 1, 1);
+			var material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
 
-            // material = THREE.MeshFaceMaterial(xcubeMaterials);
-            // material = xmaterial;
-            var cube = new THREE.Mesh(geometry, material);
+			// material = THREE.MeshFaceMaterial(xcubeMaterials);
+			// material = xmaterial;
+			var cube = new THREE.Mesh(geometry, material);
 
-            // center cube
-            cube.position.x -= CUBE_SIZE*1.5;
-            cube.position.y -= CUBE_SIZE*1.5;
-            cube.position.z -= CUBE_SIZE*1.5;
+			// center cube
+			cube.position.x -= CUBE_SIZE*1.5;
+			cube.position.y -= CUBE_SIZE*1.5;
+			cube.position.z -= CUBE_SIZE*1.5;
 
-            cube.position.x += CUBE_SIZE*k;
-            cube.position.y += CUBE_SIZE*j;
-            cube.position.z += CUBE_SIZE*i;
+			cube.position.x += CUBE_SIZE*k;
+			cube.position.y += CUBE_SIZE*j;
+			cube.position.z += CUBE_SIZE*i;
 
-            scene.add(cube);
+			scene.add(cube);
 
-            // add to row
-            cubeRow.push(cube);
-        }
-        // add row to slice
-        cubeSlice.push(cubeRow);
-    }
-    cubeBoard.push(cubeSlice);
+			// add to row
+			cubeRow.push(cube);
+		}
+		// add row to slice
+		cubeSlice.push(cubeRow);
+	}
+	cubeBoard.push(cubeSlice);
 }
 
 // var geometry = new THREE.BoxGeometry(100, 100, 100, 1, 1, 1);
@@ -455,12 +458,12 @@ for (var i=0;i<4;i++) {
 camera.position.z = 1000;
 
 function render() {
-    requestAnimationFrame(render);
-    // cube.rotation.x += 0.01;
-    // cube.rotation.y += 0.01;
-    scene.rotation.x += 0.005;
-    scene.rotation.y += 0.005;
-    renderer.render(scene, camera);
+	requestAnimationFrame(render);
+	// cube.rotation.x += 0.01;
+	// cube.rotation.y += 0.01;
+	// scene.rotation.x += 0.005;
+	// scene.rotation.y += 0.005;
+	renderer.render(scene, camera);
 };
 
 render();
