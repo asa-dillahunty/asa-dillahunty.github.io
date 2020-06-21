@@ -128,9 +128,9 @@ function markCell(i,j,k,mark) {
 
 	// mark Three.js Board
 	if (players[turn] == 'X')
-		cubeBoard[i][j][k].material = THREE.MeshFaceMaterial(xcubeMaterials);
+		cubeBoard[3-i][3-j][k].material = THREE.MeshFaceMaterial(xcubeMaterials);
 	else if (players[turn] == 'O')
-		cubeBoard[i][j][k].material = THREE.MeshFaceMaterial(ocubeMaterials);
+		cubeBoard[3-i][3-j][k].material = THREE.MeshFaceMaterial(ocubeMaterials);
 }
 
 function markWinner() {
@@ -394,11 +394,13 @@ var renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('canned-goods').appendChild(renderer.domElement);
+
 document.getElementById('canned-goods').children[0].style.width='100%';
 // calculate height
 var newHeight = ((window.innerHeight * 1)/window.innerWidth) * 100;
 var newH = newHeight + '%';
 document.getElementById('canned-goods').children[0].style.height=newH;
+
 document.getElementById('canned-goods').children[0].style.display='none';
 
 // document.body.appendChild(renderer.domElement);
