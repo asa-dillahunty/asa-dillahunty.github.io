@@ -50,6 +50,12 @@ function boardInit() {
 				cell.classList='';
 			}
 
+	// Clears Three.js Board
+	for (var i=0;i<4;i++)
+		for (var j=0;j<4;j++)
+			for (var k=0;k<4;k++)
+				cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
+
 	//creates an empty board array
 	var board = [];
 	for (var i=0;i<4;i++) {
@@ -119,6 +125,7 @@ function markCell(i,j,k,mark) {
 	cell.innerHTML = mark;
 	cell.classList += mark;
 
+	// mark Three.js Board
 	if (players[turn] == 'X')
 		cubeBoard[i][j][k].material = THREE.MeshFaceMaterial(xcubeMaterials);
 	else if (players[turn] == 'O')
@@ -250,6 +257,7 @@ function getScore(x,y,z) {
 
 	var OTHER;
 	var THIS;
+	var rowLenth;
 
 	var rowScore = 1;
 	var score = 0;
@@ -262,6 +270,7 @@ function getScore(x,y,z) {
 				rowScore = 1;
 				OTHER = false;
 				THIS = false;
+				rowLength = 0;
 
 				for (var i=-4;i<4;i++) {
 					if (i==0) continue; // We know this space is blank
@@ -280,8 +289,16 @@ function getScore(x,y,z) {
 						// System.out.println("Them: "+(x+i*dx) +","+(y+i*dx) +","+(z+i*dx));
 						OTHER = true;
 					}
+
+					rowLength++;
 				}
 				if (THIS && OTHER) continue; // if it has both, neither of us can win that row
+				// also skip if the row is unwinnable, or length < 4
+				// how to do that?
+				if (rowLenth < 4) {
+					console.log("Row Length short dick");
+					continue;
+				}
 				score += rowScore;
 			}
 			
@@ -384,6 +401,7 @@ document.body.appendChild(renderer.domElement);
 
 const CUBE_SIZE = 200;
 
+// make the cubes
 var cubeBoard = [];
 for (var i=0;i<4;i++) {
     var cubeSlice = [];
