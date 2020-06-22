@@ -6,6 +6,8 @@ var players;
 var bot = null;
 var interval = null;
 
+var button_background = '#DCDCAA';
+
 /** This function has been depricated */
 // var input = document.getElementById("message");
 // input.addEventListener("keyup", function(event) {
@@ -43,7 +45,18 @@ var interval = null;
 // }
 
 function howToPlay() {
-	document.getElementsByClassName('how-to-play')[0].style.display='inherit';
+	console.log('Hello');
+	var elem = document.getElementsByClassName('how-to-play')[0];
+	if (elem.style.display=='none') {
+		elem.style.display = 'inherit';
+		// gets the button and lets you know it's been selected
+		document.getElementsByClassName('game-menu')[0].children[2].style.backgroundColor = button_background;
+	}
+	else {
+		elem.style.display = 'none';
+		document.getElementsByClassName('game-menu')[0].children[2].style.backgroundColor = '';
+	}
+	
 }
 
 function boardInit() {
@@ -59,8 +72,13 @@ function boardInit() {
 	// Clears Three.js Board
 	for (var i=0;i<4;i++)
 		for (var j=0;j<4;j++)
-			for (var k=0;k<4;k++)
-				cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: CUBE_COLOR, wireframe: true});
+			for (var k=0;k<4;k++) {
+				if (i==0) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xFFCCCC, wireframe: true});
+				if (i==1) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xCCFFCC, wireframe: true});
+				if (i==2) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xCCCCFF, wireframe: true});
+				if (i==3) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: true});
+				// cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: CUBE_COLOR, wireframe: true});
+			}
 
 	//creates an empty board array
 	var board = [];
@@ -117,10 +135,8 @@ function sendMove(i,j,k) {
 
 	if (getWinner() != 0) {
 		// handle winner
-		if (interval != null) {
-			clearInterval(interval);
-			interval = null;
-		}
+		
+		if (interval != null) clearInterval(interval);
 
 		markWinner();
 		console.log(players[turn] + ' wins!')
@@ -129,12 +145,9 @@ function sendMove(i,j,k) {
 		setTimeout(() => {
 			if (confirm(players[turn] + ' wins!\nPlay again?')) {
 				// play again
-				if (bot != null) {
-					startGame('single');
-				}
-				else {
-					startGame('two');
-				}
+				if (interval != null) startGame('watch');
+				else if (bot != null) startGame('single');
+				else startGame('two');
 			}
 		}, 1000);
 		return;
@@ -143,18 +156,17 @@ function sendMove(i,j,k) {
 	turnCount++;
 
 	if (turnCount > 63) {
+		if (interval != null) clearInterval(interval);
+
 		console.log('draw')
 		game_status = 'finshed';
 		
 		setTimeout(() => { 
 			if (confirm('It\'s a draw!\nPlay again?')) {
 				// play again
-				if (bot == null) {
-					startGame('two');
-				}
-				else {
-					startGame('single');
-				}
+				if (interval !=null) startGame('watch');
+				else if (bot != null) startGame('single');
+				else startGame('two');
 			}
 		}, 1000);
 	}
@@ -239,16 +251,27 @@ function startGame(type) {
 	turn = 0;
 	turnCount = 0;
 	makeClickable();
-	document.getElementsByClassName("board")[0].style.display = "inline-flex";
 	document.getElementById('canned-goods').children[0].style.display='inherit';
 
+	for (var btn = 0;btn<4;btn++) {
+		document.getElementsByClassName('game-menu')[0].children[btn].style.backgroundColor = '';
+	}
+	
 	if (type == 'single') {
+		document.getElementsByClassName('game-menu')[0].children[0].style.backgroundColor = button_background;
+		document.getElementsByClassName("board")[0].style.display = "inline-flex";
+		interval = null;
 		bot = newBot('point');
 	}
 	else if (type == 'two') {
+		document.getElementsByClassName('game-menu')[0].children[1].style.backgroundColor = button_background;
+		document.getElementsByClassName("board")[0].style.display = "inline-flex";
+		interval = null;
 		bot = null;
 	}
 	else if (type == 'watch') {
+		document.getElementsByClassName('game-menu')[0].children[3].style.backgroundColor = button_background;
+		document.getElementsByClassName("board")[0].style.display = "none";
 		bot = newBot('point');
 		watchGame();
 	}
@@ -469,6 +492,7 @@ else {
 }
 
 document.getElementById('canned-goods').children[0].style.margin = 'auto';
+document.getElementById('canned-goods').children[0].style.marginTop = '3rem';
 document.getElementById('canned-goods').children[0].style.display='none';
 
 // document.body.appendChild(renderer.domElement);
