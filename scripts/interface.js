@@ -7,42 +7,7 @@ var bot = null;
 var interval = null;
 
 var button_background = '#DCDCAA';
-
-/** This function has been depricated */
-// var input = document.getElementById("message");
-// input.addEventListener("keyup", function(event) {
-// 	// Number 13 is the "Enter" key on the keyboard
-// 	if (event.keyCode === 13) {
-// 	  // Trigger the button element with a click
-// 	  document.getElementById("sendMessage").click();
-// 	}
-// });
-
-
-/** This function has been depricated */
-// function sendMessage() {
-// 	var msg = document.getElementById('message').value;
-// 	document.getElementById('message').value = '';
-	
-// 	if (game_status == 'not started') {
-// 		return; // IDK
-// 	}
-
-// 	//parse the entered numbers
-// 	var list = msg.split(",");
-// 	var slice = parseInt(list[0]) - 1;
-// 	var col = parseInt(list[1]) - 1;
-// 	var row = parseInt(list[2]) - 1;
-
-// 	if (turnCount > 63) {
-// 		alert('Tie Game!');
-// 	}
-// 	if (validMove(slice,col,row) == false) {
-// 		return; // IDK
-// 	}
-
-// 	sendMove(slice,col,row);
-// }
+var slice_colors = ['#FFFFFF','#CCCCFF','#CCFFCC','#FFCCCC'];
 
 function howToPlay() {
 	console.log('Hello');
@@ -62,22 +27,24 @@ function howToPlay() {
 function boardInit() {
 	// Clears the html board
 	for (var i=0;i<4;i++)
-		for (var j=0;j<4;j++)
+		for (var j=0;j<4;j++) {
 			for (var k=0;k<4;k++) {
 				var cell = document.getElementsByClassName("slice")[i].children[4].children[j].children[k];
 				cell.innerHTML='&nbsp;';
 				cell.classList='';
+				cell.style.backgroundColor = slice_colors[i];
 			}
+		}
 
 	// Clears Three.js Board
 	for (var i=0;i<4;i++)
 		for (var j=0;j<4;j++)
 			for (var k=0;k<4;k++) {
-				if (i==0) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xFFCCCC, wireframe: true});
-				if (i==1) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xCCFFCC, wireframe: true});
-				if (i==2) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xCCCCFF, wireframe: true});
-				if (i==3) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: true});
-				// cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: CUBE_COLOR, wireframe: true});
+				// if (i==0) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xFFCCCC, wireframe: true});
+				// if (i==1) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xCCFFCC, wireframe: true});
+				// if (i==2) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xCCCCFF, wireframe: true});
+				// if (i==3) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: true});
+				cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: slice_colors[3-i], wireframe: true});
 			}
 
 	//creates an empty board array
@@ -330,10 +297,6 @@ function canWin() {
 	return 0;
 }
 
-// function getScore(x,y,z) {
-// 	return 10;
-// }
-
 function getScore(x,y,z) {
 	var OTHER_POINTS = 10;
 	var THIS_POINTS = 10;
@@ -472,6 +435,9 @@ var ocubeMaterials = [
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 300, 10000);
 var renderer = new THREE.WebGLRenderer();
+// scene.background = new THREE.Color( 0xffffff );
+// var renderer = new THREE.WebGLRenderer({ alpha: true });
+// renderer.setClearColor( 0xffffff, 0);
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('canned-goods').appendChild(renderer.domElement);
@@ -556,18 +522,6 @@ for (var i=0;i<4;i++) {
 	}
 	cubeBoard.push(cubeSlice);
 }
-
-
-// var geometry = new THREE.BoxGeometry(100, 100, 100, 1, 1, 1);
-// var material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
-// var cube = new THREE.Mesh(geometry, material);
-// var geometry2 = new THREE.BoxGeometry(100, 100, 100, 1, 1, 1);
-// var material2 = new THREE.MeshBasicMaterial({color: 0x333333, wireframe: true});
-// var cube2 = new THREE.Mesh(geometry2, material2);
-
-// cube2.position.y += 100;
-// scene.add(cube);
-// scene.add(cube2);
 
 
 

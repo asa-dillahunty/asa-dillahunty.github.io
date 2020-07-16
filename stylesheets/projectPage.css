@@ -75,15 +75,15 @@ td:hover {
 }
 
 .X {
-    background-color: chocolate;
+    background-color: chocolate !important;
 }
 
 .O {
-    background-color: burlywood;
+    background-color: burlywood !important;
 }
 
 .winning-move {
-    background-color: green;
+    background-color: green !important;
 }
 
 .cantine {
