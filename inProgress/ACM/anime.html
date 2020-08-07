@@ -11,6 +11,7 @@
 
 		<link rel="stylesheet" href="../../stylesheets/template.css" type="text/css"/>
 		<link rel="stylesheet" href="anime.css" type="text/css"/>
+		<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script> -->
 	</head>
 
 	<body>
@@ -26,6 +27,36 @@
 
 
 		<main>
+			<div id="Date-Selection-Page" style='display:none'></div>
+			<select name="Month_Select" onchange="populateDates()">
+				<option value="- MONTH -">- MONTH -</option>
+				<option value="January">January</option>
+				<option value="February">February</option>
+				<option value="March">March</option>
+				<option value="April">April</option>
+				<option value="May">May</option>
+				<option value="June">June</option>
+				<option value="July">July</option>
+				<option value="August">August</option>
+				<option value="September">September</option>
+				<option value="October">October</option>
+				<option value="November">November</option>
+				<option value="December">December</option>
+			</select>
+			<select name="Date_Select" onchange="linkButton()">
+				<option value="- DATE -">- DATE -</option>
+			</select>
+			<a id="go_to_page"><button>&#127922;</button></a>
+			<button onclick="fullyRandomDate()">
+
+			<div class="dice second-face">
+				<span class="dot"> </span>
+				<span class="dot"> </span>
+			</div>
+
+			</button>
+			<script src="months.js"></script>
+
 			<div class="boxbox">
 				<div class="box red">
 					<h3>Hello</h3>
@@ -71,9 +102,12 @@
 				<div class="nbox orangered"></div>
 				<div class="nbox orange"></div>
 			</div>
-
+			<div>
 				<img id="stickplz" src="../../images/aceTree.PNG"/>
 				<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			</div>
+			<div class="nbox lime hover-radial"></div>
+
 		</main>
 
 		<footer>
@@ -90,5 +124,6 @@
 			&#169; 2019 Asa Dillahunty. All rights reserved <br/>
 		</footer>
 	</body>
+	
 
 </html>
