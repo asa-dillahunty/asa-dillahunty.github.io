@@ -36,7 +36,18 @@ figure, figure img {
 
 figcaption {
     display: block;
-    text-align: justify;
+    text-align: center;
+}
+
+/** Qubic Tic Tac Toe **/
+
+small > a {
+    text-decoration: none;
+    color:#667a94;
+}
+
+small > a:hover {
+    text-decoration: underline;
 }
 
 table, td {
@@ -60,24 +71,26 @@ td:hover {
     display: inline-flex;
     position: relative;
     margin: auto;
+    margin-top: 1rem;
 }
 
 .X {
-    background-color: chocolate;
+    background-color: chocolate !important;
 }
 
 .O {
-    background-color: burlywood;
+    background-color: burlywood !important;
 }
 
 .winning-move {
-    background-color: green;
+    background-color: green !important;
 }
 
 .cantine {
     width: max-content;
     text-align: center;
     margin: auto;
+    margin-top: 3rem;
     display: block;
 }
 
@@ -93,10 +106,6 @@ td:hover {
     padding: 1rem;
     border-radius: 2rem;
     margin: .5rem;
-}
-
-section.how-to-play {
-    display: none;
 }
 
 div.game-menu {

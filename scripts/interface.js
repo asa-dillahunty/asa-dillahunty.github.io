@@ -6,61 +6,46 @@ var players;
 var bot = null;
 var interval = null;
 
-/** This function has been depricated */
-// var input = document.getElementById("message");
-// input.addEventListener("keyup", function(event) {
-// 	// Number 13 is the "Enter" key on the keyboard
-// 	if (event.keyCode === 13) {
-// 	  // Trigger the button element with a click
-// 	  document.getElementById("sendMessage").click();
-// 	}
-// });
-
-
-/** This function has been depricated */
-// function sendMessage() {
-// 	var msg = document.getElementById('message').value;
-// 	document.getElementById('message').value = '';
-	
-// 	if (game_status == 'not started') {
-// 		return; // IDK
-// 	}
-
-// 	//parse the entered numbers
-// 	var list = msg.split(",");
-// 	var slice = parseInt(list[0]) - 1;
-// 	var col = parseInt(list[1]) - 1;
-// 	var row = parseInt(list[2]) - 1;
-
-// 	if (turnCount > 63) {
-// 		alert('Tie Game!');
-// 	}
-// 	if (validMove(slice,col,row) == false) {
-// 		return; // IDK
-// 	}
-
-// 	sendMove(slice,col,row);
-// }
+var button_background = '#DCDCAA';
+var slice_colors = ['#FFFFFF','#CCCCFF','#CCFFCC','#FFCCCC'];
 
 function howToPlay() {
-	document.getElementsByClassName('how-to-play')[0].style.display='inherit';
+	console.log('Hello');
+	var elem = document.getElementsByClassName('how-to-play')[0];
+	if (elem.style.display=='none') {
+		elem.style.display = 'inherit';
+		// gets the button and lets you know it's been selected
+		document.getElementsByClassName('game-menu')[0].children[2].style.backgroundColor = button_background;
+	}
+	else {
+		elem.style.display = 'none';
+		document.getElementsByClassName('game-menu')[0].children[2].style.backgroundColor = '';
+	}
+	
 }
 
 function boardInit() {
 	// Clears the html board
 	for (var i=0;i<4;i++)
-		for (var j=0;j<4;j++)
+		for (var j=0;j<4;j++) {
 			for (var k=0;k<4;k++) {
 				var cell = document.getElementsByClassName("slice")[i].children[4].children[j].children[k];
 				cell.innerHTML='&nbsp;';
 				cell.classList='';
+				cell.style.backgroundColor = slice_colors[i];
 			}
+		}
 
 	// Clears Three.js Board
 	for (var i=0;i<4;i++)
 		for (var j=0;j<4;j++)
-			for (var k=0;k<4;k++)
-				cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: CUBE_COLOR, wireframe: true});
+			for (var k=0;k<4;k++) {
+				// if (i==0) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xFFCCCC, wireframe: true});
+				// if (i==1) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xCCFFCC, wireframe: true});
+				// if (i==2) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xCCCCFF, wireframe: true});
+				// if (i==3) cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: true});
+				cubeBoard[i][j][k].material = new THREE.MeshBasicMaterial({color: slice_colors[3-i], wireframe: true});
+			}
 
 	//creates an empty board array
 	var board = [];
@@ -117,10 +102,8 @@ function sendMove(i,j,k) {
 
 	if (getWinner() != 0) {
 		// handle winner
-		if (interval != null) {
-			clearInterval(interval);
-			interval = null;
-		}
+		
+		if (interval != null) clearInterval(interval);
 
 		markWinner();
 		console.log(players[turn] + ' wins!')
@@ -129,12 +112,9 @@ function sendMove(i,j,k) {
 		setTimeout(() => {
 			if (confirm(players[turn] + ' wins!\nPlay again?')) {
 				// play again
-				if (bot != null) {
-					startGame('single');
-				}
-				else {
-					startGame('two');
-				}
+				if (interval != null) startGame('watch');
+				else if (bot != null) startGame('single');
+				else startGame('two');
 			}
 		}, 1000);
 		return;
@@ -143,18 +123,17 @@ function sendMove(i,j,k) {
 	turnCount++;
 
 	if (turnCount > 63) {
+		if (interval != null) clearInterval(interval);
+
 		console.log('draw')
 		game_status = 'finshed';
 		
 		setTimeout(() => { 
 			if (confirm('It\'s a draw!\nPlay again?')) {
 				// play again
-				if (bot == null) {
-					startGame('two');
-				}
-				else {
-					startGame('single');
-				}
+				if (interval !=null) startGame('watch');
+				else if (bot != null) startGame('single');
+				else startGame('two');
 			}
 		}, 1000);
 	}
@@ -239,16 +218,27 @@ function startGame(type) {
 	turn = 0;
 	turnCount = 0;
 	makeClickable();
-	document.getElementsByClassName("board")[0].style.display = "inline-flex";
 	document.getElementById('canned-goods').children[0].style.display='inherit';
 
+	for (var btn = 0;btn<4;btn++) {
+		document.getElementsByClassName('game-menu')[0].children[btn].style.backgroundColor = '';
+	}
+	
 	if (type == 'single') {
+		document.getElementsByClassName('game-menu')[0].children[0].style.backgroundColor = button_background;
+		document.getElementsByClassName("board")[0].style.display = "inline-flex";
+		interval = null;
 		bot = newBot('point');
 	}
 	else if (type == 'two') {
+		document.getElementsByClassName('game-menu')[0].children[1].style.backgroundColor = button_background;
+		document.getElementsByClassName("board")[0].style.display = "inline-flex";
+		interval = null;
 		bot = null;
 	}
 	else if (type == 'watch') {
+		document.getElementsByClassName('game-menu')[0].children[3].style.backgroundColor = button_background;
+		document.getElementsByClassName("board")[0].style.display = "none";
 		bot = newBot('point');
 		watchGame();
 	}
@@ -306,10 +296,6 @@ function canWin() {
 			}
 	return 0;
 }
-
-// function getScore(x,y,z) {
-// 	return 10;
-// }
 
 function getScore(x,y,z) {
 	var OTHER_POINTS = 10;
@@ -449,6 +435,9 @@ var ocubeMaterials = [
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 300, 10000);
 var renderer = new THREE.WebGLRenderer();
+// scene.background = new THREE.Color( 0xffffff );
+// var renderer = new THREE.WebGLRenderer({ alpha: true });
+// renderer.setClearColor( 0xffffff, 0);
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('canned-goods').appendChild(renderer.domElement);
@@ -469,6 +458,7 @@ else {
 }
 
 document.getElementById('canned-goods').children[0].style.margin = 'auto';
+document.getElementById('canned-goods').children[0].style.marginTop = '3rem';
 document.getElementById('canned-goods').children[0].style.display='none';
 
 // document.body.appendChild(renderer.domElement);
@@ -532,18 +522,6 @@ for (var i=0;i<4;i++) {
 	}
 	cubeBoard.push(cubeSlice);
 }
-
-
-// var geometry = new THREE.BoxGeometry(100, 100, 100, 1, 1, 1);
-// var material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
-// var cube = new THREE.Mesh(geometry, material);
-// var geometry2 = new THREE.BoxGeometry(100, 100, 100, 1, 1, 1);
-// var material2 = new THREE.MeshBasicMaterial({color: 0x333333, wireframe: true});
-// var cube2 = new THREE.Mesh(geometry2, material2);
-
-// cube2.position.y += 100;
-// scene.add(cube);
-// scene.add(cube2);
 
 
 

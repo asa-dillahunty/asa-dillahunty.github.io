@@ -23,7 +23,8 @@
 					<li><a href="../contact.html">Contact Me</a></li>
 			</ul>
 		</nav>
-		<h1>Qubic Tic Tac Toe</h1>
+		<h1 style="margin-bottom:0;">Qubic Tic Tac Toe</h1>
+		<small>Inspired by one of my <a href="https://github.com/asa-dillahunty/QubicTicTacToe">highschool coding projects.</a></small>
 		</header>
 
 		<!-- <script src="https://threejs.org/build/three.min.js"></script> -->
@@ -37,8 +38,8 @@
 			<ul>
 				<li><button type="button" onclick="startGame('single')">Single Player</button></li>
 				<li><button type="button" onclick="startGame('two')">Two Player</button></li>
-				<li><button type="button" onclick="startGame('watch')">Watch</button></li>
 				<li><button type="button" onclick="howToPlay()">How to Play</button></li>
+				<li><button type="button" onclick="startGame('watch')">Watch a Game</button></li>
 			</ul>
 		</div>
 
@@ -184,30 +185,46 @@
 			<button type="button" onclick="startGame('single')">Single Player</button>
 			<button type="button" onclick="startGame('two')">Two Player</button>
 			<button type="button" onclick="howToPlay()">How to Play</button>
+			<button type="button" onclick="startGame('watch')">Watch a Game</button>
 		</div>
 
-		<section class="how-to-play">
+		<section class="how-to-play" style="display: none;">
 		<h2>How to Play</h2>
 		<p>
 			This is a standard game of tic tac toe, but you have to get four in a row, and it's in 3D. Connecting four in a row can be done horizontally on or through planes, vertically on or through planes, or diagonally on or through planes, or some combination. Visually it can be difficult to see, but writing out the coordinates can be helpful.
 		</p>
+		<p>
+			Players take turns placing either an X or an O within the cube attempting to get four in a row.
+			The Player interface consists of four 'boards,' each representing a 'slice' of the cube as displayed below.
+		</p>
+		<img src="../images/Controls.png" alt=""/>
+		<p>
+			Games can be won by connecting four in a row horizontally across a board, vertically, or diagonally.
+			Connecting four in a row across mutliple slices is allowed too.
+		</p>
 		<ul class="exampleImages">
 			<li>
 				<figure>
-					<img src="../images/QubicExampleSlices.png" alt="sliced"/> <figcaption>Enter three numbers, coordinates to your next move. The first specifies what plane, or slice, you want your mark placed.</figcaption>
+					<img src="../images/QubicWinHorizontal.png" alt="Horizontal Win"/>
+					<figcaption>Valid Horizontal Win</figcaption>
 				</figure>
 			</li>
 			<li>
 				<figure>
-					<img src="../images/QubicExampleColumn.png" alt="columns"/> <figcaption>The next number is what column you want your mark placed in.</figcaption>
+					<img src="../images/QubicWinVertical.png" alt="Vertial Win"/>
+					<figcaption>Valid Vertial Win</figcaption>
 				</figure>
 			</li>
 			<li>
 				<figure>
-					<img src="../images/QubicExampleDiagonal.png" alt="diagonals"/> <figcaption>The next number is how deep you want your mark placed, or on what diagonal</figcaption>
+					<img src="../images/QubicWinDiagonal.png" alt="Diagonal Win"/>
+					<figcaption>Valid Diagonal Win</figcaption>
 				</figure>
 			</li>
 		</ul>
+		<p>
+			Currently single player has only one difficulty, and it's hard. Good luck :)
+		</p>
 		</section>
 		</main>
 
@@ -222,7 +239,7 @@
 				<img src="../icons/mail.png" alt="E-mail"/></a>
 
 			<br/>
-			&#169; 2019 Asa Dillahunty. All rights reserved <br/>
+			&#169; 2020 Asa Dillahunty. All rights reserved <br/>
 		</footer>
 	</body>
 	<script type='text/javascript' src="../scripts/interface.js"></script>
