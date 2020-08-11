@@ -10,7 +10,7 @@ function populateDates() {
 	// build URLs
 	var possibleUrl;
 	for (var i=1;i<32;i++) {
-		possibleUrl='file:///C:/Users/Asa/Documents/GitHub/asa-dillahunty.github.io/inProgress/ACM/anime.js';
+		possibleUrl='file:///C:/Users/Asa/Documents/GitHub/asa-dillahunty.github.io/inProgress/ACM/a';
 		// forces numbers to be two digits
 		// possibleUrl+=("0" + (selectMonth.selectedIndex+1)).slice(-2);
 		// possibleUrl+='-';
@@ -24,7 +24,10 @@ function populateDates() {
 			// console.log('here');
 			if (checker.readyState === XMLHttpRequest.DONE) {
 				if (checker.status == 0 || (checker.status >= 200 && checker.status < 400)) {
-					alert('page exists');
+					// alert('page exists');
+					
+					console.log('Page text: '+checker.responseText);
+					console.log(checker);
 				}
 			}
 		};
