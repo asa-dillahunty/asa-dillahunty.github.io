@@ -1,5 +1,7 @@
 ._*
 .DS*
+*.class
 ApacheIndex.html
 three.js-testing
 three.js-master.zip
+ignore_folder
