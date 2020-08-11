@@ -137,7 +137,7 @@ ul.exampleImages {
 }
 
 p.ASCII, span.ASCII {
-    font-size: 2pt;
+    font-size: 1px;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     line-height: normal;
