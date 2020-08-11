@@ -206,6 +206,8 @@ function getWinner() {
 }
 
 function startGame(type) {
+	// if bot alive, kill it >:)
+	if (interval != null) clearInterval(interval);
 
 	// hide buttons
 	document.getElementsByClassName('cantine')[0].style.display='none';
@@ -466,6 +468,7 @@ document.getElementById('canned-goods').children[0].style.display='none';
 window.addEventListener('resize', function() {
 	renderer.setSize(window.innerWidth,window.innerHeight);
 	camera.aspect = window.innerWidth / window.innerHeight;
+	document.getElementById('canned-goods').children[0].style.width='100%';
 	if (window.innerWidth > window.innerHeight) {
 		document.getElementById('canned-goods').children[0].style.width='100%';
 		// calculate height
