@@ -1,152 +1,152 @@
 #wrapper {
-    background: white;
-    box-shadow: 0px -1px 10px rgba(60,60,60,.5);
+	background: white;
+	box-shadow: 0px -1px 10px rgba(60,60,60,.5);
 }
 
 h1 {
-    font-size: 3rem;
+	font-size: 3rem;
 }
 
 h2 {
-    font-size: 2rem;
-    text-align:left;
+	font-size: 2rem;
+	text-align:left;
 }
 
 .floatAway {
-    animation: flowy 5s linear 0s infinite;
+	animation: flowy 5s linear 0s infinite;
 }
 
 div.static.words:hover ~ div.static.image {
-    z-index: 1;
-    /* animation-fill-mode: forwards; */
-    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-    animation: gone .75s ease 0s 1 normal forwards;
+	z-index: 1;
+	/* animation-fill-mode: forwards; */
+	/* animation: name duration timing-function delay iteration-count direction fill-mode; */
+	animation: gone .75s ease 0s 1 normal forwards;
 }
 
 /* I want it to float away on a hover :( */
 /* .floatAway:hover {
-    animation: flowy 5s linear 0s infinite;
+	animation: flowy 5s linear 0s infinite;
 } */
 
 @keyframes flowy {
-    0% {
-        transform: translate(0,0);
-        opacity: 1;
-    }
-    50% {
-        transform: translate(-10rem,0) rotate(180deg) scale(.5);
-        opacity: .1;
-    }
+	0% {
+		transform: translate(0,0);
+		opacity: 1;
+	}
+	50% {
+		transform: translate(-10rem,0) rotate(180deg) scale(.5);
+		opacity: .1;
+	}
 	100% {
-        transform: translate(0,0) rotate(360deg);
-        opacity: 1;
-    }
+		transform: translate(0,0) rotate(360deg);
+		opacity: 1;
+	}
 }
 
 @keyframes gone {
-    100% {transform: translate(-10rem,10rem) rotate(70deg);opacity: 0;}
+	100% {transform: translate(-10rem,10rem) rotate(70deg);opacity: 0;}
 }
 
 /* lol no. I look like a lazer tag joint 
 .left h2 {
-    text-shadow: 1px 1px 2px crimson;
+	text-shadow: 1px 1px 2px crimson;
 }
 
 .right h2 {
-    text-shadow: 1px 1px 2px teal;
+	text-shadow: 1px 1px 2px teal;
 }
 */
 
 
 h2 > a {
-    color:black;
-    text-decoration: none;
-    padding:.5rem;
+	color:black;
+	text-decoration: none;
+	padding:.5rem;
 }
 
 h2 > a:hover {
-    color:#757575;
-    /* text-decoration: underline; */
+	color:#757575;
+	/* text-decoration: underline; */
 }
 
 header > p {
-    text-align: center;
+	text-align: center;
 }
 
 p {
-    text-align: left;
-    /* text-indent: 5rem; */
+	text-align: left;
+	/* text-indent: 5rem; */
 }
 
 .proj {
-    overflow: hidden;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    width:100%;
+	overflow: hidden;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	width:100%;
 	padding-top: 1rem;
-    padding-bottom: 1rem;
+	padding-bottom: 1rem;
 }
 
 .proj:nth-child(even) {
-    flex-direction: row-reverse;
+	flex-direction: row-reverse;
 }
 
 /* .proj:hover {
-    background:#F5F5F5;
+	background:#F5F5F5;
 } */
 
 .proj:nth-child(odd) > .words {
-    margin-right: 2rem;
+	margin-right: 2rem;
 }
 
 .proj:nth-child(even) > .words {
-    margin-left: 2rem;
+	margin-left: 2rem;
 }
 
 .words {
-    width: 60%;
+	width: 60%;
 }
 
 .title {
-    width: 100%;
+	width: 100%;
 }
 
 .summary {
-    width: 100%;
+	width: 100%;
 }
 
 .image {
-    width: 20rem;
-    height: auto;
+	width: 20rem;
+	height: auto;
 }
 
 .image > a > img {
-    width: 100%;
-    height: auto; /* ??? Why it no keep scale :( ??? */
-    overflow: hidden;
-    
-    border: solid black;
-    border-width:.3rem;
+	width: 100%;
+	height: auto; /* ??? Why it no keep scale :( ??? */
+	overflow: hidden;
+	
+	border: solid black;
+	border-width:.3rem;
 
-    transition: all .5s;
+	transition: all .5s;
 }
 
 .image > a > img:hover {
-    /* filter: blur(2px); */
-    filter: invert(20%);
-    transform: scale(1.05);
+	/* filter: blur(2px); */
+	filter: invert(20%);
+	transform: scale(1.05);
 }
 
 /* #mazeProject > .image {
-    background-image: url("../images/mazePreview.png");
-    background-repeat: no-repeat;
-    background-size: contain;
+	background-image: url("../images/mazePreview.png");
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 #mazeProject > .image:hover {
-    background-image: url("../images/mazeSolvePreview2.png");
-    background-repeat: no-repeat;
-    background-size: contain;
+	background-image: url("../images/mazeSolvePreview2.png");
+	background-repeat: no-repeat;
+	background-size: contain;
 } */
 
 
@@ -154,24 +154,25 @@ p {
 /* box-shadow: 10px 10px 5px teal */
 
 .proj:nth-child(odd) > .image > a > img {
-    box-shadow: 10px 10px teal;
-    -moz-box-shadow: 10px 10px teal;
-    -webkit-box-shadow: 10px 10px teal;
-    -khtml-box-shadow: 10px 10px teal;
+	box-shadow: 10px 10px teal;
+	-moz-box-shadow: 10px 10px teal;
+	-webkit-box-shadow: 10px 10px teal;
+	-khtml-box-shadow: 10px 10px teal;
 }
 
 .proj:nth-child(even) > .image > a > img {
-    box-shadow: -10px 10px crimson;
-    -moz-box-shadow: -10px 10px crimson;
-    -webkit-box-shadow: -10px 10px crimson;
-    -khtml-box-shadow: -10px 10px crimson;
+	box-shadow: -10px 10px crimson;
+	-moz-box-shadow: -10px 10px crimson;
+	-webkit-box-shadow: -10px 10px crimson;
+	-khtml-box-shadow: -10px 10px crimson;
 }
 
 .bar {
-    width: 100%;
-    height: auto;
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 1rem;
+	display: block;
+	width: 100%;
+	height: auto;
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 1rem;
 }
