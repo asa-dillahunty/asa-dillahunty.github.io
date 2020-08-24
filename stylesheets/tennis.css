@@ -24,6 +24,7 @@ iframe {
 table {
 	margin: auto;
 	margin-bottom: 1rem;
+	margin-top: 1rem;
 	text-align: left;
 	border-collapse: collapse;
 	color: white;

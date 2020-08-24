@@ -116,7 +116,7 @@
 }
 
 .yellow:hover {
-	animation: radar 1s linear 0s 1 normal forwards;
+	animation: radar2 .4s linear 0s infinite forwards;
 	/* animation: radar2 1s linear 0s infinite forwards; */
 }
 
