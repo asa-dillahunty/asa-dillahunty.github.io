@@ -1,73 +1,8 @@
-/* Standard Business card Dimensions: 3.5 x 2 inches */
-/*
-.card-holder {
-	width: 35rem;
-	height: 20rem;
-	perspective: 900px;
-	margin:auto;
-}
-
-.card {
-	width: 100%;
-	height: 100%;
-	transition: all .5s;
-	transform-style: preserve-3d;
-}
-
-.card:hover {
-	transform: rotateY(-180deg);
-}
-
-.front {
-	background: white;
-}
-
-.back p {
-	font-weight: bold;
-	margin-bottom: 0;
-	padding: 0;
-	line-height: 1;
-}
-
-.back p span {
-	font-style: italic;
-	font-weight: normal;
-	margin-top: 0;
-}
-
-.back ul {
-	list-style: none;
-	text-align: left;
-}
-
-.back {
-	background: white;
-	transform: rotateY(-180deg);
-}
-
-.front img {
-	width: 30rem; height: auto;
-	vertical-align: middle;
-}
-
-.front, .back {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	align-items: center;
-	justify-content: center;
-	box-shadow: 5px 5px 10px black;
-	backface-visibility: hidden;
-}
-*/
-
-
-
 #wrapper {
 	background: white;
 	box-shadow: 0px -1px 10px rgba(60,60,60,.5);
-	padding-left: 2rem;
-	padding-right: 2rem;
+	
+	position: relative;
 }
 
 main {
@@ -75,51 +10,46 @@ main {
 	background-color: white;
 }
 
-main > ul > li > a > img {
-	float: left;
-	height: 5rem;
-	transition: all .5s;
+.modal-bg {
+	height: 100%;
 }
 
-main > ul > li > a > img:hover {
-	transform: scale(1.2);
-}
+.nav-cards {
+	width: 50%;
+	max-width: 30rem;
 
-main > ul {
-	list-style: none;
-	display: block;
-	width: 75%;
-}
+	z-index: 3;
 
-main > ul > li {
-	position: relative;
-	display: block;
-	border: 1px solid white;
-	box-sizing: border-box;
 	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 10px;
 }
 
-.list-item {
-	height: 6rem;
-	vertical-align: middle;
+.nav-cards a {
+	text-align: center;
+	display: block;
+
+	height: 100%;
+	width: 30%;
+	padding: 10px 0 0 0;
+
+	background-color: var(--offwhite);
+	border: 2px solid var(--offwhite);
+	border-radius:.5rem;
+
+	/* padding: 0; */
+
+	transition: all .4s;
 }
 
-.list-item img {
-	float: left;
-	height: 90%;
-	transition: all .5s;
+.nav-cards a:hover{
+	filter: invert(.2);
 }
 
-.list-item p {
-	text-indent: 1rem;
-	line-height: 1rem;
-	float: left;
-	padding: 0;
-	margin: 0;
-	padding-top: 1rem;
+.copyrite {
+	position: absolute;
+	bottom: 0;
+	right: 50%;
+	transform: translate(50%,0);
 }
-
-/* main > ul > li > p {
-	display: flex;
-	flex-wrap: wrap;
-} */
