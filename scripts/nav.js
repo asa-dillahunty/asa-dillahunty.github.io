@@ -16,10 +16,10 @@ var contactInfo =
 		<p>Check out my LinkedIn!</p>
 	</div>
 
-	<div class="modal-card Email">
+	<div class="modal-card Email" onclick="copyToClipboard('asdillahunty@crimson.ua.edu');">
 		<a href="mailto:asdillahunty@crimson.ua.edu" target="_blank">
 			<img src="https://simpleicons.org/icons/gmail.svg" alt="E-mail"></svg></a>
-		<p>Shoot me an email at asdillahunty@crimson.ua.edu!</p>
+		<p>Shoot me an email at <span id="email-address">asdillahunty@crimson.ua.edu</span>!</p>
 	</div>
 
 	<div class="modal-card close">
@@ -75,4 +75,21 @@ function disableScroll() {
   
 function enableScroll() { 
     window.onscroll = function() {}; 
-} 
+}
+
+function copyToClipboard(copiedText) {
+	navigator.clipboard.writeText(copiedText).then(function() {
+		// success
+		showCopied();
+	}, function() {
+		// failure
+		document.getElementById("email-address");
+		var successful = document.execCommand('copy');
+		var msg = successful ? 'successful' : 'unsuccessful';
+		console.log('Fallback: Copying text command was ' + msg);
+	});
+}
+
+function showCopied() {
+	console.log("copied");
+}
