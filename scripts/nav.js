@@ -25,7 +25,9 @@ var contactInfo =
 	<div class="modal-card close">
 		Close <span>+</span>
 	</div>
-</div>`;
+</div>
+<div id="notification">Copied to clipboard</div>
+`;
 setUp();
 
 function setUp() {
@@ -49,38 +51,17 @@ function setUp() {
 function openModal(modal_id) {
 	var moduleBG = document.getElementById(modal_id);
 	moduleBG.style.display = "flex";
-	disableScroll();
 }
 
 function closeModal(modal_id) {
 	var moduleBG = document.getElementById(modal_id);
 	moduleBG.style.display = "none";
-	enableScroll();
-}
-
-/**
- * This code (disable and enable scroll) was copy and pasted
- * from geeksforgeeks.org 9/15/2020
- */
-function disableScroll() { 
-    // Get the current page scroll position 
-    scrollTop = window.pageYOffset || document.documentElement.scrollTop; 
-    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, 
-  
-        // if any scroll is attempted, set this to the previous value 
-        window.onscroll = function() { 
-            window.scrollTo(scrollLeft, scrollTop); 
-        }; 
-} 
-  
-function enableScroll() { 
-    window.onscroll = function() {}; 
 }
 
 function copyToClipboard(copiedText) {
 	navigator.clipboard.writeText(copiedText).then(function() {
 		// success
-		showCopied();
+		notify("Copied to clipboard");
 	}, function() {
 		// failure
 		document.getElementById("email-address");
@@ -90,6 +71,14 @@ function copyToClipboard(copiedText) {
 	});
 }
 
-function showCopied() {
-	console.log("copied");
+function notify(notification) {
+	var note = document.getElementById("notification");
+	note.className="";
+	note.innerText=notification;
+
+	// I don't know what this does but it fixed it
+	// Someone said it doesn't work in strict mode but idk what that is so idc
+	void note.offsetWidth;
+
+	note.className="fade-out";
 }
