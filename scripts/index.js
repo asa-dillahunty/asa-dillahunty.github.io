@@ -95,7 +95,3 @@ function normalize() {
         navs[i].classList.remove("static");
     }
 }
-
-fetch('file.txt')
-  .then(response => response.text())
-  .then(text => console.log(text))
