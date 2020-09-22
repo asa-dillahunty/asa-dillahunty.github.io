@@ -7,8 +7,8 @@ setUp();
 function setUp() {
 	let skis = document.querySelectorAll('span.ASCII');
 
-	updateAscii("https://asa-dillahunty.github.io/images/NotreDame.txt", skis[0]);
-	updateAscii("https://asa-dillahunty.github.io/images/Monalisa.txt", skis[1]);
+	updateAscii("https://asa-dillahunty.github.io/textFiles/NotreDame.txt", skis[0]);
+	updateAscii("https://asa-dillahunty.github.io/textFiles/Monalisa.txt", skis[1]);
 }
 
 function updateAscii(fileLocation, htmlLocatoin) {
