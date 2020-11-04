@@ -2,6 +2,15 @@ h1 {
     font-size: 3rem;
 }
 
+h1 img {
+    height: 4rem;
+	transition: all .5s;
+}
+
+h1 img:hover {
+	transform: scale(1.2,1.2);
+}
+
 h2 {
     font-size: 2rem;
     text-align:left;
@@ -56,6 +65,7 @@ ul#BombGameRules li {
     padding-top:2rem;
 }
 
+/* Used in mazes and path finding */
 ul.exampleImages {
 	display:flex;
 	flex-flow: row wrap;
