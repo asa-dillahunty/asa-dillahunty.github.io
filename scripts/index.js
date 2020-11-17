@@ -10,32 +10,32 @@ var count = 1;
 var konami = 0;
 
 document.body.addEventListener('keyup', function(event) {
-    if (event.keyCode === 38) { // up
+    if (event.code === "ArrowUp") { // up
         if (konami == 0 || konami == 1) konami++;
         else if (konami == 2) konami = 2;
         else konami = 1;
     }
-    else if (event.keyCode === 40) { // down
+    else if (event.code === "ArrowDown") { // down
         if (konami == 2 || konami == 3) konami++;
         else konami = 0;
     }
-    else if (event.keyCode === 37) { // left
+    else if (event.code === "ArrowLeft") { // left
         if (konami == 4 || konami == 6) konami++;
         else konami = 0;
     }
-    else if (event.keyCode === 39) { // right
+    else if (event.code === "ArrowRight") { // right
         if (konami == 5 || konami == 7) konami++;
         else konami = 0;
     }
-    else if (event.keyCode === 66) { // b
+    else if (event.code === "KeyB") { // b
         if (konami == 8) konami++;
         else konami = 0;
     }
-    else if (event.keyCode === 65) { // a
+    else if (event.code === "KeyA") { // a
         if (konami == 9) konami++;
         else konami = 0;
     }
-    else if (event.keyCode === 13) { // enter (start)
+    else if (event.code === "Enter") { // enter (start)
         if (konami == 10) {
             if (count == 1) static();
             else normalize();
