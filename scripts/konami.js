@@ -34,7 +34,6 @@ konamiHint.style.display = 'flex';
 konamiHint.addEventListener("touchstart", togglePhoneHelper);
 
 var isNormal = true;
-change();
 var konami = 0;
 
 document.body.addEventListener('keyup', function(event) {
