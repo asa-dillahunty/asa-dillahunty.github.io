@@ -1,4 +1,4 @@
-var contactInfo = 
+const contactInfo = 
 `<div id="contact-modal">
 	<div class="modal-bg"></div>
 

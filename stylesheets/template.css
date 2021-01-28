@@ -69,6 +69,32 @@ nav a:hover {
 	text-decoration: underline;
 }
 
+/* Static */
+
+body.static {
+	filter:invert(100%);
+	background-color: black;
+	background-image: url(../images/static2.png);
+	background: linear-gradient( rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66) ), url('../images/static2.png');
+}
+
+.static nav ul {
+	animation: roll 5s ease 1s infinite;
+}
+
+@keyframes roll {
+	0% {transform: rotate(0deg);}
+	/* 20% {transform: rotate(360deg);} */
+	25% {transform: rotate(375deg);}
+	30% {transform: rotate(360deg);}
+	50% {transform: rotate(360deg);}
+	55% {transform: rotate(345deg);}
+	/* 60% {transform: rotate(360deg);} */
+	85% {transform: rotate(735deg);}
+	90% {transform: rotate(720deg);}
+	100% {transform: rotate(720deg);}
+} 
+
 /**********************************
  * * * * * Footer Styling * * * * *
  **********************************/
@@ -85,9 +111,41 @@ footer img:hover {
 	transform: scale(1.2,1.2);
 }
 
-/* Warning */
-.warning::before, .warning::after {
-    content: '\26A0';
+#konamiHint {
+	/* this is a button */
+	margin-top: .5rem;
+	display: none;
+	border: none;
+	margin: auto;
+	flex-direction: row;
+	justify-content: center;
+	z-index: 0;
+	position: relative;
+
+	background-color: transparent;
+}
+
+#konamiHint div.bubble {
+	z-index: 0;
+	height: 2rem;
+	width: 2rem;
+	display: block;
+
+	position: relative;
+	border: none;
+	border-radius: 100%;
+
+	background-color: grey
+}
+
+#konamiHint div.bubble span {
+	z-index: 0;
+	position: absolute;
+	bottom: 50%;
+	right: 50%;
+	transform: translate(50%,42.5%);
+	color: var(--offwhite);
+
 }
 
 /**********************************
@@ -248,3 +306,8 @@ footer img:hover {
 	filter: opacity(1);
 	filter: invert(1);
 } */
+
+/* Warning */
+.warning::before, .warning::after {
+	content: '\26A0';
+}

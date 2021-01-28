@@ -13,11 +13,11 @@ h2 {
 	text-align:left;
 }
 
-.floatAway {
+.static h2 {
 	animation: flowy 5s linear 0s infinite;
 }
 
-div.static.words:hover ~ div.static.image {
+.static div.words:hover ~ div.image {
 	z-index: 1;
 	/* animation-fill-mode: forwards; */
 	/* animation: name duration timing-function delay iteration-count direction fill-mode; */
@@ -48,7 +48,7 @@ div.static.words:hover ~ div.static.image {
 	100% {transform: translate(-10rem,10rem) rotate(70deg);opacity: 0;}
 }
 
-/* lol no. I look like a lazer tag joint 
+/* lol no. I look like a lazer tag joint  */
 .left h2 {
 	text-shadow: 1px 1px 2px crimson;
 }
@@ -56,17 +56,19 @@ div.static.words:hover ~ div.static.image {
 .right h2 {
 	text-shadow: 1px 1px 2px teal;
 }
-*/
+
 
 
 h2 > a {
 	color:black;
 	text-decoration: none;
 	padding:.5rem;
+	transition: all .5s;
 }
 
 h2 > a:hover {
-	color:#757575;
+	color:#595959;
+	font-size: 2.5rem;
 	/* text-decoration: underline; */
 }
 
@@ -99,10 +101,12 @@ p {
 
 .proj:nth-child(odd) > .words {
 	margin-right: 2rem;
+	/* text-shadow: 1px 1px 2px teal; */
 }
 
 .proj:nth-child(even) > .words {
 	margin-left: 2rem;
+	/* text-shadow: 1px 1px 2px crimson; */
 }
 
 .words {
@@ -129,6 +133,7 @@ p {
 	
 	border: solid black;
 	border-width:.3rem;
+	box-sizing: border-box;
 
 	transition: all .5s;
 }
@@ -155,20 +160,21 @@ p {
 /* box-shadow: 10px 10px 5px teal */
 
 .proj:nth-child(odd) > .image > a > img {
-	box-shadow: 10px 10px teal;
-	-moz-box-shadow: 10px 10px teal;
-	-webkit-box-shadow: 10px 10px teal;
-	-khtml-box-shadow: 10px 10px teal;
+	box-shadow: 10px 10px #004d85;
+	-moz-box-shadow: 10px 10px #004d85;
+	-webkit-box-shadow: 10px 10px #004d85;
+	-khtml-box-shadow: 10px 10px #004d85;
 }
 
 .proj:nth-child(even) > .image > a > img {
-	box-shadow: -10px 10px crimson;
-	-moz-box-shadow: -10px 10px crimson;
-	-webkit-box-shadow: -10px 10px crimson;
-	-khtml-box-shadow: -10px 10px crimson;
+	box-shadow: -10px 10px #6b194d;
+	-moz-box-shadow: -10px 10px #6b194d;
+	-webkit-box-shadow: -10px 10px #6b194d;
+	-khtml-box-shadow: -10px 10px #6b194d;
 }
 
-.bar {
+.hiddenBar {
+	display: none;
 	box-sizing: border-box;
 	border-radius: 5px;
 	width: 95%;
@@ -178,4 +184,8 @@ p {
 	color: white;
 	text-align: center;
 	padding: 1rem 0rem 1rem 0rem;
+}
+
+.static .hiddenBar {
+	display: block;
 }
