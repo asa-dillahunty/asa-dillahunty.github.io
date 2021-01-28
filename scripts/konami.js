@@ -33,8 +33,7 @@ let konamiHint = document.getElementById("konamiHint");
 konamiHint.style.display = 'flex';
 konamiHint.addEventListener("touchstart", togglePhoneHelper);
 
-console.log(localStorage.getItem('gg'));
-var isNormal = 'true' != localStorage.getItem("konamiValue");
+var isNormal = true;
 change();
 var konami = 0;
 
@@ -53,8 +52,6 @@ function change() {
 	else normalize();
 	
 	isNormal = !isNormal;
-	localStorage.setItem("konamiValue", isNormal);
-	localStorage.setItem("gg", 'isNormal');
 }
 
 function togglePhoneHelper() {
