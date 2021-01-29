@@ -5,52 +5,62 @@
  * (up up down down left right left right b a enter) and alters the
  * HTML to make it look really gross.
  */
-
-var konamiHintContent = `
-<div id="konamiHint">
-<!-- up up -->
-<div class="bubble"><span>&#8593;</span></div>
-<div class="bubble"><span>&#8593;</span></div>
-<!-- down down -->
-<div class="bubble"><span>&#8595;</span></div>
-<div class="bubble"><span>&#8595;</span></div>
-<!-- left right -->
-<div class="bubble"><span>&#8592;</span></div>
-<div class="bubble"><span>&#8594;</span></div>
-<!-- left right -->
-<div class="bubble"><span>&#8592;</span></div>
-<div class="bubble"><span>&#8594;</span></div>
-<!-- B A -->
-<div class="bubble"><span>B</span></div>
-<div class="bubble"><span>A</span></div>
-</div>`;
-
-var gamepadContent = `<section id="gamepad"><div class="dPad"><div id="dPadUp" class="up"><div class="arrow"></div></div><div id="dPadRight" class="right"><div class="arrow"></div></div><div id="dPadDown" class="down"><div class="arrow"></div></div><div id="dPadLeft" class="left"><div class="arrow"></div></div><div id="dPadCenter" class="center"><div class="arrow"></div></div></div><div class="actionButtons"><div class="track"><button id="aButton" class="aButton">A</button><button id="bButton" class="bButton">B</button></div></div></section>`;
-
-document.getElementsByTagName('footer')[0].innerHTML += konamiHintContent + gamepadContent;
-
-let konamiHint = document.getElementById("konamiHint");
-konamiHint.style.display = 'flex';
-konamiHint.addEventListener("touchstart", togglePhoneHelper);
-
 var isNormal = true;
 var konami = 0;
+const konamiKey = 'konamiValueKey6378487609';
+konamiSetup();
 
-document.body.addEventListener('keyup', function(event) {
-	if (event.code === "ArrowUp") inputHandler('up');
-	else if (event.code === "ArrowDown") inputHandler('down');
-	else if (event.code === "ArrowLeft") inputHandler('left');
-	else if (event.code === "ArrowRight") inputHandler('right');
-	else if (event.code === "KeyB") inputHandler('b');
-	else if (event.code === "KeyA") inputHandler('a');
-	else inputHandler('false');
-});
+function konamiSetup () {
+	const failsafeButton = `<button id="konamiFailsafe" onclick="change()">Normalize</button>`;
+	const konamiHintContent = `
+	<div id="konamiHint">
+	<!-- up up -->
+	<div class="bubble"><span>&#8593;</span></div>
+	<div class="bubble"><span>&#8593;</span></div>
+	<!-- down down -->
+	<div class="bubble"><span>&#8595;</span></div>
+	<div class="bubble"><span>&#8595;</span></div>
+	<!-- left right -->
+	<div class="bubble"><span>&#8592;</span></div>
+	<div class="bubble"><span>&#8594;</span></div>
+	<!-- left right -->
+	<div class="bubble"><span>&#8592;</span></div>
+	<div class="bubble"><span>&#8594;</span></div>
+	<!-- B A -->
+	<div class="bubble"><span>B</span></div>
+	<div class="bubble"><span>A</span></div>
+	</div>`;
+	
+	const gamepadContent = `<section id="gamepad"><div class="dPad"><div id="dPadUp" class="up"><div class="arrow"></div></div><div id="dPadRight" class="right"><div class="arrow"></div></div><div id="dPadDown" class="down"><div class="arrow"></div></div><div id="dPadLeft" class="left"><div class="arrow"></div></div><div id="dPadCenter" class="center"><div class="arrow"></div></div></div><div class="actionButtons"><div class="track"><button id="aButton" class="aButton">A</button><button id="bButton" class="bButton">B</button></div></div></section>`;
+	document.getElementsByTagName('footer')[0].innerHTML += konamiHintContent + gamepadContent;
+	document.body.innerHTML += failsafeButton;
+
+	let konamiHint = document.getElementById("konamiHint");
+	konamiHint.style.display = 'flex';
+	konamiHint.addEventListener("touchstart", togglePhoneHelper);
+	
+	console.log('konami Key: ', localStorage.getItem(konamiKey));
+	isNormal = 'false' == localStorage.getItem(konamiKey);
+	change();
+
+	document.body.addEventListener('keyup', function(event) {
+		if (event.code === "ArrowUp") inputHandler('up');
+		else if (event.code === "ArrowDown") inputHandler('down');
+		else if (event.code === "ArrowLeft") inputHandler('left');
+		else if (event.code === "ArrowRight") inputHandler('right');
+		else if (event.code === "KeyB") inputHandler('b');
+		else if (event.code === "KeyA") inputHandler('a');
+		// else if (event.code === "KeyC") change();
+		else inputHandler('false');
+	});
+}
 
 function change() {
 	if (isNormal) static();
 	else normalize();
 	
 	isNormal = !isNormal;
+	localStorage.setItem(konamiKey,isNormal);
 }
 
 function togglePhoneHelper() {
@@ -61,16 +71,12 @@ function togglePhoneHelper() {
 
 function static() {
 	var img = document.getElementById("cover");
-	if (img) {
-		img.src = 'images/aceTreeW.png';
-	}
+	if (img) img.src = 'images/aceTreeW.png';
 
-	document.body.classList='static';
+	document.body.className='static';
 }
 
 function inputHandler(input) {
-	console.log(input);
-
 	if (input == "up") {
 		if (konami == 0 || konami == 1) konami++;
 		else if (konami == 2) konami = 2;
@@ -93,9 +99,7 @@ function inputHandler(input) {
 		else konami = 0;
 	}
 	else if (input == "a") {
-		if (konami == 9) {
-			change();
-		}
+		if (konami == 9) change();
 		konami = 0;
 	}
 	else konami = 0;

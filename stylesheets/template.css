@@ -70,9 +70,12 @@ nav a:hover {
 }
 
 /* Static */
+.static #full-body {
+	filter: invert(100%);
+}
 
 body.static {
-	filter:invert(100%);
+	/* filter:invert(100%); */ /* WHY ON EARTH DOES THIS MESS UP POSITION: FIXED FOR MY BUTTONS*/
 	background-color: black;
 	background-image: url(../images/static2.png);
 	background: linear-gradient( rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66) ), url('../images/static2.png');
@@ -147,6 +150,42 @@ footer img:hover {
 	color: var(--offwhite);
 
 }
+
+button#konamiFailsafe {
+	display: none;
+}
+
+.static button#konamiFailsafe {
+	display: inherit;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 6rem;
+	height: 6rem;
+	border-radius: 100%;
+	margin: 1rem;
+
+	background-color: red;
+	background: radial-gradient(red,#dd0000,black);
+	color: white;
+	font-size: 1rem;
+	font-weight: bold;
+
+	/* text-shadow: black 2px 2px 4px; */
+	/* border: solid black 2px; */
+	border: none;
+	animation: fade 3s ease 1s forwards;
+}
+
+@keyframes fade {
+	0% {}
+	100% {opacity: .3;}
+}
+
+.static button#konamiFailsafe:hover {
+	opacity: 1;
+}
+
 
 /**********************************
  * * * Contact Modal Styling  * * *
