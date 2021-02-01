@@ -31,8 +31,10 @@ const contactInfo =
 setUp();
 
 function setUp() {
-	document.body.innerHTML += contactInfo;
-
+	// console.log(document.body.innerHTML);
+	// document.getElementById("full-body").innerHTML+= contactInfo;
+	document.body.insertAdjacentHTML('afterend', contactInfo);
+	// console.log(document.body.innerHTML);
 	var modal_id = "contact-modal";
 	var nav = document.getElementsByTagName("nav")[0];
 	document.getElementsByClassName("modal-bg")[0].setAttribute("onClick",`closeModal("${modal_id}");`);

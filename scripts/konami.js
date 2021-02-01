@@ -2,7 +2,7 @@
  * @author Asa Dillahunty
  * 
  * This script listens for someone to enter the 'konami code'
- * (up up down down left right left right b a enter) and alters the
+ * (up up down down left right left right b a) and alters the
  * HTML to make it look really gross.
  */
 var isNormal = true;
@@ -32,14 +32,16 @@ function konamiSetup () {
 	</div>`;
 	
 	const gamepadContent = `<section id="gamepad"><div class="dPad"><div id="dPadUp" class="up"><div class="arrow"></div></div><div id="dPadRight" class="right"><div class="arrow"></div></div><div id="dPadDown" class="down"><div class="arrow"></div></div><div id="dPadLeft" class="left"><div class="arrow"></div></div><div id="dPadCenter" class="center"><div class="arrow"></div></div></div><div class="actionButtons"><div class="track"><button id="aButton" class="aButton">A</button><button id="bButton" class="bButton">B</button></div></div></section>`;
-	document.getElementsByTagName('footer')[0].innerHTML += konamiHintContent + gamepadContent;
-	document.body.innerHTML += failsafeButton;
+	const footer = document.getElementsByTagName('footer')[0];
+
+	footer.insertAdjacentHTML('beforeend', konamiHintContent);
+	footer.insertAdjacentHTML('beforeend',gamepadContent);
+	document.body.insertAdjacentHTML('beforeend',failsafeButton);
 
 	let konamiHint = document.getElementById("konamiHint");
 	konamiHint.style.display = 'flex';
 	konamiHint.addEventListener("touchstart", togglePhoneHelper);
 	
-	console.log('konami Key: ', localStorage.getItem(konamiKey));
 	isNormal = 'false' == localStorage.getItem(konamiKey);
 	change();
 
