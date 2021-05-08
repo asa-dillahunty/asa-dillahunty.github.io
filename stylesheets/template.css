@@ -149,6 +149,8 @@ footer img:hover {
 	transform: translate(50%,42.5%);
 	color: var(--offwhite);
 
+	/* index.css puts italics on span */
+	font-style: normal;
 }
 
 button#konamiFailsafe {
