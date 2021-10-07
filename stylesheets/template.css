@@ -3,6 +3,7 @@
 	/* rgb(3, 1, 17); */
 	--close-button:crimson;
 	/* rgb(255, 200, 200); */
+	--font-color:rgb(31, 31, 31);
 }
 
 /* Set my own defaults */
@@ -15,6 +16,7 @@
 
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 24px;
+	color: var(--font-color);
 	padding: 0;
 }
 
