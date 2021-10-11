@@ -39,6 +39,7 @@ function setUp() {
 	var nav = document.getElementsByTagName("nav")[0];
 	document.getElementsByClassName("modal-bg")[0].setAttribute("onClick",`closeModal("${modal_id}");`);
 
+	// selecting "Contact Me" button here provides issues when not in a specific order
 	nav.children[0].children[3].onclick = function(event) {
 		event.preventDefault();
 		openModal(modal_id);
