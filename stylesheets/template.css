@@ -276,23 +276,13 @@ button#konamiFailsafe {
 
 	padding: 0;
 	margin: 0;
+	font-style: normal;
 }
 
 #contact-modal svg {
 	height: 3rem;
 	width: 3rem;
 	float: left;
-}
-
-#contact-modal i.arrow {
-	border: solid black;
-	border-width: 0 3px 3px 0;
-	padding: 3px;
-}
-
-#contact-modal i.right {
-	transform: rotate(-45deg);
-	float: right;
 }
 
 #contact-modal a {
