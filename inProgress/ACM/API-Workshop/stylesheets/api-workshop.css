@@ -81,6 +81,9 @@ section {
 
 .repo-title {
 	font-weight: bold;
+	text-align: left;
+	display: inline-block;
+	word-break: break-all;
 }
 
 .repo-tags {
@@ -94,12 +97,14 @@ section {
 	padding: 5px 10px;
 	border-radius: 5px;
 	margin-left: 5px;
+	white-space: nowrap;
 }
 
 .repo-top-info {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .repo-description {
