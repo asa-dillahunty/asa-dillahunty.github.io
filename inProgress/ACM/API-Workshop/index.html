@@ -59,6 +59,11 @@
 			</section>
 			<section>
 				<h2>Firebase</h2>
+				<div class="input-field">
+					<input type="text" id="sign-in-name" name="sign-in-name" />
+					<button id="sign-in">Search</button>
+					<div id="emoji-demo" onclick="populateEmojiDemo()">Click here to show emojis</div>
+				</div>
 			</section>
 
 		</main>
@@ -77,5 +82,16 @@
 			</a>
 		</footer>
 	</body>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
+	<script src="scripts/firebaseInit.js"></script>
+    <script src="scripts/firebaseApp.js"></script>
+	
 	<script src="scripts/getGit.js" async defer></script>
 </html>
