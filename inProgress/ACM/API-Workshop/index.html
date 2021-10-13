@@ -60,10 +60,19 @@
 			<section>
 				<h2>Firebase</h2>
 				<div class="input-field">
+					<label for="sign-in-name">Crimson Email:</label><br>
 					<input type="text" id="sign-in-name" name="sign-in-name" />
-					<button id="sign-in">Search</button>
-					<div id="emoji-demo" onclick="populateEmojiDemo()">Click here to show emojis</div>
+					<!-- <p>Status:</p> -->
+					<div id="emoji-dock"></div>
+					<button onclick="populateEmojiDock()">Refresh Options</button>
+					<br />
+					<button id="sign-in" onclick="signIn()">Sign In</button>
+					<!-- <div id="emoji-demo" onclick="populateEmojiDemo()">Click here to show emojis</div> -->
 				</div>
+
+				<br /><br /><br /><br />
+				<button onclick="pullUsers()">View who's already signed in</button>
+				<div id="signed-in"></div>
 			</section>
 
 		</main>

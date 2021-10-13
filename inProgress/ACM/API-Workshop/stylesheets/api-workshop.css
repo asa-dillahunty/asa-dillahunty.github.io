@@ -56,6 +56,10 @@ section {
 	margin-bottom: 100px;
 }
 
+h2 {
+	margin-bottom: 50px;
+}
+
 /** Repo CSS **/
 #repo-field {
 	display: flex;
@@ -109,4 +113,59 @@ section {
 
 .repo-description {
 	text-align: left;
+}
+
+/** Firebase Styling **/
+
+#emoji-dock {
+	margin-top: 50px;
+}
+
+div.input-field button.emoji-select {
+	/* width: 20%; */
+	margin-right: 10px;
+	padding: 5px 10px;
+	border-radius: 100%;
+	font-size: xx-large;
+	transition: all .5s;
+	border: 3px solid transparent;
+}
+
+div.input-field button.emoji-select.selected {
+	border-color: crimson;
+}
+
+span.emoji-span-invisible {
+	opacity: 0;
+}
+
+span.emoji-span0 {
+	position: absolute;
+	opacity: 0;
+	animation: floatIn .6s linear 0s 1 normal forwards;
+}
+span.emoji-span1 {
+	position: absolute;
+	opacity: 0;
+	animation: floatIn .6s linear .15s 1 normal forwards;
+}
+span.emoji-span2 {
+	position: absolute;
+	opacity: 0;
+	animation: floatIn .6s linear .3s 1 normal forwards;
+}
+
+@keyframes floatIn {
+	from {transform: translateY(20px); opacity: 0;}
+	to {transform: translateY(0); opacity: 1;}
+}
+
+#sign-in {
+	margin-top: 50px;
+}
+
+div.input-field ~ button {
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: large;
 }
