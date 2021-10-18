@@ -95,7 +95,7 @@ function setUserData(userData, repoData) {
 	// login (username)
 	// bio (if has)
 	// avatar_url
-	document.getElementById("user's name").textContent = userData["name"];
+	document.getElementById("user's-name").textContent = userData["name"];
 	document.getElementById("username").textContent = userData['login'];
 	document.getElementById("user-pfp").src = userData["avatar_url"];
 
