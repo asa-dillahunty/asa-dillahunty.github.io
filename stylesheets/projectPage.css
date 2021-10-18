@@ -64,6 +64,13 @@ ul#BombGameRules li {
     color: crimson;
     padding-top:2rem;
 }
+/* undo that ^ */
+ul#BombGameRules li p {
+    text-indent: 0;
+    font-weight: normal;
+    color: black;
+    padding-top: 0;
+}
 
 /* Used in mazes and path finding */
 ul.exampleImages {

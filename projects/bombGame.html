@@ -10,7 +10,7 @@
 
 		<link rel="stylesheet" href="../stylesheets/template.css" type="text/css"/>
 		<link rel="stylesheet" href="../stylesheets/projectPage.css" type="text/css"/>
-		<link rel="stylesheet" href="../stylesheets/gamepad.css" type="text/css" defer async/>
+		<link rel="stylesheet" href="../stylesheets/gamepad.css" type="text/css"/>
 	</head>
 
 	<body>
@@ -36,18 +36,21 @@
 			The objective is simply to touch the other player's flag.
 			Players have 3 options.
 			<ul id="BombGameRules">
-				<li>Move</li>
-				A player can move either left or right at the cost of 1 plus their change in height.
-				<li>Dirt</li>
-				A player can move a single block of dirt from their immediate left, right, or their own position,
-				to either of those three positions at the cost of 1 turn.
-				<li>Bomb</li>
-				A player can throw a bomb to destroy terrain anywhere on the map at the cost of the floor of
-				distance divided by 10 plus the radius of the explosion raised to 1.5.
+				<li>Move
+					<p>A player can move either left or right at the cost of 1 plus their change in height.</p>
+				</li>
+				<li>Dirt
+					<p>A player can move a single block of dirt from their immediate left, right, or their own position,
+					to either of those three positions at the cost of 1 turn.</p>
+				</li>
+				<li>Bomb
+					<p>A player can throw a bomb to destroy terrain anywhere on the map at the cost of the floor of
+					distance divided by 10 plus the radius of the explosion raised to 1.5.</p>
+				</li>
 			</ul>
-		</p>
+		<!-- </p> -->
 
-		<iframe src="https://www.youtube.com/embed/pxtkB6XrSoE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe src="https://www.youtube.com/embed/pxtkB6XrSoE" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 		<!--
 		<iframe src="../videos/bombGame.mov" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -70,8 +73,7 @@
 			&#169; 2020 Asa Dillahunty. All rights reserved <br/>
 		</footer>
 		</div>
+		<script src="../scripts/konami.js"></script>
+		<script src="../scripts/nav.js"></script>
 	</body>
-
-	<script src="../scripts/konami.js"></script>
-	<script src="../scripts/nav.js"></script>
 </html>
