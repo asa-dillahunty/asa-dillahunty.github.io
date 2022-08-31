@@ -8,12 +8,12 @@ h1 {
 	font-size: 3rem;
 }
 
-h2 {
+h3 {
 	font-size: 2rem;
 	text-align:left;
 }
 
-.static h2 {
+.static h3 {
 	animation: flowy 5s linear 0s infinite;
 }
 
@@ -49,24 +49,24 @@ h2 {
 }
 
 /* lol no. I look like a lazer tag joint  */
-.left h2 {
-	text-shadow: 1px 1px 2px crimson;
+.left h3 {
+	text-shadow: 1px 1px 2px var(--red);
 }
 
-.right h2 {
-	text-shadow: 1px 1px 2px teal;
+.right h3 {
+	text-shadow: 1px 1px 2px var(--blue);
 }
 
 
 
-h2 > a {
+h3 > a {
 	color:black;
 	text-decoration: none;
 	padding:.5rem;
 	transition: all .5s;
 }
 
-h2 > a:hover {
+h3 > a:hover {
 	color:#595959;
 	font-size: 2.5rem;
 	/* text-decoration: underline; */
@@ -160,17 +160,17 @@ p {
 /* box-shadow: 10px 10px 5px teal */
 
 .proj:nth-child(odd) > .image > a > img {
-	box-shadow: 10px 10px #004d85;
-	-moz-box-shadow: 10px 10px #004d85;
-	-webkit-box-shadow: 10px 10px #004d85;
-	-khtml-box-shadow: 10px 10px #004d85;
+	box-shadow: 10px 10px var(--blue);
+	-moz-box-shadow: 10px 10px var(--blue);
+	-webkit-box-shadow: 10px 10px var(--blue);
+	-khtml-box-shadow: 10px 10px var(--blue);
 }
 
 .proj:nth-child(even) > .image > a > img {
-	box-shadow: -10px 10px #6b194d;
-	-moz-box-shadow: -10px 10px #6b194d;
-	-webkit-box-shadow: -10px 10px #6b194d;
-	-khtml-box-shadow: -10px 10px #6b194d;
+	box-shadow: -10px 10px var(--red);
+	-moz-box-shadow: -10px 10px var(--red);
+	-webkit-box-shadow: -10px 10px var(--red);
+	-khtml-box-shadow: -10px 10px var(--red);
 }
 
 .hiddenBar {

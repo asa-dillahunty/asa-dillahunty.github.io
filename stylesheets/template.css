@@ -4,6 +4,11 @@
 	--close-button:crimson;
 	/* rgb(255, 200, 200); */
 	--font-color:rgb(31, 31, 31);
+	--blue:#004d85;
+	--red:#6b194d;
+}
+html {
+	scroll-behavior: smooth;
 }
 
 /* Set my own defaults */
