@@ -57,8 +57,6 @@ h3 {
 	text-shadow: 1px 1px 2px var(--blue);
 }
 
-
-
 h3 > a {
 	color:black;
 	text-decoration: none;
@@ -67,8 +65,8 @@ h3 > a {
 }
 
 h3 > a:hover {
-	color:#595959;
-	font-size: 2.5rem;
+	filter: invert(30%);
+	font-size: 2.25rem;
 	/* text-decoration: underline; */
 }
 
@@ -78,6 +76,7 @@ header > p {
 
 p {
 	text-align: left;
+	font-size: 1.5rem;
 	/* text-indent: 5rem; */
 }
 
@@ -110,7 +109,7 @@ p {
 }
 
 .words {
-	width: 60%;
+	width: calc(60% - 2rem);
 }
 
 .title {
@@ -122,7 +121,7 @@ p {
 }
 
 .image {
-	width: 20rem;
+	width: calc(40% - 2rem);
 	height: auto;
 }
 
@@ -144,33 +143,36 @@ p {
 	transform: scale(1.05);
 }
 
-/* #mazeProject > .image {
-	background-image: url("../images/mazePreview.png");
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-#mazeProject > .image:hover {
-	background-image: url("../images/mazeSolvePreview2.png");
-	background-repeat: no-repeat;
-	background-size: contain;
-} */
-
-
-/* Box shadow with blurr */
-/* box-shadow: 10px 10px 5px teal */
-
 .proj:nth-child(odd) > .image > a > img {
-	box-shadow: 10px 10px var(--blue);
-	-moz-box-shadow: 10px 10px var(--blue);
-	-webkit-box-shadow: 10px 10px var(--blue);
-	-khtml-box-shadow: 10px 10px var(--blue);
+	box-shadow: .6rem .6rem var(--blue);
+	-moz-box-shadow: .6rem .6rem var(--blue);
+	-webkit-box-shadow: .6rem .6rem var(--blue);
+	-khtml-box-shadow: .6rem .6rem var(--blue);
 }
 
 .proj:nth-child(even) > .image > a > img {
-	box-shadow: -10px 10px var(--red);
-	-moz-box-shadow: -10px 10px var(--red);
-	-webkit-box-shadow: -10px 10px var(--red);
-	-khtml-box-shadow: -10px 10px var(--red);
+	box-shadow: -.6rem .6rem var(--red);
+	-moz-box-shadow: -.6rem .6rem var(--red);
+	-webkit-box-shadow: -.6rem .6rem var(--red);
+	-khtml-box-shadow: -.6rem .6rem var(--red);
+}
+
+@media only screen and (max-width: 600px) {
+	.words {
+		/* margin: auto; */
+		padding: none;
+		width: 80%;
+	}
+	.image {
+		width: 80%;
+	}
+	.proj:nth-child(n) > .image > a > img {
+		
+		box-shadow: -.75rem .5rem 1rem var(--font-color);
+		-moz-box-shadow: -.75rem .5rem 1rem var(--font-color);
+		-webkit-box-shadow: -.75rem .5rem 1rem var(--font-color);
+		-khtml-box-shadow: -.75rem .5rem 1rem var(--font-color);
+	}
 }
 
 .hiddenBar {

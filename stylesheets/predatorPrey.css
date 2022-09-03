@@ -1,19 +1,22 @@
 /* Animate the Predators/Prey?? */
 
 #Ghost {
-	animation: ghostCircle 5s ease 1s;
+	animation: ghostCircle 5s linear 1s 20;
+	filter: drop-shadow(0 0 1rem black);
 }
 
 @keyframes ghostCircle {
 	0% {transform: translate(0,0);}
-	25% {transform: translate(0,-5rem);}
-	50% {transform: translate(-10rem,-5rem);}
+	25% {transform: translate(0,-10rem);}
+	50% {transform: translate(-10rem,-10rem);}
 	75% {transform: translate(-10rem,0);}
 	100% {transform: translate(0,0);}
 }
 
 #PacMan {
-	animation: pacCircle 5s ease 1s;
+	animation: pacCircle 5s linear 1s 20;
+	filter: drop-shadow(0 0 1rem black);
+	/* animation: name duration timing-function delay iteration-count direction fill-mode; */
 }
 
 @keyframes pacCircle {
@@ -21,11 +24,11 @@
 	24% {transform: translate(10rem, 0);} /* going up */
 	26% {transform: translate(10rem, 0) rotate(-90deg);}
 
-	49% {transform: translate(10rem,-5rem) rotate(-90deg);} /* going left */
-	51% {transform: translate(10rem,-5rem) rotate(-180deg);}
+	49% {transform: translate(10rem,-10rem) rotate(-90deg);} /* going left */
+	51% {transform: translate(10rem,-10rem) rotate(-180deg);}
 
-	74% {transform: translate(0,-5rem) rotate(-180deg);} /* going down */
-	76% {transform: translate(0,-5rem) rotate(-270deg);}
+	74% {transform: translate(0,-10rem) rotate(-180deg);} /* going down */
+	76% {transform: translate(0,-10rem) rotate(-270deg);}
 
 	100% {transform: translate(0,0) rotate(-270deg);} /* going right? */
 }
