@@ -158,16 +158,18 @@ p {
 }
 
 @media only screen and (max-width: 600px) {
+	.proj:nth-child(odd) > .words,.proj:nth-child(even) > .words {
+		margin: 0;
+	}
 	.words {
-		/* margin: auto; */
-		padding: none;
-		width: 80%;
+		margin: auto;
+		padding: 0;
+		width: 90%;
 	}
 	.image {
 		width: 80%;
 	}
 	.proj:nth-child(n) > .image > a > img {
-		
 		box-shadow: -.75rem .5rem 1rem var(--font-color);
 		-moz-box-shadow: -.75rem .5rem 1rem var(--font-color);
 		-webkit-box-shadow: -.75rem .5rem 1rem var(--font-color);

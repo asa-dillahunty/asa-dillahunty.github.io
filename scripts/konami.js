@@ -69,6 +69,12 @@ function togglePhoneHelper() {
 	activateGamePad(inputHandler);
 	var gPad = document.getElementById("gamepad");
 	gPad.style.display == "flex" ? gPad.style.display = "none" : gPad.style.display = "flex";
+
+	const footerWidth = document.getElementsByTagName("footer")[0].offsetWidth;
+	gPad.style.width = footerWidth+"px";
+	gPad.style.height = footerWidth*6/13+"px";
+	gPad.scrollIntoView()
+	
 }
 
 function static() {

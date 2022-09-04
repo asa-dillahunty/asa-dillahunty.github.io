@@ -119,9 +119,9 @@ body.static {
  * * * * * Footer Styling * * * * *
  **********************************/
 footer {
-	padding: 3rem;
+	padding-bottom: 3rem;
+	padding-top: 3rem;
 }
-
 footer img {
     height: 4rem;
 	transition: all .5s;
