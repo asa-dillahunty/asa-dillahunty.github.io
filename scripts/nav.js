@@ -16,10 +16,10 @@ const contactInfo =
 		<p>Check out my LinkedIn!</p>
 	</div>
 
-	<div class="modal-card Email" onclick="copyToClipboard('asdillahunty@crimson.ua.edu');">
-		<a href="mailto:asdillahunty@crimson.ua.edu" target="_blank">
+	<div class="modal-card Email" onclick="copyToClipboard('asadillahunty@gmail.com');">
+		<a href="mailto:asadillahunty@gmail.com" target="_blank">
 			<img src="https://simpleicons.org/icons/gmail.svg" alt="E-mail"></svg></a>
-		<p>Shoot me an email at <span id="email-address">asdillahunty@crimson.ua.edu</span>!</p>
+		<p>Shoot me an email at <span id="email-address">asadillahunty@gmail.com</span>!</p>
 	</div>
 
 	<div class="modal-card close">
