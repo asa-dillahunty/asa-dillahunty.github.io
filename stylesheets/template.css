@@ -246,8 +246,10 @@ button#konamiFailsafe {
 .modal-card {
 	width: 50%;
 	max-width: 30rem;
-	/* min-width: 10rem; */
-	
+	min-width: 25rem;
+	display: flex;
+	align-items: stretch;
+
 	min-height: 20px;
 	background-color: var(--offwhite);
 	border-radius: 1rem;
@@ -300,16 +302,20 @@ button#konamiFailsafe {
 	float: left;
 }
 
+/* this is the left element */
 #contact-modal a {
-	text-decoration: none;
+	text-decoration: none;	
+	width: fit-content;
+	display: flex;
+	align-items: center;
 }
 
 .modal-card img {
-	float: left;
 	height: 3rem;
-	margin-right: 1rem;
+	margin-right: .5rem;
 }
 
+/* this is the right element */
 .modal-card p {
 	/* float: left; */
 	padding-left: 1rem;
