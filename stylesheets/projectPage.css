@@ -30,7 +30,7 @@ header > p {
 }
 
 iframe {
-    width:100%;
+    width: 100%;
     height: 20rem;
     border: .5rem solid black;
     box-sizing: border-box;
