@@ -5,13 +5,34 @@ let Q;
 let flashingColors = false;
 let laneArray = [];
 
+let randomNum;
+let maxVal;
+
+let dynamicFillStyle = 0;
+let dynamicFillStyleString = "";
+
+let barWidth;
+let barStartX;
+
 const BackgroundWhite = "#EEEEEE";
 const DefaultBarRed = "#FF6868";
 const MaxBarRed = "#E55D5D";
 const TextBlack = "#0F0F0F";
 
+const myCanvas = document.getElementById("graph-canvas");
+myCanvas.width = myCanvas.getBoundingClientRect().width;
+myCanvas.height = myCanvas.getBoundingClientRect().height;
+const ctx = myCanvas.getContext("2d");
+
+ctx.font = "24px serif";
+ctx.save();
+ctx.fillStyle = BackgroundWhite;
+ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
+ctx.restore();
+
 function startCounting() {
-	// grab the number of things => start with 3
+	if (currInterval) stopCounting();
+	
 	if (document.getElementById("Custom-Inputs").checked === true) {
 		P = document.getElementById("P-Input").value;
 		Q = document.getElementById("Q-Input").value;
@@ -42,7 +63,6 @@ function startCounting() {
 	currInterval = setInterval(step);
 }
 
-let randomNum;
 function step() {
 	// am I an edge?
 	randomNum = Math.random();
@@ -68,24 +88,32 @@ function step() {
 }
 
 function setUpPaint() {
-	// let myCanvas = getElementById("graph-canvas");
-	// var ctx = myCanvas.getContext("2d");
-	// ctx.save();
-	// ctx.fillStyle = "#ff0000";
-	// ctx.fillRect(0,0,50,50);
-	// ctx.restore();
+	// todo: adjust for padding
+	// values for width only need to be calculated once 
+	barWidth = myCanvas.width/laneNumber;
+	barStartX = {};
+	for (let i=0;i<laneNumber;i++)
+		barStartX[i] = i*barWidth;
 }
 
-let maxVal;
 function paint() {
+	if (flashingColors) incDynamicFillStyle();
 	maxVal = Math.max(...laneArray);
+	if (maxVal === laneArray[currPosition]) fullPaint();
+	else {
+		ctx.save();
+		paintSquare(currPosition, laneArray[currPosition], maxVal);
+		ctx.restore();
+	}
+}
 
+function fullPaint() {
 	ctx.save();
 	ctx.fillStyle = BackgroundWhite;
 	ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
 	
 	laneArray.map((val,index) => {
-		paintSquare(index, laneNumber, val, maxVal);
+		paintSquare(index, val, maxVal);
 	});
 	ctx.restore();
 }
@@ -94,43 +122,32 @@ function stopCounting() {
 	clearInterval(currInterval);
 }
 
-let dynamicFillStyle = 0;
-let dynamicFillStyleString = "";
-function paintSquare(index, N, val, maxVal) {
+function paintSquare(index, val, maxVal) {
 	let barHeight = myCanvas.height*(val/maxVal);
 	let barStartY = myCanvas.height - barHeight;
-	// todo: reduce calculations?
-	let barWidth = myCanvas.width/N;
-	let barStartX = index*(barWidth);
-	// todo: adjust for padding
-	// values for width only need to be calculated once 
-
-	if (flashingColors) {	
-		dynamicFillStyle = (dynamicFillStyle+1)%4096; //16777216
-		dynamicFillStyleString = dynamicFillStyle.toString(16);
-		while (dynamicFillStyleString.length < 3) dynamicFillStyleString = "0" + dynamicFillStyleString;
-
-		ctx.fillStyle = "#" + dynamicFillStyleString;
-	} else {
-		if (maxVal === val) ctx.fillStyle = MaxBarRed;
-		else ctx.fillStyle = DefaultBarRed;
-	}
-	ctx.fillRect(barStartX, barStartY, barWidth, barHeight);
+	
+	setBarFillStyle(val);
+	ctx.fillRect(barStartX[index], barStartY, barWidth, barHeight);
 
 	// write value
 	ctx.fillStyle = TextBlack;
-	ctx.fillText(val, barStartX+5, myCanvas.height - 5);
+	ctx.fillText(val, barStartX[index]+5, myCanvas.height - 5);
 }
 
-const myCanvas = document.getElementById("graph-canvas");
-const canWidth = myCanvas.getBoundingClientRect().width;
-const canHeight = myCanvas.getBoundingClientRect().height;
-myCanvas.width = canWidth;
-myCanvas.height = canHeight;
+function incDynamicFillStyle() {
+	dynamicFillStyle = (dynamicFillStyle+1)%4096; //16777216
+	dynamicFillStyleString = dynamicFillStyle.toString(16);
+	while (dynamicFillStyleString.length < 3) dynamicFillStyleString = "0" + dynamicFillStyleString;
 
-const ctx = myCanvas.getContext("2d");
-ctx.font = "24px serif";
-ctx.save();
-ctx.fillStyle = BackgroundWhite;
-ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
-ctx.restore();
+	dynamicFillStyleString = "#" + dynamicFillStyleString;
+}
+
+function setBarFillStyle(currVal) {
+	if (flashingColors) ctx.fillStyle = dynamicFillStyleString;
+	else if (maxVal === currVal) {
+		ctx.fillStyle = MaxBarRed;
+	}
+	else {
+		ctx.fillStyle = DefaultBarRed
+	}
+}
