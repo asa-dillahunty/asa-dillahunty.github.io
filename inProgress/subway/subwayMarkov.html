@@ -34,32 +34,16 @@
 			By default P and Q are set as close to 1/3 as possible. Soon I will update this to allow N to change. N is the number of 'lanes' in the problem.
 		</p>
 
-		<div class="sample-data-graphs">
-			<div class="data-container">
-				<div class="bar-box">
-					<div class="bar"></div>
-				</div>
-				<input disabled value="0" class="bar-label"></input>
-			</div>
-			<div class="data-container">
-				<div class="bar-box">
-					<div class="bar"></div>
-				</div>
-				<input disabled value="0" class="bar-label"></input>
-			</div>
-			<div class="data-container">
-				<div class="bar-box">
-					<div class="bar"></div>
-				</div>
-				<input disabled value="0" class="bar-label"></input>
-			</div>
-		</div>
+		<canvas id="graph-canvas"></canvas>
 		<button class="start-stop" onclick="startCounting()">Start</button>
 		<button class="start-stop" onclick="stopCounting()">Stop</button>
 		<br/>
 		<p>P: <input id="P-Input" type="number" value=".33"/> </p>
 		<p>Q: <input id="Q-Input" type="number" value=".33"/> </p>
+		<p>N: <input id="N-Input" type="number" value="3"/> </p>
 		<p>Custom Inputs <input id="Custom-Inputs" type="checkbox"/> </p>
+		<p>Flashing Colors (like dangerously fast flashing) <input id="Flashing-Colors" type="checkbox"/> </p>
+		<br/>
 		
 
 		<br/><br/>
