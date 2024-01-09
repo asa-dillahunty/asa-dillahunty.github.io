@@ -28,25 +28,52 @@
 		</header>
 
 		<main>
+			<h2>The Problem?</h2>
+			<p>
+				One day I was playing Subway Surfers, and I couldn't help but feel that coins were more 
+				heavily dispersed amongst the edge rows. Now if you're not familiar with Subway Surfers,
+				it's got power-ups, and the one I'm talking about is called a jetpack. The jetpack 
+				raises the player above all the obstacles and leaves the players to follow a path of
+				coins. These coins transfer between the 3 lanes a player can run in, and one can't help
+				but think, <strong>"If I couldn't switch lanes, which one would give me the most coins?"</strong>
 
-		<h2>Simulating data with set P and Q</h2>
-		<p>
-			By default P and Q are set as close to 1/3 as possible. Soon I will update this to allow N to change. N is the number of 'lanes' in the problem.
-		</p>
+				</br></br>
 
-		<canvas id="graph-canvas"></canvas>
-		<button class="start-stop" onclick="startCounting()">Start</button>
-		<button class="start-stop" onclick="stopCounting()">Stop</button>
-		<br/>
-		<p>P: <input id="P-Input" type="number" value=".33"/> </p>
-		<p>Q: <input id="Q-Input" type="number" value=".33"/> </p>
-		<p>N: <input id="N-Input" type="number" value="3"/> </p>
-		<p>Custom Inputs <input id="Custom-Inputs" type="checkbox"/> </p>
-		<p>Flashing Colors (like dangerously fast flashing) <input id="Flashing-Colors" type="checkbox"/> </p>
-		<br/>
-		
+				Are coins equally distributed across all three lanes in Subway Surfer? If one were to deploy a
+				jetpack, and could only pick a single lane to remain in for the duration of the jetpack's fuel reserves,
+				which lane would a clever man choose? What statistical methods might that wise woman employ to make
+				such a determination? I set out seeking the source of this wisdom, and found Master Markov. It is 
+				his chains that guide me now through <strong>The Subway.</strong>
 
-		<br/><br/>
+				</br></br>
+
+				Now, Markov Chains are a way to calculate probability for things that don't stop.
+				Basically, one takes a representation of the movement between states as a matrix
+				transformation and performs a integral on it.
+			</p>
+
+			<h2>Simulating data with set P and Q</h2>
+			<p>
+				By default P and Q are set as close to 1/3 as possible. Soon I will update this to allow N to change. N is the number of 'lanes' in the problem.
+			</p>
+
+			<canvas id="graph-canvas"></canvas>
+			<button class="start-stop" onclick="startCounting()">Start</button>
+			<button class="start-stop" onclick="stopCounting()">Stop</button>
+			<br/>
+
+			<div class="variable-inputs">
+				<p>P: <input id="P-Input" type="number" value=".33"/> </p>
+				<p>Q: <input id="Q-Input" type="number" value=".33"/> </p>
+				<p>N: <input id="N-Input" type="number" value="3"/> </p>
+			</div>
+			
+			<p> <input id="Custom-Inputs" type="checkbox"/> Custom Inputs</p>
+			<p> <input id="Flashing-Colors" type="checkbox"/> Flashing Colors (like dangerously fast flashing)</p>
+			<br/>
+			
+
+			<br/><br/>
 		
 		</main>
 

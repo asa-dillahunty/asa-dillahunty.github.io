@@ -1,5 +1,3 @@
-
-
 .start-stop {
 	font-size: 1.5rem;
 	margin: 2rem;
@@ -10,4 +8,18 @@
 #graph-canvas {
 	width: 100%;
 	height: 70vh;
+}
+
+.variable-inputs {
+	--fonteSize: 20px;
+
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-evenly;
+	font-size: var(--fonteSize);
+}
+
+.variable-inputs input {
+	font-size: var(--fonteSize);
 }
