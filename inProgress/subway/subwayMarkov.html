@@ -49,7 +49,26 @@
 
 				Now, Markov Chains are a way to calculate probability for things that don't stop.
 				Basically, one takes a representation of the movement between states as a matrix
-				transformation and performs a integral on it.
+				transformation and performs an integral on it, I think. I've never taken a 
+				statistics course.
+
+				</br></br>
+
+				<img src="MarkovMock.png" />
+
+				</br></br>
+
+				This is the initial matrix we set up, and when performing the integration we get
+				these three equations: </br>
+
+				0.33 (1 - P) + 0.33 Q </br>
+				0.66 P + 0.33 (1 - 2 Q) </br>
+				0.33 (1 - P) + 0.33 Q </br>
+
+				</br>
+
+				Which simplifies to P=Q. Underwhelmingly
+
 			</p>
 
 			<h2>Simulating data with set P and Q</h2>
@@ -67,7 +86,7 @@
 				<p>Q: <input id="Q-Input" type="number" value=".33"/> </p>
 				<p>N: <input id="N-Input" type="number" value="3"/> </p>
 			</div>
-			
+
 			<p> <input id="Custom-Inputs" type="checkbox"/> Custom Inputs</p>
 			<p> <input id="Flashing-Colors" type="checkbox"/> Flashing Colors (like dangerously fast flashing)</p>
 			<br/>
