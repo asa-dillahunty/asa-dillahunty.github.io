@@ -58,8 +58,13 @@
 
 				</br></br>
 
-				This is the initial matrix we set up, and when performing the integration we get
-				these three equations: </br>
+				The X axis in the matrix representation above, Left (L), Center (C), and Right (R), are the starting positions, 
+				and the Y axis represents the next position. The number in each cell represents the probability of going from X to Y.
+				It's clear we make a few assumptions here, notably that movement from the right column is equivalent to movement from
+				the left column. Also one rule to follow the game logic, is that one cannot traverse directly from the right to the 
+				left column and vice versa. </br></br>
+
+				Taking this transformation matrix and performing the integration we get these three equations: </br></br>
 
 				0.33 (1 - P) + 0.33 Q </br>
 				0.66 P + 0.33 (1 - 2 Q) </br>
