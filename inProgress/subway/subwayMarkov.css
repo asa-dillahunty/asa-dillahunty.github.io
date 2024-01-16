@@ -23,3 +23,13 @@
 .variable-inputs input {
 	font-size: var(--fonteSize);
 }
+
+math {
+	font-size: 1.5rem;
+	margin-bottom: .5rem;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+mi {
+	font-size: 1.3rem;
+}
