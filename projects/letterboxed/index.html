@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<link rel="stylesheet" href="stylesheets/index.css" type="text/css"/>
+	</head>
+	<body>
+		<header>
+			<h1>Letter Boxed</h1>
+			<h2>Solver</h2>
+		</header>
+		<main>
+			<div class="boxContainer">
+				<div class="lettersContainer top" id="top-letters">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+				</div>
+				<div class="lettersContainer right" id="right-letters">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+				</div>
+				<div class="lettersContainer bottom" id="bottom-letters">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+				</div>
+				<div class="lettersContainer left" id="left-letters">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+					<input class="letter-input" type="text" pattern="[A-Za-z]" maxlength="1">
+				</div>
+
+				<div class="circleContainer top"><div class="circle"></div><div class="circle"></div><div class="circle"></div></div>
+				<div class="circleContainer right"><div class="circle"></div><div class="circle"></div><div class="circle"></div></div>
+				<div class="circleContainer bottom"><div class="circle"></div><div class="circle"></div><div class="circle"></div></div>
+				<div class="circleContainer left"><div class="circle"></div><div class="circle"></div><div class="circle"></div></div>
+
+				<div class="insideBox"></div>
+			</div>
+
+			<button onclick="startSolve()">Solve</button>
+
+			<div class="solutionBoxContainer">
+				<p id="solutionBoxHeader">Solutions found: 0</p>
+				<div id='solutionBox'>
+				</div>
+				<canvas id="GhostCanvas" width="266px" height="273px" style="display: none;margin: auto;"></canvas>
+			</div>
+		</main>
+	</body>
+	<script src="scripts/setupInputs.js"></script>
+	<script src="scripts/solver.js"></script>
+	<script src="scripts/animateGhost.js"></script>
+</html>
