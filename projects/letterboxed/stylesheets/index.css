@@ -1,6 +1,8 @@
 body {
 	--boxContainerSize: 320px;
-	--spreadContainerSize: calc(var(--boxContainerSize) - 60px);
+	--spreadContainerSize: calc(var(--boxContainerSize) * 13 / 16);
+	--boxContainerHalfSize: calc(var(--boxContainerSize)/2);
+	--spreadContainerHalfSize: calc(var(--spreadContainerSize)/2);
 	--black:#020102;
 	--pink:#FAA6A4;
 	--pink2:#ff8f8d;
@@ -12,8 +14,8 @@ body {
 
 	flex-direction: column;
 
-	height: 100vh;
-	width: 100vw;
+	min-height: 100vh;
+	min-width: 100vw;
 	margin: 0;
 	padding: 0;
 
@@ -52,6 +54,9 @@ main {
 	justify-content: center;
 
 	flex-direction: column;
+
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 
 button {
@@ -63,7 +68,7 @@ button {
 	cursor: pointer;
 	border-radius: 25px;
 	margin-top: 20px;
-	border: solid --black;
+	border: 1px solid var(--black);
 }
 
 button:hover {
@@ -111,6 +116,9 @@ button:hover {
 
 	width: 30px;
 	height: 30px;
+
+	background-color: var(--pink);
+	font-weight: bold;
 }
 
 .circleContainer {
@@ -158,7 +166,7 @@ button:hover {
 	max-height: 400px; /* Set maximum height for the output container */
 	overflow-y: auto; /* Enable vertical scroll if content exceeds container height */
 	box-sizing: border-box;
-	border: 1px solid --black;
+	border: 1px solid var(--black);
 	padding: 10px;
 	margin-top: 20px;
 	background-color: var(--pink3);
@@ -178,4 +186,80 @@ button:hover {
 
 #GhostCanvas {
 	display: none;
+}
+
+/* phone sizing */
+@media (width <= 767px) {
+	h1, h2 {
+		font-size: 40px;
+	}
+	
+	h2 {
+		font-size: 45px;
+	}
+
+	.lettersContainer {
+		background-color: none;
+	}
+
+	.lettersContainer.top , .lettersContainer.bottom {
+		width: var(--spreadContainerHalfSize);
+		padding: 1px 0 1px 0;
+	}
+	
+	.lettersContainer.right , .lettersContainer.left {
+		height: var(--spreadContainerHalfSize);
+		padding: 0 0px 0 0px;
+	}
+
+	.lettersContainer > input {
+		font-size: 14px;
+		text-transform: capitalize;
+		text-align: center;
+	
+		width: 15px;
+		height: 15px;
+	
+		background-color: var(--pink);
+		font-weight: bold;
+	}
+
+	.boxContainer {
+		height: var(--boxContainerHalfSize);
+		width: var(--boxContainerHalfSize);
+	}
+
+	/* .circleContainer { background-color: aqua;} */
+	.circleContainer.top , .circleContainer.bottom {
+		width: var(--spreadContainerHalfSize);
+		margin: 21px 0 21px 0;
+	}
+	
+	.circleContainer.right , .circleContainer.left {
+		height: var(--spreadContainerHalfSize);
+		margin: 0 21px 0 21px;
+	}
+
+	.circleContainer .circle {
+		width: 5px;
+		height: 5px;
+	}
+
+	.insideBox {
+		height: 100px;
+		width: 100px;
+	}
+
+	#solutionBoxHeader {
+		font-size: 16px;
+	}
+	
+	#solutionBox p {
+		font-size: 14px;
+	}	
+
+	#GhostCanvas {
+		width: 133px;
+		height: 136px;
+	}
 }
