@@ -111,6 +111,10 @@ button:hover {
 
 	width: 30px;
 	height: 30px;
+	padding: 0;
+	margin: 0;
+
+	background-color: var(--pink3);
 }
 
 .circleContainer {
