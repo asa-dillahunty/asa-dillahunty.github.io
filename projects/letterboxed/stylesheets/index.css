@@ -119,6 +119,8 @@ button:hover {
 
 	background-color: var(--pink);
 	font-weight: bold;
+	padding: 0;
+	margin: 0;
 }
 
 .circleContainer {
