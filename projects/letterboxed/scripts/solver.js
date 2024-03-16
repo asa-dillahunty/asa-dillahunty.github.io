@@ -225,7 +225,7 @@ function displayIsInvalidPuzzle(reason) {
 }
 
 function displaySelectSolve() {
-	if (timeoutList.length > 1) clearDrawing();
+	if (Object.keys(drawingSteps).length > 1) clearDrawing();
 	const outputDivHeader = document.getElementById("solutionBoxHeader");
 	outputDivHeader.textContent = "Select solve to begin solving";
 
@@ -233,19 +233,25 @@ function displaySelectSolve() {
 	outputDiv.innerHTML = "";
 }
 
-function setLetterState(circle, letter, delay, addState, removeState) {
-	timeoutList.push(
-		setTimeout(() => {
-			if (addState) {
-				circle.classList.add(addState);
-				letter.classList.add(addState);
-			}
-			if (removeState) {
-				circle.classList.remove(removeState);
-				letter.classList.remove(removeState);
-			}
-		}, delay)
-	);
+function setLetterState(circle, letter, addState, removeState) {
+	if (addState) {
+		circle.classList.add(addState);
+		letter.classList.add(addState);
+	}
+	if (removeState) {
+		circle.classList.remove(removeState);
+		letter.classList.remove(removeState);
+	}
+}
+
+function queueStateChange(circle, letter, delay, addState, removeState) {
+	if (!drawingSteps[delay]) drawingSteps[delay] = []; 
+	drawingSteps[delay].push({
+		circle:circle,
+		letter:letter,
+		addState:addState,
+		removeState:removeState
+	});
 }
 
 function drawWords(words) {
@@ -272,14 +278,14 @@ function drawWords(words) {
 	for (let i=0;i<words.length;i++) {
 		const word = words[i];
 
-		setLetterState(circles[list[word[0]].index], inputs[list[word[0]].index], drawTime*(letterCounter)*1000, 'selected');
+		queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected');
 
 		lineBlob +=`<svg width="${svgSize}" height="${svgSize}" style="animation: fadeLines .1s linear forwards; animation-delay:${drawTime*(letterCounter + word.length - 1)}s">`;
 		
 		for (let j=0;j<word.length;j++) {
 			// if not last word, skip last letter
 			if (i !== words.length - 1 && j === word.length - 1) continue;
-			setLetterState(circles[list[word[j]].index], inputs[list[word[j]].index], drawTime*(letterCounter + word.length - 1)*1000, 'final', 'solved');
+			queueStateChange(circles[list[word[j]].index], inputs[list[word[j]].index], letterCounter + word.length - 1, 'final', 'solved');
 		}
 
 		for (let j=0;j<word.length-1;j++) {
@@ -299,23 +305,42 @@ function drawWords(words) {
 				/>
 			`;
 			letterCounter++;
-			setLetterState(circles[list[word[j]].index], inputs[list[word[j]].index], drawTime*(letterCounter)*1000, 'solved', 'selected');
-			setLetterState(circles[list[word[j+1]].index], inputs[list[word[j+1]].index], drawTime*(letterCounter)*1000, 'selected');
+			queueStateChange(circles[list[word[j]].index], inputs[list[word[j]].index], letterCounter, 'solved', 'selected');
+			queueStateChange(circles[list[word[j+1]].index], inputs[list[word[j+1]].index], letterCounter, 'selected');
 		}
 		letterCounter++; // add a fake letter for a pause between words
 		lineBlob += `</svg>`;
 	}
 	lineLayer.innerHTML = lineBlob;
+	drawingIntervalCounterMax = Math.max(...Object.keys(drawingSteps));
+	console.log(drawingIntervalCounterMax);
+
+	// start the interval =>
+	drawingInterval = setInterval( intervalStep, drawTime*1000);
+	intervalStep();
 }
 
-const timeoutList = [];
+function intervalStep() {
+	if (drawingIntervalCounter > drawingIntervalCounterMax) clearInterval(drawingInterval);
+	if (drawingSteps[drawingIntervalCounter]) {
+		for (let i=0;i<drawingSteps[drawingIntervalCounter].length;i++) {
+			const instructions = drawingSteps[drawingIntervalCounter][i];
+			setLetterState( instructions.circle, instructions.letter, instructions.addState, instructions.removeState );
+		}
+	}
+	drawingIntervalCounter++;
+}
+
+let drawingInterval = 0;
+let drawingIntervalCounter = 0;
+let drawingIntervalCounterMax = 0;
+let drawingSteps = {};
 function clearDrawing() {
 	// stop all timeouts from executing
-	for (let i=0;i<timeoutList.length;i++) {
-		clearTimeout(timeoutList[i]);
-	}
-	// clear timeout list
-	timeoutList.splice(0, timeoutList.length);
+	clearInterval(drawingInterval);
+	drawingIntervalCounter = 0;
+	drawingIntervalCounterMax = 0;
+	drawingSteps = {};
 
 	const lineLayer = document.getElementById('lineLayer');
 	lineLayer.innerHTML = "";
