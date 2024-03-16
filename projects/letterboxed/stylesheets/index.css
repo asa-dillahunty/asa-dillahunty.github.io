@@ -1,8 +1,16 @@
 body {
 	--boxContainerSize: 320px;
 	--spreadContainerSize: calc(var(--boxContainerSize) * 13 / 16);
+	--insideBoxSize: calc(var(--boxContainerSize)*5/8);
+
+	--boxContainerThreeQuarterSize: calc(var(--boxContainerSize)*3/4);
+	--spreadContainerThreeQuarterSize: calc(var(--spreadContainerSize)*3/4);
+	--insideBoxThreeQuarterSize: calc(var(--insideBoxSize)*3/4);
+
 	--boxContainerHalfSize: calc(var(--boxContainerSize)/2);
 	--spreadContainerHalfSize: calc(var(--spreadContainerSize)/2);
+	--insideBoxHalfSize: calc(var(--insideBoxSize)/2);
+
 	--black:#020102;
 	--pink:#FAA6A4;
 	--pink2:#ff8f8d;
@@ -72,7 +80,7 @@ button {
 }
 
 button:hover {
-	background-color: var(--pink2);
+	background-color: var(--pink3);
 }
 
 .boxContainer {
@@ -121,6 +129,9 @@ button:hover {
 	font-weight: bold;
 	padding: 0;
 	margin: 0;
+
+	border: 1px solid var(--black);
+	border-radius: 3px;
 }
 
 .circleContainer {
@@ -157,8 +168,8 @@ button:hover {
 .insideBox {
 	background-color: var(--pink3);
 	margin: auto;
-	height: 200px;
-	width: 200px;
+	height: var(--insideBoxSize);
+	width: var(--insideBoxSize);
 	border: 5px solid var(--black);
 	border-radius: 3px;
 }
@@ -176,14 +187,15 @@ button:hover {
 
 #solutionBoxHeader {
 	font-size: 25px;
-	margin-bottom: 10px;
 	padding: 0;
+	margin: 0;
 }
 
 #solutionBox p {
 	font-size: 20px;
 	margin: 0;
 	padding: 0;
+	margin-top: 5px;
 }
 
 #GhostCanvas {
@@ -193,11 +205,11 @@ button:hover {
 /* phone sizing */
 @media (width <= 767px) {
 	h1, h2 {
-		font-size: 40px;
+		font-size: 45px;
 	}
 	
 	h2 {
-		font-size: 45px;
+		font-size: 50px;
 	}
 
 	.lettersContainer {
@@ -205,59 +217,59 @@ button:hover {
 	}
 
 	.lettersContainer.top , .lettersContainer.bottom {
-		width: var(--spreadContainerHalfSize);
-		padding: 1px 0 1px 0;
+		width: var(--spreadContainerThreeQuarterSize);
+		padding: 3px 0 3px 0;
 	}
 	
 	.lettersContainer.right , .lettersContainer.left {
-		height: var(--spreadContainerHalfSize);
-		padding: 0 0px 0 0px;
+		height: var(--spreadContainerThreeQuarterSize);
+		padding: 0 3px 0 3px;
 	}
 
 	.lettersContainer > input {
-		font-size: 14px;
+		font-size: 21px;
 		text-transform: capitalize;
 		text-align: center;
 	
-		width: 15px;
-		height: 15px;
+		width: 23px;
+		height: 23px;
 	
 		background-color: var(--pink);
 		font-weight: bold;
 	}
 
 	.boxContainer {
-		height: var(--boxContainerHalfSize);
-		width: var(--boxContainerHalfSize);
+		height: var(--boxContainerThreeQuarterSize);
+		width: var(--boxContainerThreeQuarterSize);
 	}
 
 	/* .circleContainer { background-color: aqua;} */
 	.circleContainer.top , .circleContainer.bottom {
-		width: var(--spreadContainerHalfSize);
-		margin: 21px 0 21px 0;
+		width: var(--spreadContainerThreeQuarterSize);
+		margin: 35px 0 35px 0;
 	}
 	
 	.circleContainer.right , .circleContainer.left {
-		height: var(--spreadContainerHalfSize);
-		margin: 0 21px 0 21px;
+		height: var(--spreadContainerThreeQuarterSize);
+		margin: 0 35px 0 35px;
 	}
 
 	.circleContainer .circle {
-		width: 5px;
-		height: 5px;
+		width: 7px;
+		height: 7px;
 	}
 
 	.insideBox {
-		height: 100px;
-		width: 100px;
+		height: var(--insideBoxThreeQuarterSize);
+		width: var(--insideBoxThreeQuarterSize);
 	}
 
 	#solutionBoxHeader {
-		font-size: 16px;
+		font-size: 20px;
 	}
 	
 	#solutionBox p {
-		font-size: 14px;
+		font-size: 16px;
 	}	
 
 	#GhostCanvas {

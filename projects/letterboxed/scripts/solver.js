@@ -5,18 +5,21 @@ function startSolve() {
 	const ghostCanvas = document.getElementById('GhostCanvas');
 	if (ghostCanvas) ghostCanvas.style.display = 'inherit';
 	// start solve
-	solve().then( () =>  {
+	solve().then( (areSolutions) =>  {
 		// hide ghost on finish
 		const ghostCanvas = document.getElementById('GhostCanvas');
 		if (ghostCanvas) ghostCanvas.style.display = 'none';
+
+		if (areSolutions) document.getElementById("solutionBox").style = "margin-top: 10px;border-top:2px solid var(--black);";
+		else document.getElementById("solutionBox").style = "margin-top: 0; border-top: none";
 	});
 }
 
+// returns true/false if solutions are found/not found
 async function solve() {
 	const letters = getLetters();
 	const letterSet = getLetterSet(letters);
 	const forbiddenSequences = getForbiddenSequences(letters);
-
 
 	const dictionary = await getDictionary(letterSet, forbiddenSequences);
 
@@ -28,6 +31,9 @@ async function solve() {
 		solutions = findSolutions(depth, dictionary);
 	}
 	displaySolutions(solutions);
+
+	if (solutions.length > 0) return true;
+	else return false;
 }
 
 function getLetters() {
@@ -177,7 +183,14 @@ function displaySolutions(solutions) {
 
 	let solutionBlob = "";
 	const outputDiv = document.getElementById("solutionBox");
-	solutions.forEach((word) => solutionBlob += "<p>" + word + "</p>");
+	solutions.forEach((solution) => {
+		solutionBlob += "<p>";
+		for (let i=0;i<solution.length;i++) {
+			if (i !== 0) solutionBlob += " | ";
+			solutionBlob += solution[i];
+		}
+		solutionBlob += "</p>";
+	});
 	outputDiv.innerHTML = solutionBlob;
 }
 
