@@ -18,9 +18,16 @@ function startSolve() {
 // returns true/false if solutions are found/not found
 async function solve() {
 	const letters = getLetters();
+	for (let i=0;i<letters.length;i++) {
+		for (let j=0;j<letters[i].length;j++) {
+			if (letters[i][j] !== '') continue;
+			displayIsInvalidPuzzle("Must fill in all puzzle letters");
+			return false;
+		}
+	}
 	const letterSet = getLetterSet(letters);
 	if (letterSet.size < 12) {
-		displaySolutions([]);
+		displayIsInvalidPuzzle("Puzzle letters must all be unique");
 		return false;
 	}
 	const forbiddenSequences = getForbiddenSequences(letters);
@@ -190,6 +197,14 @@ function displaySolutions(solutions) {
 		solutionBlob += "</p>";
 	});
 	outputDiv.innerHTML = solutionBlob;
+}
+
+function displayIsInvalidPuzzle(reason) {
+	const outputDivHeader = document.getElementById("solutionBoxHeader");
+	outputDivHeader.textContent = "Invalid Puzzle: ";
+
+	const outputDiv = document.getElementById("solutionBox");
+	outputDiv.innerHTML = "<p>"+reason+"</p>";
 }
 
 const MASSIVE_DICTIONARY = "dictionaries/massive_dictionary.json";
