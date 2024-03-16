@@ -12,6 +12,7 @@ inputs.forEach((input, index) => {
 			else { // index === 0
 				inputs[inputs.length - 1].focus();
 			}
+			displaySelectSolve();
 		}
 	});
 
@@ -37,5 +38,6 @@ inputs.forEach((input, index) => {
 				inputs[index + 1].focus();
 			}
 		}
+		displaySelectSolve();
 	});
 });

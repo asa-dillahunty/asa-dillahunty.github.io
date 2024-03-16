@@ -15,6 +15,7 @@ body {
 	--pink:#FAA6A4;
 	--pink2:#ff8f8d;
 	--pink3:rgb(255, 246, 246);
+	--pink4:#FCCECD;
 
 	display: flex;
 	align-items: center;
@@ -86,7 +87,6 @@ button:hover {
 }
 
 .boxContainer {
-	
 	height: var(--boxContainerSize);
 	width: var(--boxContainerSize);
 
@@ -134,14 +134,21 @@ button:hover {
 	margin: 0;
 
 	border: none;
+	transition: all .2s;
 }
 
 .lettersContainer > input.isEmpty {
 	border: 1px solid var(--black);
 	border-radius: 3px;
-
 }
 
+.lettersContainer > input.selected, .lettersContainer > input.solved {
+	color: var(--black);
+}
+.lettersContainer > input.final {
+	color: var(--black);
+	font-weight: normal;
+}
 
 .circleContainer {
 	position: absolute;
@@ -170,17 +177,56 @@ button:hover {
 	border: 4px solid var(--black);
 	border-radius: 100%;
 
+	background-color: var(--pink3);
+	transition: all .2s;
+}
+.circleContainer .circle.solved {
 	background-color: var(--pink);
+	border-color: var(--pink3);
+}
+.circleContainer .circle.selected {
+	background-color: var(--black);
+	border-color: var(--pink);
+}
+.circleContainer .circle.final {
+	background-color: var(--pink);
+	border-color: var(--black);
 }
 
-
-.insideBox {
+.insideBox, .insideBoxBorder {
+	position: absolute;
 	background-color: var(--pink3);
 	margin: auto;
 	height: var(--insideBoxSize);
 	width: var(--insideBoxSize);
 	border: 5px solid var(--black);
 	border-radius: 3px;
+}
+.insideBoxBorder {
+	background-color: transparent;
+}
+
+#lineLayer {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+svg {
+	position: absolute;
+	stroke: var(--pink);
+	stroke-width: 5px;
+}
+
+@keyframes drawLine {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes fadeLines {
+	to {
+		stroke: var(--pink4);
+	}
 }
 
 .solutionBoxContainer {
@@ -205,6 +251,9 @@ button:hover {
 	margin: 0;
 	padding: 0;
 	margin-top: 5px;
+}
+#solutionBox p:hover {
+	background-color: var(--pink4);
 }
 
 #GhostCanvas {
@@ -268,7 +317,7 @@ button:hover {
 		height: 7px;
 	}
 
-	.insideBox {
+	.insideBox, .insideBoxBorder {
 		height: var(--insideBoxThreeQuarterSize);
 		width: var(--insideBoxThreeQuarterSize);
 	}

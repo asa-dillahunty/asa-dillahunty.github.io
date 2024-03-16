@@ -13,6 +13,10 @@
 		</header>
 		<main>
 			<div class="boxContainer">
+				<div class="insideBox"></div>
+				<div id="lineLayer"></div>
+				<div class="insideBoxBorder"></div>
+
 				<div class="circleContainer top"><div class="circle"></div><div class="circle"></div><div class="circle"></div></div>
 				<div class="circleContainer right"><div class="circle"></div><div class="circle"></div><div class="circle"></div></div>
 				<div class="circleContainer bottom"><div class="circle"></div><div class="circle"></div><div class="circle"></div></div>
@@ -38,14 +42,12 @@
 					<input class="letter-input isEmpty" type="text" pattern="[A-Za-z]" maxlength="1">
 					<input class="letter-input isEmpty" type="text" pattern="[A-Za-z]" maxlength="1">
 				</div>
-
-				<div class="insideBox"></div>
 			</div>
 
 			<button onclick="startSolve()">Solve</button>
 
 			<div class="solutionBoxContainer">
-				<p id="solutionBoxHeader">Solutions found: 0</p>
+				<p id="solutionBoxHeader">Select solve to begin solving</p>
 				<div id='solutionBox'>
 				</div>
 				<canvas id="GhostCanvas" width="266px" height="273px" style="display: none;margin: auto;"></canvas>

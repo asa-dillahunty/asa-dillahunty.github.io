@@ -15,6 +15,15 @@ function startSolve() {
 	});
 }
 
+// testFunc();
+function testFunc() {
+	const word = "creationplum";
+	const inputs = document.querySelectorAll('.letter-input');
+	for (let i=0;i<inputs.length;i++) {
+		inputs[i].value = word[i];
+	}
+}
+
 // returns true/false if solutions are found/not found
 async function solve() {
 	const letters = getLetters();
@@ -47,7 +56,10 @@ async function solve() {
 	}
 	displaySolutions(solutions);
 
-	if (solutions.length > 0) return true;
+	if (solutions.length > 0) {
+		drawWords(solutions[0]);
+		return true;
+	}
 	else return false;
 }
 
@@ -189,7 +201,12 @@ function displaySolutions(solutions) {
 	let solutionBlob = "";
 	const outputDiv = document.getElementById("solutionBox");
 	solutions.forEach((solution) => {
-		solutionBlob += "<p>";
+		solutionBlob += `<p onclick="drawWords([`;
+		for (let i=0;i<solution.length;i++) {
+			if (i !== 0) solutionBlob += ",";
+			solutionBlob += "'" + solution[i] + "'";
+		}
+		solutionBlob += `])">`
 		for (let i=0;i<solution.length;i++) {
 			if (i !== 0) solutionBlob += " | ";
 			solutionBlob += solution[i];
@@ -205,6 +222,115 @@ function displayIsInvalidPuzzle(reason) {
 
 	const outputDiv = document.getElementById("solutionBox");
 	outputDiv.innerHTML = "<p>"+reason+"</p>";
+}
+
+function displaySelectSolve() {
+	if (timeoutList.length > 1) clearDrawing();
+	const outputDivHeader = document.getElementById("solutionBoxHeader");
+	outputDivHeader.textContent = "Select solve to begin solving";
+
+	const outputDiv = document.getElementById("solutionBox");
+	outputDiv.innerHTML = "";
+}
+
+function setLetterState(circle, letter, delay, addState, removeState) {
+	timeoutList.push(
+		setTimeout(() => {
+			if (addState) {
+				circle.classList.add(addState);
+				letter.classList.add(addState);
+			}
+			if (removeState) {
+				circle.classList.remove(removeState);
+				letter.classList.remove(removeState);
+			}
+		}, delay)
+	);
+}
+
+function drawWords(words) {
+	// clean up before we start
+	clearDrawing();
+	const inputs = document.querySelectorAll('.letter-input');
+	const circles = document.querySelectorAll('.circle');
+	const list = { };
+	for (let i=0;i<inputs.length;i++) {
+		list[inputs[i].value] = circles[i].getBoundingClientRect();
+		list[inputs[i].value].index = i;
+	}
+	const drawTime = .5;
+
+	const lineLayer = document.getElementById('lineLayer');
+	const LLCords = lineLayer.getBoundingClientRect();
+	let lineBlob = '';
+	let letterCounter = 0;
+
+	let svgSize = 320;
+	let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+	if (vw <= 767) svgSize = Math.floor(svgSize*3/4);
+
+	for (let i=0;i<words.length;i++) {
+		const word = words[i];
+
+		setLetterState(circles[list[word[0]].index], inputs[list[word[0]].index], drawTime*(letterCounter)*1000, 'selected');
+
+		lineBlob +=`<svg width="${svgSize}" height="${svgSize}" style="animation: fadeLines .1s linear forwards; animation-delay:${drawTime*(letterCounter + word.length - 1)}s">`;
+		
+		for (let j=0;j<word.length;j++) {
+			// if not last word, skip last letter
+			if (i !== words.length - 1 && j === word.length - 1) continue;
+			setLetterState(circles[list[word[j]].index], inputs[list[word[j]].index], drawTime*(letterCounter + word.length - 1)*1000, 'final', 'solved');
+		}
+
+		for (let j=0;j<word.length-1;j++) {
+			const x1 = list[word[j]].x - LLCords.x + list[word[j]].width/2;
+			const y1 = list[word[j]].y - LLCords.y + list[word[j]].height/2;
+		
+			const x2 = list[word[j+1]].x - LLCords.x + list[word[j+1]].width/2;
+			const y2 = list[word[j+1]].y - LLCords.y + list[word[j+1]].height/2;
+
+			const lineLength = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+
+			lineBlob += `
+				<line x1=${x1} y1=${y1} x2=${x2} y2=${y2} 
+					style="
+						stroke-dasharray:${lineLength}; stroke-dashoffset:${lineLength}; 
+						animation: drawLine ${drawTime}s ease forwards; animation-delay: ${drawTime*letterCounter}s;"
+				/>
+			`;
+			letterCounter++;
+			setLetterState(circles[list[word[j]].index], inputs[list[word[j]].index], drawTime*(letterCounter)*1000, 'solved', 'selected');
+			setLetterState(circles[list[word[j+1]].index], inputs[list[word[j+1]].index], drawTime*(letterCounter)*1000, 'selected');
+		}
+		letterCounter++; // add a fake letter for a pause between words
+		lineBlob += `</svg>`;
+	}
+	lineLayer.innerHTML = lineBlob;
+}
+
+const timeoutList = [];
+function clearDrawing() {
+	// stop all timeouts from executing
+	for (let i=0;i<timeoutList.length;i++) {
+		clearTimeout(timeoutList[i]);
+	}
+	// clear timeout list
+	timeoutList.splice(0, timeoutList.length);
+
+	const lineLayer = document.getElementById('lineLayer');
+	lineLayer.innerHTML = "";
+
+	const inputs = document.querySelectorAll('.letter-input');
+	const circles = document.querySelectorAll('.circle');
+	for (let i=0;i<inputs.length;i++) {
+		// clear formatting before we start
+		inputs[i].classList.remove('final');
+		circles[i].classList.remove('final');
+		inputs[i].classList.remove('selected');
+		circles[i].classList.remove('selected');
+		inputs[i].classList.remove('solved');
+		circles[i].classList.remove('solved');
+	}
 }
 
 const MASSIVE_DICTIONARY = "dictionaries/massive_dictionary.json";
