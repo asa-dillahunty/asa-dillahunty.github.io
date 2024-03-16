@@ -19,16 +19,24 @@ function startSolve() {
 async function solve() {
 	const letters = getLetters();
 	const letterSet = getLetterSet(letters);
+	if (letterSet.size < 12) {
+		displaySolutions([]);
+		return false;
+	}
 	const forbiddenSequences = getForbiddenSequences(letters);
 
-	const dictionary = await getDictionary(letterSet, forbiddenSequences);
+	const scrabbleDictionary = await getDictionary(letterSet, forbiddenSequences, SCRABBLE_DICTIONARY);
+	const badDictionary = await getDictionary(letterSet, forbiddenSequences, MASSIVE_DICTIONARY);
 
 	let depth = 1; // start with a depth of 2 (after the ++)
 	let solutions = [];
 	while (solutions.length < 1) {
 		depth++;
 		if (depth > 4) break;
-		solutions = findSolutions(depth, dictionary);
+		solutions = findSolutions(depth, scrabbleDictionary);
+		if (depth > 2 && solutions.length < 1) {
+			solutions = findSolutions(depth - 1, badDictionary);
+		} 
 	}
 	displaySolutions(solutions);
 
@@ -53,32 +61,22 @@ function getLetters() {
 	return letters;
 }
 
-async function getDictionary(letterSet, forbiddenSequences) {
+async function getDictionary(letterSet, forbiddenSequences, filePath) {
 	const finalDict = {};
-	const filePath = "dictionaries/words_dictionary.json";
-
 
 	let response = await fetch(filePath);
 	if (!response.ok) {
 		throw new Error('Network response was not ok');
 	}
 
-	let dictionary = await response.json();
-	let words = Object.keys(dictionary);
+	const dictionary = await response.json();
 
 	// filter dictionary
-	words.forEach((word) => {
-		if (!canBuild(word, letterSet, forbiddenSequences)) {
-			delete dictionary[word];
+	dictionary.forEach((word) => {
+		if (canBuild(word, letterSet, forbiddenSequences)) {
+			if (!finalDict[word[0]]) finalDict[word[0]] = [];
+			finalDict[word[0]].push(word); 
 		}
-	});
-
-	// return filtered dictionary as array
-	words = Object.keys(dictionary);
-
-	alphabetArray.forEach((letter) => {
-		let wordList = words.filter( word => word.startsWith(letter));
-		if ( wordList.length > 0 ) finalDict[letter] = wordList;
 	});
 
 	return finalDict;
@@ -194,5 +192,6 @@ function displaySolutions(solutions) {
 	outputDiv.innerHTML = solutionBlob;
 }
 
-
+const MASSIVE_DICTIONARY = "dictionaries/massive_dictionary.json";
+const SCRABBLE_DICTIONARY = "dictionaries/benjamincrom_scrabble_dictionary.json";
 const alphabetArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
