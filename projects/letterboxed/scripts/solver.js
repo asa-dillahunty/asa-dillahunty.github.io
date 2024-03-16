@@ -269,7 +269,7 @@ function drawWords(words) {
 	const lineLayer = document.getElementById('lineLayer');
 	const LLCords = lineLayer.getBoundingClientRect();
 	let lineBlob = '';
-	let letterCounter = 0;
+	let letterCounter = 1;
 
 	let svgSize = 320;
 	let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -278,15 +278,11 @@ function drawWords(words) {
 	for (let i=0;i<words.length;i++) {
 		const word = words[i];
 
-		queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected');
+		// select the first letter
+		if (i > 0) queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected', 'final');
+		else queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected');
 
 		lineBlob +=`<svg width="${svgSize}" height="${svgSize}" style="animation: fadeLines .1s linear forwards; animation-delay:${drawTime*(letterCounter + word.length - 1)}s">`;
-		
-		for (let j=0;j<word.length;j++) {
-			// if not last word, skip last letter
-			if (i !== words.length - 1 && j === word.length - 1) continue;
-			queueStateChange(circles[list[word[j]].index], inputs[list[word[j]].index], letterCounter + word.length - 1, 'final', 'solved');
-		}
 
 		for (let j=0;j<word.length-1;j++) {
 			const x1 = list[word[j]].x - LLCords.x + list[word[j]].width/2;
@@ -306,18 +302,31 @@ function drawWords(words) {
 			`;
 			letterCounter++;
 			queueStateChange(circles[list[word[j]].index], inputs[list[word[j]].index], letterCounter, 'solved', 'selected');
-			queueStateChange(circles[list[word[j+1]].index], inputs[list[word[j+1]].index], letterCounter, 'selected');
+			queueStateChange(circles[list[word[j+1]].index], inputs[list[word[j+1]].index], letterCounter, 'selected', 'final');
 		}
+		
 		letterCounter++; // add a fake letter for a pause between words
 		lineBlob += `</svg>`;
+
+		// queue up the fade at the pause
+		for (let j=0;j<word.length;j++) {
+			// if not last word, skip last letter
+			if (i !== words.length - 1 && j === word.length - 1) continue;
+			queueStateChange(circles[list[word[j]].index], inputs[list[word[j]].index], letterCounter, 'final', 'solved');
+		}
+		// pause again
+		letterCounter++;
 	}
+	// set last letter to final
+	// const index = list[words[words.length - 1][words[words.length - 1].length - 1]].index;
+	// queueStateChange(circles[index], inputs[index], letterCounter, 'final','selected');
+
 	lineLayer.innerHTML = lineBlob;
 	drawingIntervalCounterMax = Math.max(...Object.keys(drawingSteps));
-	console.log(drawingIntervalCounterMax);
 
 	// start the interval =>
 	drawingInterval = setInterval( intervalStep, drawTime*1000);
-	intervalStep();
+	intervalStep(); // do step 0
 }
 
 function intervalStep() {
