@@ -285,6 +285,7 @@ function drawWords(words) {
 		console.log("Draw Checkpoint 3, iteration: ",i);
 
 		// select the first letter
+		console.log("circles",circles,"inputs",inputs,"list",list,"word",word,"letterCounter",letterCounter);
 		if (i > 0) queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected', 'final');
 		else queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected','');
 
