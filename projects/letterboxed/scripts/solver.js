@@ -245,7 +245,6 @@ function setLetterState(circle, letter, addState, removeState) {
 }
 
 function queueStateChange(circle, letter, delay, addState, removeState) {
-	console.log("Enter queue state change");
 	if (!drawingSteps[delay]) drawingSteps[delay] = []; 
 	drawingSteps[delay].push({
 		circle:circle,
@@ -253,11 +252,9 @@ function queueStateChange(circle, letter, delay, addState, removeState) {
 		addState:addState,
 		removeState:removeState
 	});
-	console.log("Exiting queue state change");
 }
 
 function drawWords(words) {
-	console.log("Entering Draw");
 	// clean up before we start
 	clearDrawing();
 	const inputs = document.querySelectorAll('.letter-input');
@@ -266,18 +263,9 @@ function drawWords(words) {
 	for (let i=0;i<inputs.length;i++) {
 		list[inputs[i].value] = circles[i].getBoundingClientRect();
 		list[inputs[i].value].index = i;
-
-		console.log(circles[i].getBoundingClientRect().x);
-	}
-	let keys = Object.keys(list);
-	for (let i=0;i<keys.length;i++) {
-		console.log(`Key: ${keys[i]}`);
-		console.log(list[keys[i]]);
-
 	}
 
-	const drawTime = .5;
-	console.log("Draw Checkpoint 1");
+	const drawTime = 5;
 
 	const lineLayer = document.getElementById('lineLayer');
 	const LLCords = lineLayer.getBoundingClientRect();
@@ -287,30 +275,17 @@ function drawWords(words) {
 	let svgSize = 320;
 	let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 	if (vw <= 767) svgSize = Math.floor(svgSize*3/4);
-	console.log("Draw Checkpoint 2");
 
 	for (let i=0;i<words.length;i++) {
 		const word = words[i];
-		console.log("Draw Checkpoint 3, iteration: ",i);
 
 		// select the first letter
-		console.log("circles",circles,"inputs",inputs,"list",list,"word",word,"letterCounter",letterCounter);
-		
-		console.log(word[0]);
-		console.log(list[word[0]]);
-		console.log(list[word[0]].index);
-		console.log(circles[list[word[0]].index])
-		console.log(inputs[list[word[0]].index])
-		
 		if (i > 0) queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected', 'final');
 		else queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected','');
 
-		console.log("Draw Checkpoint 3.1, iteration: ",i);
 		lineBlob +=`<svg width="${svgSize}" height="${svgSize}" style="animation: fadeLines .1s linear forwards; animation-delay:${drawTime*(letterCounter + word.length - 1)}s">`;
-		console.log("Draw Checkpoint 3.2, iteration: ",i);
 
 		for (let j=0;j<word.length-1;j++) {
-			console.log("Draw Checkpoint 4, iteration: ",j);
 			const x1 = list[word[j]].x - LLCords.x + list[word[j]].width/2;
 			const y1 = list[word[j]].y - LLCords.y + list[word[j]].height/2;
 		
@@ -347,14 +322,12 @@ function drawWords(words) {
 	// const index = list[words[words.length - 1][words[words.length - 1].length - 1]].index;
 	// queueStateChange(circles[index], inputs[index], letterCounter, 'final','selected');
 
-	console.log("Draw Checkpoint 5");
 	lineLayer.innerHTML = lineBlob;
 	drawingIntervalCounterMax = Math.max(...Object.keys(drawingSteps));
 
 	// start the interval =>
 	drawingInterval = setInterval( intervalStep, drawTime*1000);
 	intervalStep(); // do step 0
-	console.log("Exiting Draw");
 }
 
 function intervalStep() {
@@ -373,7 +346,6 @@ let drawingIntervalCounter = 0;
 let drawingIntervalCounterMax = 0;
 let drawingSteps = {};
 function clearDrawing() {
-	console.log("Entering Clear");
 	// stop all timeouts from executing
 	clearInterval(drawingInterval);
 	drawingIntervalCounter = 0;
@@ -394,7 +366,6 @@ function clearDrawing() {
 		inputs[i].classList.remove('solved');
 		circles[i].classList.remove('solved');
 	}
-	console.log("Exiting Clear");
 }
 
 const MASSIVE_DICTIONARY = "dictionaries/massive_dictionary.json";

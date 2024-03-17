@@ -28,6 +28,9 @@ inputs.forEach((input, index) => {
 			e.target.value = ''; // Clear the input value if it's not a letter
 		}
 		else {
+			// force lowercase letters
+			if (input.value = input.value.toLowerCase());
+
 			if (input.value !== '') input.classList.remove("isEmpty");
 			else input.classList.add('isEmpty');
 
