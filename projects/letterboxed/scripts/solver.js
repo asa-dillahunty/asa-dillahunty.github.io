@@ -286,8 +286,10 @@ function drawWords(words) {
 		if (i > 0) queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected', 'final');
 		else queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected');
 
+		console.log("Draw Checkpoint 3.1, iteration: ",i);
 		lineBlob +=`<svg width="${svgSize}" height="${svgSize}" style="animation: fadeLines .1s linear forwards; animation-delay:${drawTime*(letterCounter + word.length - 1)}s">`;
-
+		console.log("Draw Checkpoint 3.2, iteration: ",i);
+		
 		for (let j=0;j<word.length-1;j++) {
 			console.log("Draw Checkpoint 4, iteration: ",j);
 			const x1 = list[word[j]].x - LLCords.x + list[word[j]].width/2;
