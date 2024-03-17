@@ -265,7 +265,7 @@ function drawWords(words) {
 		list[inputs[i].value].index = i;
 	}
 
-	const drawTime = 5;
+	const drawTime = .5;
 
 	const lineLayer = document.getElementById('lineLayer');
 	const LLCords = lineLayer.getBoundingClientRect();
