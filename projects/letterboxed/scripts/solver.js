@@ -266,7 +266,16 @@ function drawWords(words) {
 	for (let i=0;i<inputs.length;i++) {
 		list[inputs[i].value] = circles[i].getBoundingClientRect();
 		list[inputs[i].value].index = i;
+
+		console.log(circles[i].getBoundingClientRect().x);
 	}
+	let keys = Object.keys(list);
+	for (let i=0;i<keys.length;i++) {
+		console.log(`Key: ${keys[i]}`);
+		console.log(list[keys[i]]);
+
+	}
+
 	const drawTime = .5;
 	console.log("Draw Checkpoint 1");
 
@@ -286,11 +295,13 @@ function drawWords(words) {
 
 		// select the first letter
 		console.log("circles",circles,"inputs",inputs,"list",list,"word",word,"letterCounter",letterCounter);
+		
 		console.log(word[0]);
 		console.log(list[word[0]]);
 		console.log(list[word[0]].index);
 		console.log(circles[list[word[0]].index])
 		console.log(inputs[list[word[0]].index])
+		
 		if (i > 0) queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected', 'final');
 		else queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected','');
 
