@@ -15,7 +15,8 @@ body {
 	--pink:#FAA6A4;
 	--pink2:#ff8f8d;
 	--pink3:rgb(255, 246, 246);
-	--pink4:#FCCECD;
+	--pink4:#ff747198;
+	--pink5: #FFD7D6;
 
 	display: flex;
 	align-items: center;
@@ -39,7 +40,8 @@ body.static {
 	--pink:#85ea98;
 	--pink2:#3936dc;
 	--pink3:#184a89;
-	--pink4:#8df7ff;
+	--pink4:#8df7ff98;
+	--pink5: #FFD7D6;
 }
 
 header {
@@ -109,6 +111,15 @@ button {
 
 button:hover {
 	background-color: var(--pink3);
+}
+
+#advancedOptions {
+	display: none;
+}
+.static #advancedOptions {
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
 }
 
 .boxContainer {
@@ -239,19 +250,12 @@ button:hover {
 
 svg {
 	position: absolute;
-	stroke: var(--pink);
+	stroke: var(--pink4);
 	stroke-width: 5px;
+	transition: all .1s;
 }
-
-@keyframes drawLine {
-	to {
-		stroke-dashoffset: 0;
-	}
-}
-@keyframes fadeLines {
-	to {
-		stroke: var(--pink4);
-	}
+svg.final {
+	stroke: var(--pink5);
 }
 
 .solutionBoxContainer {
@@ -281,7 +285,7 @@ svg {
 	cursor: pointer;
 }
 #solutionBox p.selected {
-	background-color: var(--pink4);
+	background-color: var(--pink);
 }
 
 #GhostCanvas {

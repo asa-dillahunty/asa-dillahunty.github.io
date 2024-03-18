@@ -44,3 +44,14 @@ inputs.forEach((input, index) => {
 		displaySelectSolve();
 	});
 });
+
+// also grab our advanced options and set those up
+const dictionaryList = [MASSIVE_DICTIONARY,SCRABBLE_DICTIONARY];
+const dictSelect = document.querySelector("#advancedOptions select");
+let optionBlob = '';
+for (let i=0;i<dictionaryList.length;i++) {
+	const start = "dictionaries/".length;
+	const end = dictionaryList[i].length - ".json".length;
+	optionBlob += `<option value="${dictionaryList[i]}">${dictionaryList[i].substring(start,end)}</option>`
+}
+dictSelect.innerHTML = optionBlob;

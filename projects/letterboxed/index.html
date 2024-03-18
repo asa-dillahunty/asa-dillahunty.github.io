@@ -46,6 +46,15 @@
 			</div>
 
 			<button onclick="startSolve()">Solve</button>
+			<div id="advancedOptions">
+				<label for="minDepth">Min Depth</label>
+				<input name="minDepth" id="minDepth" type="number">
+				<label for="maxDepth">Max Depth</label>
+				<input name="maxDepth" id="maxDepth" type="number">
+				<label for="dictionary">Dictionary</label>
+				<select name="dictionary" id="dictionary"></select>
+
+			</div>
 
 			<div class="solutionBoxContainer">
 				<p id="solutionBoxHeader">Select solve to begin solving</p>
@@ -55,8 +64,8 @@
 			</div>
 		</main>
 	</body>
-	<script src="scripts/setupInputs.js"></script>
 	<script src="scripts/solver.js"></script>
+	<script src="scripts/setupInputs.js"></script>
 	<script src="scripts/animateGhost.js"></script>
 	<script src="scripts/simpleKonami.js"></script>
 </html>

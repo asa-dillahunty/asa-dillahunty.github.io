@@ -41,18 +41,32 @@ async function solve() {
 	}
 	const forbiddenSequences = getForbiddenSequences(letters);
 
-	const scrabbleDictionary = await getDictionary(letterSet, forbiddenSequences, SCRABBLE_DICTIONARY);
-	const badDictionary = await getDictionary(letterSet, forbiddenSequences, MASSIVE_DICTIONARY);
-
 	let depth = 1; // start with a depth of 2 (after the ++)
 	let solutions = [];
-	while (solutions.length < 1) {
-		depth++;
-		if (depth > 4) break;
-		solutions = findSolutions(depth, scrabbleDictionary);
-		if (depth > 2 && solutions.length < 1) {
-			solutions = findSolutions(depth - 1, badDictionary);
-		} 
+	const customValues = getCustomValues();
+	if (isNormal !== undefined && isNormal === false && customValues !== false) {
+		// do the static option
+		// grab depth from the user	
+		const customDictionary = await getDictionary(letterSet,forbiddenSequences,customValues.dictionaryName);
+		depth = customValues.minDepth - 1;
+		while (solutions.length < 1) {
+			depth++;
+			if (depth > customValues.maxDepth) break;
+			solutions = findSolutions(depth, customDictionary);
+		}
+	}
+	else { // normal, standard option
+		const scrabbleDictionary = await getDictionary(letterSet, forbiddenSequences, SCRABBLE_DICTIONARY);
+		const badDictionary = await getDictionary(letterSet, forbiddenSequences, MASSIVE_DICTIONARY);
+
+		while (solutions.length < 1) {
+			depth++;
+			if (depth > 4) break;
+			solutions = findSolutions(depth, scrabbleDictionary);
+			if (depth > 2 && solutions.length < 1) {
+				solutions = findSolutions(depth - 1, badDictionary);
+			} 
+		}
 	}
 	displaySolutions(solutions);
 
@@ -79,6 +93,18 @@ function getLetters() {
 
 	const letters = [top,right,bottom,left];
 	return letters;
+}
+
+function getCustomValues() {
+	const customValues = {
+		maxDepth: document.getElementById("maxDepth").value,
+		minDepth: document.getElementById("minDepth").value,
+		dictionaryName: document.getElementById("dictionary").value
+	};
+	if (customValues.maxDepth === '') return false;
+	if (customValues.minDepth === '') return false;
+	if (customValues.dictionaryName === '') return false;
+	return customValues;
 }
 
 async function getDictionary(letterSet, forbiddenSequences, filePath) {
@@ -256,7 +282,15 @@ function queueStateChange(circle, letter, delay, addState, removeState) {
 		circle:circle,
 		letter:letter,
 		addState:addState,
-		removeState:removeState
+		removeState:removeState,
+	});
+}
+
+function queueLineDraw(delay,svgIndex,lineIndex,color) {
+	if (!drawingSteps[delay]) drawingSteps[delay] = []; 
+	drawingSteps[delay].push({
+		svgIndex:svgIndex,
+		lineIndex,lineIndex
 	});
 }
 
@@ -290,7 +324,8 @@ function drawWords(words) {
 		if (i > 0) queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected', 'final');
 		else queueStateChange(circles[list[word[0]].index], inputs[list[word[0]].index], letterCounter, 'selected','');
 
-		lineBlob +=`<svg width="${svgSize}" height="${svgSize}" style="animation: fadeLines .1s linear forwards; animation-delay:${drawTime*(letterCounter + word.length - 1)}s">`;
+		lineBlob +=`<svg width="${svgSize}" height="${svgSize}">`;
+		queueLineDraw(letterCounter + word.length - 1,i);
 
 		for (let j=0;j<word.length-1;j++) {
 			const x1 = list[word[j]].x - LLCords.x + list[word[j]].width/2;
@@ -302,12 +337,13 @@ function drawWords(words) {
 			const lineLength = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 
 			lineBlob += `
-				<line x1=${x1} y1=${y1} x2=${x2} y2=${y2} 
+				<line x1=${x1} y1=${y1} x2=${x2} y2=${y2}
 					style="
 						stroke-dasharray:${lineLength}; stroke-dashoffset:${lineLength}; 
-						animation: drawLine ${drawTime}s ease forwards; animation-delay: ${drawTime*letterCounter}s;"
+						transition: all ${drawTime}s;"
 				/>
 			`;
+			queueLineDraw(letterCounter,i,j);
 			letterCounter++;
 			queueStateChange(circles[list[word[j]].index], inputs[list[word[j]].index], letterCounter, 'solved', 'selected');
 			queueStateChange(circles[list[word[j+1]].index], inputs[list[word[j+1]].index], letterCounter, 'selected', 'final');
@@ -339,7 +375,16 @@ function intervalStep() {
 	if (drawingSteps[drawingIntervalCounter]) {
 		for (let i=0;i<drawingSteps[drawingIntervalCounter].length;i++) {
 			const instructions = drawingSteps[drawingIntervalCounter][i];
-			setLetterState( instructions.circle, instructions.letter, instructions.addState, instructions.removeState );
+			if (instructions.circle) setLetterState( instructions.circle, instructions.letter, instructions.addState, instructions.removeState );
+			else if (instructions.lineIndex !== undefined) { // check against undefined here for when index === 0
+				const svgElem = document.querySelectorAll("#lineLayer svg")[instructions.svgIndex];
+				const lineElem = svgElem.querySelectorAll("line")[instructions.lineIndex];
+				lineElem.style.strokeDashoffset = 0;
+			}
+			else {
+				const svgElem = document.querySelectorAll("#lineLayer svg")[instructions.svgIndex];
+				svgElem.classList.add("final");
+			}
 		}
 	}
 	drawingIntervalCounter++;
@@ -370,6 +415,8 @@ function clearDrawing() {
 		inputs[i].classList.remove('solved');
 		circles[i].classList.remove('solved');
 	}
+
+	setCurrentSolutionText([]);
 }
 
 function setCurrentSolutionText(words) {
