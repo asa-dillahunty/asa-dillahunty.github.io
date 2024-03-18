@@ -57,6 +57,7 @@ async function solve() {
 	displaySolutions(solutions);
 
 	if (solutions.length > 0) {
+		setCurrentSolutionTextSelected(0);
 		drawWords(solutions[0]);
 		return true;
 	}
@@ -195,24 +196,29 @@ function findSolutionHelper(solutionArray, currSolution, depth, dictionary, star
 }
 
 function displaySolutions(solutions) {
+	/* the logic needed for each <p>'s onclick
+		drawWords( the solution );
+		setCurrentSolutionTextSelected( index of the solution );
+	*/
 	const outputDivHeader = document.getElementById("solutionBoxHeader");
 	outputDivHeader.textContent = "Solutions found: " + solutions.length;
 
 	let solutionBlob = "";
 	const outputDiv = document.getElementById("solutionBox");
-	solutions.forEach((solution) => {
-		solutionBlob += `<p onclick="drawWords([`;
+	for (let i=0;i<solutions.length;i++) {
+		const solution = solutions[i];
+		solutionBlob += `<p onclick="setCurrentSolutionTextSelected(${i}); drawWords([`
 		for (let i=0;i<solution.length;i++) {
 			if (i !== 0) solutionBlob += ",";
 			solutionBlob += "'" + solution[i] + "'";
 		}
-		solutionBlob += `])">`
+		solutionBlob += `]);">`
 		for (let i=0;i<solution.length;i++) {
 			if (i !== 0) solutionBlob += " | ";
 			solutionBlob += solution[i];
 		}
 		solutionBlob += "</p>";
-	});
+	}
 	outputDiv.innerHTML = solutionBlob;
 }
 
@@ -257,6 +263,7 @@ function queueStateChange(circle, letter, delay, addState, removeState) {
 function drawWords(words) {
 	// clean up before we start
 	clearDrawing();
+	setCurrentSolutionText(words);
 	const inputs = document.querySelectorAll('.letter-input');
 	const circles = document.querySelectorAll('.circle');
 	const list = { };
@@ -305,7 +312,6 @@ function drawWords(words) {
 			queueStateChange(circles[list[word[j]].index], inputs[list[word[j]].index], letterCounter, 'solved', 'selected');
 			queueStateChange(circles[list[word[j+1]].index], inputs[list[word[j+1]].index], letterCounter, 'selected', 'final');
 		}
-		
 		letterCounter++; // add a fake letter for a pause between words
 		lineBlob += `</svg>`;
 
@@ -318,16 +324,14 @@ function drawWords(words) {
 		// pause again
 		letterCounter++;
 	}
-	// set last letter to final
-	// const index = list[words[words.length - 1][words[words.length - 1].length - 1]].index;
-	// queueStateChange(circles[index], inputs[index], letterCounter, 'final','selected');
 
-	lineLayer.innerHTML = lineBlob;
 	drawingIntervalCounterMax = Math.max(...Object.keys(drawingSteps));
-
+	
 	// start the interval =>
 	drawingInterval = setInterval( intervalStep, drawTime*1000);
 	intervalStep(); // do step 0
+
+	lineLayer.innerHTML = lineBlob;
 }
 
 function intervalStep() {
@@ -366,6 +370,22 @@ function clearDrawing() {
 		inputs[i].classList.remove('solved');
 		circles[i].classList.remove('solved');
 	}
+}
+
+function setCurrentSolutionText(words) {
+	let wordBlob = "";
+	for (let i=0;i<words.length;i++) {
+		if (i > 0) wordBlob += " - ";
+		wordBlob += words[i];
+	}
+	document.getElementById("current-solution").textContent = wordBlob;
+}
+
+function setCurrentSolutionTextSelected(index) {
+	const previousSolution = document.querySelector("#solutionBox > .selected");
+	if (previousSolution) previousSolution.classList.remove("selected");
+	// new solution
+	document.querySelectorAll("#solutionBox > p")[index].classList.add("selected");
 }
 
 const MASSIVE_DICTIONARY = "dictionaries/massive_dictionary.json";

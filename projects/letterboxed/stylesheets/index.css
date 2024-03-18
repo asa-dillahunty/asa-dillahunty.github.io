@@ -34,6 +34,14 @@ body {
 	font-family: 'cambria', serif;
 }
 
+body.static {
+	--black:#e7fbea;
+	--pink:#85ea98;
+	--pink2:#3936dc;
+	--pink3:#184a89;
+	--pink4:#8df7ff;
+}
+
 header {
 	display: flex;
 	align-items: center;
@@ -46,7 +54,8 @@ header {
 	font-family: 'cambria', serif;
 	border-bottom: 3px solid var(--black);
 
-	margin-bottom: 30px;
+	margin-bottom: 0;
+	padding: 0;
 }
 
 h1, h2 {
@@ -66,8 +75,24 @@ main {
 
 	flex-direction: column;
 
-	padding-top: 30px;
+	padding-top: 0px;
 	padding-bottom: 30px;
+}
+
+p#current-solution {
+	font-size: 20px;
+	margin: 0;
+	padding: 10px;
+	padding-bottom: 15px;
+	min-height: 45px;
+	/* background-color: #184a89; */
+	
+	text-transform: uppercase;
+	text-align: center;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: bold;
+	
+	max-width: var(--boxContainerSize);
 }
 
 button {
@@ -121,7 +146,7 @@ button:hover {
 
 .lettersContainer > input {
 	font-size: 28px;
-	text-transform: capitalize;
+	text-transform: uppercase;
 	text-align: center;
 	color: var(--pink3);
 
@@ -253,6 +278,9 @@ svg {
 	margin-top: 5px;
 }
 #solutionBox p:hover {
+	cursor: pointer;
+}
+#solutionBox p.selected {
 	background-color: var(--pink4);
 }
 
