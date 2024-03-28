@@ -113,6 +113,13 @@ button:hover {
 	background-color: var(--pink3);
 }
 
+#todayPuzzle {
+	display: none;
+}
+.static #todayPuzzle {
+	display: inherit;
+}
+
 #advancedOptions {
 	display: none;
 }
