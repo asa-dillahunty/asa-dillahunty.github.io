@@ -21,7 +21,7 @@ function newSprite(imageWidth, imageHeight, imageURL, frameArray) {
 	return sprite;
 }
 
-const Ghost = newSprite(38,39,"./images/confusedGhost.png",[0,1])
+const Ghost = newSprite(38,39,"https://www.asadillahunty.com/images/confusedGhost.png",[0,1])
 
 context.imageSmoothingEnabled = false;
 
