@@ -140,104 +140,147 @@ const teamComposition = [
 const scoringArray = [150, 125, 100, 60, 50, 40, 35, 30, 15, 12, 10, 10, 10, 5, 5, 5, 5, 3, 1, -25];
 
 const allRounds = [];
-const mensBoulderSemis = [
-    {"athlete_name": "ANRAKU Sorato", "total_score": 69.0},
-    {"athlete_name": "NARASAKI Tomoa", "total_score": 54.4},
-    {"athlete_name": "ROBERTS Toby", "total_score": 54.1},
-    {"athlete_name": "AVEZOU Sam", "total_score": 49.2},
-    {"athlete_name": "ONDRA Adam", "total_score": 48.7},
-    {"athlete_name": "SCHUBERT Jakob", "total_score": 44.7},
-    {"athlete_name": "Van DUYSEN Hannes", "total_score": 34.3},
-    {"athlete_name": "McARTHUR Hamish", "total_score": 34.2},
-    {"athlete_name": "JENFT Paul", "total_score": 34.1},
-    {"athlete_name": "LEE Dohyun", "total_score": 34.0},
-    {"athlete_name": "DUFFY Colin", "total_score": 33.8},
-    {"athlete_name": "FLOHE Yannick", "total_score": 29.7},
-    {"athlete_name": "PAN Yufei", "total_score": 29.0},
-    {"athlete_name": "GINES LOPEZ Alberto", "total_score": 28.7},
-    {"athlete_name": "MEGOS Alexander", "total_score": 24.7},
-    {"athlete_name": "LEHMANN Sascha", "total_score": 24.0},
-    {"athlete_name": "POTOCAR Luka", "total_score": 19.6},
-    {"athlete_name": "GRUPPER Jesse", "total_score": 18.9},
-    {"athlete_name": "HARRISON Campbell", "total_score": 9.4},
-    {"athlete_name": "JANSE van RENSBURG Mel", "total_score": 9.4}
-];
+const mensBoulderSemis = {
+    name:"MBS",
+    results: [
+        {"athlete_name": "ANRAKU Sorato", "total_score": 69.0},
+        {"athlete_name": "NARASAKI Tomoa", "total_score": 54.4},
+        {"athlete_name": "ROBERTS Toby", "total_score": 54.1},
+        {"athlete_name": "AVEZOU Sam", "total_score": 49.2},
+        {"athlete_name": "ONDRA Adam", "total_score": 48.7},
+        {"athlete_name": "SCHUBERT Jakob", "total_score": 44.7},
+        {"athlete_name": "Van DUYSEN Hannes", "total_score": 34.3},
+        {"athlete_name": "McARTHUR Hamish", "total_score": 34.2},
+        {"athlete_name": "JENFT Paul", "total_score": 34.1},
+        {"athlete_name": "LEE Dohyun", "total_score": 34.0},
+        {"athlete_name": "DUFFY Colin", "total_score": 33.8},
+        {"athlete_name": "FLOHE Yannick", "total_score": 29.7},
+        {"athlete_name": "PAN Yufei", "total_score": 29.0},
+        {"athlete_name": "GINES LOPEZ Alberto", "total_score": 28.7},
+        {"athlete_name": "MEGOS Alexander", "total_score": 24.7},
+        {"athlete_name": "LEHMANN Sascha", "total_score": 24.0},
+        {"athlete_name": "POTOCAR Luka", "total_score": 19.6},
+        {"athlete_name": "GRUPPER Jesse", "total_score": 18.9},
+        {"athlete_name": "HARRISON Campbell", "total_score": 9.4},
+        {"athlete_name": "JANSE van RENSBURG Mel", "total_score": 9.4}
+    ]
+};
+
+const mb2w = {
+    name:"MBS2",
+    results: [
+        {"athlete_name": "LEHMANN Sascha", "total_score": 1020.0},
+    ]
+};
+allRounds.push(mensBoulderSemis);
+// allRounds.push(mb2w);
 // mensBoulderSemis.push({"athlete_name":"LEHMANN Sascha", "total_score":100})
 
-function calculateTeamScores(results, teams, scoringArray) {
-    const aggregatedScores = results.reduce((acc, athlete) => {
-        if (!acc[athlete.athlete_name]) {
-            acc[athlete.athlete_name] = 0;
-        }
-        acc[athlete.athlete_name] += athlete.total_score;
-        return acc;
-    }, {});
+function calculateScores(rounds, teams, scoringArray) {
+    // Aggregate scores for each athlete across all rounds
+    const athleteScores = {};
+
+    rounds.forEach(round => {
+        // console.log(round);
+        round.results.forEach(result => {
+            const leetName = result.athlete_name.toLowerCase();
+            if (!athleteScores[leetName]) {
+                athleteScores[leetName] = { total_score: 0, rounds: {} };
+            }
+            athleteScores[leetName].total_score += result.total_score;
+            athleteScores[leetName].rounds[round.name] = result.total_score;
+        });
+    });
+
+    // console.log(athleteScores)
 
     // Convert the aggregated scores to an array of objects
-    const aggregatedResults = Object.keys(aggregatedScores).map(athlete_name => ({
+    const aggregatedResults = Object.keys(athleteScores).map(athlete_name => ({
         athlete_name,
-        total_score: aggregatedScores[athlete_name]
+        total_score: athleteScores[athlete_name].total_score,
+        rounds: athleteScores[athlete_name].rounds
     }));
 
     // Sort the aggregated results by total score in descending order
     const sortedResults = aggregatedResults.sort((a, b) => b.total_score - a.total_score);
 
-    // Create a map of athlete names to scores
-    const athleteScores = sortedResults.reduce((acc, athlete, index) => {
-        acc[athlete.athlete_name.toLowerCase()] = scoringArray[index] || 0;
+    // Create a map of athlete names to scores based on ranking
+    const athleteRankings = sortedResults.reduce((acc, athlete, index) => {
+        acc[athlete.athlete_name] = {
+            score: scoringArray[index] || 0,
+            rounds: athlete.rounds
+        };
         return acc;
     }, {});
 
-    console.log(athleteScores);
-
-    // Calculate team scores
-    const teamScores = teams.map(team => {
-        let totalScore = 0;
-        const athletes = [];
-        team.competitors.forEach(competitor => {
-            const competitor_name_lower = competitor.toLowerCase();
-
-            
-            if (athleteScores[competitor_name_lower]) {
-                athletes.push({ name:competitor_name_lower, score: athleteScores[competitor_name_lower] });
-                totalScore += athleteScores[competitor_name_lower];
-            }
-            else {
-                athletes.push({ name:competitor_name_lower, score: 0 });
-            }
+    // Calculate team scores and structure the final output
+    const finalTeams = teams.map(team => {
+        let calculated_score = 0;
+        const athletes = team.competitors.map(competitor => {
+            const lowCompetitor = competitor.toLowerCase();
+            const athleteData = athleteRankings[lowCompetitor] || { score: 0, rounds: {} };
+            calculated_score += athleteData.score;
+            return {
+                name: lowCompetitor,
+                rounds: athleteData.rounds,
+                points: athleteData.score
+            };
         });
-        return { team_name: team.team_name, score: totalScore, athletes: athletes};
+        const sortedAthletes = athletes.sort((a, b) => b.points - a.points);
+        return {
+            name: team.team_name,
+            calculated_score,
+            athletes:sortedAthletes
+        };
     });
 
-    return teamScores;
+    const sortedTeams = finalTeams.sort((a, b) => b.calculated_score - a.calculated_score);
+    return sortedTeams;
 }
 
-const teamScores = calculateTeamScores(mensBoulderSemis, teamComposition, scoringArray);
-const sortedTeams = teamScores.sort((a, b) => b.score - a.score);
+// const finalTeams = calculateScores(allRounds, teamComposition, scoringArray);
+// console.log(finalTeams);
+// console.log(finalTeams[0].athletes[0]);
 
-const medalSrc = ["gold","silver","bronze"];
-const placeTitle = ["1st","2nd","3rd","4th"];
-let htmlCode = "";
-for (let i=0; i<teamScores.length; i++) {
-    const currTeam = teamScores[i];
-    htmlCode += `<details class="${currTeam.team_name}">`
-    // do stuff
-    htmlCode += `<summary>${i < 3 ? `<img src="${medalSrc[i]}.JPG" />`: "<div class='fake-medal'></div>"}
-        <div class="placement">${placeTitle[i]}</div>
-        <div class="team-name">${currTeam.team_name}</div>
-        <div class="team-point-total">${currTeam.score}</div>
-    </summary>`;
+// console.log(getHTMLResults());
+// getHTMLResults();
 
-    const sortedAthletes = currTeam.athletes.sort((a, b) => b.score - a.score);
+function getHTMLResults() {
 
-    for (let j=0;j<sortedAthletes.length;j++) {
-        const athlete = sortedAthletes[j];
-        htmlCode += `<div class="athlete">
-            <div class="name">${athlete.name}</div>
-            <div class="athlete-score">${athlete.score}</div>
-        </div>`;
+    const teamScores = calculateScores(allRounds, teamComposition, scoringArray);
+
+    const medalSrc = ["gold","silver","bronze"];
+    const placeTitle = ["1st","2nd","3rd","4th"];
+    let htmlCode = "";
+    for (let i=0; i<teamScores.length; i++) {
+        const currTeam = teamScores[i];
+        htmlCode += `<details class="${currTeam.name}">`
+        // do stuff
+        htmlCode += `<summary>${i < 3 ? `<img src="./climbing/${medalSrc[i]}.JPG" />`: "<div class='fake-medal'></div>"}
+            <div class="placement">${placeTitle[i]}</div>
+            <div class="team-name">${currTeam.name}</div>
+            <div class="team-point-total">${currTeam.calculated_score}</div>
+        </summary>`;
+
+        const sortedAthletes = currTeam.athletes.sort((a, b) => b.score - a.score);
+
+        for (let j=0;j<sortedAthletes.length;j++) {
+            const athlete = sortedAthletes[j];
+            htmlCode += `<div class="athlete">
+                <div class="name">${athlete.name}</div>
+                <div class="athlete-score">${athlete.points}</div>
+            </div>`;
+        }
+
+        htmlCode += `</details>`;
     }
-
-    htmlCode += `</details>`;
+    return htmlCode;
 }
-console.log(htmlCode);
+
+function sumResults(arr) {
+    if (!arr) return 0;
+    else return Object.values(arr).reduce((acc, value) => acc + value, 0);
+}
+
+const teamList = document.getElementById("teams-list");
+if (teamList) teamList.innerHTML = getHTMLResults();
