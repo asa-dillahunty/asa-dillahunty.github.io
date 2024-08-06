@@ -6,7 +6,7 @@
 		<title>Current Standings</title>
 
 		<style media="screen">
-			:root { --og-theme-color:#ffa100; --theme-color:rgb(16, 0, 161); --medal-width:20px}
+			:root { --og-theme-color:#ffa100; --theme-color:rgb(21, 62, 166); --medal-width:20px; scroll-behavior: smooth;}
 			body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
 			#message { background: white; max-width: 380px; margin: 100px auto 16px; padding: 32px 24px 16px; border-radius: 3px; }
 			#message h3 { color: #888; font-weight: normal; font-size: 16px; margin: 16px 0 12px; }
@@ -27,7 +27,7 @@
 			summary::marker {display: none;}
 			details {list-style-type: none; list-style: none;}
 			* {list-style-type: none; list-style: none;}
-            /* #message > span > details > summary { display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-items: center;} */
+			/* #message > span > details > summary { display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-items: center;} */
 			#message > span { font-family: 'Courier New', Courier, monospace; font-weight: bold; }
 			div.athlete { display: grid; grid-template-columns: 1fr 60px; gap: 10px; padding-left: 30px; }
 			div.athlete .name { text-transform: capitalize; }
@@ -40,6 +40,16 @@
 			.Ray .team-name { background-color:azure; }
 			.Dill .team-name { background-color:rgb(220, 255, 250); }
 			/* summary {  } */
+
+			#menu { display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
+			#menu a { padding: 16px 0px; font-weight: bold; background-color: var(--theme-color); font-size: 12px;}
+			a::selection { background-color: red; }
+
+			.tab-content { display: none; text-transform: capitalize; font-family: 'Courier New', Courier, monospace; }
+			.tab-content ul { padding-left: 0; }
+			.tab-content:target { display: block; background-color: transparent; }
+			.tab-content li {display: grid; grid-template-columns: 1fr 48px; }
+			.rankings li { font-size: 14px; }
 		</style>
 	</head>
 	<body>
@@ -47,14 +57,25 @@
 			<h2>Olympics Combined Climbing 2024</h2>
 			<h1>Current Standings</h1>
 
-            <span id="teams-list">
-            </span>
+			<span id="teams-list">
+			</span>
 
-			<p>Last updated 8/5 5:50 AM</p>
+			<ul id="menu">
+				<li><a href="#tab1">Men's Rankings</a></li>
+				<li><a href="#tab2">Women's Rankings</a></li>
+			</ul>
+			<div id="tab1" class="tab-content">
+				<span id="mens-ranking">Men's Ranking</span>
+			</div>
+			<div id="tab2" class="tab-content">
+				<span id="womens-ranking">Women's Ranking</span>
+			</div>
 
-			<canvas id="GhostCanvas" width="266px" height="273px" style="display: none;margin: auto;"></canvas>
+			<p>Last updated 8/6 3:06 PM</p>
+
+			<!-- <canvas id="GhostCanvas" width="266px" height="273px" style="display: none;margin: auto;"></canvas> -->
 		</div>
 	</body>
 	<script src="./climbing/scoring.js"></script>
-	<script src="../scripts/animateGhost.js"></script>
+	<!-- <script src="../scripts/animateGhost.js"></script> -->
 </html>
