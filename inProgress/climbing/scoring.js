@@ -322,6 +322,8 @@ function calculateScores(rounds, teams, scoringArray) {
     // Calculate team scores and structure the final output
     const finalTeams = teams.map(team => {
         let calculated_score = 0;
+        if (team.team_name === "Mitt") calculated_score -= 400;
+
         const athletes = team.competitors.map(competitor => {
             const lowCompetitor = competitor.toLowerCase();
             const athleteData = athleteRankings[lowCompetitor] || { score: 0, rounds: {} };
@@ -339,6 +341,7 @@ function calculateScores(rounds, teams, scoringArray) {
             athletes:sortedAthletes
         };
     });
+    console.log(finalTeams);
 
     const sortedTeams = finalTeams.sort((a, b) => b.calculated_score - a.calculated_score);
     return sortedTeams;
@@ -375,6 +378,12 @@ function getHTMLResults() {
             htmlCode += `<div class="athlete">
                 <div class="name">${athlete.name}</div>
                 <div class="athlete-score">${athlete.points}</div>
+            </div>`;
+        }
+        if (currTeam.name === "Mitt") {
+            htmlCode += `<div class="athlete">
+                <div class="name">Egregious Behavior</div>
+                <div class="athlete-score">-400</div>
             </div>`;
         }
 
