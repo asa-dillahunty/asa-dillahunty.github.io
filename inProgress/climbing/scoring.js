@@ -200,9 +200,36 @@ const womensBoulderSemis = {
     ]
 }
 
+const mensLeadSemis = {
+    category: categoryNames.MENS_SEMIS,
+    name:"Mens Lead Semis",
+    results: [
+        {"athlete_name": "ANRAKU Sorato", "total_score": 68},
+        {"athlete_name": "ROBERTS Toby", "total_score": 68.1},
+        {"athlete_name": "ONDRA Adam", "total_score": 68.1},
+        {"athlete_name": "GINES LOPEZ Alberto", "total_score": 72},
+        {"athlete_name": "SCHUBERT Jakob", "total_score": 54.1},
+        {"athlete_name": "JENFT Paul", "total_score": 57},
+        {"athlete_name": "DUFFY Colin", "total_score": 54.1},
+        {"athlete_name": "McARTHUR Hamish", "total_score": 45.1},
+        {"athlete_name": "FLOHE Yannick", "total_score": 39.1},
+        {"athlete_name": "NARASAKI Tomoa", "total_score": 12.1},
+        {"athlete_name": "AVEZOU Sam", "total_score": 12.1},
+        {"athlete_name": "PAN Yufei", "total_score": 30.1},
+        {"athlete_name": "MEGOS Alexander", "total_score": 24},
+        {"athlete_name": "Van DUYSEN Hannes", "total_score": 12},
+        {"athlete_name": "LEE Dohyun", "total_score": 12},
+        {"athlete_name": "POTOCAR Luka", "total_score": 24},
+        {"athlete_name": "LEHMANN Sascha", "total_score": 12.1},
+        {"athlete_name": "GRUPPER Jesse", "total_score": 12},
+        {"athlete_name": "HARRISON Campbell", "total_score": 14},
+        {"athlete_name": "JANSE van RENSBURG Mel", "total_score": 7.1}
+    ]
+};
 
 allRounds.push(mensBoulderSemis);
 allRounds.push(womensBoulderSemis);
+allRounds.push(mensLeadSemis);
 
 function mergeRankings(rounds, semisCategory, finalsCategory) {
     const semisRankings = getCategoryRankings(rounds, semisCategory);
@@ -248,39 +275,17 @@ function getCategoryRankings(rounds, category) {
 }
 
 function getRank(athleteName, rounds) {
-    // Aggregate scores for each athlete in the specified category
-    const categoryScores = rounds.reduce((acc, round) => {
-        round.results.forEach(result => {
-            if (result.athlete_name.toLowerCase() === athleteName.toLowerCase()) {
-                if (!acc[round.category]) {
-                    acc[round.category] = 0;
-                }
-                acc[round.category] += result.total_score;
-            }
-        });
-        return acc;
-    }, {});
+    const mens = mergeRankings(rounds, categoryNames.MENS_SEMIS, categoryNames.MENS_FINALS);
+    const womens = mergeRankings(rounds, categoryNames.WOMENS_SEMIS, categoryNames.WOMENS_FINALS);
 
-    // Determine rank within each category
-    const categoryRanks = Object.keys(categoryScores).reduce((acc, category) => {
-        const categoryResults = rounds
-            .filter(round => round.category === category)
-            .flatMap(round => round.results);
+    for (let i=0;i<mens.length;i++) {
+        if (mens[i].athlete_name.toLowerCase() === athleteName.toLowerCase()) return i+1;
+    }
 
-        // Sort by total_score in descending order
-        categoryResults.sort((a, b) => b.total_score - a.total_score);
+    for (let i=0;i<womens.length;i++) {
+        if (womens[i].athlete_name.toLowerCase() === athleteName.toLowerCase()) return i+1;
+    }
 
-        // Find the rank of the athlete in this category
-        const rank = categoryResults.findIndex(result => result.athlete_name.toLowerCase() === athleteName.toLowerCase()) + 1;
-        acc[category] = rank;
-        return acc;
-    }, {});
-
-    // Prioritize finals rank if it exists, otherwise use semis rank
-    if (categoryRanks[categoryNames.MENS_FINALS]) return categoryRanks[categoryNames.MENS_FINALS];
-    if (categoryRanks[categoryNames.WOMENS_FINALS]) return categoryRanks[categoryNames.WOMENS_FINALS];
-    if (categoryRanks[categoryNames.MENS_SEMIS]) return categoryRanks[categoryNames.MENS_SEMIS];
-    if (categoryRanks[categoryNames.WOMENS_SEMIS]) return categoryRanks[categoryNames.WOMENS_SEMIS];
     return null;
 }
 
@@ -341,7 +346,6 @@ function calculateScores(rounds, teams, scoringArray) {
             athletes:sortedAthletes
         };
     });
-    console.log(finalTeams);
 
     const sortedTeams = finalTeams.sort((a, b) => b.calculated_score - a.calculated_score);
     return sortedTeams;
@@ -401,7 +405,7 @@ function generateRankingsHTML(rankings) {
     let html = '<ul class="rankings">';
     
     rankings.forEach((athlete, index) => {
-        html += `<li><span class="name">${index + 1}. ${athlete.athlete_name.toLowerCase()}</span> <span class='score'>${athlete.total_score}</span></li>`;
+        html += `<li><span class="name">${index + 1}. ${athlete.athlete_name.toLowerCase()}</span> <span class='score'>${Math.round(athlete.total_score*10)/10}</span></li>`;
     });
     
     html += '</ul>';
