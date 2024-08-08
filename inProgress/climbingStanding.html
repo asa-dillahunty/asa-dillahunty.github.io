@@ -230,9 +230,37 @@
 			]
 		};
 
+		const womensLeadSemis = {
+			name: "Womens Lead semi-finals",
+			category: categoryNames.WOMENS_SEMIS,
+			results: [
+				{"athlete_name": "GARNBRET Janja", "total_score": 96.1},
+				{"athlete_name": "BERTONE Oriane", "total_score": 45.1},
+				{"athlete_name": "RABOUTOU Brooke", "total_score": 72.1},
+				{"athlete_name": "MACKENZIE Oceania", "total_score": 45.1},
+				{"athlete_name": "GROSSMAN Natalia", "total_score": 39.1},
+				{"athlete_name": "PILZ Jessica", "total_score": 88.1},
+				{"athlete_name": "NONAKA Miho", "total_score": 51.1},
+				{"athlete_name": "MORONI Camilla", "total_score": 36.1},
+				{"athlete_name": "LUO Zhilu", "total_score": 48.1},
+				{"athlete_name": "McNEICE Erin", "total_score": 64.1},
+				{"athlete_name": "MORI Ai", "total_score": 96.1},
+				{"athlete_name": "AVEZOU Zelia", "total_score": 45.1},
+				{"athlete_name": "SEO Chaehyun", "total_score": 72.1},
+				{"athlete_name": "KAZBEKOVA Ievgeniia", "total_score": 45.1},
+				{"athlete_name": "ZHANG Yuetong", "total_score": 68.1},
+				{"athlete_name": "DOERFFEL Lucia", "total_score": 51.1},
+				{"athlete_name": "KRAMPL Mia", "total_score": 51.1},
+				{"athlete_name": "ROGORA Laura", "total_score": 57},
+				{"athlete_name": "THOMPSON-SMITH Molly", "total_score": 57},
+				{"athlete_name": "MUKHEIBIR Lauren", "total_score": 4.1}
+			]
+		}
+
 		allRounds.push(mensBoulderSemis);
 		allRounds.push(womensBoulderSemis);
 		allRounds.push(mensLeadSemis);
+		allRounds.push(womensLeadSemis);
 
 		function mergeRankings(rounds, semisCategory, finalsCategory) {
 			const semisRankings = getCategoryRankings(rounds, semisCategory);
@@ -331,6 +359,8 @@
 			const finalTeams = teams.map(team => {
 				let calculated_score = 0;
 				if (team.team_name === "Mitt") calculated_score -= 400;
+				if (team.team_name === "Ray") calculated_score -= 100;
+				if (team.team_name === "Bell") calculated_score -= 150;
 
 				const athletes = team.competitors.map(competitor => {
 					const lowCompetitor = competitor.toLowerCase();
@@ -384,6 +414,18 @@
 					htmlCode += `<div class="athlete">
 						<div class="name">Egregious Behavior</div>
 						<div class="athlete-score">-400</div>
+					</div>`;
+				}
+				if (currTeam.name === "Ray") {
+					htmlCode += `<div class="athlete">
+						<div class="name">Claims to like french yet selected no french athletes</div>
+						<div class="athlete-score">-100</div>
+					</div>`;
+				}
+				if (currTeam.name === "Bell") {
+					htmlCode += `<div class="athlete">
+						<div class="name">Getting Janja</div>
+						<div class="athlete-score">-150</div>
 					</div>`;
 				}
 
