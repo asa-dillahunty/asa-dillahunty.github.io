@@ -50,6 +50,8 @@
 			.tab-content:target { display: block; background-color: transparent; }
 			.tab-content li {display: grid; grid-template-columns: 1fr 48px; }
 			.rankings li { font-size: 14px; }
+			.rankings li:nth-child(-n+8) { font-weight: bold;}
+			.rankings li:nth-child(8) { border-bottom: 3px solid var(--og-theme-color); margin-bottom: 10px; padding-bottom: 10px;}
 		</style>
 	</head>
 	<body>
@@ -257,10 +259,43 @@
 			]
 		}
 
+		const mensBoulderFinals = {
+			category: categoryNames.MENS_FINALS,
+			name:"Mens Boulder Finals",
+			results: [
+				{"athlete_name": "ANRAKU Sorato", "total_score": 0},
+				{"athlete_name": "ROBERTS Toby", "total_score": 3},
+				{"athlete_name": "ONDRA Adam", "total_score": 2},
+				{"athlete_name": "GINES LOPEZ Alberto", "total_score": 1},
+				{"athlete_name": "SCHUBERT Jakob", "total_score": 4},
+				{"athlete_name": "JENFT Paul", "total_score": 7},
+				{"athlete_name": "DUFFY Colin", "total_score": 8},
+				{"athlete_name": "McARTHUR Hamish", "total_score": 3},
+			]
+		};
+
+		const mensLeadFinals = {
+			category: categoryNames.MENS_FINALS,
+			name:"Mens Lead Finals",
+			results: [
+				{"athlete_name": "ANRAKU Sorato", "total_score": 0},
+				{"athlete_name": "ROBERTS Toby", "total_score": 3},
+				{"athlete_name": "ONDRA Adam", "total_score": 2},
+				{"athlete_name": "GINES LOPEZ Alberto", "total_score": 1},
+				{"athlete_name": "SCHUBERT Jakob", "total_score": 4},
+				{"athlete_name": "JENFT Paul", "total_score": 7},
+				{"athlete_name": "DUFFY Colin", "total_score": 8},
+				{"athlete_name": "McARTHUR Hamish", "total_score": 3},
+			]
+		};
+
 		allRounds.push(mensBoulderSemis);
 		allRounds.push(womensBoulderSemis);
 		allRounds.push(mensLeadSemis);
 		allRounds.push(womensLeadSemis);
+
+		// allRounds.push(mensBoulderFinals);
+		// allRounds.push(mensLeadFinals);
 
 		function mergeRankings(rounds, semisCategory, finalsCategory) {
 			const semisRankings = getCategoryRankings(rounds, semisCategory);
