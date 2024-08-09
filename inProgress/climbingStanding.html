@@ -496,7 +496,7 @@
 			
 			rankings.forEach((athlete, index) => {
 				let medal = "";
-				if (index < 3) medal = `<img class="medal" src="./climbing/${medalSrc[index]}.jpg" />`;
+				if (index < 3) medal = `<img class="medal" src="./climbing/${medalSrc[index]}.JPG" />`;
 				html += `<li><span class="name"><span class="rankNumber">${index + 1}.</span> ${medal} ${athlete.athlete_name.toLowerCase()}</span> <span class='score'>${Math.round(athlete.total_score*10)/10}</span></li>`;
 			});
 			
