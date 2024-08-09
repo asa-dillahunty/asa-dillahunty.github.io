@@ -358,9 +358,6 @@
 			// Calculate team scores and structure the final output
 			const finalTeams = teams.map(team => {
 				let calculated_score = 0;
-				if (team.team_name === "Mitt") calculated_score -= 400;
-				if (team.team_name === "Ray") calculated_score -= 100;
-				if (team.team_name === "Bell") calculated_score -= 150;
 
 				const athletes = team.competitors.map(competitor => {
 					const lowCompetitor = competitor.toLowerCase();
@@ -410,25 +407,6 @@
 						<div class="athlete-score">${athlete.points}</div>
 					</div>`;
 				}
-				if (currTeam.name === "Mitt") {
-					htmlCode += `<div class="athlete">
-						<div class="name">Egregious Behavior</div>
-						<div class="athlete-score">-400</div>
-					</div>`;
-				}
-				if (currTeam.name === "Ray") {
-					htmlCode += `<div class="athlete">
-						<div class="name">Claims to like french yet selected no french athletes</div>
-						<div class="athlete-score">-100</div>
-					</div>`;
-				}
-				if (currTeam.name === "Bell") {
-					htmlCode += `<div class="athlete">
-						<div class="name">Getting Janja</div>
-						<div class="athlete-score">-150</div>
-					</div>`;
-				}
-
 				htmlCode += `</details>`;
 			}
 			return htmlCode;
