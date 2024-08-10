@@ -51,10 +51,10 @@
 			.tab-content li {display: grid; grid-template-columns: 1fr 48px; align-items: center;}
 			.rankings li { font-size: 14px; }
 			.rankings img.medal { width: var(--medal-width); }
-			#womens-ranking .rankings img { display: none; }
-			#mens-ranking .rankings li:nth-child(-n+3) .rankNumber { display: none; }
-			#mens-ranking .rankings li:nth-child(-n+3) .name { font-size: 20px; display: grid; grid-template-columns: var(--medal-width) 1fr; gap: 10px; align-items: center; }
-			#mens-ranking .rankings li:nth-child(3) { margin-bottom: 10px; padding-bottom: 10px;}
+			
+			.rankings li:nth-child(-n+3) .rankNumber { display: none; }
+			.rankings li:nth-child(-n+3) .name { font-size: 20px; display: grid; grid-template-columns: var(--medal-width) 1fr; gap: 10px; align-items: center; }
+			.rankings li:nth-child(3) { margin-bottom: 10px; padding-bottom: 10px;}
 			.rankings li:nth-child(-n+8) { font-weight: bold;}
 			.rankings li:nth-child(8) { border-bottom: 3px solid var(--og-theme-color); margin-bottom: 10px; padding-bottom: 10px;}
 		</style>
@@ -78,7 +78,7 @@
 				<span id="womens-ranking">Women's Ranking</span>
 			</div>
 
-			<p>Last updated 8/9 3:00 PM</p>
+			<p>Last updated 8/10 3:00 PM</p>
 
 			<!-- <canvas id="GhostCanvas" width="266px" height="273px" style="display: none;margin: auto;"></canvas> -->
 		</div>
@@ -298,14 +298,14 @@
 			name: "Womens Boulder Finals",
 			category: categoryNames.WOMENS_FINALS,
 			results: [
-				{"athlete_name": "GARNBRET Janja", "total_score": 0},
-				{"athlete_name": "BERTONE Oriane", "total_score": 0},
-				{"athlete_name": "RABOUTOU Brooke", "total_score": 0},
-				{"athlete_name": "MACKENZIE Oceania", "total_score": 0},
-				{"athlete_name": "PILZ Jessica", "total_score": 0},
-				{"athlete_name": "McNEICE Erin", "total_score": 0},
-				{"athlete_name": "MORI Ai", "total_score": 0},
-				{"athlete_name": "SEO Chaehyun", "total_score": 0},
+				{"athlete_name": "GARNBRET Janja", "total_score": 25 + 24.8 + 25 + 9.6},
+				{"athlete_name": "PILZ Jessica", "total_score": 24.9 + 24.6 + 5 + 4.8},
+				{"athlete_name": "RABOUTOU Brooke", "total_score": 24.7 + 24.8 + 24.9 + 9.6},
+				{"athlete_name": "MORI Ai", "total_score": 0 + 9.7 + 24.8 + 4.5},
+				{"athlete_name": "BERTONE Oriane", "total_score": 25 + 24.9 + 0 + 9.6},
+				{"athlete_name": "MACKENZIE Oceania", "total_score": 25 + 24.8 + 4.9 + 5},
+				{"athlete_name": "McNEICE Erin", "total_score": 24.9 + 25 + 0 + 9.6 },
+				{"athlete_name": "SEO Chaehyun", "total_score": 9.5 + 4.8 + 4.8 + 9.8},
 			]
 		}
 
@@ -313,14 +313,14 @@
 			name: "Womens Lead Finals",
 			category: categoryNames.WOMENS_FINALS,
 			results: [
-				{"athlete_name": "GARNBRET Janja", "total_score": 0.8},
-				{"athlete_name": "BERTONE Oriane", "total_score": 0.5},
-				{"athlete_name": "RABOUTOU Brooke", "total_score": 0.7},
-				{"athlete_name": "MACKENZIE Oceania", "total_score": 0.2},
-				{"athlete_name": "PILZ Jessica", "total_score": 0.4},
-				{"athlete_name": "McNEICE Erin", "total_score": 0.3},
-				{"athlete_name": "MORI Ai", "total_score": 0.6},
-				{"athlete_name": "SEO Chaehyun", "total_score": 0.1},
+				{"athlete_name": "GARNBRET Janja", "total_score": 84.1},
+				{"athlete_name": "PILZ Jessica", "total_score": 88.1},
+				{"athlete_name": "RABOUTOU Brooke", "total_score": 72},
+				{"athlete_name": "MORI Ai", "total_score": 96.1},
+				{"athlete_name": "BERTONE Oriane", "total_score": 45.0},
+				{"athlete_name": "MACKENZIE Oceania", "total_score": 45.1},
+				{"athlete_name": "McNEICE Erin", "total_score": 68.1},
+				{"athlete_name": "SEO Chaehyun", "total_score": 76.1},
 			]
 		}
 
@@ -332,8 +332,8 @@
 		allRounds.push(mensBoulderFinals);
 		allRounds.push(mensLeadFinals);
 
-		// allRounds.push(womensBoulderFinals);
-		// allRounds.push(womensLeadFinals);
+		allRounds.push(womensBoulderFinals);
+		allRounds.push(womensLeadFinals);
 
 		function mergeRankings(rounds, semisCategory, finalsCategory) {
 			const semisRankings = getCategoryRankings(rounds, semisCategory);
