@@ -1,7 +1,7 @@
 /* Animate the Predators/Prey?? */
 
 #Ghost {
-	animation: ghostCircle 5s linear 1s 20;
+	animation: ghostCircle 4s linear 1s 20;
 	filter: drop-shadow(0 0 1rem black);
 }
 
@@ -14,9 +14,8 @@
 }
 
 #PacMan {
-	animation: pacCircle 5s linear 1s 20;
+	animation: pacCircle 4s linear 1s 20;
 	filter: drop-shadow(0 0 1rem black);
-	/* animation: name duration timing-function delay iteration-count direction fill-mode; */
 }
 
 @keyframes pacCircle {
@@ -31,4 +30,36 @@
 	76% {transform: translate(0,-10rem) rotate(-270deg);}
 
 	100% {transform: translate(0,0) rotate(-270deg);} /* going right? */
+}
+
+@keyframes fadeOut {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+ul.exampleImages {
+	padding-inline-start: 0;
+	margin-block-start: 0;
+}
+
+ul.exampleImages li {
+	width: 5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+ul.exampleImages li img {
+	width: 3rem;
+}
+
+ul.exampleImages li:first-child {
+	margin-right: 2.5rem;
+}
+ul.exampleImages li:last-child {
+	margin-left: 2.5rem;
+}
+
+ul.exampleImages li figcaption {
+	animation: fadeOut 2s linear 2s 1 forwards;
 }
