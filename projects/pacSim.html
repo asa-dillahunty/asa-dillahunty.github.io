@@ -17,6 +17,10 @@
 	</head>
 
 	<body>
+		<div id="sim-wrapper">
+			<button id="close-sim" onclick="stopSim()">+</button>
+			<canvas id="gameCanvas"></canvas>
+		</div>
 		<div id="full-body">
 		<header>
 		<nav>
@@ -55,6 +59,11 @@
 			</li>
 		</ul>
 
+		<button onclick="startSim()" id="live-example">
+			<span class="play"></span>
+			Live Example
+		</button>
+
 		<p>
 			To implement this environment, a turtle class was provided by the instructor. With the sprites changed
 			and giving each character a very basic AI, the simulation tends to run fairly smooth. The beginning
@@ -92,5 +101,6 @@
 	
 		<script src="../scripts/konami.js"></script>
 		<script src="../scripts/nav.js"></script>
+		<script src="../scripts/pacsim.js"></script>
 	</body>
 </html>
