@@ -119,6 +119,7 @@ ul.exampleImages li figcaption {
 	height: 3rem;
 	width: 3rem;
 	font-size: 3rem;
+	padding: 0;
 
 	display: flex;
 	justify-content: center;
