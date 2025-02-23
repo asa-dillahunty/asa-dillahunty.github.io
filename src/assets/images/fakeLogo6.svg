@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <rect width="200" height="200" fill="#4CAF50"/>
+    <g transform="translate(100, 100) scale(1.2)">
+        <!-- Body -->
+        <ellipse cx="0" cy="10" rx="8" ry="25" fill="white"/>
+        
+        <!-- Head -->
+        <circle cx="0" cy="-15" r="6" fill="white"/>
+        
+        <!-- Wings (Side View, Four Loops) -->
+        <path d="M0 0 C -20 -30, -40 -35, -50 -15 C -60 5, -40 15, -20 5 C 0 -5, 0 -5, 0 0" fill="white" opacity="0.8"/>
+        <path d="M0 0 C 20 -30, 40 -35, 50 -15 C 60 5, 40 15, 20 5 C 0 -5, 0 -5, 0 0" fill="white" opacity="0.8"/>
+        <path d="M0 0 C -15 -45, -30 -50, -40 -30 C -50 -10, -30 0, -15 -10 C 0 -20, 0 -20, 0 0" fill="white" opacity="0.6"/>
+        <path d="M0 0 C 15 -45, 30 -50, 40 -30 C 50 -10, 30 0, 15 -10 C 0 -20, 0 -20, 0 0" fill="white" opacity="0.6"/>
+        
+        <!-- Legs -->
+        <line x1="0" y1="15" x2="-10" y2="25" stroke="white" stroke-width="2"/>
+        <line x1="0" y1="15" x2="-5" y2="30" stroke="white" stroke-width="2"/>
+        <line x1="0" y1="15" x2="5" y2="30" stroke="white" stroke-width="2"/>
+        <line x1="0" y1="15" x2="10" y2="25" stroke="white" stroke-width="2"/>
+        
+        <!-- Tail -->
+        <line x1="0" y1="25" x2="0" y2="40" stroke="white" stroke-width="3"/>
+        <line x1="-3" y1="25" x2="-6" y2="38" stroke="white" stroke-width="2"/>
+        <line x1="3" y1="25" x2="6" y2="38" stroke="white" stroke-width="2"/>
+    </g>
+</svg>

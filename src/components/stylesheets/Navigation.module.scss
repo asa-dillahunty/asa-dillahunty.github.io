@@ -1,0 +1,72 @@
+.nav {
+  text-align: right;
+  top: 0;
+  right: 0;
+  height: 5rem;
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  ul {
+    padding-inline-start: 0;
+    list-style-type: none;
+    li {
+      display: inline;
+      vertical-align: top;
+      width: 12ch;
+    }
+  }
+
+  a {
+    background: rgba(60, 60, 60, 0.7);
+    font-size: 0.75rem;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+      background: white;
+      color: black;
+      text-decoration: underline;
+    }
+  }
+}
+
+a.current {
+  // background-color: var(--maze-solution);
+  background: rgba(60, 60, 60);
+  // font-weight: bold;
+
+  .bar {
+    width: 0;
+    height: 0.25rem;
+    background-color: var(--maze-solution);
+    display: flex;
+
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+
+    transform: translateX(50%);
+
+    animation: grow 0.3s linear 0.2s 1 forwards;
+  }
+}
+
+.bar {
+  display: none;
+}
+
+@keyframes grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

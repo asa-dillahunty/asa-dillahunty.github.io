@@ -1,0 +1,20 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Green square background -->
+  <rect width="256" height="256" fill="#4CAF50"/>
+  
+  <!-- Group for mayfly silhouette (translated vertically for centering) -->
+  <g fill="white" transform="translate(0,54)">
+    <!-- Upper wings -->
+    <path d="M120,60 C80,25 60,25 90,60 Z"/>
+    <path d="M136,60 C176,25 196,25 166,60 Z"/>
+    <!-- Lower wings -->
+    <path d="M120,80 C85,75 65,75 90,80 Z"/>
+    <path d="M136,80 C171,75 191,75 166,80 Z"/>
+    <!-- Head -->
+    <circle cx="128" cy="60" r="8"/>
+    <!-- Thorax -->
+    <rect x="120" y="68" width="16" height="20" rx="8"/>
+    <!-- Abdomen -->
+    <ellipse cx="128" cy="98" rx="10" ry="20"/>
+  </g>
+</svg>

@@ -1,0 +1,74 @@
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+
+  background-color: white;
+  color: black;
+}
+
+.modalCard {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  align-items: center;
+
+  color: inherit;
+  //   background-color: pink;
+
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+  // transition: background-color,color 0.3s;
+  border-radius: 0.25rem;
+
+  gap: 1rem;
+  font-size: 0.8rem;
+
+  padding: 0;
+  padding-right: 1rem;
+
+  svg {
+    font-size: 3rem;
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+
+    // color: var(--bg-main);
+    // color: var(--maze-solution);
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(236, 236, 236);
+    svg {
+      color: var(--maze-solution);
+    }
+  }
+
+  &:focus,
+  &:focus-visible {
+    border: none;
+    outline: none;
+    // background-color: red;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  padding: 0.5rem;
+
+  line-height: 1;
+
+  transition-property: background-color;
+  transition-duration: 0.3s;
+
+  border-bottom-left-radius: 0.25rem;
+  // border-radius: 0.25rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--maze-solution);
+  }
+}

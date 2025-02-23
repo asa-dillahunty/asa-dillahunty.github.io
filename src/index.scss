@@ -1,0 +1,106 @@
+@use "./variables.scss" as *;
+
+:root {
+  font-family: monospace;
+  font-size: 24px;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: var(--fg-main);
+  background-color: var(--bg-main);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+dialog {
+  border: none;
+  border-radius: 0.25rem;
+
+  padding: 0;
+
+  &::backdrop {
+    background-color: #21354799;
+  }
+}
+
+.project-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+
+  // background-color: ;
+}
+
+h1 {
+  margin-left: 5rem;
+  font-size: 2rem;
+  opacity: 0.7;
+
+  text-transform: uppercase;
+}
+
+.pretender {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.pretend {
+  position: relative;
+  height: 290px;
+  width: 290px;
+}
+
+@media (max-width: 1300px) {
+  :root {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 800px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    font-size: 14px;
+  }
+
+  h1 {
+    margin-left: 2rem;
+    font-size: 2rem;
+    top: 30%;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    font-size: 12px;
+  }
+
+  h1 {
+    top: 30%;
+  }
+}
