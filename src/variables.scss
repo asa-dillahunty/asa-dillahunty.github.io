@@ -1,0 +1,144 @@
+// /* Dark Theme */
+$fg-main: #eee;
+
+$bg-main: #0d0c1e;
+$bg-secondary: #464081;
+$bg-third: #353063;
+// $bg-main: #16142a;
+// $bg-secondary: #1c213c;
+
+$maze-default: #353063;
+$maze-dead-end: #353063;
+$maze-solution: #6f67ff;
+$maze-wall: #16142a;
+
+$static-bg: $maze-wall;
+$static-primary: $maze-solution;
+
+$fg-main-light: #eee;
+
+$bg-main-light: #0d0c1e;
+$bg-secondary-light: #464081;
+$bg-third-light: #353063;
+// $bg-main-light: #16142a;
+// $bg-secondary-light: #1c213c;
+
+$maze-default-light: #353063;
+$maze-dead-end-light: #353063;
+$maze-solution-light: #6f67ff;
+$maze-wall-light: #16142a;
+
+$static-bg-light: $maze-wall;
+$static-primary-light: $maze-solution;
+
+/* Light Theme */
+$fg-main-light: #16142a;
+
+$maze-default-light: #f4d7b3;
+$maze-dead-end-light: $maze-default-light;
+$maze-solution-light: #ab744d;
+$maze-wall-light: #ffecc9;
+
+// $bg-main-light: #ffbb67;
+// $bg-secondary-light: #ffbb67;
+$bg-third-light: #fab056;
+
+$bg-main-light: $maze-wall-light;
+$bg-secondary-light: $maze-default-light;
+
+$static-bg-light: #c75300;
+$static-primary-light: #ffb070;
+
+$red: #302058;
+$blue: #302058;
+
+// $fg-main-light: #16142a;
+
+// $bg-main-light: #ffe8d1;
+// $bg-secondary-light: #ffb296;
+// $bg-third-light: #ff5410;
+
+// $maze-default-light: #ffb296;
+// $maze-dead-end-light: $maze-default-light;
+// $maze-solution-light: #ff5410;
+// $maze-wall-light: #ffe8d1;
+
+// $static-bg-light: #ffe8d1;
+// $static-primary-light: #ffb296;
+
+:root {
+  color-scheme: light dark;
+  --fg-main: #{$fg-main};
+
+  --bg-main: #{$bg-main};
+  --bg-secondary: #{$bg-secondary};
+  --bg-third: #{$bg-third};
+
+  --maze-default: #{$maze-default};
+  --maze-dead-end: #{$maze-dead-end};
+  --maze-solution: #{$maze-solution};
+  --maze-wall: #{$maze-wall};
+
+  --red: #{$red};
+  --blue: #{$blue};
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --fg-main: #{$fg-main-light};
+
+    --bg-main: #{$bg-main-light};
+    --bg-secondary: #{$bg-secondary-light};
+    --bg-third: #{$bg-third-light};
+
+    --maze-default: #{$maze-default-light};
+    --maze-dead-end: #{$maze-dead-end-light};
+    --maze-solution: #{$maze-solution-light};
+    --maze-wall: #{$maze-wall-light};
+  }
+}
+
+// /* Dark Theme */
+// $fg-main: #eee;
+
+// $bg-main: #131507;
+// $bg-secondary: #1c213c;
+
+// $maze-default: #3f717c;
+// $maze-dead-end: $maze-default;
+// $maze-solution: #fcf048;
+// $maze-wall: #1d3e45;
+
+// /* Light Theme */
+// $fg-main-light: #16142a;
+
+// $bg-main-light: #d9d5ff;
+// $bg-secondary-light: #aab6f8;
+
+// $maze-default-light: #a7a1d6;
+// $maze-dead-end-light: #807bac;
+// $maze-solution-light: #6d7cff;
+// $maze-wall-light: #d9d5ff;
+
+// EMILY'S STUFF
+// $fg-main-light: #16142a;
+
+// $bg-main-light: #e35231;
+// $bg-secondary-light: #ff9900;
+
+// $maze-default-light: #ff8153;
+// $maze-dead-end-light: $maze-default-light;
+// // $maze-dead-end-light: #fbf5f3;
+// $maze-solution-light: #ff9900;
+// $maze-wall-light: #e35231;
+
+// /* Fleshy Light Theme */
+// $fg-main-light: #16142a;
+
+// $bg-main-light: #ffb296;
+// $bg-secondary-light: #ffe8d1;
+
+// $maze-default-light: #ffb296;
+// $maze-dead-end-light: $maze-default-light;
+// $maze-solution-light: #ff5410;
+// $maze-wall-light: #ffe8d1;

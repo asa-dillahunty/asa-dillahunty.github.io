@@ -1,24 +1,34 @@
 {
-  "name": "asa-dillahunty.github.io",
-  "version": "1.0.0",
-  "description": "Personal Portfolio Website",
-  "main": "index.html",
-  "dependencies": {
-    "html-validator": "^5.1.17",
-    "mocha": "^9.1.3"
-  },
-  "devDependencies": {},
+  "name": "my-portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "mocha"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/asa-dillahunty/asa-dillahunty.github.io.git"
+  "dependencies": {
+    "prettier": "^3.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
+    "react-router-dom": "^7.1.5",
+    "react-toastify": "^11.0.3",
+    "sass": "^1.84.0"
   },
-  "author": "asa-dillahunty",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/asa-dillahunty/asa-dillahunty.github.io/issues"
-  },
-  "homepage": "https://github.com/asa-dillahunty/asa-dillahunty.github.io#readme"
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.22.0",
+    "vite": "^6.1.0"
+  }
 }

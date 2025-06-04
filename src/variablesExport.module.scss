@@ -1,0 +1,19 @@
+@use "./variables.scss" as *;
+
+:export {
+  mazeDefault: $maze-default;
+  mazeDeadEnd: $maze-dead-end;
+  mazeSolution: $maze-solution;
+  mazeWall: $maze-wall;
+
+  staticBg: $static-bg;
+  staticPrimary: $static-primary;
+
+  mazeDefaultLight: $maze-default-light;
+  mazeDeadEndLight: $maze-dead-end-light;
+  mazeSolutionLight: $maze-solution-light;
+  mazeWallLight: $maze-wall-light;
+
+  staticBgLight: $static-bg-light;
+  staticPrimaryLight: $static-primary-light;
+}

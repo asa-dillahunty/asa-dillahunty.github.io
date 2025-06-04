@@ -1,0 +1,49 @@
+.header {
+  h1 {
+    max-width: 30ch;
+  }
+}
+
+.canvas {
+  width: 100%;
+  height: 70vh;
+  background-color: white;
+}
+
+.section {
+  p {
+    text-indent: 4ch;
+  }
+
+  img {
+    max-width: 80%;
+    margin: auto;
+  }
+}
+
+.equationContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.buttonContainer {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+
+    background-color: rgb(255, 209, 209);
+    &:first-child {
+      background-color: rgb(218, 255, 218);
+    }
+  }
+}
