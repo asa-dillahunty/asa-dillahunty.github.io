@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
-    <rect width="200" height="200" rx="20" fill="#4CAF50"/>
-    <g transform="translate(50, 50) scale(1.5)">
-        <path d="M50 20C60 10 80 10 90 20C100 30 100 50 90 60L50 100L10 60C0 50 0 30 10 20C20 10 40 10 50 20Z" 
-            fill="white" stroke="white" stroke-width="4"/>
-        <circle cx="50" cy="50" r="6" fill="#4CAF50" stroke="white" stroke-width="4"/>
-    </g>
-</svg>
