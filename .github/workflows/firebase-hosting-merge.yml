@@ -14,9 +14,14 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORTFOLIO_ASA }}
           channelId: live
           projectId: portfolio-asa
+
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
