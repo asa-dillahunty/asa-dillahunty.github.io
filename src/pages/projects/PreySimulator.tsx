@@ -1,10 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import styles from "./stylesheets/PreySimulator.module.scss";
 import pacManImg from "../../assets/images/pacman.png";
 import ghostImg from "../../assets/images/Ghost.png";
 import Footer from "../../components/Footer";
 import Navigation from "../../components/Navigation";
 import { FaAngleDoubleDown } from "react-icons/fa";
+import { KonamiContext } from "../../utils/KonamiContext";
 
 // --- Simulation Classes (converted to TypeScript) ---
 
@@ -60,6 +61,10 @@ class Pacman {
     ctx.closePath();
     ctx.fillStyle = "yellow";
     ctx.fill();
+
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 1;
+    ctx.stroke();
 
     this.animateMouth();
   }
@@ -260,10 +265,10 @@ class Ghost {
   takeStep() {
     if (this.inked) {
       this.mate += 2;
+      this.count--;
     } else {
       this.mate++;
     }
-    this.count--;
 
     if (this.mate > 80) {
       const ghosty = new Ghost(this.arcade, this.x, this.y, this.size);
@@ -439,11 +444,12 @@ const PreySimulator: React.FC = () => {
   const currentIntervalRef = useRef<number | null>(null);
   const arcadeRef = useRef<Arcade | null>(null);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const { konamiActivated } = useContext(KonamiContext);
 
   // Start the game loop at a given FPS
   const startGameLoop = (fps: number, ctx: CanvasRenderingContext2D) => {
     if (currentIntervalRef.current) clearInterval(currentIntervalRef.current);
-    const interval = 1000 / fps;
+    const interval = konamiActivated ? 0 : 1000 / fps;
     currentIntervalRef.current = window.setInterval(
       () => gameLoop(ctx),
       interval
@@ -538,6 +544,14 @@ const PreySimulator: React.FC = () => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (konamiActivated) {
+      // restart the sim
+      stopSim();
+      startSim();
+    }
+  }, [konamiActivated]);
 
   return (
     <>

@@ -3,12 +3,18 @@ import { Link, useLocation } from "react-router-dom";
 import ContactModal from "./ContactModal";
 
 import styles from "./stylesheets/Navigation.module.scss";
+import { PROJECT_HEADER_ID } from "../pages/Projects";
 
 export default function Navigation() {
   const contactModalRef = useRef<HTMLDialogElement | null>(null);
   const path = useLocation();
 
-  // if (path.pathname === "/") {
+  const projectHeader = window.document.getElementById(PROJECT_HEADER_ID);
+  const projectHash = "#" + PROJECT_HEADER_ID;
+
+  const isHome = path.pathname === "/" && path.hash === "";
+  const isProjects = path.pathname === "/" && path.hash === projectHash;
+
   return (
     <>
       <dialog
@@ -20,18 +26,21 @@ export default function Navigation() {
       <nav className={styles.nav}>
         <ul>
           <li>
-            <Link
-              to="/"
-              className={path.pathname === "/" ? styles.current : ""}
-            >
+            <Link to="/" className={isHome ? styles.current : ""}>
               Home
               <div className={styles.bar}></div>
             </Link>
           </li>
           <li>
             <Link
-              to="/projects"
-              className={path.pathname === "/projects" ? styles.current : ""}
+              to={"/" + projectHash}
+              className={isProjects ? styles.current : ""}
+              onClick={() => {
+                if (isProjects && projectHeader) {
+                  // we are already here, so we must scroll manually
+                  projectHeader.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
             >
               Projects
               <div className={styles.bar}></div>
@@ -40,7 +49,7 @@ export default function Navigation() {
           <li>
             <a
               onClick={() => {
-                contactModalRef?.current?.showModal();
+                contactModalRef.current?.showModal();
               }}
             >
               Contact Me
@@ -50,15 +59,4 @@ export default function Navigation() {
       </nav>
     </>
   );
-  // } else {
-  //   return (
-  //     <nav>
-  //       <ul>
-  //         <li>
-  //           <a onClick={() => window.history.back()}>Back</a>
-  //         </li>
-  //       </ul>
-  //     </nav>
-  //   );
-  // }
 }

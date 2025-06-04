@@ -8,6 +8,9 @@
   justify-content: center;
   align-items: center;
 
+  border-bottom: 0.5rem solid var(--maze-solution);
+  box-sizing: border-box;
+
   h1 {
     // this pushes it up from center
     padding-bottom: 10rem;
