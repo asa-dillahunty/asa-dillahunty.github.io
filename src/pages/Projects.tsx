@@ -10,6 +10,7 @@ import MayflyImgUrl from "../assets/images/mayfly-minimal-black2.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { KonamiContext } from "../utils/KonamiContext";
+import GhostBackground from "../components/GhostBackground";
 
 export const PROJECT_HEADER_ID = "projects";
 
@@ -20,6 +21,7 @@ export default function Projects() {
     <main>
       <h2 id={PROJECT_HEADER_ID}>Projects</h2>
       <div className="project-container">
+        <GhostBackground />
         {projectList.map((proj) => (
           <ProjectCard
             key={proj.title}

@@ -1,4 +1,4 @@
-@use "../../variables.scss";
+@use "../../variables.scss" as *;
 
 h3 {
   font-size: 2rem;
@@ -31,7 +31,8 @@ h3 {
   padding-bottom: 1rem;
 
   max-width: 40rem;
-  background-color: var(--bg-secondary);
+  background-color: rgba($bg-secondary, 0.95);
+  backdrop-filter: blur(7px);
   border-radius: 5px;
 
   &:nth-child(odd) {
