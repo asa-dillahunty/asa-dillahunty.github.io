@@ -11,6 +11,10 @@ $maze-default: #353063;
 $maze-dead-end: #353063;
 $maze-solution: #6f67ff;
 $maze-wall: #16142a;
+// $maze-enqueued: rgb(125, 125, 0);
+// $maze-visited: rgb(70, 70, 0);
+$maze-enqueued: yellow;
+$maze-visited: #242043;
 
 $static-bg: $maze-wall;
 $static-primary: $maze-solution;
@@ -38,10 +42,12 @@ $maze-default-light: #f4d7b3;
 $maze-dead-end-light: $maze-default-light;
 $maze-solution-light: #ab744d;
 $maze-wall-light: #ffecc9;
+$maze-enqueued-light: yellow;
+$maze-visited-light: #d7bd9d;
 
 // $bg-main-light: #ffbb67;
 // $bg-secondary-light: #ffbb67;
-$bg-third-light: #fab056;
+$bg-third-light: #c9b193;
 
 $bg-main-light: $maze-wall-light;
 $bg-secondary-light: $maze-default-light;

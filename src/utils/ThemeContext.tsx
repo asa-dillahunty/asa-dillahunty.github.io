@@ -29,6 +29,8 @@ export interface MazeColorsType {
   deadend: string;
   solution: string;
   wall: string;
+  enqueued: string;
+  visited: string;
 }
 
 export interface StaticColorsType {
@@ -43,6 +45,8 @@ function getMazeColors(darkMode: boolean) {
       deadend: colors.mazeDeadEnd,
       solution: colors.mazeSolution,
       wall: colors.mazeWall,
+      enqueued: colors.mazeEnqueued,
+      visited: colors.mazeVisited,
     };
   } else {
     return {
@@ -50,6 +54,8 @@ function getMazeColors(darkMode: boolean) {
       deadend: colors.mazeDeadEndLight,
       solution: colors.mazeSolutionLight,
       wall: colors.mazeWallLight,
+      enqueued: colors.mazeEnqueuedLight,
+      visited: colors.mazeVisitedLight,
     };
   }
 }

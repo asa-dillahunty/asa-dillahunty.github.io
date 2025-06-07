@@ -2,11 +2,17 @@ import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./stylesheets/MazeCanvas.module.scss";
 
 import { MazeColorsType, ThemeContext } from "../utils/ThemeContext";
+import { ICompare, PriorityQueue } from "@datastructures-js/priority-queue";
 
+// const TARGET_FPS = 20;
 const TARGET_FPS = 60;
+// const TARGET_AREA = 20;
+// const TARGET_AREA = 200;
 // const TARGET_AREA = 500;
 const TARGET_AREA = 5000;
+// const STEPS_PER_FRAME = 1;
 const STEPS_PER_FRAME = 10;
+// const STEPS_PER_FRAME = 30;
 
 export type MazeCanvasProps = {
   container: { width: number; height: number };
@@ -74,9 +80,12 @@ function step(maze: Maze, isCancelled: () => boolean) {
         const result = maze.step();
         if (result === "done") {
           maze.render(); // this render is to make sure the 'finish' is drawn
-          // do the next thing
-          if (maze.stepType === "build-prim" || maze.stepType === "build-rb") {
-            maze.stepType = "solve";
+          if (
+            maze.stepType === "build-prim" ||
+            maze.stepType === "build-rb" ||
+            maze.stepType === "build-mixed"
+          ) {
+            maze.stepType = maze.getRandomSolveStepType();
           } else {
             maze.reset();
           }
@@ -97,6 +106,8 @@ class Maze {
   VISITED = 3;
   DEADEND = 4;
   SOLUTION = 5;
+  ENQUEUED = 6;
+  A_VISITED = 7;
   GOAL_AREA = TARGET_AREA;
 
   height = 0;
@@ -105,6 +116,8 @@ class Maze {
   matrix: number[][];
   buildList: number[];
   solveList: number[];
+  exploredQueue: PriorityQueue<SearchNode>;
+  currSearchNode: SearchNode | null;
   mazeCanvasRef: HTMLCanvasElement;
   container: { width: number; height: number };
   stepType: string;
@@ -123,6 +136,8 @@ class Maze {
     this.matrix = [];
     this.buildList = [];
     this.solveList = [];
+    this.exploredQueue = new PriorityQueue<SearchNode>(compareNodes);
+    this.currSearchNode = null;
     this.stepType = this.getRandomBuildStepType();
 
     this.resetSize();
@@ -139,6 +154,8 @@ class Maze {
     this.matrix = [];
     this.buildList = [];
     this.solveList = [];
+    this.exploredQueue = new PriorityQueue<SearchNode>(compareNodes);
+    this.currSearchNode = null;
     this.stepType = this.getRandomBuildStepType();
 
     this.resetSize();
@@ -197,8 +214,12 @@ class Maze {
         return this.primMazeStep();
       case "build-rb":
         return this.RBMazeStep();
-      case "solve":
+      case "build-mixed":
+        return this.mixedBuildStep();
+      case "solve-rb":
         return this.solveRBStep();
+      case "solve-aStar":
+        return this.solveAStarStep();
       default:
         return "done";
     }
@@ -289,6 +310,14 @@ class Maze {
     return this.buildList.length < 1 ? "done" : "not done";
   }
 
+  mixedBuildStep(): string {
+    if (Math.random() < 0.05) {
+      return this.primMazeStep();
+    } else {
+      return this.RBMazeStep();
+    }
+  }
+
   getPos(cord: number, scale: number, allowed: number[]): number[] {
     let options: number[] = [];
     let dx: number, dy: number;
@@ -321,7 +350,18 @@ class Maze {
   }
 
   getRandomBuildStepType(): string {
-    return Math.random() > 0.7 ? "build-prim" : "build-rb";
+    const rand = Math.random();
+    if (rand > 0.7) {
+      return "build-mixed";
+    } else if (rand > 0.5) {
+      return "build-prim";
+    } else {
+      return "build-rb";
+    }
+  }
+
+  getRandomSolveStepType(): string {
+    return Math.random() > 0.7 ? "solve-aStar" : "solve-rb";
   }
 
   solveRBStep(): string {
@@ -356,6 +396,70 @@ class Maze {
       this.solveList.push(next);
     }
     return curr === end ? "done" : "not done";
+  }
+
+  solveAStarStep(): string {
+    const end = new SearchNode(
+      new MazeCord(this.width - 2, this.height - 1),
+      null,
+      0
+    );
+
+    if (this.exploredQueue.isEmpty() && this.currSearchNode === null) {
+      const startCord = new MazeCord(1, 0);
+      const startNode = new SearchNode(startCord, null, 0);
+      this.exploredQueue.enqueue(startNode);
+    }
+
+    while (this.exploredQueue.isEmpty() === false) {
+      const curr = this.exploredQueue.dequeue();
+      if (!curr) break;
+
+      if (curr.equals(end)) {
+        // we've found the end
+        this.currSearchNode = curr;
+        this.exploredQueue.clear();
+        this.matrix[curr.cord.x][curr.cord.y] = this.SOLUTION;
+        this.renderSquare(curr.cord.x, curr.cord.y);
+        return "not done";
+      }
+
+      // visit curr
+      this.matrix[curr.cord.x][curr.cord.y] = this.A_VISITED;
+      this.renderSquare(curr.cord.x, curr.cord.y);
+
+      // where do we go next?
+      // add all ways 'out'
+      const possibilities = this.getPos(
+        curr.cord.x * this.height + curr.cord.y,
+        1,
+        [this.CELL, this.VISITED]
+      );
+
+      for (const pos of possibilities) {
+        const newCord = oldToNew(pos, this.height);
+        const newNode = new SearchNode(
+          newCord,
+          curr,
+          newCord.prioritize(end.cord)
+        );
+        this.matrix[newCord.x][newCord.y] = this.ENQUEUED;
+        this.renderSquare(newCord.x, newCord.y);
+        this.exploredQueue.enqueue(newNode);
+      }
+
+      return "not done";
+    }
+
+    if (this.exploredQueue.isEmpty()) {
+      if (!this.currSearchNode?.predecessor) return "done";
+      this.currSearchNode = this.currSearchNode.predecessor;
+
+      this.matrix[this.currSearchNode.cord.x][this.currSearchNode.cord.y] =
+        this.SOLUTION;
+      this.renderSquare(this.currSearchNode.cord.x, this.currSearchNode.cord.y);
+    }
+    return "not done";
   }
 
   blankSlate(): void {
@@ -402,7 +506,12 @@ class Maze {
       ctx.fillStyle = this.colors.solution;
     } else if (this.matrix[i][j] === this.WALL) {
       ctx.fillStyle = this.colors.wall;
+    } else if (this.matrix[i][j] === this.ENQUEUED) {
+      ctx.fillStyle = this.colors.enqueued;
+    } else if (this.matrix[i][j] === this.A_VISITED) {
+      ctx.fillStyle = this.colors.visited;
     }
+
     ctx.fillRect(
       i * this.renderScale,
       j * this.renderScale,
@@ -414,4 +523,66 @@ class Maze {
 
 function getRandom(array: number[]): number {
   return array[Math.floor(Math.random() * array.length)];
+}
+
+function oldToNew(cord: number, height: number) {
+  const x = Math.floor(cord / height);
+  const y = cord % height;
+  const newCord = new MazeCord(x, y);
+
+  return newCord;
+}
+
+class MazeCord {
+  x: number;
+  y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  equals(versus: MazeCord) {
+    if (versus.x === this.x && versus.y === this.y) {
+      return true;
+    } else return false;
+  }
+
+  prioritize(end: MazeCord) {
+    return (this.x - end.x) ** 2 + (this.y - end.y) ** 2;
+  }
+
+  distance(versus: MazeCord) {
+    return Math.sqrt((this.x - versus.x) ** 2 + (this.y - versus.y) ** 2);
+  }
+}
+
+const compareNodes: ICompare<SearchNode> = (a: SearchNode, b: SearchNode) => {
+  if (a.priority > b.priority) {
+    return 1;
+  }
+  if (a.priority < b.priority) {
+    return -1;
+  }
+  return 0;
+};
+
+class SearchNode {
+  cord: MazeCord;
+  predecessor: SearchNode | null;
+  priority: number;
+
+  constructor(
+    cord: MazeCord,
+    predecessor: SearchNode | null,
+    priority: number
+  ) {
+    this.cord = cord;
+    this.predecessor = predecessor;
+    this.priority = priority;
+  }
+
+  equals(node: SearchNode) {
+    return this.cord.equals(node.cord);
+  }
 }

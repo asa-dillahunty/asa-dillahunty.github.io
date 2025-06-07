@@ -31,7 +31,8 @@ h3 {
   padding-bottom: 1rem;
 
   max-width: 40rem;
-  background-color: rgba($bg-secondary, 0.95);
+  background-color: rgba($bg-secondary, 0.92);
+
   backdrop-filter: blur(7px);
   border-radius: 5px;
 
@@ -56,6 +57,12 @@ h3 {
     border: solid black;
     border-width: 0.25rem;
     border-radius: 0.25rem;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .proj {
+    background-color: rgba($bg-secondary-light, 0.9);
   }
 }
 
