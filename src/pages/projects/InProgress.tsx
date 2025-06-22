@@ -11,7 +11,7 @@ export default function InProgress() {
         <ul className={styles.linkList}>
           {inProgressProjectList.map((project) => {
             return (
-              <li>
+              <li key={project.title}>
                 <a href={project.destinationUrl}>{project.title}</a>
               </li>
             );
@@ -21,7 +21,7 @@ export default function InProgress() {
         <ul className={styles.linkList}>
           {archivedProjectList.map((project) => {
             return (
-              <li>
+              <li key={project.title}>
                 <a href={project.destinationUrl}>{project.title}</a>
               </li>
             );
