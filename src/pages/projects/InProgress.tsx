@@ -3,11 +3,13 @@ import PageContainer from "../PageContainer";
 import BombGameImgUrl from "../../assets/images/bombGame.png";
 import MarsCitiesImgUrl from "../../assets/images/marsCities.png";
 import AsciiImgUrl from "../../assets/images/phant.png";
+// import BouncingBall from "../inProgress/BouncingBall";
 
 export default function InProgress() {
   return (
     <PageContainer header="In Progress">
       <main className={styles.main}>
+        {/* <BouncingBall /> */}
         <ul className={styles.linkList}>
           {inProgressProjectList.map((project) => {
             return (
@@ -45,6 +47,7 @@ const inProgressProjectList = [
     title: "Olympic Fantasy Climbing Draft",
     destinationUrl: "climbing/",
   },
+  { title: "Sudoku", destinationUrl: "sudoku/" },
 ];
 
 const archivedProjectList = [

@@ -14,6 +14,7 @@ import SubwayMarkov from "./pages/inProgress/SubwayMarkov";
 import "./index.scss";
 import { KonamiProvider } from "./utils/KonamiContext";
 import { ThemeProvider } from "./utils/ThemeContext";
+import Sudoku from "./pages/inProgress/Sudoku/Sudoku";
 
 function App() {
   const { pathname, hash } = useLocation();
@@ -57,4 +58,5 @@ const routeList = [
     path: "/in-progress/subway-surfers-markov-chains",
     elem: <SubwayMarkov />,
   },
+  { path: "/in-progress/sudoku", elem: <Sudoku /> },
 ];
