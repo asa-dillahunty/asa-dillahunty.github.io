@@ -19,6 +19,8 @@ export default function SideBetPlay() {
 
   const [submitted, setSubmitted] = useState(false);
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
+  const [submittedModalClosed, setSubmittedModalClosed] = useState(false);
+  const closeSubmissionModal = () => setSubmittedModalClosed(true);
 
   useEffect(() => {
     if (!lobbyId) return;
@@ -68,11 +70,17 @@ export default function SideBetPlay() {
             onEventClick={setSelectedEvent}
           />
 
-          {allSelected && (
+          {!submittedModalClosed && (
             <div>
               <button
-                style={{ width: "100%", marginTop: 20, padding: 10 }}
+                style={{
+                  width: "100%",
+                  marginTop: 30,
+                  marginBottom: 50,
+                  padding: 10,
+                }}
                 onClick={submitPicks}
+                disabled={!allSelected || submitted}
               >
                 Submit Picks
               </button>
@@ -81,7 +89,7 @@ export default function SideBetPlay() {
         </>
       )}
 
-      {selectedEvent && (
+      {selectedEvent && !submitted && (
         <MarketSelectModal
           event={selectedEvent}
           onClose={() => setSelectedEvent(null)}
@@ -92,7 +100,12 @@ export default function SideBetPlay() {
         />
       )}
 
-      {submitted && <SubmissionModal success={submissionSuccess} />}
+      {submitted && !submittedModalClosed && (
+        <SubmissionModal
+          success={submissionSuccess}
+          onClose={closeSubmissionModal}
+        />
+      )}
     </main>
   );
 }
@@ -221,7 +234,13 @@ function MarketSelectModal({
   );
 }
 
-function SubmissionModal({ success }: { success: boolean }) {
+function SubmissionModal({
+  success,
+  onClose,
+}: {
+  success: boolean;
+  onClose: () => void;
+}) {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
@@ -229,8 +248,9 @@ function SubmissionModal({ success }: { success: boolean }) {
           <>
             <h2>Success!</h2>
             <div>
-              <p>May the odds be ever in your favor</p>
+              <p>Gambling problem? Call 1-800-GAMBLER</p>
             </div>
+            <button onClick={onClose}>Close</button>
           </>
         ) : (
           <>
