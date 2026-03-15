@@ -48,6 +48,7 @@ const inProgressProjectList = [
     destinationUrl: "climbing/",
   },
   { title: "Sudoku", destinationUrl: "sudoku/" },
+  { title: "Side Bet", destinationUrl: "/in-progress/sidebet/" },
 ];
 
 const archivedProjectList = [

@@ -17,7 +17,7 @@ export default function Footer() {
           <SiGmail />
         </a>
       </div>
-      <span>&#169; 2025 Asa Dillahunty. All rights reserved</span>
+      <span>&#169; 2026 Asa Dillahunty. All rights reserved</span>
     </footer>
   );
 }

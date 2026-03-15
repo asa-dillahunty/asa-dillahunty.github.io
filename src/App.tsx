@@ -15,6 +15,9 @@ import "./index.scss";
 import { KonamiProvider } from "./utils/KonamiContext";
 import { ThemeProvider } from "./utils/ThemeContext";
 import Sudoku from "./pages/inProgress/Sudoku/Sudoku";
+import SideBet from "./pages/inProgress/SideBet/SideBet";
+import SideBetPlay from "./pages/inProgress/SideBet/SideBetPlay";
+import SideBetHosting from "./pages/inProgress/SideBet/SideBetHosting";
 
 function App() {
   const { pathname, hash } = useLocation();
@@ -59,4 +62,7 @@ const routeList = [
     elem: <SubwayMarkov />,
   },
   { path: "/in-progress/sudoku", elem: <Sudoku /> },
+  { path: "/in-progress/sidebet", elem: <SideBet /> },
+  { path: "/in-progress/sidebet/:lobbyId", elem: <SideBetHosting /> },
+  { path: "/in-progress/sidebet/:lobbyId/play", elem: <SideBetPlay /> },
 ];
