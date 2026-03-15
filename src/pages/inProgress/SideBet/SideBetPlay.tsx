@@ -17,6 +17,9 @@ export default function SideBetPlay() {
     null,
   );
 
+  const [submitted, setSubmitted] = useState(false);
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+
   useEffect(() => {
     if (!lobbyId) return;
     loadEvents();
@@ -39,7 +42,9 @@ export default function SideBetPlay() {
 
     await submitUserPicks(lobbyId, nickname, selections);
 
-    alert("Picks submitted!");
+    // assume everything goes okay for now
+    setSubmissionSuccess(true);
+    setSubmitted(true);
   }
 
   const allSelected =
@@ -86,6 +91,8 @@ export default function SideBetPlay() {
           }}
         />
       )}
+
+      {submitted && <SubmissionModal success={submissionSuccess} />}
     </main>
   );
 }
@@ -143,7 +150,11 @@ function EventList({
   onEventClick: (event: PolymarketEvent) => void;
 }) {
   return (
-    <div>
+    <div
+      style={{
+        marginTop: 50,
+      }}
+    >
       {events.map((event) => {
         const selection = selections[event.slug];
 
@@ -154,7 +165,7 @@ function EventList({
             style={{
               border: "1px solid #ccc",
               padding: 12,
-              marginBottom: 10,
+              marginBottom: 20,
               borderRadius: 8,
               boxSizing: "border-box",
             }}
@@ -205,6 +216,31 @@ function MarketSelectModal({
         ))}
 
         <button onClick={onClose}>Cancel</button>
+      </div>
+    </div>
+  );
+}
+
+function SubmissionModal({ success }: { success: boolean }) {
+  return (
+    <div className={styles.modalOverlay}>
+      <div className={styles.modal}>
+        {success ? (
+          <>
+            <h2>Success!</h2>
+            <div>
+              <p>May the odds be ever in your favor</p>
+            </div>
+          </>
+        ) : (
+          <>
+            <h2>Failure!</h2>
+            <div>
+              <p>Something bad happened</p>
+              <p>Ask the host what to do</p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
