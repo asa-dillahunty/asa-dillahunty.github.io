@@ -20,6 +20,13 @@ export const getEventBySlug = async (slug: string) => {
   return filteredEvent;
 };
 
+// todo: make this do current price, not assume a winner
+export function getWinningMarket(event: PolymarketEvent) {
+  return event.markets.reduce((prev, curr) =>
+    curr.lastTradePrice > prev.lastTradePrice ? curr : prev,
+  );
+}
+
 const filterEventData = (eventData: PolymarketEvent) => {
   const newEvent = {
     title: eventData.title,

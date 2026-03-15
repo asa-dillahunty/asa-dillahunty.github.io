@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { PolymarketEvent } from "./polymarketFuncs";
 import { firebaseDb } from "../../../utils/firestore";
+import { SelectionMap } from "./SideBetPlay";
 
 const marketGamesCollection = collection(firebaseDb, "marketGames");
 
@@ -79,6 +80,34 @@ export async function removeEventFromMarketGame(
 export async function deleteMarketGame(gameId: string): Promise<void> {
   const ref = doc(firebaseDb, "marketGames", gameId);
   await deleteDoc(ref);
+}
+
+export async function submitUserPicks(
+  gameId: string,
+  nickname: string,
+  selections: SelectionMap,
+) {
+  const ref = doc(firebaseDb, "marketGames", gameId, "picks", nickname);
+
+  const picks = Object.entries(selections).map(([eventSlug, market]) => ({
+    eventSlug,
+    market: market.groupItemTitle,
+    odds: market.lastTradePrice,
+  }));
+
+  await setDoc(ref, {
+    nickname,
+    picks,
+    createdAt: Date.now(),
+  });
+}
+
+export async function getAllPicks(gameId: string) {
+  const ref = collection(firebaseDb, "marketGames", gameId, "picks");
+
+  const snap = await getDocs(ref);
+
+  return snap.docs.map((d) => d.data());
 }
 
 export function getRandomId() {
