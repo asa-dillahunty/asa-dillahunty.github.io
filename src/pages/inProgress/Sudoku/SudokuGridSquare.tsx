@@ -1,10 +1,10 @@
 import { squareState } from "./Sudoku";
 
 export class SudokuGridSquare {
-  x: number;
+  x: number; // x and y are positioning on the canvas
   y: number;
 
-  i: number;
+  i: number; // i and j are the indexes of the arrays
   j: number;
 
   value: number | null;
