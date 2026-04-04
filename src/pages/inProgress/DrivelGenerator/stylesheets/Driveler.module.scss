@@ -1,0 +1,21 @@
+.wrapper {
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.drivelerIcon {
+  width: 300px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.outputBox {
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-top: 8px;
+  height: 200px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-family: monospace;
+}
