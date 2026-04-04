@@ -42,6 +42,8 @@ function Sudoku() {
 
   useEffect(() => {
     if (sudokuBoard === null && canvasRef?.current) {
+      // FIXME: right now if the height is significantly larger than the width, it squishes the board
+
       // I want the canvas to take up the whole height
       //  'info' bar takes up 10% of the height at the top
       //  'grid' the playing space takes up 70%
@@ -93,6 +95,7 @@ function Sudoku() {
         alignItems: "center",
         height: "100vh",
         width: "100vw",
+        backgroundColor: "#2f2f2f",
       }}
     >
       <canvas

@@ -103,13 +103,17 @@ export class SudokuGrid {
   }
 
   solvePuzzle() {
+    // TODO: this needs to be randomized so that certain seedings can have independent solutions
     const findNextEmpty = () => {
       for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
-          // try something in
+          if (this.squares[i][j].value === null) {
+            return this.squares[i][j];
+          }
         }
       }
     };
+
     const solutionStack = [];
     // add to solution stack
   }

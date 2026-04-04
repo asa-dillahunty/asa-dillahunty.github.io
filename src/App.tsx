@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Home from "./pages/Home";
 import Lost from "./pages/Lost";
 import Projects from "./pages/Projects";
-import InProgress from "./pages/projects/InProgress";
 import PreySimulator from "./pages/projects/PreySimulator";
 import MarsPaths from "./pages/projects/MarsPaths";
 import CaptureTheFlag from "./pages/projects/CaptureTheFlag";
@@ -18,6 +17,8 @@ import Sudoku from "./pages/inProgress/Sudoku/Sudoku";
 import SideBet from "./pages/inProgress/SideBet/SideBet";
 import SideBetPlay from "./pages/inProgress/SideBet/SideBetPlay";
 import SideBetHosting from "./pages/inProgress/SideBet/SideBetHosting";
+import DrivelGenerator from "./pages/inProgress/DrivelGenerator/DrivelGenerator";
+import InProgress from "./pages/inProgress/InProgress";
 
 function App() {
   const { pathname, hash } = useLocation();
@@ -62,6 +63,7 @@ const routeList = [
     elem: <SubwayMarkov />,
   },
   { path: "/in-progress/sudoku", elem: <Sudoku /> },
+  { path: "/in-progress/drivel/", elem: <DrivelGenerator /> },
   { path: "/in-progress/sidebet", elem: <SideBet /> },
   { path: "/in-progress/sidebet/:lobbyId", elem: <SideBetHosting /> },
   { path: "/in-progress/sidebet/:lobbyId/play", elem: <SideBetPlay /> },
