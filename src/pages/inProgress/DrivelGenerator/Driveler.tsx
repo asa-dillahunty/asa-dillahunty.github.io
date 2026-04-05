@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import penguinTyping from "./assets/images/penguin-typing.gif";
-import styles from "./stylesheets/Driveler.module.scss";
 
 import {
   drivelSourceBooks as books,
@@ -8,7 +6,14 @@ import {
   getNextDrivelChar,
 } from "./assets/utils";
 
-export default function Driveler() {
+import styles from "./stylesheets/Driveler.module.scss";
+import { AnimalTypes, getDrivelAnimal } from "./DrivelAnimals";
+
+type DrivelerProps = {
+  animalType: AnimalTypes;
+};
+
+export default function Driveler({ animalType }: DrivelerProps) {
   const [output, setOutput] = useState("");
   const [running, setRunning] = useState(false);
 
@@ -16,33 +21,35 @@ export default function Driveler() {
   const intervalRef = useRef<number | null>(null);
   const boxRef = useRef<HTMLDivElement>(null);
 
-  const SEED_LENGTH = 4;
+  // this can be memoized, should never change
+  const animal = getDrivelAnimal(animalType);
+
+  const DRIVEL_ORDER = animal.drivelOrder;
   const MAX_LENGTH = 2000;
-  const LETTERS_PER_SECOND = 10;
-  const INTERVAL_LENGTH = 1000 / LETTERS_PER_SECOND;
+  const INTERVAL_LENGTH = 1000 / animal.lettersPerSecond;
   // const INTERVAL_LENGTH = 1;
 
   const [selectedBookIndex, setSelectedBookIndex] = useState(0);
 
   function step() {
     let seed = seedRef.current;
-    while (seed.length > SEED_LENGTH) {
-      seedRef.current = seed.slice(1);
-      seed = seedRef.current;
-    }
 
     const next = getNextDrivelChar(seed, books[selectedBookIndex].text);
+    // if next is a white space character or a period or something, check the previous 'word' and see if it's a real word
+    // give points based on how long word is
 
     if (!next) {
       // reseed if dead end
       seedRef.current = getDrivelSeedString(
         books[selectedBookIndex].text,
-        SEED_LENGTH,
+        DRIVEL_ORDER,
       );
       return;
     }
 
-    seedRef.current = seed.slice(1) + next;
+    if (DRIVEL_ORDER > 0) {
+      seedRef.current = seed.slice(1) + next;
+    }
 
     setOutput((prev) => {
       const updated = prev + next;
@@ -57,7 +64,7 @@ export default function Driveler() {
 
     seedRef.current = getDrivelSeedString(
       books[selectedBookIndex].text,
-      SEED_LENGTH,
+      DRIVEL_ORDER,
     );
     setRunning(true);
 
@@ -92,8 +99,8 @@ export default function Driveler() {
   return (
     <div className={styles.wrapper}>
       <img
-        src={penguinTyping}
-        alt="Penquin Typing"
+        src={animal.imgSrc}
+        alt="Animal Typing"
         className={styles.drivelerIcon}
         style={{
           opacity: running ? 1 : 0.01,

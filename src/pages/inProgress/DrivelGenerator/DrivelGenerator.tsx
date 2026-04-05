@@ -1,4 +1,5 @@
 import PageContainer from "../../PageContainer";
+import { AnimalTypes } from "./DrivelAnimals";
 import Driveler from "./Driveler";
 
 import styles from "./stylesheets/DrivelGenerator.module.scss";
@@ -8,10 +9,10 @@ export default function DrivelGenerator() {
     <PageContainer header="Driveling">
       <main>
         <div className={styles.drivelersContainer}>
-          <Driveler />
-          <Driveler />
-          <Driveler />
-          <Driveler />
+          <Driveler animalType={AnimalTypes.monkey} />
+          <Driveler animalType={AnimalTypes.penguin} />
+          <Driveler animalType={AnimalTypes.cat} />
+          <Driveler animalType={AnimalTypes.dog} />
         </div>
         <h3>Sources</h3>
         <span>

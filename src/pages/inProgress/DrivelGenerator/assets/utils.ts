@@ -20,45 +20,51 @@ function cleanText(raw: string) {
     .trim();
 }
 
-export function getNextDrivelChar(seed: string, text: string): string {
-  if (!seed || seed.length === 0) return "";
-  if (text.length <= seed.length) return "";
+export function getNextDrivelChar(seed: string, sourceText: string): string {
+  if (!seed || seed.length === 0) {
+    return sourceText[Math.floor(Math.random() * (sourceText.length - 1))];
+  }
+  if (sourceText.length <= seed.length) return "";
 
-  const startIndex = Math.floor(Math.random() * (text.length - seed.length));
+  const startIndex = Math.floor(
+    Math.random() * (sourceText.length - seed.length),
+  );
 
-  for (let i = startIndex; i < text.length - seed.length; i++) {
-    if (text.slice(i, i + seed.length) === seed) {
-      return text[i + seed.length];
+  for (let i = startIndex; i < sourceText.length - seed.length; i++) {
+    // check ignoring case
+    if (
+      sourceText.slice(i, i + seed.length).toLowerCase() === seed.toLowerCase()
+    ) {
+      return sourceText[i + seed.length];
     }
   }
 
   // wrap around if no match
   for (let i = 0; i < startIndex; i++) {
-    if (text.slice(i, i + seed.length) === seed) {
-      return text[i + seed.length];
+    if (sourceText.slice(i, i + seed.length) === seed) {
+      return sourceText[i + seed.length];
     }
   }
 
   return ""; // no match (should literally be impossible)
 }
 
-export function getDrivelSeedString(bookText: string, length: number): string {
+export function getDrivelSeedString(
+  sourceText: string,
+  length: number,
+): string {
   if (length <= 0) return "";
-  if (bookText.length <= length) return bookText;
+  if (sourceText.length <= length) return sourceText;
 
-  const maxStart = bookText.length - length;
+  const maxStart = sourceText.length - length;
   let start = Math.floor(Math.random() * maxStart);
   let end = start + length;
 
-  // expand start backward to nearest space
-  while (start > 0 && bookText[start] !== " ") {
-    start--;
-  }
-
-  // expand end forward to nearest space
-  while (end < bookText.length && bookText[end] !== " ") {
+  // expand end forward to nearest space, start should follow so the seed length stays the same
+  while (end < sourceText.length && sourceText[end] !== " ") {
+    start++;
     end++;
   }
 
-  return bookText.slice(start, end).trim();
+  return sourceText.slice(start, end).trim();
 }
