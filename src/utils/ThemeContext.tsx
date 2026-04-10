@@ -77,10 +77,10 @@ function getStaticColors(darkMode: boolean) {
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [darkMode, setDarkMode] = useState(initDarkMode);
   const [mazeColors, setMazeColors] = useState<MazeColorsType>(
-    getMazeColors(initDarkMode)
+    getMazeColors(initDarkMode),
   );
   const [staticColors, setStaticColors] = useState<StaticColorsType>(
-    getStaticColors(initDarkMode)
+    getStaticColors(initDarkMode),
   );
 
   const { konamiActivated } = useContext(KonamiContext);

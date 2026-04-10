@@ -20,7 +20,6 @@ export default function ProjectCard({
         <div className={styles.title}>
           <h3>
             <Link to={destinationUrl}>{title}</Link>
-            {/* <a href={destinationUrl}>{title}</a> */}
           </h3>
         </div>
         <div className={styles.summary}>
