@@ -3,17 +3,13 @@ import PageContainer from "../PageContainer";
 import BombGameImgUrl from "../../assets/images/bombGame.png";
 import MarsCitiesImgUrl from "../../assets/images/marsCities.png";
 import AsciiImgUrl from "../../assets/images/phant.png";
-// import BoggleGame from "./BoggleGame";
 // import BouncingBall from "../inProgress/BouncingBall";
-// import dictionary from "./benjamincrom_scrabble_dictionary.json";
 
 export default function InProgress() {
-  // const set = new Set(dictionary.map((w: string) => w.toUpperCase()));
   return (
     <PageContainer header="In Progress">
       <main className={styles.main}>
         {/* <BouncingBall /> */}
-        {/* <BoggleGame wordList={set} size={5} /> */}
         <ul className={styles.linkList}>
           {inProgressProjectList.map((project) => {
             return (

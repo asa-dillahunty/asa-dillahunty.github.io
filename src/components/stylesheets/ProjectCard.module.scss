@@ -23,15 +23,13 @@ h3 {
   overflow: hidden;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-evenly;
 
   width: 100%;
-  padding-top: 1rem;
+  padding-top: 0.85rem; // less than padding bottom because of how text works
   padding-bottom: 1rem;
 
   max-width: 40rem;
-  background-color: rgba($bg-secondary, 0.92);
 
   backdrop-filter: blur(7px);
   border-radius: 5px;
@@ -42,25 +40,19 @@ h3 {
 
   border: 0.25rem solid var(--bg-secondary);
 
+  background-color: rgba(var(--bg-secondary-rgb), 0.92);
   background: linear-gradient(
-    90deg,
-    rgba($bg-third, 0.92) 0%,
-    rgba($bg-secondary, 0.92) 50%,
-    rgba($bg-third, 0.92) 100%
+    45deg,
+    rgba(var(--bg-third-rgb), 0.92) 0%,
+    rgba(var(--bg-secondary-rgb), 0.92) 50%,
+    rgba(var(--bg-third-rgb), 0.92) 100%
   );
-  // background: radial-gradient(rgba($bg-secondary, 0.92), rgba($bg-third, 0.92));
 
-  // box-shadow:
-  //   0px 0px 1.5rem var(--bg-third),
-  //   // 0.5rem 0.5rem 0.25rem var(--bg-third),
-  //   inset 0px 0px 0.25rem var(--bg-secondary);
+  box-shadow:
+    0px 0px 1.5rem var(--bg-third),
+    // 0.5rem 0.5rem 0.25rem var(--bg-third),
+    inset 0px 0px 0.25rem var(--bg-secondary);
 
-  // &:first-child {
-  //   // mayfly
-  //   img {
-  //     border-radius: 1rem;
-  //   }
-  // }
   img {
     // border: solid var(--bg-secondary);
     border: solid black;
@@ -72,6 +64,8 @@ h3 {
 @media (prefers-color-scheme: light) {
   .proj {
     background-color: rgba($bg-secondary-light, 0.9);
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(var(--fg-main-rgb), 0.5);
+    border-color: var(--maze-default);
   }
 }
 
@@ -100,7 +94,6 @@ h3 {
 
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 
   p {
     margin-block-start: 0;
@@ -110,12 +103,45 @@ h3 {
   }
 }
 
+.technologies {
+  font-size: 0.75rem;
+
+  margin: 0;
+  padding: 0;
+  line-height: 0.5;
+
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+
+  span {
+    margin: 0;
+    padding: 0;
+    line-height: 0.5;
+
+    font-family: "Courier New", Courier, monospace;
+    opacity: 0.75;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+
+    &:hover {
+      opacity: 1;
+      cursor: default;
+    }
+  }
+}
+
 .title {
   width: 100%;
 }
 
 .summary {
   width: 100%;
+  margin-top: 1rem;
 }
 
 .image {

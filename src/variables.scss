@@ -1,66 +1,77 @@
 /********* Dark Theme *********/
-$fg-main: #eee;
+$fg-main: rgb(238, 238, 238);
+$fg-main-rgb: 238, 238, 238;
 
-$bg-main: #0d0c1e;
-$bg-secondary: #464081;
-$bg-third: #353063;
+$bg-main: rgb(13, 12, 30);
+$bg-secondary: rgb(70, 64, 129);
+$bg-third: rgb(53, 48, 99);
 
-$maze-default: #353063;
-$maze-dead-end: #353063;
-$maze-solution: #6f67ff;
-$maze-wall: #16142a;
+$bg-main-rgb: 13, 12, 30;
+$bg-third-rgb: 53, 48, 99;
+$bg-secondary-rgb: 70, 64, 129;
 
-$maze-enqueued: yellow;
-$maze-visited: #242043;
+$maze-default: rgb(53, 48, 99);
+$maze-dead-end: rgb(53, 48, 99);
+$maze-solution: rgb(111, 103, 255);
+$maze-wall: rgb(22, 20, 42);
+
+$maze-enqueued: rgb(255, 255, 0);
+$maze-visited: rgb(36, 32, 67);
 
 $static-bg: $maze-wall;
 $static-primary: $maze-solution;
 
 /********* Light Theme *********/
-$fg-main-light: #16142a;
+$fg-main-light: rgb(22, 20, 42);
+$fg-main-light-rgb: 22, 20, 42;
 
-$maze-default-light: #f4d7b3;
+$maze-default-light: rgb(244, 215, 179);
 $maze-dead-end-light: $maze-default-light;
-$maze-solution-light: #ab744d;
-$maze-wall-light: #ffecc9;
-$maze-enqueued-light: yellow;
-$maze-visited-light: #d7bd9d;
-
-// $bg-main-light: #ffbb67;
-// $bg-secondary-light: #ffbb67;
-$bg-third-light: #c9b193;
+$maze-solution-light: rgb(171, 116, 77);
+$maze-wall-light: rgb(255, 236, 201);
+$maze-enqueued-light: rgb(255, 255, 0);
+$maze-visited-light: rgb(215, 189, 157);
 
 $bg-main-light: $maze-wall-light;
 $bg-secondary-light: $maze-default-light;
 
-$fg-main-light: #1a1730;
+$fg-main-light: rgb(26, 23, 48);
 
-$bg-main-light: #faf9ff;
-$bg-secondary-light: #eeecff;
-$bg-third-light: #ddd9ff;
+$bg-main-light: rgb(238, 236, 255);
+$bg-secondary-light: rgb(250, 249, 255);
+$bg-third-light: rgb(221, 217, 255);
 
-$maze-default-light: #e7e4ff;
-$maze-dead-end-light: #dad6f7;
-$maze-visited-light: #cfcaf0;
+$bg-main-light-rgb: 238, 236, 255;
+$bg-secondary-light-rgb: 250, 249, 255;
+$bg-third-light-rgb: 250, 249, 255;
 
-$maze-wall-light: #b8b2e6;
+$maze-default-light: rgb(231, 228, 255);
+$maze-dead-end-light: rgb(218, 214, 247);
+$maze-visited-light: rgb(207, 202, 240);
 
-$maze-solution-light: #6f67ff;
-$maze-enqueued-light: #ffbf3c;
+$maze-wall-light: rgb(184, 178, 230);
 
-$static-bg-light: #c75300;
-$static-primary-light: #ffb070;
+$maze-solution-light: rgb(111, 103, 255);
+$maze-enqueued-light: rgb(255, 191, 60);
 
-$red: #302058;
-$blue: #302058;
+$static-bg-light: rgb(199, 83, 0);
+$static-primary-light: rgb(255, 176, 112);
+
+$red: rgb(48, 32, 88);
+$blue: rgb(48, 32, 88);
 
 :root {
   color-scheme: light dark;
   --fg-main: #{$fg-main};
+  --fg-main-rgb: #{$fg-main-rgb};
 
   --bg-main: #{$bg-main};
   --bg-secondary: #{$bg-secondary};
   --bg-third: #{$bg-third};
+
+  --bg-main-rgb: #{$bg-main-rgb};
+  --bg-secondary-rgb: #{$bg-secondary-rgb};
+  --bg-third-rgb: #{$bg-third-rgb};
 
   --maze-default: #{$maze-default};
   --maze-dead-end: #{$maze-dead-end};
@@ -74,10 +85,15 @@ $blue: #302058;
 @media (prefers-color-scheme: light) {
   :root {
     --fg-main: #{$fg-main-light};
+    --fg-main-rgb: #{$fg-main-light-rgb};
 
     --bg-main: #{$bg-main-light};
     --bg-secondary: #{$bg-secondary-light};
     --bg-third: #{$bg-third-light};
+
+    --bg-main-rgb: #{$bg-main-light-rgb};
+    --bg-secondary-rgb: #{$bg-secondary-light-rgb};
+    --bg-third-rgb: #{$bg-third-light-rgb};
 
     --maze-default: #{$maze-default-light};
     --maze-dead-end: #{$maze-dead-end-light};

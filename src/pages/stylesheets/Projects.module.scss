@@ -1,0 +1,13 @@
+.projectHeader {
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+.projectContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}

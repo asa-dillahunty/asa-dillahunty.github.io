@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import styles from "./stylesheets/ProjectCard.module.scss";
+import { IoCode } from "react-icons/io5";
 
 type ProjectCardProps = {
   title: string;
   description: string;
+  technologies: string[];
   imgUrl: string;
   destinationUrl: string;
 };
@@ -11,6 +13,7 @@ type ProjectCardProps = {
 export default function ProjectCard({
   title,
   description,
+  technologies,
   imgUrl,
   destinationUrl,
 }: ProjectCardProps) {
@@ -21,6 +24,13 @@ export default function ProjectCard({
           <h3>
             <Link to={destinationUrl}>{title}</Link>
           </h3>
+        </div>
+        <div className={styles.technologies}>
+          {technologies.map((tech) => (
+            <span key={tech}>
+              <IoCode /> {tech}
+            </span>
+          ))}
         </div>
         <div className={styles.summary}>
           <p>{description}</p>
