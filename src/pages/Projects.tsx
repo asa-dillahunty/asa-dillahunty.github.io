@@ -76,7 +76,7 @@ const technologyList: ProjectTechnology[] = [
   { name: "Firebase Functions", icon: <PiBracketsCurly /> },
   { name: "Authentication", icon: <SiFirebase /> },
   { name: "Spotify API", icon: <TbBrandSpotify /> },
-  { name: "Gemini Flash Integration", icon: <RiGeminiLine /> },
+  { name: "Gemini API Integration", icon: <RiGeminiLine /> },
 ];
 
 const projectList: ProjectCardProps[] = [
