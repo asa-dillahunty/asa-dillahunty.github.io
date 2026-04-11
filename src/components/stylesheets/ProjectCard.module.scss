@@ -193,6 +193,46 @@ h3 {
   }
 }
 
+.static.proj {
+  .title,
+  .summary {
+    transition: all 1s;
+  }
+
+  .image {
+    opacity: 1;
+    transition: all 2s;
+  }
+
+  &:hover {
+    .image {
+      opacity: 0;
+      rotate: 1000deg;
+      scale: 0;
+    }
+
+    .title {
+      transform: translateY(-1.5rem);
+      rotate: -10deg;
+    }
+
+    .summary {
+      transform: translateY(1.5rem);
+      rotate: 10deg;
+    }
+  }
+
+  &:nth-child(odd):hover {
+    .title {
+      rotate: 10deg;
+    }
+
+    .summary {
+      rotate: -10deg;
+    }
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .proj {
     max-width: 80%;

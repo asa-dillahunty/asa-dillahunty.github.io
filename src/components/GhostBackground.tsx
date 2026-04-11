@@ -3,11 +3,14 @@ import styles from "./stylesheets/GhostBackground.module.scss";
 import ghostImage from "../assets/images/ghostFullSprite.png";
 
 import { ThemeContext, ThemeContextType } from "../utils/ThemeContext";
+import { KonamiContext } from "../utils/KonamiContext";
 
 let animationFrame: number = 0;
 export default function GhostBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { staticColors: colors } = useContext<ThemeContextType>(ThemeContext);
+  const { konamiActivated } = useContext(KonamiContext);
+  const defaultSpeed = 1;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,6 +24,7 @@ export default function GhostBackground() {
 
     function step() {
       if (!ctx || !colors) return;
+      if (konamiActivated) ghost.speed = defaultSpeed * 20;
 
       ctx.clearRect(0, 0, width, height);
       ghost.takeStep();
@@ -92,7 +96,7 @@ class Ghost {
       this.x,
       this.y,
       this.spriteWidth * this.size,
-      this.spriteHeight * this.size
+      this.spriteHeight * this.size,
     );
   }
 
