@@ -15,6 +15,8 @@ $maze-dead-end: rgb(53, 48, 99);
 $maze-solution: rgb(111, 103, 255);
 $maze-wall: rgb(22, 20, 42);
 
+$maze-solution-rgb: 111, 103, 255;
+
 $maze-enqueued: rgb(255, 255, 0);
 $maze-visited: rgb(36, 32, 67);
 
@@ -78,6 +80,8 @@ $blue: rgb(48, 32, 88);
   --maze-solution: #{$maze-solution};
   --maze-wall: #{$maze-wall};
 
+  --maze-solution-rgb: #{$maze-solution-rgb};
+
   --red: #{$red};
   --blue: #{$blue};
 }
@@ -99,5 +103,7 @@ $blue: rgb(48, 32, 88);
     --maze-dead-end: #{$maze-dead-end-light};
     --maze-solution: #{$maze-solution-light};
     --maze-wall: #{$maze-wall-light};
+
+    --maze-solution-rgb: #{$maze-solution-rgb}; // TODO: check if different for light
   }
 }

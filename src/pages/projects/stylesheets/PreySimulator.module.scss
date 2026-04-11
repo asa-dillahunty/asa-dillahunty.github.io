@@ -1,3 +1,5 @@
+@use "../../../animations.scss" as *;
+
 .header {
   height: 100vh;
   width: 100%;
@@ -97,30 +99,4 @@
   animation-iteration-count: infinite;
   animation-delay: 3s;
   animation-duration: 1.75s;
-}
-
-@keyframes bounce {
-  0% {
-    opacity: 1;
-    transform: scale(1, 1) translateY(0);
-  }
-  10% {
-    transform: scale(1.1, 0.9) translateY(0);
-  }
-  30% {
-    transform: scale(0.9, 1.1) translateY(-5rem);
-  }
-  50% {
-    transform: scale(1.05, 0.95) translateY(0);
-  }
-  57% {
-    transform: scale(1, 1) translateY(-0.3rem);
-  }
-  64% {
-    transform: scale(1, 1) translateY(0);
-  }
-  100% {
-    transform: scale(1, 1) translateY(0);
-    opacity: 1;
-  }
 }

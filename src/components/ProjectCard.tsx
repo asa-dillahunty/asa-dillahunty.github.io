@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
 import styles from "./stylesheets/ProjectCard.module.scss";
 import { IoCode } from "react-icons/io5";
+import { ReactElement, useContext } from "react";
+import { KonamiContext } from "../utils/KonamiContext";
 
 export type ProjectCardProps = {
   title: string;
   description: string;
-  technologies: string[];
+  technologies: ProjectTechnology[];
   imgUrl: string;
   destinationUrl: string;
   imageBorder?: boolean;
+};
+
+export type ProjectTechnology = {
+  name: string;
+  icon?: ReactElement;
 };
 
 export default function ProjectCard({
@@ -19,11 +26,13 @@ export default function ProjectCard({
   destinationUrl,
   imageBorder = true,
 }: ProjectCardProps) {
-  if (imageBorder === false) {
-    console.log(title);
-  }
+  const { konamiActivated } = useContext(KonamiContext);
+
   return (
-    <div className={styles.proj} id={title}>
+    <div
+      className={styles.proj + (konamiActivated ? " " + styles.static : "")}
+      id={title}
+    >
       <div className={styles.words}>
         <div className={styles.title}>
           <h3>
@@ -32,8 +41,21 @@ export default function ProjectCard({
         </div>
         <div className={styles.technologies}>
           {technologies.map((tech) => (
-            <span key={tech}>
-              <IoCode /> {tech}
+            <span key={tech.name}>
+              {konamiActivated ? (
+                <>
+                  {tech.icon ? (
+                    tech.icon
+                  ) : (
+                    <IoCode className={styles.staticLogo} />
+                  )}{" "}
+                  {tech.name}
+                </>
+              ) : (
+                <>
+                  <IoCode /> {tech.name}
+                </>
+              )}
             </span>
           ))}
         </div>

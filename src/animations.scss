@@ -1,0 +1,43 @@
+@keyframes spinning {
+  0% {
+    transform: translate(-50%, -10%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -10%) rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-5rem);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-0.3rem);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
