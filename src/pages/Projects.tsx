@@ -1,4 +1,4 @@
-import ProjectCard from "../components/ProjectCard";
+import ProjectCard, { ProjectCardProps } from "../components/ProjectCard";
 
 import LetterBoxedImgUrl from "../assets/images/letterboxed.png";
 import MazePreviewImgUrl from "../assets/images/mazePreview.png";
@@ -33,6 +33,7 @@ export default function Projects() {
             technologies={proj.technologies}
             destinationUrl={proj.destinationUrl}
             imgUrl={proj.imgUrl}
+            imageBorder={proj.imageBorder}
           />
         ))}
       </div>
@@ -45,7 +46,7 @@ export default function Projects() {
   );
 }
 
-const projectList = [
+const projectList: ProjectCardProps[] = [
   {
     title: "Prey Simulation",
     description:
@@ -54,6 +55,7 @@ const projectList = [
     destinationUrl: "/projects/predator-prey-simulator",
     imgUrl: PacSimImgUrl,
   },
+
   {
     title: "Mayfly",
     description:
@@ -62,6 +64,15 @@ const projectList = [
     destinationUrl: "https://github.com/asa-dillahunty/Mayfly",
     imgUrl: MayflyImgUrl,
     // imgUrl: "https://mayfly.asadillahunty.com/logo512.png",
+  },
+  {
+    title: "Musical Jeopardy",
+    description:
+      "Jeopardy but instead of clues, songs play, and users guess the song's artist. Currently invite only.",
+    technologies: ["Typescript", "Firestore", "Spotify API"],
+    destinationUrl: "https://musical-jeopardy.firebaseapp.com/",
+    imgUrl: "https://musical-jeopardy.firebaseapp.com/logoFull.png",
+    imageBorder: false,
   },
   {
     title: "Letter Boxed Solver",

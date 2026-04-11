@@ -26,7 +26,7 @@ h3 {
   justify-content: space-evenly;
 
   width: 100%;
-  padding-top: 0.85rem; // less than padding bottom because of how text works
+  padding-top: 1rem;
   padding-bottom: 1rem;
 
   max-width: 40rem;
@@ -76,6 +76,12 @@ h3 {
 
 .image {
   position: relative;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .image a img::after {
@@ -107,8 +113,9 @@ h3 {
   font-size: 0.75rem;
 
   margin: 0;
+  margin-top: 0.25rem;
   padding: 0;
-  line-height: 0.5;
+  line-height: 1;
 
   display: flex;
   flex-direction: row;
@@ -137,6 +144,7 @@ h3 {
 
 .title {
   width: 100%;
+  line-height: 1;
 }
 
 .summary {

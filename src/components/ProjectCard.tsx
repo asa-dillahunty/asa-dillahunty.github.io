@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import styles from "./stylesheets/ProjectCard.module.scss";
 import { IoCode } from "react-icons/io5";
 
-type ProjectCardProps = {
+export type ProjectCardProps = {
   title: string;
   description: string;
   technologies: string[];
   imgUrl: string;
   destinationUrl: string;
+  imageBorder?: boolean;
 };
 
 export default function ProjectCard({
@@ -16,7 +17,11 @@ export default function ProjectCard({
   technologies,
   imgUrl,
   destinationUrl,
+  imageBorder = true,
 }: ProjectCardProps) {
+  if (imageBorder === false) {
+    console.log(title);
+  }
   return (
     <div className={styles.proj} id={title}>
       <div className={styles.words}>
@@ -37,7 +42,15 @@ export default function ProjectCard({
         </div>
       </div>
       <div className={styles.image}>
-        <Link to={destinationUrl}>{<img src={imgUrl} alt="" />}</Link>
+        <Link to={destinationUrl}>
+          {
+            <img
+              src={imgUrl}
+              alt=""
+              style={imageBorder ? {} : { border: "none" }}
+            />
+          }
+        </Link>
       </div>
     </div>
   );
