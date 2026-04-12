@@ -1,7 +1,7 @@
 @use "../../variables.scss" as *;
 @use "../../animations.scss" as *;
 
-h3 {
+@mixin cardTitle {
   font-size: 2rem;
   text-align: left;
 
@@ -19,9 +19,17 @@ h3 {
       /* text-decoration: underline; */
     }
   }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 1.5rem;
+  }
 }
 
-.proj {
+h3 {
+  @include cardTitle;
+}
+
+@mixin card {
   overflow: hidden;
   display: flex;
   flex-flow: row wrap;
@@ -35,10 +43,6 @@ h3 {
 
   backdrop-filter: blur(7px);
   border-radius: 5px;
-
-  &:nth-child(odd) {
-    flex-direction: row-reverse;
-  }
 
   border: 0.25rem solid var(--bg-secondary);
 
@@ -55,19 +59,28 @@ h3 {
     // 0.5rem 0.5rem 0.25rem var(--bg-third),
     inset 0px 0px 0.25rem var(--bg-secondary);
 
-  img {
-    // border: solid var(--bg-secondary);
-    border: solid black;
-    border-width: 0.25rem;
-    border-radius: 0.25rem;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .proj {
+  @media (prefers-color-scheme: light) {
     background-color: rgba($bg-secondary-light, 0.9);
     box-shadow: 0.2rem 0.2rem 0.5rem rgba(var(--fg-main-rgb), 0.5);
     border-color: var(--maze-default);
+  }
+
+  @media only screen and (max-width: 600px) {
+    max-width: 80%;
+  }
+}
+
+.proj {
+  @include card;
+
+  &:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  img {
+    border: solid black;
+    border-width: 0.25rem;
+    border-radius: 0.25rem;
   }
 }
 
@@ -235,16 +248,16 @@ h3 {
 
 @media only screen and (max-width: 600px) {
   .proj {
-    max-width: 80%;
+    // max-width: 80%; now handled in the card mixin
 
     .words {
       margin: auto;
       padding: 0;
       width: 90%;
 
-      h3 {
-        font-size: 1.5rem;
-      }
+      // h3 {
+      //   font-size: 1.5rem; now handled in the cardTitle mixin
+      // }
     }
 
     .image {

@@ -26,6 +26,7 @@ import {
 import { FaJava } from "react-icons/fa";
 import { RiGeminiLine } from "react-icons/ri";
 import { PiBracketsCurly } from "react-icons/pi";
+import { GiBarrier } from "react-icons/gi";
 export const PROJECT_HEADER_ID = "projects";
 
 export default function Projects() {
@@ -49,12 +50,19 @@ export default function Projects() {
             imageBorder={proj.imageBorder}
           />
         ))}
+        {konamiActivated && (
+          <div className={styles.inProgressButton}>
+            <div>
+              <h3>
+                <GiBarrier />
+                <Link to="/in-progress">In Progress</Link>
+                <GiBarrier />
+              </h3>
+            </div>
+            <p>See the less... polished projects</p>
+          </div>
+        )}
       </div>
-      {konamiActivated && (
-        <div>
-          <Link to="/in-progress">In Progress</Link>
-        </div>
-      )}
     </main>
   );
 }

@@ -20,8 +20,8 @@ export default function MarsPaths() {
         <p>
           Before beginning a path searching problem, there must first be things
           to connect with paths. For this assignment we were to read in a
-          terrain map of a habitable land area, and build a completely
-          completely flat city on it. My city was titled AceHill.
+          terrain map of a habitable land area, and build a completely flat city
+          on it. My city was titled AceHill.
         </p>
         <p>
           Elevation at a certain pixel on the terrain map is represented as it's
