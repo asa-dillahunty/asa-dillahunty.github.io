@@ -84,11 +84,12 @@ class Pacman {
   }
 
   takeStep() {
-    if (this.arcade.pacs.length < 8) {
-      this.food--;
-    } else {
-      this.food -= 4;
-    }
+    // if (this.arcade.pacs.length < 8) {
+    //   this.food--;
+    // } else {
+    //   this.food -= 4;
+    // }
+    this.food--;
     this.step++;
 
     if (this.food < 0) {
@@ -201,7 +202,7 @@ class Ghost {
         this.size / 2 - squiggleWidth * (i + 0.5),
         this.size / 2 + squiggleHeight * (i % 2 === 0 ? 1 : -1),
         this.size / 2 - squiggleWidth * (i + 1),
-        this.size / 2
+        this.size / 2,
       );
     }
     ctx.lineTo(-this.size / 2, this.size / 2);
@@ -223,7 +224,7 @@ class Ghost {
       eyeHeight,
       0,
       0,
-      2 * Math.PI
+      2 * Math.PI,
     );
     ctx.ellipse(
       eyeOffsetX,
@@ -232,7 +233,7 @@ class Ghost {
       eyeHeight,
       0,
       0,
-      2 * Math.PI
+      2 * Math.PI,
     );
     ctx.fill();
 
@@ -246,7 +247,7 @@ class Ghost {
       pupilSize,
       0,
       0,
-      2 * Math.PI
+      2 * Math.PI,
     );
     ctx.ellipse(
       eyeOffsetX + pupilSize,
@@ -255,7 +256,7 @@ class Ghost {
       pupilSize,
       0,
       0,
-      2 * Math.PI
+      2 * Math.PI,
     );
     ctx.fill();
 
@@ -292,7 +293,7 @@ class Ghost {
       if (distance < this.size) {
         this.direction = this.towards(nearestGhost.x, nearestGhost.y) + 180;
       }
-    } else if (!this.inked) {
+    } else if (this.arcade.ghosts.length === 1 && !this.inked) {
       this.inkself();
     }
 
@@ -343,6 +344,8 @@ class Ghost {
 }
 
 class Arcade {
+  grid: Map<string, (Pacman | Ghost)[]>;
+  cellSize: number;
   ghosts: Ghost[];
   pacs: Pacman[];
   toKill: (Ghost | Pacman)[];
@@ -350,7 +353,9 @@ class Arcade {
   width: number;
   height: number;
 
-  constructor(canvasWidth: number, canvasHeight: number) {
+  constructor(canvasWidth: number, canvasHeight: number, spriteSize: number) {
+    this.grid = new Map();
+    this.cellSize = Math.ceil(spriteSize * 4);
     this.ghosts = [];
     this.pacs = [];
     this.toKill = [];
@@ -366,15 +371,18 @@ class Arcade {
   }): Pacman | null {
     let nearest: Pacman | null = null;
     let minDistance = Infinity;
-    this.pacs.forEach((pac) => {
-      if (pac !== thingy) {
-        let dist = thingy.distance(pac.x, pac.y);
+
+    const nearby = this.getNearbyEntities(thingy.x, thingy.y);
+
+    for (const entity of nearby) {
+      if (entity instanceof Pacman && entity !== thingy) {
+        const dist = thingy.distance(entity.x, entity.y);
         if (dist < minDistance) {
           minDistance = dist;
-          nearest = pac;
+          nearest = entity;
         }
       }
-    });
+    }
     return nearest;
   }
 
@@ -385,16 +393,58 @@ class Arcade {
   }): Ghost | null {
     let nearest: Ghost | null = null;
     let minDistance = Infinity;
-    this.ghosts.forEach((ghost) => {
-      if (ghost !== thingy && !ghost.inked) {
-        let dist = thingy.distance(ghost.x, ghost.y);
+
+    const nearby = this.getNearbyEntities(thingy.x, thingy.y);
+
+    for (const entity of nearby) {
+      if (entity instanceof Ghost && entity !== thingy && !entity.inked) {
+        const dist = thingy.distance(entity.x, entity.y);
         if (dist < minDistance) {
           minDistance = dist;
-          nearest = ghost;
+          nearest = entity;
         }
       }
-    });
+    }
+
     return nearest;
+  }
+
+  getNearbyEntities(x: number, y: number): (Pacman | Ghost)[] {
+    const cx = Math.floor(x / this.cellSize);
+    const cy = Math.floor(y / this.cellSize);
+
+    const results: (Pacman | Ghost)[] = [];
+
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -1; dy <= 1; dy++) {
+        const key = `${cx + dx},${cy + dy}`;
+        const cell = this.grid.get(key);
+        if (cell) results.push(...cell);
+      }
+    }
+
+    return results;
+  }
+
+  getCellKey(x: number, y: number): string {
+    const cx = Math.floor(x / this.cellSize);
+    const cy = Math.floor(y / this.cellSize);
+    return `${cx},${cy}`;
+  }
+
+  rebuildGrid() {
+    this.grid.clear();
+
+    const insert = (entity: Pacman | Ghost) => {
+      const key = this.getCellKey(entity.x, entity.y);
+      if (!this.grid.has(key)) {
+        this.grid.set(key, []);
+      }
+      this.grid.get(key)!.push(entity);
+    };
+
+    this.pacs.forEach(insert);
+    this.ghosts.forEach(insert);
   }
 
   addGhost(ghost: Ghost) {
@@ -406,6 +456,8 @@ class Arcade {
   }
 
   run(ctx: CanvasRenderingContext2D) {
+    this.rebuildGrid();
+
     this.pacs.forEach((pac) => pac.takeStep());
     this.ghosts.forEach((ghost) => ghost.takeStep());
 
@@ -452,7 +504,7 @@ const PreySimulator: React.FC = () => {
     const interval = konamiActivated ? 0 : 1000 / fps;
     currentIntervalRef.current = window.setInterval(
       () => gameLoop(ctx),
-      interval
+      interval,
     );
   };
 
@@ -484,30 +536,33 @@ const PreySimulator: React.FC = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    if (currentIntervalRef.current) clearInterval(currentIntervalRef.current);
-    arcadeRef.current = new Arcade(canvas.width, canvas.height);
+    const spriteSize = Math.sqrt((canvas.width * canvas.height) / 4000);
 
-    const spriteSize = Math.sqrt((canvas.width * canvas.height) / 400);
+    if (currentIntervalRef.current) clearInterval(currentIntervalRef.current);
+    arcadeRef.current = new Arcade(canvas.width, canvas.height, spriteSize);
+
+    const startingPacman = Math.ceil(350 / spriteSize);
+    const startingGhosts = startingPacman * 12;
 
     // Add initial Pacman and Ghost entities
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < startingPacman; i++) {
       arcadeRef.current.addPacman(
         new Pacman(
           arcadeRef.current,
           Math.random() * canvas.width,
           Math.random() * canvas.height,
-          spriteSize
-        )
+          spriteSize,
+        ),
       );
     }
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < startingGhosts; i++) {
       arcadeRef.current.addGhost(
         new Ghost(
           arcadeRef.current,
           Math.random() * canvas.width,
           Math.random() * canvas.height,
-          spriteSize
-        )
+          spriteSize,
+        ),
       );
     }
     startGameLoop(30, ctx);
