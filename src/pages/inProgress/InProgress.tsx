@@ -40,7 +40,20 @@ export default function InProgress() {
   );
 }
 
-const inProgressProjectList = [
+interface SimpleProject {
+  title: string;
+  destinationUrl: string;
+  [key: string]: any; // allows any other property to exist
+}
+
+const inProgressProjectList: SimpleProject[] = [
+  { title: "Sudoku", destinationUrl: "/in-progress/sudoku/" },
+  { title: "Drivel Generator", destinationUrl: "/in-progress/drivel/" },
+  {
+    title: "Dead By Daylight Streak Helper",
+    destinationUrl: "https://asa-dillahunty.github.io/dbd-streak-helper/",
+  },
+  { title: "Side Bet", destinationUrl: "/in-progress/sidebet/" },
   {
     title: "Dungeon Generation",
     destinationUrl: "https://asa-dillahunty.github.io/Dungeon-Generation/",
@@ -53,12 +66,9 @@ const inProgressProjectList = [
     title: "Olympic Fantasy Climbing Draft",
     destinationUrl: "climbing/",
   },
-  { title: "Sudoku", destinationUrl: "/in-progress/sudoku/" },
-  { title: "Side Bet", destinationUrl: "/in-progress/sidebet/" },
-  { title: "Drivel Generator", destinationUrl: "/in-progress/drivel/" },
 ];
 
-const archivedProjectList = [
+const archivedProjectList: SimpleProject[] = [
   {
     title: "Draft A Date",
     destinationUrl: "draftadate/",
