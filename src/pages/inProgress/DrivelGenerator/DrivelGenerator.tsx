@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PageContainer from "../../PageContainer";
 import { AnimalTypes } from "./DrivelAnimals";
 import Driveler from "./Driveler";
@@ -5,14 +6,53 @@ import Driveler from "./Driveler";
 import styles from "./stylesheets/DrivelGenerator.module.scss";
 
 export default function DrivelGenerator() {
+  const [employees, setEmployees] = useState<AnimalTypes[]>([]);
+
+  const hireRandom = () => {
+    const temp = Math.floor(Math.random() * 4);
+    switch (temp) {
+      case 0:
+        hireEmployee(AnimalTypes.monkey);
+        break;
+      case 1:
+        hireEmployee(AnimalTypes.cat);
+        break;
+      case 2:
+        hireEmployee(AnimalTypes.dog);
+        break;
+      case 3:
+        hireEmployee(AnimalTypes.penguin);
+        break;
+      default:
+        hireEmployee(AnimalTypes.monkey);
+    }
+  };
+
+  const hireEmployee = (animalType: AnimalTypes) => {
+    const emps = [...employees, animalType];
+    setEmployees(emps);
+  };
+
+  const fireEmployee = (index: number) => {
+    const newEmps = [
+      ...employees.slice(0, index),
+      ...employees.slice(index + 1),
+    ];
+    setEmployees(newEmps);
+  };
+
   return (
     <PageContainer header="Driveling">
       <main>
+        <button onClick={() => hireRandom()}>Add Emp</button>
         <div className={styles.drivelersContainer}>
-          <Driveler animalType={AnimalTypes.monkey} />
-          <Driveler animalType={AnimalTypes.penguin} />
-          <Driveler animalType={AnimalTypes.cat} />
-          <Driveler animalType={AnimalTypes.dog} />
+          {employees.map((animalEmp, index) => (
+            <Driveler
+              key={`${index} ${animalEmp}`}
+              animalType={animalEmp}
+              fire={() => fireEmployee(index)}
+            />
+          ))}
         </div>
         <h3>Sources</h3>
         <span>

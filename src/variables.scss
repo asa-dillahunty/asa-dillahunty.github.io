@@ -107,3 +107,10 @@ $blue: rgb(48, 32, 88);
     --maze-solution-rgb: #{$maze-solution-rgb}; // TODO: check if different for light
   }
 }
+
+@mixin flex-default($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}

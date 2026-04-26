@@ -8,14 +8,19 @@ import {
 
 import styles from "./stylesheets/Driveler.module.scss";
 import { AnimalTypes, getDrivelAnimal } from "./DrivelAnimals";
+import { CgDetailsMore } from "react-icons/cg";
+import { AiOutlineClose } from "react-icons/ai";
 
 type DrivelerProps = {
   animalType: AnimalTypes;
+  fire: () => void;
 };
 
-export default function Driveler({ animalType }: DrivelerProps) {
+export default function Driveler({ animalType, fire }: DrivelerProps) {
   const [output, setOutput] = useState("");
   const [running, setRunning] = useState(false);
+  const [autoScrolling, setAutoScrolling] = useState(true);
+  const [detailsVisible, setDetailsVisible] = useState(false);
 
   const seedRef = useRef<string>(""); // mutable seed
   const intervalRef = useRef<number | null>(null);
@@ -86,6 +91,8 @@ export default function Driveler({ animalType }: DrivelerProps) {
   }
 
   useEffect(() => {
+    if (!autoScrolling) return;
+
     boxRef.current?.scrollTo({
       top: boxRef.current.scrollHeight,
     });
@@ -93,50 +100,70 @@ export default function Driveler({ animalType }: DrivelerProps) {
 
   // cleanup on unmount
   useEffect(() => {
+    start();
     return () => stop();
   }, []);
 
   return (
-    <div className={styles.wrapper}>
-      <img
-        src={animal.imgSrc}
-        alt="Animal Typing"
-        className={styles.drivelerIcon}
-        style={{
-          opacity: running ? 1 : 0.01,
-        }}
-      />
+    <div
+      className={styles.wrapper}
+      onMouseLeave={() => (detailsVisible ? setDetailsVisible(false) : 0)}
+    >
+      <div className={styles.imageWrapper}>
+        <img
+          src={animal.imgSrc}
+          alt="Animal Typing"
+          className={styles.drivelerIcon}
+        />
+        <div
+          className={`${styles.detailsPanel} ${detailsVisible ? styles.detailsActive : ""}`}
+        >
+          <label className={styles.label}>Inspiration</label>
+          <select
+            value={selectedBookIndex}
+            className={styles.select}
+            onChange={(e) => setSelectedBookIndex(parseInt(e.target.value))}
+          >
+            {books.map((book, index) => (
+              <option key={book.title} value={index}>
+                {book.title}
+              </option>
+            ))}
+          </select>
 
-      <label>Inspiration</label>
-      <select
-        value={selectedBookIndex}
-        onChange={(e) => setSelectedBookIndex(parseInt(e.target.value))}
+          <div className={styles.buttons}>
+            <button onClick={start} disabled={running}>
+              Start
+            </button>
+            <button onClick={stop} disabled={!running}>
+              Stop
+            </button>
+            <button onClick={reset}>Reset</button>
+          </div>
+
+          <div className={styles.charCount}>
+            <small>
+              {output.length} / {MAX_LENGTH}
+            </small>
+          </div>
+
+          <button onClick={() => fire()}>Fire</button>
+        </div>
+        <button
+          className={styles.detailsButton}
+          onClick={() => setDetailsVisible(!detailsVisible)}
+        >
+          {detailsVisible ? <AiOutlineClose /> : <CgDetailsMore />}
+        </button>
+      </div>
+
+      <div
+        ref={boxRef}
+        className={styles.outputBox}
+        onMouseLeave={() => setAutoScrolling(true)}
+        onMouseEnter={() => setAutoScrolling(false)}
       >
-        {books.map((book, index) => (
-          <option key={book.title} value={index}>
-            {book.title}
-          </option>
-        ))}
-      </select>
-
-      <div ref={boxRef} className={styles.outputBox}>
         {output}
-      </div>
-
-      <div style={{ marginTop: 10 }}>
-        <button onClick={start} disabled={running}>
-          Start
-        </button>
-        <button onClick={stop} disabled={!running}>
-          Stop
-        </button>
-        <button onClick={reset}>Reset</button>
-      </div>
-
-      <div style={{ marginTop: 5 }}>
-        <small>
-          {output.length} / {MAX_LENGTH}
-        </small>
       </div>
     </div>
   );
