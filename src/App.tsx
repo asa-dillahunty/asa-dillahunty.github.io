@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Home from "./pages/Home";
 import Lost from "./pages/Lost";
 import Projects from "./pages/Projects";
-import PreySimulator from "./pages/projects/PreySimulator";
 import MarsPaths from "./pages/projects/MarsPaths";
 import CaptureTheFlag from "./pages/projects/CaptureTheFlag";
 import AsciiArt from "./pages/projects/AsciiArt";
@@ -19,6 +18,7 @@ import SideBetPlay from "./pages/inProgress/SideBet/SideBetPlay";
 import SideBetHosting from "./pages/inProgress/SideBet/SideBetHosting";
 import DrivelGenerator from "./pages/inProgress/DrivelGenerator/DrivelGenerator";
 import InProgress from "./pages/inProgress/InProgress";
+import PreySimulator from "./pages/projects/PredatorPreySim/PreySimulator";
 
 function App() {
   const { pathname, hash } = useLocation();
