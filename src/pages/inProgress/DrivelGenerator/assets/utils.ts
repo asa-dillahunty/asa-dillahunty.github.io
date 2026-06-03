@@ -2,6 +2,7 @@ import frankenstein from "./books/frankenstein.txt?raw";
 import gatsby from "./books/great-gatsby.txt?raw";
 import moby from "./books/moby-dick.txt?raw";
 import pride from "./books/pride-and-predjudice.txt?raw";
+import dictionary from "../../../../assets/benjamincrom_scrabble_dictionary.json";
 
 export const drivelSourceBooks = [
   { title: "Frankenstein", text: cleanText(frankenstein) },
@@ -67,4 +68,15 @@ export function getDrivelSeedString(
   }
 
   return sourceText.slice(start, end).trim();
+}
+
+export function isWord(word: string) {
+  if (dictionary.includes(word.toLowerCase())) {
+    return true;
+  }
+  return false;
+}
+
+export function isDelimiter(char: string) {
+  return /[.,!?;:\s]/.test(char);
 }

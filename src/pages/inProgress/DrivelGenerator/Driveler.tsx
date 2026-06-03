@@ -4,6 +4,8 @@ import {
   drivelSourceBooks as books,
   getDrivelSeedString,
   getNextDrivelChar,
+  isDelimiter,
+  isWord,
 } from "./assets/utils";
 
 import styles from "./stylesheets/Driveler.module.scss";
@@ -16,13 +18,20 @@ type DrivelerProps = {
   fire: () => void;
 };
 
+type OutputToken = {
+  text: string;
+  isWord: boolean;
+};
+
 export default function Driveler({ animalType, fire }: DrivelerProps) {
-  const [output, setOutput] = useState("");
   const [running, setRunning] = useState(false);
   const [autoScrolling, setAutoScrolling] = useState(true);
   const [detailsVisible, setDetailsVisible] = useState(false);
 
-  const seedRef = useRef<string>(""); // mutable seed
+  const [outputTokens, setOutputTokens] = useState<OutputToken[]>([]);
+  const currentWordRef = useRef("");
+
+  const seedRef = useRef<string>("");
   const intervalRef = useRef<number | null>(null);
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -56,37 +65,68 @@ export default function Driveler({ animalType, fire }: DrivelerProps) {
       seedRef.current = seed.slice(1) + next;
     }
 
-    setOutput((prev) => {
-      const updated = prev + next;
-      return updated.length > MAX_LENGTH
-        ? updated.slice(updated.length - MAX_LENGTH)
-        : updated;
+    const completedWord = isDelimiter(next) ? currentWordRef.current : null;
+
+    if (isDelimiter(next)) {
+      currentWordRef.current = "";
+    } else {
+      currentWordRef.current += next;
+    }
+
+    setOutputTokens((prev) => {
+      const updated = [...prev];
+
+      if (isDelimiter(next)) {
+        if (completedWord && completedWord.length > 0) {
+          updated.push({
+            text: completedWord,
+            isWord: isWord(completedWord),
+          });
+        }
+
+        updated.push({
+          text: next,
+          isWord: false,
+        });
+      }
+      // trim to MAX_LENGTH
+      const totalLength = updated.reduce((sum, t) => sum + t.text.length, 0);
+      if (totalLength > MAX_LENGTH) {
+        while (
+          updated.length &&
+          updated.reduce((s, t) => s + t.text.length, 0) > MAX_LENGTH
+        ) {
+          updated.shift();
+        }
+      }
+
+      return updated;
     });
   }
 
   function start() {
     if (running) return;
+    setRunning(true);
 
     seedRef.current = getDrivelSeedString(
       books[selectedBookIndex].text,
       DRIVEL_ORDER,
     );
-    setRunning(true);
 
     intervalRef.current = window.setInterval(step, INTERVAL_LENGTH);
   }
 
   function stop() {
-    setRunning(false);
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
+    setRunning(false);
   }
 
   function reset() {
     stop();
-    setOutput("");
+    setOutputTokens([]);
     seedRef.current = "";
   }
 
@@ -96,7 +136,7 @@ export default function Driveler({ animalType, fire }: DrivelerProps) {
     boxRef.current?.scrollTo({
       top: boxRef.current.scrollHeight,
     });
-  }, [output]);
+  }, [outputTokens]);
 
   // cleanup on unmount
   useEffect(() => {
@@ -143,7 +183,9 @@ export default function Driveler({ animalType, fire }: DrivelerProps) {
 
           <div className={styles.charCount}>
             <small>
-              {output.length} / {MAX_LENGTH}
+              {outputTokens.reduce((sum, t) => sum + t.text.length, 0) +
+                currentWordRef.current.length}{" "}
+              /{MAX_LENGTH}
             </small>
           </div>
 
@@ -163,7 +205,12 @@ export default function Driveler({ animalType, fire }: DrivelerProps) {
         onMouseLeave={() => setAutoScrolling(true)}
         onMouseEnter={() => setAutoScrolling(false)}
       >
-        {output}
+        {outputTokens.map((token, i) => (
+          <span key={i} className={token.isWord ? styles.realWord : ""}>
+            {token.text}
+          </span>
+        ))}
+        <span>{currentWordRef.current}</span>
       </div>
     </div>
   );
