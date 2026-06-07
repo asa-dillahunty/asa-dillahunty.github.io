@@ -19,6 +19,7 @@ import SideBetPlay from "./pages/inProgress/SideBet/SideBetPlay";
 import SideBetHosting from "./pages/inProgress/SideBet/SideBetHosting";
 import DrivelGenerator from "./pages/inProgress/DrivelGenerator/DrivelGenerator";
 import InProgress from "./pages/inProgress/InProgress";
+import MazeGeneration from "./pages/projects/MazeGeneration/MazeGeneration";
 
 function App() {
   const { pathname, hash } = useLocation();
@@ -58,6 +59,7 @@ const routeList = [
   { path: "/projects/mars-paths", elem: <MarsPaths /> },
   { path: "/projects/capture-the-flag", elem: <CaptureTheFlag /> },
   { path: "/projects/ascii-art", elem: <AsciiArt /> },
+  { path: "/in-progress/maze-generation", elem: <MazeGeneration /> },
   {
     path: "/in-progress/subway-surfers-markov-chains",
     elem: <SubwayMarkov />,
