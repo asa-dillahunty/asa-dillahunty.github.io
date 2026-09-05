@@ -47,6 +47,7 @@ interface SimpleProject {
 }
 
 const inProgressProjectList: SimpleProject[] = [
+  { title: "Jeopardy", destinationUrl: "/in-progress/jeopardy/" },
   { title: "Sudoku", destinationUrl: "/in-progress/sudoku/" },
   { title: "Drivel Generator", destinationUrl: "/in-progress/drivel/" },
   {
