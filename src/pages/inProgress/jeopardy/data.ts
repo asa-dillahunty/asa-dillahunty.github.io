@@ -1,52 +1,292 @@
 // Entries run from $200 to $1,200. Replace null slots with { clue, answer, imageUrl, sourceUrl }.
 // Clues use title wordplay; edit them here to suit your audience.
-export const categories: { title: string; entries: ({ clue: string; answer: string; imageUrl: string; sourceUrl: string } | null)[] }[] = [
-  { title: "Best Movies of the Year", entries: [
-    { clue: "When every alternative is off the table, you have this.", answer: "No Other Choice", imageUrl: "https://cdn.sanity.io/images/j0wdmpyb/production/446a26ddc63d7572764e36de15f1203fcaa8c372-1500x2143.webp", sourceUrl: "https://www.filmweb.no/film/EDI20251689" },
-    { clue: "An interest that has long since crossed the line into an all-consuming fixation.", answer: "Obsession", imageUrl: "https://www.impawards.com/2026/posters/obsession_ver3.jpg", sourceUrl: "https://www.impawards.com/2026/obsession_ver3.html" },
-    { clue: "Start with a state of enlightenment, then specify the musical group, the television program, and the motion picture.", answer: "Nirvana the Band the Show the Movie", imageUrl: "https://movingstory-prod.imgix.net/mx/posters/nirvanna-the-band-the-show-the-movie-d8f64e64.jpg", sourceUrl: "https://www.classiccinemas.com.au/movies/nirvanna-the-band-the-show-the-movie" },
-    { clue: "Two words for the pestilence nobody wants coming to town.", answer: "The Plague", imageUrl: "https://m.media-amazon.com/images/M/MV5BNzZjNzM2NDctNmI2Mi00OWJhLTk4ZjItZDRkMmY1NmEzMjBkXkEyXkFqcGc%40._V1_.jpg", sourceUrl: "https://www.imdb.com/title/tt32792934/" },
-    { clue: "A tune, the past participle of singing, and the color of a cloudless sky.", answer: "Song Sung Blue", imageUrl: "https://imgix.hoyts.com.au/mx/posters/nz/song-sung-blue-190c6d35.jpg", sourceUrl: "https://www.hoyts.co.nz/movies/song-sung-blue" },
-    { clue: "This Italian title offers a stark ultimatum: Fiume or death!", answer: "Fiume O Morte!", imageUrl: "https://liburniafilmfestival.com/wp-content/uploads/2025/07/1_finished_hr_fiu__manji-manji-scaled.jpg", sourceUrl: "https://liburniafilmfestival.com/en/film/fiume-o-morte/" },
-  ] },
-  { title: "Worst Movies of the Year", entries: [
-    { clue: "This title locates a young woman aboard a vehicle that runs on rails.", answer: "The Girl on the Train", imageUrl: "https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/6f/6d7afac5dfc657a8fbda2b99c3dcebfe_original.jpg?t=1636148895", sourceUrl: "https://www.flicks.com.au/movie/the-girl-on-the-train/" },
-    { clue: "One letter and one digit put this title in pole position.", answer: "F1", imageUrl: "https://www.renewtheaters.org/webimg/f1-poster.jpg", sourceUrl: "https://princetongardentheatre.org/films/f1" },
-    { clue: "Apparently, Earth's natural satellite has left someone utterly lovesick.", answer: "Moonstruck", imageUrl: "https://www.impawards.com/1987/posters/moonstruck_xxlg.jpg", sourceUrl: "https://www.impawards.com/1987/moonstruck_xxlg.html" },
-    { clue: "The definite article followed by a word for material, matter, or the essential point.", answer: "The Substance", imageUrl: "https://avatars.mds.yandex.net/get-kinopoisk-image/10893610/77829c8d-a041-4d40-877e-eb3edd8621da/1920x", sourceUrl: "https://www.kinopoisk.ru/picture/4154743/" },
-    { clue: "A departure becomes a question about whether anyone will notice your absence.", answer: "If I go will they miss me", imageUrl: "https://www.cinemaclock.com/images/posters/1000x1500/3/if-i-go-will-they-miss-me-2026-orig-poster.jpg", sourceUrl: "https://www.cinemaclock.com/movies/if-i-go-will-they-miss-me-2026" },
-    { clue: "A needle-and-thread verb meets the damage it might repair.", answer: "sew torn", imageUrl: "https://www.impawards.com/2025/posters/sew_torn_ver2_xxlg.jpg", sourceUrl: "https://www.impawards.com/2025/sew_torn_ver2_xxlg.html" },
-  ] },
-  { title: "Best Games", entries: [
-    { clue: "The opposite of inner meets untamed lands.", answer: "Outer Wilds", imageUrl: "https://m.media-amazon.com/images/M/MV5BNDY3YzliYTUtMmEzMy00OWYwLThhYzUtYWI1ZGIwYTE0NTA3XkEyXkFqcGc%40._V1_.jpg", sourceUrl: "https://www.imdb.com/pt/title/tt10949454/" },
-    { clue: "A high-tech rebel aesthetic, followed by a year 100 years after 1977.", answer: "Cyber Punk 2077", imageUrl: "https://acf.geeknetic.es/imagenes/auto/23/06/13/wzd-p3i-image.png", sourceUrl: "https://www.geeknetic.es/Noticia/28818/Cyberpunk-2077-Phantom-Liberty-aumenta-sus-requisitos-minimos-y-no-soportara-HDD.html" },
-    { clue: "An empty interior describes this armored champion.", answer: "Hollow Knight", imageUrl: "https://www.proshop.dk/Images/915x900/2739448_2ca6d625412f.jpg", sourceUrl: "https://www.proshop.dk/Spil/Hollow-Knight-Nintendo-Switch-ActionAdventure/2739448" },
-    { clue: "Take fifty percent of an existence, then append the sequel number.", answer: "Half Life 2", imageUrl: "https://www.overclockers.co.uk/blog/wp-content/uploads/2023/05/halflife2-square-coverart-580x637.jpg", sourceUrl: "https://www.overclockers.co.uk/blog/games-that-changed-the-gaming-landscape/" },
-    { clue: "A single word meaning to send someone off on an assignment.", answer: "Dispatch", imageUrl: "https://static.actugaming.net/media/2024/12/dispatch-jaquette.jpg", sourceUrl: "https://www.actugaming.net/jeux/dispatch/" },
-    { clue: "It sounds like a light fog, but swaps the vowel for a Y.", answer: "Myst", imageUrl: "https://www.mocagh.org/broderbund/myst.jpg", sourceUrl: "https://www.mocagh.org/loadpage.php?getgame=myst" },
-  ] },
-  { title: "Worst Games", entries: [
-    { clue: "Fifty percent of an existence. No sequel number this time.", answer: "Half Life", imageUrl: "https://www.dosdays.co.uk/media/games/halflife/_cover.jpg", sourceUrl: "https://www.dosdays.co.uk/topics/Games/game_halflife.php" },
-    { clue: "A four-letter word for the very top of a mountain.", answer: "Peak", imageUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coat49.jpg", sourceUrl: "https://backloggd.com/games/peak--1/" },
-    { clue: "These bad dreams apparently come in a small size.", answer: "Little Nightmares", imageUrl: "https://images.launchbox-app.com/e23708a1-3bca-4e4d-8676-98ad0fcb8b44.png", sourceUrl: "https://gamesdb.launchbox-app.com/games/images/78367-little-nightmares" },
-    { clue: "Build this seven-letter title: BAL + AT + ROW without its last letter.", answer: "Balatro", imageUrl: "https://images.igdb.com/igdb/image/upload/t_1080p_2x/co9f4g.webp", sourceUrl: "https://stash.games/games/balatro" },
-    { clue: "Add a Y to a woolly farm animal for this cozy-sounding name.", answer: "Sheepy", imageUrl: "https://gaming-cdn.com/images/products/15947/orig-fallback-v1/sheepy-a-short-adventure-pc-jogo-steam-cover.jpg?v=1708447862", sourceUrl: "https://www.instant-gaming.com/pt/15947-download-sheepy-a-short-adventure-pc-jogo-steam/" },
-    { clue: "This title promises an explanation of an aquatic animal's manufacture.", answer: "How fish is made", imageUrl: "https://hagenberg.games/w/images/thumb/f/f2/How_fish_is_made_cover.jpg/800px-How_fish_is_made_cover.jpg", sourceUrl: "https://hagenberg.games/wiki/How_Fish_Is_Made" },
-  ] },
-  { title: "Books of the Year", entries: [
-    { clue: "Wind piles sand into this four-letter landform.", answer: "Dune", imageUrl: "https://i5.walmartimages.com/seo/Dune-Dune-Book-1-Hardcover-9780441005901_030e0348-6109-4133-aade-f8976fc07111.00bace885cd4ad55471c84fd17b1e3bc.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768", sourceUrl: "https://www.walmart.com/ip/Dune-Dune-Book-1-Hardcover-9780441005901/682844" },
-    { clue: "A young woman rides the rails in a title also found in tonight's movie category.", answer: "The Girl on the Train", imageUrl: "https://i5.walmartimages.com/seo/The-Girl-on-the-Train-A-Novel-Paperback-9781594634024_8f5c3d06-8b77-4f36-bf03-c2f79b9fadaa_1.e56a98ea4816b12a10f028c328d0a8ba.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768", sourceUrl: "https://www.walmart.com/ip/52484922" },
-    { clue: "The color of crimson is moving upward.", answer: "Red Rising", imageUrl: "https://hachette.imgix.net/books/9781399740289.jpg?auto=compress&w=440", sourceUrl: "https://www.hachette.com.au/pierce-brown/red-rising-enter-the-explosive-first-book-in-the-globally-bestselling-dystopian-space-opera-series" },
-    { clue: "One word for a clutch of young birds—or what you do when you dwell unhappily on something.", answer: "Brood", imageUrl: "https://images.squarespace-cdn.com/content/v1/57111fe0c2ea51e0a131be71/1661272923532-0JGOW0XA7ESOAPEFEWEZ/Polzin%2BBROOD.jpg", sourceUrl: "https://www.friedrichagency.com/lucy" },
-    { clue: "A female child belongs to a waterway named for the opposite of black.", answer: "Daughter of the White River", imageUrl: "https://e6tnk9va8hh.exactdn.com/wp-content/uploads/2019/01/Daughter-of-the-White-River-1.jpg?lossy=1&ssl=1&strip=all", sourceUrl: "https://onlyinark.com/arkansas-women-bloggers/helen-spence-story/" },
-    { clue: "A first-person declaration that the speaker has achieved mythical status.", answer: "I am Legend", imageUrl: "https://bookshopapocalypse.com/cdn/shop/products/iamlegendpb-1sq.jpg?v=1638680265&width=1445", sourceUrl: "https://bookshopapocalypse.com/products/i-am-legend-by-richard-matheson" },
-  ] },
-  { title: "Songs of the Year", entries: [
-    { clue: "Ninajirachi names this track after the keyboard command that makes things disappear.", answer: "Delete - Ninajirachi", imageUrl: "https://www.nme.com/wp-content/uploads/2025/08/ninajirachi-i-love-my-computer-album-art.jpg", sourceUrl: "https://www.nme.com/features/music-interviews/ninajirachi-interview-i-love-my-computer-album-3883273" },
-    { clue: "Rebecca Black's title mixes something sweet, something hydrating, and something poisonous.", answer: "Sugar Water Cyanide - Rebecca Black", imageUrl: "https://images.squarespace-cdn.com/content/v1/64b0c583bec20131b5bdb43f/2c65b8e3-48e5-4f50-b35c-7fe9e24f32ca/Sugar%2BWater%2BCyanide%2B%28single%29.jpg", sourceUrl: "https://www.thirteenthemag.com/rebecca-black-serves-that-girl-with-sugar-water-cyanide" },
-    { clue: "Kesha names this one after a pleasure trip behind the wheel.", answer: "Joyride - Kesha", imageUrl: "https://images.squarespace-cdn.com/content/v1/5c5b7092b914495766354bb2/1720127980724-OY10S5NKC8LOCOHWQAUY/unnamed%2B%2811%29.png?format=2500w", sourceUrl: "https://hashtagmagazine.net/home/2024/7/4/kesha-releases-new-single-joyride" },
-    { clue: "Olivia Rodrigo's title replaces gray matter with fly larvae.", answer: "Maggots for Brains - Olivia Rodrigo", imageUrl: "https://i.abcnewsfe.com/a/348820fd-ecaa-4893-897b-ad88508e37a6/OR3-GEFFEN-AB-260402_1775147981495_hpMain_square.jpeg?w=1500", sourceUrl: "https://abcnews.com/GMA/Culture/olivia-rodrigo-announces-3rd-album/story?id=131657672" },
-    null,
-    null,
-  ] },
+export const categories: {
+  title: string;
+  entries: ({
+    clue: string;
+    answer: string;
+    imageUrl: string;
+    sourceUrl: string;
+  } | null)[];
+}[] = [
+  {
+    title: "Best Movies of the Year",
+    entries: [
+      {
+        clue: "When every alternative is off the table, you have this.",
+        answer: "No Other Choice",
+        imageUrl:
+          "https://cdn.sanity.io/images/j0wdmpyb/production/446a26ddc63d7572764e36de15f1203fcaa8c372-1500x2143.webp",
+        sourceUrl: "https://www.filmweb.no/film/EDI20251689",
+      },
+      {
+        clue: "An interest that has long since crossed the line into an all-consuming fixation.",
+        answer: "Obsession",
+        imageUrl: "https://www.impawards.com/2026/posters/obsession_ver3.jpg",
+        sourceUrl: "https://www.impawards.com/2026/obsession_ver3.html",
+      },
+      {
+        clue: "Start with a state of enlightenment, then specify the musical group, the television program, and the motion picture.",
+        answer: "Nirvana the Band the Show the Movie",
+        imageUrl:
+          "https://movingstory-prod.imgix.net/mx/posters/nirvanna-the-band-the-show-the-movie-d8f64e64.jpg",
+        sourceUrl:
+          "https://www.classiccinemas.com.au/movies/nirvanna-the-band-the-show-the-movie",
+      },
+      {
+        clue: "Two words for the pestilence nobody wants coming to town.",
+        answer: "The Plague",
+        imageUrl:
+          "https://m.media-amazon.com/images/M/MV5BNzZjNzM2NDctNmI2Mi00OWJhLTk4ZjItZDRkMmY1NmEzMjBkXkEyXkFqcGc%40._V1_.jpg",
+        sourceUrl: "https://www.imdb.com/title/tt32792934/",
+      },
+      {
+        clue: "A tune, the past participle of singing, and the color of a cloudless sky.",
+        answer: "Song Sung Blue",
+        imageUrl:
+          "https://imgix.hoyts.com.au/mx/posters/nz/song-sung-blue-190c6d35.jpg",
+        sourceUrl: "https://www.hoyts.co.nz/movies/song-sung-blue",
+      },
+      {
+        clue: "Motto of Italian Nazi, Gabriele D'Annunzio.",
+        answer: "Fiume O Morte!",
+        imageUrl:
+          "https://liburniafilmfestival.com/wp-content/uploads/2025/07/1_finished_hr_fiu__manji-manji-scaled.jpg",
+        sourceUrl: "https://liburniafilmfestival.com/en/film/fiume-o-morte/",
+      },
+    ],
+  },
+  {
+    title: "Worst Movies of the Year",
+    entries: [
+      {
+        clue: "Emily Blunt plays an alcoholic in this murder mystery drama",
+        answer: "The Girl on the Train",
+        imageUrl:
+          "https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/6f/6d7afac5dfc657a8fbda2b99c3dcebfe_original.jpg?t=1636148895",
+        sourceUrl: "https://www.flicks.com.au/movie/the-girl-on-the-train/",
+      },
+      {
+        clue: '"Cheesiest thing I\'ve seen in years."',
+        answer: "F1",
+        imageUrl: "https://www.renewtheaters.org/webimg/f1-poster.jpg",
+        sourceUrl: "https://princetongardentheatre.org/films/f1",
+      },
+      {
+        clue: "Nic Cage loses his hand, but he finds true love",
+        answer: "Moonstruck",
+        imageUrl: "https://www.impawards.com/1987/posters/moonstruck_xxlg.jpg",
+        sourceUrl: "https://www.impawards.com/1987/moonstruck_xxlg.html",
+      },
+      {
+        clue: "Age is beauty (NOT!)",
+        answer: "The Substance",
+        imageUrl:
+          "https://avatars.mds.yandex.net/get-kinopoisk-image/10893610/77829c8d-a041-4d40-877e-eb3edd8621da/1920x",
+        sourceUrl: "https://www.kinopoisk.ru/picture/4154743/",
+      },
+      {
+        clue: "A departure becomes a question about whether anyone will notice your absence.",
+        answer: "If I go will they miss me",
+        imageUrl:
+          "https://www.cinemaclock.com/images/posters/1000x1500/3/if-i-go-will-they-miss-me-2026-orig-poster.jpg",
+        sourceUrl:
+          "https://www.cinemaclock.com/movies/if-i-go-will-they-miss-me-2026",
+      },
+      {
+        clue: "A needle-and-thread verb meets the damage it might repair.",
+        answer: "sew torn",
+        imageUrl:
+          "https://www.impawards.com/2025/posters/sew_torn_ver2_xxlg.jpg",
+        sourceUrl: "https://www.impawards.com/2025/sew_torn_ver2_xxlg.html",
+      },
+    ],
+  },
+  {
+    title: "Best Games",
+    entries: [
+      {
+        clue: "The opposite of inner meets untamed lands.",
+        answer: "Outer Wilds",
+        imageUrl:
+          "https://m.media-amazon.com/images/M/MV5BNDY3YzliYTUtMmEzMy00OWYwLThhYzUtYWI1ZGIwYTE0NTA3XkEyXkFqcGc%40._V1_.jpg",
+        sourceUrl: "https://www.imdb.com/pt/title/tt10949454/",
+      },
+      {
+        clue: "A high-tech rebel aesthetic, followed by a year 100 years after 1977.",
+        answer: "Cyber Punk 2077",
+        imageUrl:
+          "https://acf.geeknetic.es/imagenes/auto/23/06/13/wzd-p3i-image.png",
+        sourceUrl:
+          "https://www.geeknetic.es/Noticia/28818/Cyberpunk-2077-Phantom-Liberty-aumenta-sus-requisitos-minimos-y-no-soportara-HDD.html",
+      },
+      {
+        clue: "An empty interior describes this armored champion.",
+        answer: "Hollow Knight",
+        imageUrl:
+          "https://www.proshop.dk/Images/915x900/2739448_2ca6d625412f.jpg",
+        sourceUrl:
+          "https://www.proshop.dk/Spil/Hollow-Knight-Nintendo-Switch-ActionAdventure/2739448",
+      },
+      {
+        clue: "Take fifty percent of an existence, then append the sequel number.",
+        answer: "Half Life 2",
+        imageUrl:
+          "https://www.overclockers.co.uk/blog/wp-content/uploads/2023/05/halflife2-square-coverart-580x637.jpg",
+        sourceUrl:
+          "https://www.overclockers.co.uk/blog/games-that-changed-the-gaming-landscape/",
+      },
+      {
+        clue: "A single word meaning to send someone off on an assignment.",
+        answer: "Dispatch",
+        imageUrl:
+          "https://static.actugaming.net/media/2024/12/dispatch-jaquette.jpg",
+        sourceUrl: "https://www.actugaming.net/jeux/dispatch/",
+      },
+      {
+        clue: "It sounds like a light fog, but swaps the vowel for a Y.",
+        answer: "Myst",
+        imageUrl: "https://www.mocagh.org/broderbund/myst.jpg",
+        sourceUrl: "https://www.mocagh.org/loadpage.php?getgame=myst",
+      },
+    ],
+  },
+  {
+    title: "Worst Games",
+    entries: [
+      {
+        clue: "Fifty percent of an existence. No sequel number this time.",
+        answer: "Half Life",
+        imageUrl: "https://www.dosdays.co.uk/media/games/halflife/_cover.jpg",
+        sourceUrl: "https://www.dosdays.co.uk/topics/Games/game_halflife.php",
+      },
+      {
+        clue: "A four-letter word for the very top of a mountain.",
+        answer: "Peak",
+        imageUrl:
+          "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coat49.jpg",
+        sourceUrl: "https://backloggd.com/games/peak--1/",
+      },
+      {
+        clue: "These bad dreams apparently come in a small size.",
+        answer: "Little Nightmares",
+        imageUrl:
+          "https://images.launchbox-app.com/e23708a1-3bca-4e4d-8676-98ad0fcb8b44.png",
+        sourceUrl:
+          "https://gamesdb.launchbox-app.com/games/images/78367-little-nightmares",
+      },
+      {
+        clue: "Build this seven-letter title: BAL + AT + ROW without its last letter.",
+        answer: "Balatro",
+        imageUrl:
+          "https://images.igdb.com/igdb/image/upload/t_1080p_2x/co9f4g.webp",
+        sourceUrl: "https://stash.games/games/balatro",
+      },
+      {
+        clue: "Add a Y to a woolly farm animal for this cozy-sounding name.",
+        answer: "Sheepy",
+        imageUrl:
+          "https://gaming-cdn.com/images/products/15947/orig-fallback-v1/sheepy-a-short-adventure-pc-jogo-steam-cover.jpg?v=1708447862",
+        sourceUrl:
+          "https://www.instant-gaming.com/pt/15947-download-sheepy-a-short-adventure-pc-jogo-steam/",
+      },
+      {
+        clue: "This title promises an explanation of an aquatic animal's manufacture.",
+        answer: "How fish is made",
+        imageUrl:
+          "https://hagenberg.games/w/images/thumb/f/f2/How_fish_is_made_cover.jpg/800px-How_fish_is_made_cover.jpg",
+        sourceUrl: "https://hagenberg.games/wiki/How_Fish_Is_Made",
+      },
+    ],
+  },
+  {
+    title: "Books of the Year",
+    entries: [
+      {
+        clue: "______ your mom",
+        answer: "Dune",
+        imageUrl:
+          "https://i5.walmartimages.com/seo/Dune-Dune-Book-1-Hardcover-9780441005901_030e0348-6109-4133-aade-f8976fc07111.00bace885cd4ad55471c84fd17b1e3bc.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768",
+        sourceUrl:
+          "https://www.walmart.com/ip/Dune-Dune-Book-1-Hardcover-9780441005901/682844",
+      },
+      {
+        clue: "A young woman rides the rails in a title also found in tonight's movie category.",
+        answer: "The Girl on the Train",
+        imageUrl:
+          "https://i5.walmartimages.com/seo/The-Girl-on-the-Train-A-Novel-Paperback-9781594634024_8f5c3d06-8b77-4f36-bf03-c2f79b9fadaa_1.e56a98ea4816b12a10f028c328d0a8ba.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768",
+        sourceUrl: "https://www.walmart.com/ip/52484922",
+      },
+      {
+        clue: "The color of crimson is moving upward.",
+        answer: "Red Rising",
+        imageUrl:
+          "https://hachette.imgix.net/books/9781399740289.jpg?auto=compress&w=440",
+        sourceUrl:
+          "https://www.hachette.com.au/pierce-brown/red-rising-enter-the-explosive-first-book-in-the-globally-bestselling-dystopian-space-opera-series",
+      },
+      {
+        clue: "One word for a clutch of young birds—or what you do when you dwell unhappily on something.",
+        answer: "Brood",
+        imageUrl:
+          "https://images.squarespace-cdn.com/content/v1/57111fe0c2ea51e0a131be71/1661272923532-0JGOW0XA7ESOAPEFEWEZ/Polzin%2BBROOD.jpg",
+        sourceUrl: "https://www.friedrichagency.com/lucy",
+      },
+      {
+        clue: "A female child belongs to a waterway named for the opposite of black.",
+        answer: "Daughter of the White River",
+        imageUrl:
+          "https://e6tnk9va8hh.exactdn.com/wp-content/uploads/2019/01/Daughter-of-the-White-River-1.jpg?lossy=1&ssl=1&strip=all",
+        sourceUrl:
+          "https://onlyinark.com/arkansas-women-bloggers/helen-spence-story/",
+      },
+      {
+        clue: "A first-person declaration that the speaker has achieved mythical status.",
+        answer: "I am Legend",
+        imageUrl:
+          "https://bookshopapocalypse.com/cdn/shop/products/iamlegendpb-1sq.jpg?v=1638680265&width=1445",
+        sourceUrl:
+          "https://bookshopapocalypse.com/products/i-am-legend-by-richard-matheson",
+      },
+    ],
+  },
+  {
+    title: "Songs of the Year",
+    entries: [
+      {
+        clue: "Ninajirachi names this track after the keyboard command that makes things disappear.",
+        answer: "Delete - Ninajirachi",
+        imageUrl:
+          "https://www.nme.com/wp-content/uploads/2025/08/ninajirachi-i-love-my-computer-album-art.jpg",
+        sourceUrl:
+          "https://www.nme.com/features/music-interviews/ninajirachi-interview-i-love-my-computer-album-3883273",
+      },
+      {
+        clue: "Rebecca Black's title mixes something sweet, something hydrating, and something poisonous.",
+        answer: "Sugar Water Cyanide - Rebecca Black",
+        imageUrl:
+          "https://images.squarespace-cdn.com/content/v1/64b0c583bec20131b5bdb43f/2c65b8e3-48e5-4f50-b35c-7fe9e24f32ca/Sugar%2BWater%2BCyanide%2B%28single%29.jpg",
+        sourceUrl:
+          "https://www.thirteenthemag.com/rebecca-black-serves-that-girl-with-sugar-water-cyanide",
+      },
+      {
+        clue: "Kesha names this one after a pleasure trip behind the wheel.",
+        answer: "Joyride - Kesha",
+        imageUrl:
+          "https://images.squarespace-cdn.com/content/v1/5c5b7092b914495766354bb2/1720127980724-OY10S5NKC8LOCOHWQAUY/unnamed%2B%2811%29.png?format=2500w",
+        sourceUrl:
+          "https://hashtagmagazine.net/home/2024/7/4/kesha-releases-new-single-joyride",
+      },
+      {
+        clue: "Olivia Rodrigo's title replaces gray matter with fly larvae.",
+        answer: "Maggots for Brains - Olivia Rodrigo",
+        imageUrl:
+          "https://i.abcnewsfe.com/a/348820fd-ecaa-4893-897b-ad88508e37a6/OR3-GEFFEN-AB-260402_1775147981495_hpMain_square.jpeg?w=1500",
+        sourceUrl:
+          "https://abcnews.com/GMA/Culture/olivia-rodrigo-announces-3rd-album/story?id=131657672",
+      },
+      null,
+      null,
+    ],
+  },
 ];
